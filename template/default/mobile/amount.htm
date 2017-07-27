@@ -1,0 +1,68 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>我的佣金 - {$AJ[sitename]}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+<meta name="format-detection" content="telephone=no,address=no,email=no" />
+<meta name="mobileOptimized" content="width" />
+<meta name="handheldFriendly" content="true" />
+<meta http-equiv="Cache-Control" content="max-age=0" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="static/mobile_jjr.css?v=3" rel="stylesheet" type="text/css" /><script>
+	var theact = 'zhuan_manage';
+</script></head>
+<body>
+
+    <section class="main animated fadeInDown">
+        <div class="main-box">
+            <div class="commission-header fn-clear">
+                <div class="commission-box border-box">
+                    <p>可结佣金（税前）</p>
+                    <p class="commission-text">
+                        {if $nums[0]}{$nums[0]}{else}0{/if}                        <span>元</span>
+                    </p>
+                </div>
+                <div class="commission-box border-box">
+                    <p>已结佣金</p>
+                    <p class="commission-text">
+                        {if $nums[1]}{$nums[1]}{else}0{/if}                       <span>元</span>
+                    </p>
+                </div>
+            </div>
+            <a href="{$MODULE[2][linkurl]}cash.php" class="rb-row bank-card fn-clear"> <i class="icon-credit-card"></i>
+                <span>立即提现</span><i class="icon-angle-right"></i>
+            </a>
+            <div class="commission-detail">
+                <h6>账目明细</h6>
+                  <div class="client my-client-title">
+                <ul class="rb-row fn-clear">
+                    <li>记录ID</li>
+                    <li>成交客户</li>
+                    <li>金额</li>
+                    <li>状态</li>
+                </ul>
+            </div>
+            <div class="client my-client-list">
+            {loop $amount $k $v}
+             <ul class="rb-row fn-clear">
+            
+             <li>{$v[itemid]}</li>
+                    <li>{$v[kehu]}</li>
+                    <li>{$v[amount]}元</li>
+                    <li>{$v['dstatus']}</li>
+                    
+                    </ul>{/loop}
+                            </div>            </div>
+                    </div>
+    </section>
+    <footer class="foot">
+    <p>
+        <a href="index.php" class="fr">&copy;{$AJ[sitename]}</a>
+    </p>
+</footer>
+</body>
+</html>

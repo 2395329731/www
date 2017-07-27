@@ -1,0 +1,72 @@
+{template 'header', $template}
+ 
+
+  
+ <div id=content>
+    <!--新房首页-->
+    <div class="banner mt10"><p>{$COM[company]}</p>
+      <div class="menu png_bg">
+        <a href="{$COM[linkurl]}" class="{if $file=='homepage'}select{else}{/if}">首页</a>
+{loop $MENU $k $v}
+<a href="{$v[linkurl]}" class="{if $file==$menu_file[$k]}select{else}{/if}">{$v[name]}</a>
+{/loop}
+      </div>
+    </div>
+     <div class="a_left agentlist" >
+      <h3><div style="width:190px; float:right">共有 <b class="yellow">{$itemsale}</b> 位满足您条件的经纪人</div><span style="float:left">经纪人<font style="color:#999999; font-weight:normal;">(按经纪人积分从高到低排列)</font></span></h3>
+      <ul class="Info">{loop $lists $k $v}
+	  			         <li><div class="head">
+         <a href="{userurl($v[username], '')}" class="headpic" target="_blank"><img src="{useravatar($t[username], 'large')}" width="90" height="90"/></a>
+		 
+          <a href="{userurl($v[username], '')}">{$v[truename]}</a><img src="{$HSPATH}images/enter_button.jpg"></a>
+        </div>
+        <div class="info">
+          <p>电话：<b class="red">{$v[mobile]}</b></p>
+          <p>通讯：{if $v[username] && $AJ[im_web]}{im_web($v[username])}&nbsp;{/if}
+	{if $v[qq] && $AJ[im_qq]}{im_qq($v[qq])}&nbsp;{/if}
+	{if $v[ali] && $AJ[im_ali]}{im_ali($v[ali])}&nbsp;{/if}
+	{if $v[msn] && $AJ[im_msn]}{im_msn($v[msn])}&nbsp;{/if}
+	{if $v[skype] && $AJ[im_skype]}{im_skype($v[skype])}&nbsp;{/if}</p>
+          <p>服务：{area_pos($v[areaid], '')}</p>
+          <p>分店：<A href="{userurl($v[username], '')}" 
+  target=_blank>{dsubstr($v[company], 22, $suffix = '')}</A></p>
+          <p>沟通：<a href="{$MODULE[2][linkurl]}friend.php?action=add&username={$v[username]}">[加为好友]</a> <a href="{$MODULE[2][linkurl]}message.php?action=send&touser={$v[username]}">[发送信件]</a></p>
+          <p>
+		  
+		  {if $v[vtruename]}<img align="absmiddle" title="已通过身份证认证" src="{AJ_SKIN}image/sell/identity_yes.gif">{else}<img align="absmiddle" title="未通过身份证认证" src="{AJ_SKIN}image/sell/identity_no.gif">{/if}
+		   {if $v[vcompany]}<img align="absmiddle" title="已通过职业资格认证" src="{AJ_SKIN}image/sell/aptitude_yes.gif">{else}<img align="absmiddle" title="未通过职业资格认证" src="{AJ_SKIN}image/sell/aptitude_no.gif">{/if}
+		</p>
+        </div></li>
+		
+		      {/loop}
+		       
+								<div class="clear"></div>
+      </ul>
+      <!--分页-->
+      <div class="clear"></div>
+      <div class="pagination b_mt20"><div class="pagination-inner" style="margin:15px">{$pages}</div></div>
+    </div>
+     <div class="a_right">
+      <div class="a_info">
+         <h3>{$COM[company]}</h3> 	 
+         <ul>
+            			<li><span class="a1">所属公司：</span><span class="a1_1"><b><A href="{$COM[linkurl]}" 
+  target=_blank>{$COM[company]}</A></b></span><div class="clear"></div></li>
+            <li><span class="a1">主营区域：</span><span class="a1_1">{area_pos($COM[areaid], '')}</span><div class="clear"></div></li>
+            
+            <li><span class="a1">所在地址：</span><span class="a1_1">{$COM[address]}</span><div class="clear"></div></li>
+            <li><span class="a1">服务热线：</span><span class="a1_1">{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</span><div class="clear"></div></li>{if $COM[fax]}
+	 <li><span class="a1">公司传真：</span><span class="a1_1">{if $domain}{$COM[fax]}{else}{anti_spam($COM[fax])}{/if}</span><div class="clear"></div></li>           {/if}  
+	                             
+         </ul>
+
+       </div>
+	  
+	{if $side_pos==0}
+{template 'side', $template}
+
+{/if}
+    </div>
+    
+  <!--底部-->
+{template 'footer', $template}

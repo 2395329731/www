@@ -1,0 +1,85 @@
+/*涓昏淇℃*/
+.yellow{ color:#ff6600}
+.banner{ text-align:center; height:146px;background:url(images/a_banner.jpg); }
+.banner p{ height:50px; font-family:"Adobe 榛浣 Std R"; color:#FFF; font-size:34px; font-weight:600; padding-top:60px;}
+.banner .menu{ height:36px; margin:0 auto; text-align:center; padding-left:286px;}
+.banner .menu a{ display:block;height:35px; line-height:35px; margin-top:1px; font-size:14px; font-weight:600; padding-left:15px; padding-right:15px; float:left}
+.banner .menu a.select{background:url(images/menubg2.png) repeat-x;} 
+.banner .menu a:link,.banner .menu a:visited{ color:#FFF}
+.banner .menu a:hover,.banner .menu a:active{ background:url(images/menubg2.png) repeat-x; text-decoration:none}
+.a_left{ width:715px; float:left; margin-top:10px; overflow:hidden}
+.a_right{ width:235px; float:right; margin-top:10px;}
+h3{ background:url(images/bg1.gif) repeat-x; height:31px; line-height:31px; padding-left:10px; font-weight:600}
+.pic_list{ border:1px #e3e3e3 solid; padding-bottom:10px;}
+.pic_list ul{ padding-top:15px;}
+.pic_list ul li{ width:108px; padding-left:21px; padding-right:12px; float:left; text-align:center }
+.pic_list ul li a img{ padding:2px; border:1px #CCC solid}
+.pic_list .agent li a img{ width:102px; height:102px}
+.pic_list .house li img{ width:102px; height:77px}
+.pic_list ul li p a{ display:block; width:100%; overflow:hidden; height:22px;}
+/*虹哄挎*/
+.houseinfo{border:1px #e3e3e3 solid;}
+.houseinfo h3{ padding-left:0px; padding-right:10px;}
+.houseinfo h3 a{float:right; }
+.houseinfo h3 a:link,.houseinfo h3 a:visited{ color:#333; text-align:center;font-weight:normal; font-size:12px}
+.houseinfo h3 span{display:block; background:url(images/a_bg3.gif) no-repeat; width:111px; float:left; text-align:center}
+.a_left table tr{ display:block; width:693px; background:url(images/line.gif) repeat-x left bottom;margin-left:10px; margin-right:10px;}
+.a_left table tr.nobg{ background:none}
+.a_left table tr.shuxing{ background:url(images/a_bg4.gif) repeat-x left bottom; width:693px; margin:0px; padding-left:10px; padding-right:10px; font-weight:600; color:#0c4cc2}
+.a_left table tr td{ height:35px; line-height:35px; text-align:center; padding-right:5px;}
+/*充晶涓浠*/
+.union{ border:1px #d1dfec solid }
+.union h3{ background:url(images/a_bg2.gif) repeat-x;}
+.union ul{ padding-left:10px; padding-right:10px;}
+.union ul li{ border-bottom:1px #CCC dashed; padding-top:5px; padding-bottom:7px; margin-bottom:5px; margin-top:5px;}
+.union ul li a{ display:block; font-weight:600}
+.union ul li a:link,.union ul li a:visited{ color:#333}
+/*agentlist*/
+.agentlist{ border:1px #e3e3e3 solid;}
+.agentlist h3{ padding-right:10px;}
+.agentlist h3 form{ float:right; margin-top:3px;}
+.agentlist h3 form .text{ height:19px; line-height:19px; width:120px; border:1px #e5e5e5 solid; border-right:none}
+.agentlist h3 form .button1{ background-image:url(images/searc.gif); width:51px; height:23px; border:none; background-color:transparent}
+.agentlist ul.newList {margin:0; padding:0; list-style:none; color:#000; width:94px; background:#fff; position:absolute; display:none; border:1px solid #ccc; top:23px; left:0; overflow:auto; z-index:9999;}
+.agentlist .newListSelected {width:94px; color:#333; height:23px; line-height:23px; padding:0px 0 0 3px; float:left; background:url(images/select-bg.gif) no-repeat; margin-right:8px; font-weight:normal}
+.agentlist .newListSelected span {width:97px; display:block;}
+.agentlist ul.newList li {padding:0px 8px; height:23px; line-height:23px;}
+.agentlist .selectedTxt {width:68px; overflow:hidden; height:20px; padding:2px 20px 0 5px; line-height:20px;}
+.agentlist .newListHover {background:#EBF2FC; color:#333; cursor:default;}
+.agentlist .newListSelHover {cursor:default;}
+.agentlist .newListOptionTitle ul {}
+.agentlist .newListOptionTitle li {font-weight:normal; border-left:1px solid #ccc;}
+.agentlist .num{ height:33px; line-height:33px; padding-left:10px;} 
+.agentlist .Info li{ width:340px; padding-left:15px; float:left; padding-top:18px; background:url(images/line.gif) repeat-x left bottom;}
+.agentlist .Info li .head{ background:url(images/a_bg5.jpg) no-repeat; width:119px; padding-right:3px; height:183px; float:left;  padding-top:10px; font-size:12px; font-weight:600; text-align:center; color:#0041d9;}
+.agentlist .Info li .head .headpic img{ width:102px; height:102px; border:1px #CCC solid; padding:2px;display:block; margin:0 auto;background:url(images/loading.gif) no-repeat center center;}
+.agentlist .Info li .info{ float:left; padding-left:12px; padding-right:10px; }
+.agentlist .Info li .info p{ height:20px; padding-top:7px;}
+/*淇℃琛*/
+.b_elist_lloupan{border-bottom:1px solid #eee;padding:10px 0px 0px 0px; min-height:100px;}/*padding:5px;*/
+*html .b_elist_lloupan{height:100px;}
+.b_elist_lloupan_none{border-bottom:none}
+.b_elist_lloupan div.b_elist_lloupanimg{ padding-left:15px; padding-right:10px; padding-top:5px;}
+.b_elist_lloupan div.b_elist_lloupanimg img{padding:2px;border:1px solid #ccc; width:100px; height:75px;background:url(images/loading.gif) no-repeat center center; display:block}
+.b_elist_lloupantxt{display:block;width:350px;margin:0px 10px 0px 0px;}
+.b_elist_lloupantxt2{display:block;font-size:14px;font-weight:bold;width:110px;color:#333;padding:45px 0px 0px 0px;}
+.b_elist_lloupantxt3{display:block;font-size:15px;font-weight:bold;width:110px;color:#f60;padding:45px 0px 0px 0px;}
+.b_elist_lloupantxt ul{color:#333;}
+.b_elist_lloupantxt ul li{vertical-align:middle;}/*line-height:27px;height:27px;_margin:2px 0;*/
+.b_elist_lloupantxt ul li a,.b_elist_lloupantxt ul li a:visited{color:#06c;}
+.b_elist_lloupantxt ul li.title a,.b_elist_lloupantxt ul li.title a:visited{font-size:14px;font-weight:bold;text-decoration:underline;color:#06c;}
+.b_elist_lloupantxt ul li.title a:hover,.b_elist_lloupantxt ul li a:hover{color:#f60;}
+.b_elist_lloupantxt ul li span.comm{display:block;width:100px;float:left}
+.b_elist_lloupantxt ul li span.comm em{color:#f60;}
+.b_elist_b{font-size:14px;color:#666;padding-left:15px;}
+.b_elist_b a,.b_elist_b a:visited{color:#f60;font-weight:bold;}
+.b_elist_allbg{background:#f8f8f8;}
+.a_info{ border:1px #f8d4ad solid }
+.a_info h3{ background:url(images/a_bg2.gif) repeat-x;}
+.a_info ul{ width:210px; margin:10px;}
+.a_info ul li{ line-height:22px; padding-top:3px; padding-bottom:3px;}
+.a_info ul span{display:block; float:left}
+.a_info ul span.a1{ width:65px; }
+.a_info ul span.a1_1{ width:145px;}
+
+

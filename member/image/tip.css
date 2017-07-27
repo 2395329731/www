@@ -1,0 +1,240 @@
+HTML {
+	HEIGHT: 100%
+}
+BODY {
+	HEIGHT: 100%
+}
+BODY {
+	FONT-SIZE: 12px; MARGIN: 0px; WORD-BREAK: break-all; LINE-HEIGHT: 150%; FONT-FAMILY: "宋体",tahoma,Arial,"Century Gothic",verdana,Helvetica,sans-serif
+}
+DIV {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+h7 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	FONT-SIZE: 12px
+}
+H2 {
+	FONT-SIZE: 12px
+}
+H3 {
+	FONT-SIZE: 12px
+}
+H4 {
+	FONT-SIZE: 12px
+}
+H5 {
+	FONT-SIZE: 12px
+}
+H6 {
+	FONT-SIZE: 12px
+}
+h7 {
+	FONT-SIZE: 12px
+}
+UL {
+	LIST-STYLE-TYPE: none
+}
+INPUT {
+	FONT-SIZE: 12px; VERTICAL-ALIGN: middle
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+A {
+	TEXT-DECORATION: none
+}
+A {
+	outline: 0 none
+}
+.clearfix:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+.clearfix {
+	DISPLAY: inline-block
+}
+ HTML .clearfix {
+	HEIGHT: 1%
+}
+.clearfix {
+	DISPLAY: block
+}
+.valign {
+	VERTICAL-ALIGN: middle
+}
+.valign SPAN {
+	VERTICAL-ALIGN: middle
+}
+.valign IMG {
+	VERTICAL-ALIGN: middle
+}
+.valign {
+	OVERFLOW: hidden; TEXT-ALIGN: center
+}
+.valign SPAN {
+	DISPLAY: inline-block
+}
+.valign IMG {
+	DISPLAY: inline-block
+}
+.valign SPAN {
+	WIDTH: 0px; HEIGHT: 100%
+}
+.gary {
+	COLOR: #999
+}
+#paradigm {
+	BORDER-RIGHT: #fe9900 3px solid; PADDING-RIGHT: 11px; BORDER-TOP: #fe9900 3px solid; PADDING-LEFT: 11px; Z-INDEX: 900; BACKGROUND: #fff; PADDING-BOTTOM: 0px; MARGIN: 10px auto; OVERFLOW: hidden; BORDER-LEFT: #fe9900 3px solid; WIDTH: 520px; LINE-HEIGHT: 26px; PADDING-TOP: 0px; BORDER-BOTTOM: #fe9900 3px solid; POSITION: relative
+}
+#paradigm H4 {
+	MARGIN-TOP: 20px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #333
+}
+#paradigm P {
+	COLOR: #343434
+}
+.paradigm_title {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #333; LINE-HEIGHT: 41px; BORDER-BOTTOM: #ccc 1px solid; HEIGHT: 41px
+}
+.paradigm_title H3 {
+	FLOAT: left
+}
+.close {
+	MARGIN-TOP: 11px; DISPLAY: block; BACKGROUND: url(tip_bg.gif) no-repeat 0px -244px; FLOAT: right; WIDTH: 15px; HEIGHT: 13px
+}
+#paradigm_main {
+	MARGIN-TOP: 5px
+}
+.orange {
+	COLOR: #ff6501! important
+}
+.paradigm_bottom {
+	PADDING-RIGHT: 0px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 17px; LINE-HEIGHT: 40px; PADDING-TOP: 14px
+}
+#paradigm .paradigm_bottom {
+	BORDER-TOP-STYLE: none
+}
+.use_paradigm_btn {
+	DISPLAY: block; BACKGROUND: url(tip_bg.gif) no-repeat; FLOAT: left; WIDTH: 101px; TEXT-INDENT: -999em; MARGIN-RIGHT: 10px; HEIGHT: 41px
+}
+#clew {
+	BORDER-RIGHT: #fe9900 3px solid; BORDER-TOP: #fe9900 3px solid; BACKGROUND: #f5f5f5; LEFT: 50%; MARGIN: 15px auto 15px -240px; BORDER-LEFT: #fe9900 3px solid; WIDTH: 480px; BORDER-BOTTOM: #fe9900 3px solid; POSITION: absolute; TOP: 300px
+}
+.clew_title {
+	PADDING-LEFT: 25px; FONT-SIZE: 14px; BACKGROUND: url(tip_bg.gif) no-repeat 0px -223px; MARGIN: 10px 0px 0px 17px; COLOR: red
+}
+#clew P {
+	PADDING-RIGHT: 10px; COLOR: #666; TEXT-INDENT: 20px; LINE-HEIGHT: 24px
+}
+.edit_btn {
+	DISPLAY: block; BACKGROUND: url(tip_bg.gif) no-repeat 0px -82px; MARGIN: 10px auto; WIDTH: 61px; BORDER-TOP-STYLE: none; TEXT-INDENT: -999em; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 31px; BORDER-BOTTOM-STYLE: none
+}
+#import_clew {
+	BORDER-RIGHT: #fe9900 3px solid; BORDER-TOP: #fe9900 3px solid; BACKGROUND: #f5f5f5; PADDING-BOTTOM: 10px; MARGIN: 0px auto; OVERFLOW: hidden; BORDER-LEFT: #fe9900 3px solid; WIDTH: 397px; LINE-HEIGHT: 25px; BORDER-BOTTOM: #fe9900 3px solid
+}
+#import_clew P {
+	COLOR: #666
+}
+.import_clew_title {
+	PADDING-LEFT: 56px; BACKGROUND: url(import_clew_icon.gif) no-repeat; MARGIN: 10px 0px 0px 10px
+}
+.import_clew_title H4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #333
+}
+.import_btn {
+	CLEAR: both
+}
+.import_submit_btn {
+	DISPLAY: inline; BACKGROUND: url(tip_bg.gif) no-repeat 0px -82px; FLOAT: left; MARGIN: 10px 56px 10px 124px; WIDTH: 61px; CURSOR: pointer; TEXT-INDENT: -999em; HEIGHT: 31px
+}
+.import_reset_btn {
+	MARGIN-TOP: 10px; DISPLAY: block; BACKGROUND: url(tip_bg.gif) no-repeat 0px -119px; FLOAT: left; OVERFLOW: hidden; WIDTH: 61px; CURSOR: pointer; TEXT-INDENT: -999em; HEIGHT: 31px
+}
+#TB_overlay {
+	Z-INDEX: 100; LEFT: 0px; WIDTH: 100%; POSITION: fixed; TOP: 0px; HEIGHT: 100%
+}
+.TB_overlayBG {
+	FILTER: alpha(opacity=75); BACKGROUND-COLOR: #000; opacity: 0.75; moz-opacity: 0.75
+}
+ HTML #TB_overlay {
+	POSITION: absolute; ; HEIGHT: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px')
+}
+.next_tip {
+	RIGHT: 13px; BOTTOM: 10px; POSITION: absolute
+}
+.hour {
+	WIDTH: 738px! important
+}
+.hour_24 {
+	FLOAT: left
+}
+.hour_24 A {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; MARGIN: 3px; COLOR: blue
+}
+.hour .paradigm_title {
+	BORDER-RIGHT: #ffb400 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #ffb400 1px solid; MARGIN-TOP: 10px; PADDING-LEFT: 10px; BACKGROUND: #fffdbb; PADDING-BOTTOM: 0px; BORDER-LEFT: #ffb400 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #ffb400 1px solid
+}
+#paradigm .content {
+	BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 10px; OVERFLOW-X: hidden; PADDING-BOTTOM: 10px; OVERFLOW: scroll; BORDER-LEFT: #ccc 1px solid; LINE-HEIGHT: 24px! important; PADDING-TOP: 10px; BORDER-BOTTOM: #ccc 1px solid; HEIGHT: 180px
+}
+.join {
+	DISPLAY: block; BACKGROUND: url(join.gif) no-repeat; FLOAT: left; MARGIN: 10px 26px 0px 0px; OVERFLOW: hidden; WIDTH: 71px; CURSOR: pointer; TEXT-INDENT: -999em; HEIGHT: 31px
+}
+.e1 {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 18px; BACKGROUND: url(e1.png) no-repeat 0px 3px; PADDING-BOTTOM: 0px; PADDING-TOP: 5px
+}
+.e2 {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 18px; BACKGROUND: url(e2.png) no-repeat 0px 3px; PADDING-BOTTOM: 0px; PADDING-TOP: 5px
+}
+.e3 {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 18px; BACKGROUND: url(e3.png) no-repeat 0px 3px; PADDING-BOTTOM: 0px; PADDING-TOP: 5px
+}
+.hour #paradigm_main {
+	BORDER-RIGHT: #d3d3d3 1px solid; PADDING-RIGHT: 10px! important; BORDER-TOP: #d3d3d3 1px solid; PADDING-LEFT: 10px! important; BACKGROUND: #fafafa; PADDING-BOTTOM: 10px! important; OVERFLOW: hidden; BORDER-LEFT: #d3d3d3 1px solid; PADDING-TOP: 10px! important; BORDER-BOTTOM: #d3d3d3 1px solid
+}
+.hour #paradigm_main H3 {
+	FONT-WEIGHT: normal; FONT-SIZE: 18px; FONT-FAMILY: "SimHei"
+}
+.hour .paradigm_bottom P {
+	FONT-SIZE: 14px; COLOR: #000! important
+}
+.w_auto {
+	MARGIN: 0px auto; WIDTH: 61px
+}

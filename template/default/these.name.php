@@ -1,0 +1,27 @@
+<?php
+$names = array (
+  'agency' => 'agency',
+  'article' => '文章模板',
+  'buy' => '求购模板',
+  'chip' => '模板片断',
+  'city' => '城市分站',
+  'company' => '公司模板',
+  'extend' => '功能扩展',
+  'footer' => '全站页脚',
+  'group' => '团购模板',
+  'header' => '全站页头',
+  'homepage' => '公司主页',
+  'index' => '网站首页',
+  'info' => '信息模板',
+  'mail' => '邮件模板',
+  'member' => '会员中心',
+  'message' => '提示信息',
+  'newhouse' => '新房',
+  'photo' => '图库模板',
+  'rent' => '租房',
+  'sale' => '二手房',
+  'special' => '专题模板',
+  'tag' => '标签模板',
+  'video' => '视频模板',
+);
+?>

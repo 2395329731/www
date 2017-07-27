@@ -1,0 +1,41 @@
+{template 'header', 'mobile'}
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-back">
+<a href="{$back_link}" data-direction="reverse"><img src="static/img/icon-back.png" width="24" height="24"/><span>返回</span></a>
+</div>
+<div class="head-bar-title">{$head_name}</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+{if $tab}
+<div class="list-tab bd-b">
+	<ul>
+		<li{if $typeid==0} class="on"{/if}><a href="{$HURL}&action={$action}&typeid=0" data-transition="flip"><span>公司档案</span></a></li>
+		
+	</ul>
+</div>
+{/if}
+
+<div class="main">
+
+	<div class="content">
+	公司名称：{$COM[company]}<br/>
+	所在地区：{area_pos($COM[areaid], '/')}<br/>
+	
+	资料认证：{if $COM[validated]}企业资料<span class="f_green">通过{$COM[validator]}</span>认证{/if}<br/>
+	{if $COM[vcompany]}工商认证：<span class="f_green">已通过</span><br/>{/if}
+	{if $COM[vtruename]}实名认证：<span class="f_green">已通过</span><br/>{/if}
+	{if $COM[vbank]}银行帐号认证：<span class="f_green">已通过</span><br/>{/if}
+	{if $COM[vmobile]}手机认证：<span class="f_green">已通过</span><br/>{/if}
+	{if $COM[vemail]}邮件认证：<span class="f_green">已通过</span><br/>{/if}
+	{if $COM[deposit]}
+	保&nbsp;&nbsp;证&nbsp;&nbsp;金：已缴纳 <strong class="f_green">{$AJ[money_sign]}{$COM[deposit]}</strong> {$AJ[money_unit]}<br/>
+	{/if}
+
+	
+	</div>
+
+</div>
+{if $pages}<div class="pages">{$pages}</div>{/if}
+{template 'footer', 'mobile'}

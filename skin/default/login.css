@@ -1,0 +1,168 @@
+body{
+	font:12px/2em Arial,Helvetica,SimSun,sans-serif;
+	color:#666;
+	background:#fff;
+	word-break:break-all;
+}
+#main{
+	width:960px;
+	margin:0 auto;
+}
+.header{height:75px;width:960px;background:#fff;margin:0 auto}
+h1{float:left;position:relative;width:300px;height:55px;margin:16px 0 0 24px;background:url(images/login/h1.png) no-repeat 220px 50%;overflow:hidden}
+h1.fgp{background:url(images/login/fgp.png) no-repeat 160px 50%}
+h1 img{position:absolute;top:0;left:0}
+b a{color:#f60;margin:0 4px}
+b a:hover{color:#f00}
+.menu{float:right;margin:24px 0 0 0}
+.menu a{margin: 0 9px}
+#footer{border:0}
+.boyder{height:437px;background:url(images/login/bg.jpg) no-repeat 50% 0}
+.form li{color:#666}
+.form li.readed{margin:9px 0}
+label{cursor:pointer}
+input{background:#eef3f8;border:1px #bcc7d5 solid;height:34px;line-height:34px;width:202px;padding:0 6px;color:#999;vertical-align:middle;-webkit-transition:all 0.4s ease-out;-moz-transition:all 0.4s ease-out;-o-transition:all 0.4s ease-out;transition:all 0.4s ease-out}
+input:focus,.on input{color:#333;border:1px #8cb9fc solid}
+label{margin:0 18px 0 0}
+#main a{color:#f60}
+#main input.error{border:1px #f00 solid}
+#main input.sl,#main input.cl,#main input.s{width:170px}
+#main input.s{width:72px}
+#main input.cl{width:144px}
+#main input.c{width:20px;height:20px;margin:0 4px 0 0;background:transparent;border:0}
+#loginform{float:right;width:312px;border:1px #b3cada solid;border-radius:3px;background:#fff;margin:58px 24px 0 0;padding:18px 0 0 28px}
+#loginform h2{font-family:'Microsoft YaHei', SimSun, sans-serif;font-size:18px;font-weight:normal;margin:0 0 9px 0}
+#loginform input.s{margin:0 5px 0 0}
+#loginform li s{display:none}
+.form span{display:inline-block;width:60px;height:36px;line-height:36px;text-align:right;font-size:14px}
+.form .h{padding:0 0 9px 50px}
+.form li.ptErr,.form li.pt{padding:0 0 0 84px;height:28px;line-height:28px}
+.form li.ptErr{background:url(images/login/pt.png) no-repeat 60px 50%;color:#e00}
+.form .info{color:#f00}
+.form li.cross{padding:0 0 0 72px;color:#f00}
+.form img{width:110px;height:34px;border:1px #cacaca solid;vertical-align:middle}
+.form .pt img{width:20px;height:20px;border:0;margin:-1px 4px 1px 0}
+.form a{margin:0 6px}
+.form a#cimg{margin:0 0 0 12px}
+.form a:hover{color:#f00}
+.form s{display:inline-block;width:23px;height:23px;vertical-align:middle}
+.form li.succ s{background:url(images/login/suc.png)}
+.else{border-top:1px #ddd solid;color:#999;line-height:36px;height:80px;margin:0 28px 0 0;font-size:14px}
+.else a{height:28px;display:inline-block;width:80px;background:url(images/login/qq.png);margin:0 9px 0 0}
+.else a.sinalogin{width:97px;background:url(images/login/sina.png)}
+/*.else a.qqtlogin{width:92px;background:url(images/login/qqt.png)}*/
+#fgpform,.ok{border-top:1px #e3e3e3 solid;border-bottom:1px #e3e3e3 solid;padding:0 0 9px 9px}
+#fgpform .fl{width:546px;background: url(images/login/l.png) no-repeat right 66px}
+#fgpform .fr{width:300px;line-height:32px;padding:88px 0 0 86px;color:#888}
+#fgpform .fr .else{border:0}
+#fgpform .fr .else a{margin:9px 9px 0 0}
+.rgbBtn{display:block;width:183px;height:54px;background:url(images/login/rgb.png);margin:0 0 24px 0}
+#fgpform b.s{font-weight:normal;padding:56px 0 9px 108px;display:block}
+#fgpform input{width:330px;background:#fff}
+#fgpform span.c{_position:relative;_top:16px}
+#fgpform span input{_vertical-align:top}
+#fgpform li{position:relative;height:38px;line-height:38px;padding:0 0 0 99px}
+#fgpform li.h{height:auto;line-height:24px}
+#fgpform li.ptErr,#fgpform li.pt,#fgpform li.ptInfo{padding:0 0 0 120px;height:28px;line-height:28px}
+#fgpform li.ptErr,#fgpform li.ptInfo{background:url(images/login/pt.png) no-repeat 99px 50%;color:#e00}
+#fgpform li.ptInfo{color:#999}
+#fgpform li.pt{padding:0 0 0 99px}
+#fgpform li span{display:block;position:absolute;top:0;left:0;width:99px;height:38px;line-height:38px;text-align:right}
+#fgpform span b{position:relative;top:5px;right:4px;font-size:18px;color:#f00;text-align:left}
+#fgpform button.fgbs{width:91px;height:35px;background:url(images/login/fgbtn.png)}
+#fgpform s{margin:0 0 0 9px}
+.mobile{padding:99px 0 9px 32px;background:url(images/login/mobile.png) no-repeat 56px 42px}
+#mobileCheck{height:22px;line-height:16px;padding:0 0 2px 0;vertical-align:middle;width:160px;margin:0 0 0 9px}
+.email{padding:120px 0 9px 64px;background:url(images/login/email.png) no-repeat 56px 56px;font-size:14px;line-height:32px}
+h1.rok{background:url(images/login/h1ok.png) no-repeat 160px 50%}
+.okh{margin:64px 0 48px 200px;padding:0 0 0 72px;background:url(images/login/ok.png) no-repeat 0 0;line-height:36px;color:#666}
+#main .ok .light{font-size:12px;margin:24px 12px 0 0}
+.ok{min-height:400px;_height:400px}
+.ok .big{display:block;font-family:"Microsoft Yahei",SimSun,sans-serif;font-size:12px;font-weight:normal;padding:0 0 0 20px;border-left:1px #ddd solid;color:#333;line-height:28px}
+.ok .big p{font-size:14px}
+.ok .big b{font-size:24px;display:block;color:#090;margin:0 0 9px 0}
+.ok span{color:#f60}
+.jjrok{width:600px;margin:0 auto}
+.jjrok h3{font-size:14px;font-weight:bold;line-height:3em;border-bottom:1px #ddd solid}
+.jjrok li{padding:9px 0;line-height:28px;background:url(images/login/dian.png) repeat-x 0 bottom}
+.jjrok li a{font-size:14px}
+.jjrok li span{display:inline-block;margin:0 24px 0 0;color:#666}
+.jjrok li span.fr{margin:0}
+.jjrok li.last{background:none}
+.userok{padding:0 0 0 294px;color:#666;line-height:28px}
+a.cl,a.wl,b.wl{display:inline-block;width:132px;height:28px;line-height:28px;text-align:center;margin:0 24px 0 0;background:url(images/login/lbtnl.png);font-weight:bold;color:#fff}
+a.wl,b.wl{color:#666;background:url(images/login/wbtn.png)}
+b.wl{display:none;color:#999}
+a.cl:hover,a.wl:hover{color:#fff;text-decoration:none}
+#main a.wl:hover{color:#333}
+h1.ug{background:url(images/login/sr.png) no-repeat 160px 50%}
+#main #userfr{padding-top:240px}
+a.jgBtn{display:block;width:183px;height:54px;background:url(images/login/sgrbtn.png) no-repeat;margin:0 0 24px 0}
+#utab{background:url(images/login/m.png) no-repeat 0 bottom;padding:0 0 0 84px;margin:60px 0 32px 0;color:#999}
+#utab b{display:inline-block;width:188px;height:54px;margin:0 28px 0 0;cursor:pointer}
+#utab.on{background:url(images/login/e.png) no-repeat 0 bottom}
+h1.jjr{background:url(images/login/jjr.png) no-repeat 160px 50%}
+h1.cz{background:url(images/login/cz.png) no-repeat 160px 50%}
+b.j{color:#666;font-size:14px}
+b.ji{color:#666;font-size:14px;display:block;padding:48px 0 9px 120px}
+#main #jjrfr{height:240px;width:280px;padding:240px 0 0 120px;background:url(images/login/jjrb.png) no-repeat 120px 320px}
+#jjrfr b.j{display:block;font-family:"Microsoft Yahei",SimSun,sans-serif;font-size:20px;color:#f60;margin:140px 0 32px 0}
+#gzqx,#gzsyq,#gzcy{display:none;position:absolute;left:99px;top:42px;width:320px;border:1px #ccc solid;border-radius:3px;padding:4px 9px;z-index:9;background:#f6f6f6;line-height:24px;box-shadow:0 1px 3px #999}
+#gzqx a,#gzsyq a,#gzcy a{display:inline-block;margin:0 4px 1px 0;padding:0 4px}
+#gzqx a:hover,#gzsyq a:hover,#gzqx a.on,#gzsyq a.on,#gzcy a:hover,#gzcy a.on{background:#F1695D;color:#fff;text-decoration:none}
+#fgpform ul#cpop{left:99px;top:42px;padding:0;width:156px}
+#fgpform ul#cpop.l{left:281px}
+#fgpform ul#cpop li{padding:0 6px;height:24px;line-height:24px;cursor:pointer}
+
+.bangding{width:550px;margin:0 auto;padding:10px 0}
+.bangding #bdtab{height:51px;background:url(images/login/bor.gif) repeat-x left 45px;margin:0 0 32px 0;padding-left:70px}
+.bangding #bdtab b{display:inline-block;width:188px;height:51px;cursor:pointer;margin-left:10px;line-height:51px;font-size:14px;text-align:center;color:#666;background:url(images/login/bd.gif) no-repeat 0 0}
+.bangding #bdtab b.on{background:url(images/login/bdon.gif) no-repeat 0 bottom;color:#fff}
+.bangding #bdtab b.on{background:url(images/login/bdon.gif) no-repeat 0 bottom;color:#fff}
+.bangding #bdtab b{background:url(images/login/bd.gif) no-repeat 0 0;color:#999}
+.bangding #form .form{padding-left:40px}
+.bangding .tc{padding:32px 0;font-size:14px;text-align:center}
+.bangding #form .bdbtn{display:inline-block;width:160px;height:41px;line-height:41px;text-align:center;border:none;background:url(images/login/bangding.gif) no-repeat}
+.bangding #form a.wjmm{height:41px;line-height:41px;display:inline-block}
+.bangding #form li .txt{width:400px;height:40px;display:inline-block;line-height:20px;padding:0px;margin:0px;position:absolute;left:220px;top:0px}
+.bangding #form p.txt{padding-left:60px;color:#999;padding-top:30px}
+#bdtab a{color:#999}
+#bdtab a:hover{color:#333}
+
+/*按钮*/
+.btn{display:inline-block;position:relative;padding:0 16px;height:34px;line-height:34px}
+.btn,.btn i{background-image:url(images/login/btn.png);background-repeat:no-repeat;background-position:0 0}
+.btn i{display:block;position:absolute;right:0;top:0;width:16px;height:100%;background-position:right 0}
+.btn:hover{background-position:0 -35px}
+.btn:hover i{background-position:right -35px}
+#main .btn{color:#fff;font-size:14px;font-weight:bold;text-align:center;margin:0}
+#main .btn:hover{text-decoration:none}
+.btn button{position:absolute;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px)}
+#main .light{height:32px;line-height:32px;background-position:0 -160px;font-weight:normal;color:#333}
+#main .light i{background-position:right -160px}
+#main .light:hover{background-position:0 -193px}
+#main .light:hover i{background-position:right -193px}
+#fgpform .light,#fgpform span.gray{position:relative;top:2px;margin:0 0 0 9px;font-size:12px;width:auto}
+#main .gray{height:32px;line-height:32px;background-position:0 -226px;font-weight:normal;color:#ccc}
+#main .gray i{background-position:right -226px}
+#main .green{height:44px;line-height:44px;font-size:20px;font-weight:normal;font-family:'Microsoft YaHei', SimSun, sans-serif;background-position:0 -70px;padding:0 24px}
+#main .green i{width:24px;background-position:right -70px}
+#main .green:hover{background-position:0 -115px}
+#main .green:hover i{background-position:right -115px}
+.frlogin img{vertical-align:middle;margin:0 4px 0 0}
+.frlogin a{_margin:5px 0;display:inline-block}
+#userfr a.btn{margin-bottom:20px}
+#gpform{width:520px;margin:0 auto;padding:54px 0}
+#gpform li.h{margin:12px 0 0 0}
+#gpform li span{width:120px;left:-24px}
+#gpform b.c{font-weight:normal;color:#f60;font-size:14px}
+.step{height:56px;background:url(images/login/f1.png) no-repeat 50% bottom;margin:0 0 40px 0}
+.step b,.step span{margin:0 72px 0 0}
+#gpform .s2{background:url(images/login/f2.png) no-repeat 50% bottom}
+#gpform .s3{background:url(images/login/f3.png) no-repeat 50% bottom}
+#gpform span.gray{left:0}
+#gpform .ok{border:0;min-height:0;height:auto}
+#gpform .okh{margin-left:72px}
+#gpform p{padding:40px 0 0 16px;color:#666}
+#gpform li.spi{margin-bottom:9px}
+span#safe{display:none;position:absolute;left:124px;top:-32px;width:172px;padding:2px 4px;background:#ffa;color:#aa0;font-size:12px;font-weight:normal;text-align:left;line-height:18px}

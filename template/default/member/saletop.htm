@@ -1,0 +1,94 @@
+
+<head>
+
+<meta httdiv-equiv="X-UA-Comdivatible" content="IE=EmulateIE7" />
+<title> 置顶</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+<div id="modalWindow">
+   
+     
+      
+      
+      </p>
+	<form  name="dataForm" method="post" action="saletop.php?action=save" onSubmit="return check();">
+	<input type="hidden"  name="itemid" value="{$itemid}">
+	<input type="hidden" name="buy_price" value="{$MOD['credit_top']}" size="10" id="price" onKeyUp="CA();"/>
+    <table cellspacing="1" cellpadding="6" class="tb">
+	<tr>
+<td class="tl">每天急售的价格：</td>
+<td class="tr f_red f_b"> {$MOD['credit_hot']}{$AJ[credit_name]}</td>
+</tr>
+	<tr>
+<td class="tl">购买时长：</td>
+<td class="tr">
+       
+       <select name="buy_day" id="day" onChange="CA();">
+{php for($i=1;$i<=31;$i++){}
+<option value="{$i}">{$i}</option>
+{php }}
+</select> 天
+</td>
+</tr>
+<tr>
+<td class="tl">应付总价：</td>
+<td class="tr f_red f_b" id="payment">{$price}{$MOD['credit_hot']}</td>
+</tr>
+{if $currency == 'money'}
+<tr>
+<td class="tl">{$AJ[money_name]}余额：</td>
+<td class="tr"><span class="f_blue f_b">{$_money}{$unit}</span>&nbsp;&nbsp;<a href="charge.php?action=pay" target="_blank" class="t">[充值]</a></td>
+</tr>
+<tr>
+<td class="tl">支付密码：</td>
+<td class="tr">{template 'password', 'chip'}</td>
+</tr>
+{else}
+<tr>
+<td class="tl">{$AJ[credit_name]}余额：</td>
+<td class="tr"><span class="f_blue f_b">{$_credit}{$unit}</span>&nbsp;&nbsp;<a href="credit.php?action=buy" target="_blank" class="t">[购买]</a></td>
+</tr>
+{/if}
+<tr>
+<td class="tl"> </td>
+<td class="tr"><input type="submit" name="submit" value="确定购买" class="sBtn"/>&nbsp;
+
+</td>
+</tr>
+</table>
+    </form>
+</div>
+<script type="text/javascript">
+function CA() {
+	
+		Dd('payment').innerHTML = Dd('price').value*Dd('day').value;
+	
+
+}
+function check() {
+	var p = Dd('price').value;
+	
+	{if $currency == 'money'}
+	if(p*Dd('day').value > {$_money}) {
+		alert('帐户余额不足，请先充值');
+		return false;
+	}
+	{else}
+	if(p*Dd('day').value > {$_credit}) {
+		alert('您的{$AJ[credit_name]}不足，请先购买');
+		return false;
+	}
+	{/if}
+	
+	{if $currency == 'money'}
+	if(Dd('password').value.length < 6) {
+		alert('请填写支付密码');
+		Dd('password').focus();
+		return false;
+	}
+	{/if}
+}
+</script>

@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={AJ_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<meta name="generator" content="www.aijiacms.com"/>
+<link rel="shortcut icon" type="image/x-icon" href="{AJ_PATH}favicon.ico"/>
+<link href="{AJ_SKIN}common.css" rel="stylesheet">
+<link href="{AJ_SKIN}tuan.css" rel="stylesheet">
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>
+{if $lazy}<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.lazyload.js"></script>{/if}
+
+</head>
+
+<body>
+<!-- 顶部 --><div class="head_continer">
+    <div class="head">
+	<div class="head_top">
+	<div class="guanli"><a href="{$MODULE[1][linkurl]}" target="_blank" >首页</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[6][linkurl]}" target="_blank" >新楼盘</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[5][linkurl]}" target="_blank">二手房</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[7][linkurl]}" target="_blank" >租房</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[8][linkurl]}" target="_blank" >资讯</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[18][linkurl]}" target="_blank" >小区</a></div>
+	</div>
+	<div class="logo_bg">
+     <ul>
+	  <li><a href="{$MODULE[1][linkurl]}"><img src="{if $MODULE[$moduleid][logo]}{AJ_SKIN}image/logo_{$moduleid}.gif{elseif $AJ[logo]}{$AJ[logo]}{else}{AJ_SKIN}image/logo.gif{/if}" alt="{$AJ[sitename]}"/></a></li>
+	  <li class="kouhao"><img src="{AJ_SKIN}images/tuan/kouhao.gif"></li>
+	  <li class="tel">{$AJ[telephone]}</li>
+	</ul>
+
+</div>
+<div class="clear"></div>
+</div>
+
+<div class="nav_continer">
+     <div class="nav">
+                
+             
+	   <a href="{$MODULE[15][linkurl]}" class="f">购房团</a>
+	  <span><img src="{AJ_SKIN}images/tuan/nav_jg.gif"></span>
+	   {php $leixing = get_maincat(0,15)}
+			    {loop $leixing $k $v} 
+		<a href="{$MOD[linkurl]}{$v[linkurl]}" {if $v[catid]==$catid} class="focus"{else} class="f"{/if}>{set_style($v[catname],$v[style])}</a>
+		  <span><img src="{AJ_SKIN}images/tuan/nav_jg.gif"></span>
+			{/loop}
+	 </div>
+</div><!-- 顶部 -->
+<div id="box">
+<div id="content"><a id="top"></a>
+<div class="m">
+<div class="list_l">
+  <div class="p">
+<div class="hh">{$title}</div>
+<div class="c">
+<div class="l">
+<div class="b1"><span>{$iprice}</span> <a id="ms_active" class="a4" href="{$linkurl}#iwantgroupbuy"></a></div>
+<div class="b2">
+<ul>
+  <li>
+  <h1>市场参考均价：</h1>
+<h2>{$marketprice}</h2>   </li>
+ </ul><em></em></div>
+<div class="b3"><label><b>{$orders}</b>人已参加</label> {if $process == 0}
+			
+			{elseif $process == 1}
+			
+			{else}
+			团购已结束
+			{/if}{if $process == 2}<br><span>距离报名结束时间还有： </span>
+<div id="totimer" class="timer"></div>{else}{if $totime}<br><span>距离报名结束时间还有： </span>
+<div id="totimer">{timetodate($endtime, 'Y年n月j日 H:i')}</div>
+<script type="text/javascript">
+		var totime = new Date({$jsdate}).getTime();
+		function _totimer() {
+			var t = new Date();
+			var s = Math.floor((totime - t.getTime())/1000);
+			var h = '';
+			var i;
+			if(s > 0) {
+				i = Math.floor(s/86400);	
+				h += '<span>'+i+'</span>天';
+				s = Math.floor(s%86400);
+				i = Math.floor(s/3600);	
+				h += '<span>'+i+'</span>小时';
+				s = Math.floor(s%3600);	
+				i = Math.floor(s/60);			
+				h += '<span>'+i+'</span>分';
+				s = Math.floor(s%60);
+				h += '<span>'+s+'</span>秒';
+			} else {
+				h = '<span class="f_red">团购已结束</span>';
+			}
+			Dd('totimer').innerHTML = h;
+		}
+		_totimer();
+		setInterval("_totimer()", 1000); 
+		</script>{/if}{/if}
+</div></div>
+<div class="r">
+<div id="Slide">
+<div id="SlidePlayer">
+<ul id="Slides">
+  <li><img src="{$thumb}" height="315" width="420">
+</li></ul></div></div></div>
+<div class="clear"></div></div></div>
+
+<div class="p2">
+<div class="txt">
+<div class="baoming"><a name="baoming"></a>
+    <div id="tips" class="inputBox" style="display:none">
+        <span class="tips_Title">恭喜，您的信息提交成功！请按照团购介绍参加活动，谢谢！</span>
+    </div>
+    <div id="inputBox" class="inputBoxs"><a name="iwantgroupbuy" ></a>
+        <form  method="post" action="{$MOD[linkurl]}buy.php">
+      <input type="hidden" name="submit" value="1"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	{if $_userid}
+            <div class="inputForms">
+                <div id="inputLeftBg"></div>
+                <div id="inputBg">
+                <input id="userName" name="add[truename]" type="text" size="14" maxlength="14" onblur="if(this.value ==''||this.value == '您的姓名'){this.value = '您的姓名';}" onfocus="if(this.value == '您的姓名'){this.value = '{$user[truename]}';}" value="{$user[truename]}" /></div>
+                <div id="inputRightBg"></div>
+            </div>
+            <div class="inputForms">
+                <div id="inputLeftBg"></div>
+                <div id="inputBg">
+                <input id="userTel" name="add[mobile]" type="text" size="20" maxlength="18" onblur="if(this.value ==''||this.value == '您的电话'){this.value = '您的电话';}" onfocus="if(this.value == '您的电话'){this.value = '';}" value="{$user[mobile]}" /></div>
+                <div id="inputRightBg"></div>
+            </div>
+			{else}
+			   <div class="inputForms">
+                <div id="inputLeftBg"></div>
+                <div id="inputBg">
+                <input id="userName" name="add[truename]" type="text" size="14" maxlength="14" onblur="if(this.value ==''||this.value == '您的姓名'){this.value = '您的姓名';}" onfocus="if(this.value == '您的姓名'){this.value = '{$user[truename]}';}" value="您的姓名" /></div>
+                <div id="inputRightBg"></div>
+            </div>
+            <div class="inputForms">
+                <div id="inputLeftBg"></div>
+                <div id="inputBg">
+                <input id="userTel" name="add[mobile]" type="text" size="20" maxlength="18" onblur="if(this.value ==''||this.value == '您的电话'){this.value = '您的电话';}" onfocus="if(this.value == '您的电话'){this.value = '';}" value="您的电话" /></div>
+                <div id="inputRightBg"></div>
+            </div>
+			{/if}
+            <div class="inputForms">
+                <div id="inputLeftBg"></div>
+                <div id="inputBg">
+                <input id="userMsg" name="note" type="text" size="30" maxlength="30" onblur="if(this.value ==''||this.value == '您的留言'){this.value = '您的留言';}" onfocus="if(this.value == '您的留言'){this.value = '';}" value="您的留言" /></div>
+                <div id="inputRightBg"></div>
+            </div>
+            <div id="searchBtns"><input type="image" src="{AJ_SKIN}image/btn_buynow.gif" title="提交"/></div>
+        </form>
+    </div>
+</div>
+
+<h1>活动详情</h1>
+<div class="c l_c">
+<p>{$content}</p>
+<div style="LINE-HEIGHT: 30px; BACKGROUND-COLOR: rgb(0,173,239); TEXT-INDENT: 10px; HEIGHT: 30px; COLOR: rgb(255,255,255); FONT-SIZE: 16px; FONT-WEIGHT: 700" class="r_boder">好房不等人，赶快报名参加团购吧！</div></div>
+
+<h2 class="said">用户说：</h2>
+<div class="s1">
+{template 'comment', 'chip'}
+ </div>
+
+<div class="b1"><a class="btn_ljbm" href="{$linkurl}#iwantgroupbuy"></a>&nbsp;&nbsp;<a class="top" href="#">返回顶部&gt;&gt;</a></div>
+</div>
+<div class="clear"></div></div></div>
+<div class="list_r">
+<div class="b b10"><label>{$housename}  最新动态</label> 
+<div class="c">
+<ul> <!--{php $tags=tag("moduleid=8&condition=status=3 and  houseid=$houseid&length=36&pagesize=5&order=addtime desc&target=_blank&template=null");}-->
+{loop $tags $i $t}
+        <li><em></em><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}" >{$t[title]}</a></li>{/loop} 
+       
+    </ul></div></div>
+<div class="b b7"><label>楼盘信息</label> 
+    <div class="tuan_map">
+        <dl class="dl1">
+		
+		  <!--{php $tags=tag("moduleid=6&condition=status=3 and itemid=$houseid&pagesize=8&order=hits desc&template=null");}-->
+{loop $tags $i $t} 
+          <dt><a href="{$t[linkurl]}" title="{$t[title]}   " target="_blank">【{$t[title]}】</a> </dt>  
+          <dd>总 户 数：{$t[lp_number]}</dd>
+          <dd>小区车位数：{$t[lp_car]}个 </dd>
+          <dd>住宅物业费：{$t[lp_costs]}元/㎡/月 </dd>
+          <dd>绿化率：{$t[lp_green]}%</dd></dl>
+    {/loop} 
+      </div>
+</div>
+<div class="b b9"><label>周边楼盘</label> 
+<ul class="c">
+   <!--{php $tags=tag("moduleid=6&condition=status=3&areaid=$cityid&length=42&pagesize=10&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+    	
+        <li><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><em class="name">{$t[title]}</em></a>
+                <em class="desc">{if $t[price]}{$t[price]}元/㎡{else}待定{/if}</em></li>{/loop}
+    	
+    </ul></div>
+<div class="b"><label>其他团购</label> 
+    <div class="c rbox">
+        <ul>
+            	 <!--{php $tags=tag("moduleid=15&condition=status=3&areaid=$cityid&length=42&pagesize=5&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+    	
+                <li class="list_items">
+                    <span class="span_t"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></span>
+                    <span class="span_img"><a target="_blank" href="{$t[linkurl]}"><img src="{$t[thumb]}" height="155/" width="186"></a></span>
+                        <div class="div_info">
+                            <span><b style="color:#f60;">{$t[price]}</b><br>{$t[orders]}人已报名</span>
+                        <a target="_blank" class="tuangou_bts1" href="{$t[linkurl]}"></a>                        </div>
+                    </li>
+            	{/loop}
+                
+                    </ul>
+    </div>
+</div>
+<div class="b b7"><label>{$AJ[sitename]}客服</label> 
+<div class="c"><span><i></i><em><b>{$AJ[telephone]}</b><br>周一至周五：9:00-18:00</em></span>
+	
+ </div></div>
+</div></div></div>
+
+<div class="footer">
+		<p><a href="{$MODULE[1][linkurl]}">网站首页</a><!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder desc,itemid desc&template=list-webpage")}--></p>
+		<p><div id="copyright">{$AJ[copyright]}</div></p>
+		{if $AJ[icpno]}  <a href="http://www.miibeian.gov.cn" target="_blank">{$AJ[icpno]}</a>{/if}
+	</div>
+	
+<script type="text/javascript">
+{if $aijiacms_task}
+show_task('{$aijiacms_task}');
+{else}
+{php include AJ_ROOT.'/api/task.inc.php';}
+{/if}
+{if $lazy}$(function(){$("img").lazyload();});{/if}
+$('#back2top').click(function() {
+	$("html, body").animate({scrollTop:0}, 200);
+});
+</script>
+
+</div></body></html>

@@ -1,0 +1,81 @@
+{template 'header'}	
+	
+	<div id="main">
+		<div class="mt10 pk">
+			<h2> <b>房源对比</b>
+			</h2>
+			<div class="pklist cf" id="pklist">
+				<table class="A">
+					<tr><td class="close">房源小区名称</td></tr>
+					<tr><td class="hB">房源图片</td></tr>
+					<tr><td>区&nbsp;&nbsp;&nbsp;&nbsp;域</td></tr>
+					<tr><td>售&nbsp;&nbsp;&nbsp;&nbsp;价</td></tr>
+					<tr><td>面&nbsp;&nbsp;&nbsp;&nbsp;积</td></tr>
+					<tr><td>户&nbsp;&nbsp;&nbsp;&nbsp;型</td></tr>
+					<tr><td>装&nbsp;&nbsp;&nbsp;&nbsp;修</td></tr>
+					<tr><td>楼&nbsp;&nbsp;&nbsp;&nbsp;层</td></tr>
+					<tr><td>类&nbsp;&nbsp;&nbsp;&nbsp;型</td></tr>
+					<tr><td>房&nbsp;&nbsp;&nbsp;&nbsp;龄</td></tr>
+					<tr><td>朝&nbsp;&nbsp;&nbsp;&nbsp;向</td></tr>
+					<tr><td>小&nbsp;&nbsp;&nbsp;&nbsp;区</td></tr>
+					<tr><td class="hA">地&nbsp;&nbsp;&nbsp;&nbsp;址</td></tr>
+					<tr><td class="hC">周边配套</td></tr>
+				</table>
+					{loop $tags $k $v}		   
+				<table id="{$v[itemid]}">
+					<tr><td class="close">
+						<div>
+						<a href="{$v[linkurl]}" target="_blank" title="{$v[title]}">{$v[housename]}</a>
+						<a href="javascript:void(0)" class="closeBtn"></a>
+						</div>
+					</td></tr>
+					<tr><td class="pic">
+						<a class="pbox" href="{$v[linkurl]}"  title=""  target="_blank">
+							<img src="{imgurl($v[thumb])}" alt="">
+						</a>
+						
+					</td></tr>
+					<tr><td>{area_pos($v[areaid], ' ', 2)}</td></tr>
+					<tr><td class="red">{if $v[price]}{$v[price]}元{else}面议{/if}</td></tr>
+					<tr><td>{$v[houseearm]}平米</td></tr>
+					<tr><td>{if $v[room]}{$v[room]}室{/if}{if $v[hall]}{$v[hall]}厅{/if}{if $v[toilet]}{$v[toilet]}卫{/if}</td></tr>
+					<tr><td>{getbox_diaoval('fix','checkbox',$v[fix],'rent_7')}</td></tr>
+					<tr><td>{$v[floor1]}/{$v[floor2]}</td></tr>
+					<tr><td>{search_cats($v[catid], '7')}</td></tr>
+					<tr><td>{$v[houseyear]}</td></tr>
+					<tr><td>{$v[toward]}</td></tr>
+					<tr><td>{$v[housename]}</td></tr>
+					<tr><td class="hA">{$v[address]}&nbsp;<a href="{$v[linkurl]}" target="_blank">(地图)</a></td></tr>
+					<tr><td class="hC">{$v[peitao]}</td></tr>
+				</table>
+				 {/loop}  
+				
+										</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+seajs.use(["jquery"],function($){
+	$("#pklist").on("click","a.closeBtn",function(){
+		var houseid = $(this).closest("table").attr('id');
+		$(this).closest("table").remove();
+		var hid = "{$itemid}";
+		$.ajax({
+			url:"{$MOD[linkurl]}",
+			type:'post',
+			dataType:'jsonp',
+			data:{
+				hid:hid,
+				sid:houseid
+			}
+		}).done(function(data){
+			if(data.m == ''){
+				window.location.href="{$MOD[linkurl]}list.html";
+			}else{
+				window.location.href="{$MOD[linkurl]}pk/"+data.m;
+			}
+		}).fail(function(){ });
+	})
+})
+</script>
+
+{template 'footer'}	

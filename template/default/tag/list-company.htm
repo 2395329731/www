@@ -1,0 +1,21 @@
+  <ul id="hlist" class="hlist xq_list broker_li">
+{loop $tags $i $t}
+               <li>
+                                <a href="{userurl($t[username], '')}" target="_blank" class="hl_img broker_img" title="{$t[company]}">
+                                    <img src="{useravatar($t[username], 'large')}" alt="{$t[company]}">
+                                </a>
+                                <div>
+                                    <h3><a href="{userurl($t[username], '')}" target="_blank">{userinfos($t[username])}</a>&nbsp;{if $t[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="通过工商认证"/>{/if}</h3>
+                                    <p>所属公司：<a href="{userurl(get_agent($t[companyid]), '')}" target="_blank">{$t[company]}</a></p>
+                                    <p>{area_pos($t[areaid], '')}</p>
+                                    <p class="num_house">房源：<a href="{userurl($t[username], '')}" target="_blank">售({get_num('sale_5',$t[username])})</a> <a href="{userurl($t[username], '')}" target="_blank">租({get_num('rent_7',$t[username])})</a></p>
+                                    <a class="in_dianpu" href="{userurl($t[username], '')}" target="_blank">进入店铺<p>{$t[telephone]}</p></a>
+                                </div>
+                            </li>
+							
+		 {/loop}
+		
+ </ul>
+{if $showpage && $pages} <div class="pagination">{$pages}</div>{/if}		    
+
+

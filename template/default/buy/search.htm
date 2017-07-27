@@ -1,0 +1,121 @@
+	{template 'header'}
+	<link href="{AJ_SKIN}/css/buy.css" rel="stylesheet" type="text/css" />
+<body>
+	<div id="main">	
+	<div class="bread">您当前的位置：：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a> &gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a> &gt;求购房源列表
+		</div>
+		<div class="modB">
+	<div class="conl1">
+				<div class="cf" style="padding-top:9px;">
+			<span class="a_name">区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域：</span>
+			<span>
+				<a {if empty($areaid)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'r')}.html">不限</a>
+					                	               	{loop $mainarea $k $v}<a {if $areaid==$v[areaid]}class="c"{/if} href="{$MOD[linkurl]}list-r{$v[areaid]}{deal_str($lst,'r')}.html">{$v[areaname]}</a>{/loop}	
+	                			  				</span>
+												{if $areaid}
+						<span class="i">
+								<a {if empty($bid)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'b')}.html">全部</a>
+								{php $mainareas = get_mainarea($areaid)}
+						{loop $mainareas $k $v}
+								<a {if $bid==$v[areaid]}class="c"{/if} href="{$MOD[linkurl]}list-b{$v[areaid]}{deal_str($lst,'b')}.html">{$v[areaname]}</a></em>{/loop}	</span>{/if}
+					</p>
+					
+		</div>
+		<div class="cf">
+			<span class="a_name">面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;积：</span>
+			<span>
+				<a {if empty($area)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'c')}.html">不限</a>
+				  {php $mianji = array('40平米以下', '40-60平米', '60-80平米', '80-100平米', '100-120平米', '120-150平米','150平米以上');}
+{loop $mianji $k $v} 
+							   	               <a {if $area==($k+1)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'c')}-c{$k+1}.html">{$v}</a>{/loop}
+               			
+			</span>
+		</div>
+		<div class="cf">
+			<span class="a_name">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
+			<span>
+				<a {if empty($hu)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'i')}.html">不限</a>
+				{php $huxing = array('一室', '二室', '三室', '四室', '五室以上');}
+{loop $huxing $k $v} <a {if $hu==($k+1)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'i')}-i{$k+1}.html">{$v}</a>{/loop}
+               				   				</span>
+		</div>
+			<div class="cf">
+			<span class="a_name">项目类型：</span>
+			<span>
+				<a {if empty($catid)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'t')}.html">不限</a>
+				 {php $maincat = get_maincat(0,5)}
+{loop $maincat $k $v}<a  {if $catid==$v[catid]}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'t')}-t{$v[catid]}.html">{$v[catname]}</a>{/loop}
+			</span>
+		</div>	
+	
+	</div>
+</div>		<div class="cf">
+			<div class="w720 fl">
+				<div class="Tle cf">
+					<div class="fl">
+					<a {if empty($source)}class="B on"{else}class="B"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'u')}.html">全部</a>
+						  {loop $TYPE $k $v} 
+							<a  {if $source==($k+1)}class="B on"{else}class="B"{/if}  href="{$MOD[linkurl]}list{deal_str($lst,'u')}-u{$k+1}.html">{$v}</a>{/loop}
+					
+					</div>
+					<div class="tel_page fr">
+						<span>
+							共找到 <strong class="red">{$items}</strong>条房源
+						</span>
+						<a class="pre" href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==1}1{else}{$page-1}{/if}.html"></a>
+                     	<span class="num">{$page}</span>
+						<a  href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==$total}{$total}{else}{$page+1}{/if}.html" class="next" >下一页</a>
+					</div>
+				</div>
+			             {if $page == 1}{load('ad_m'.$moduleid.'_c'.$catid.'.htm')}{/if}
+		{if $tags}{template 'list-'.$module, 'tag'}{/if}
+											</div>
+			<div class="w230 fr">
+	<div class="modC">
+		<h4 class="modBT"><sub></sub>
+			经纪人排行
+		</h4>
+				<ul class="jjrl">
+				<!--{php $tags=tag("table=member&condition=groupid=6&areaid=$cityid&order=userid desc&pagesize=10&template=null");}-->
+ {loop $tags $i $t}
+						<li>
+				<a href="{userurl($t[username], '')}"  target="_blank"><img src="{useravatar($t[username], 'large')}"></a>
+				<p>
+					<a href="{userurl($t[username], '')}">{$t[truename]}</a>
+										<br>区域：：{area_pos($t[areaid], '')}<br>电话{$t[mobile]}				</p>
+			</li>{/loop}
+					
+					</ul>
+			</div>
+</div>	
+		</div>
+		</div>
+		<script type="text/javascript">
+seajs.use(["jquery","autoC"],function($){
+	$("tr").hover(function(){
+		$(this).addClass("h")
+	},function(){
+		$(this).removeClass("h")
+	})
+	var $hname=$("#hname").autoC(""+module);
+	var ht=$hname.attr("data-val");
+	$hname.on("focus",function(){
+		if($hname.val()==ht)
+			$hname.val("");
+	}).on("blur",function(){
+		if($hname.val()=="")
+			$hname.val(ht);
+	}).closest("form").submit(function(){
+		if($hname.val()==ht){
+			$hname.focus()
+			return false;
+		}else{
+			var k = encodeURIComponent($hname.val());
+			setTimeout(function(){
+				window.location.href=QIUGOU_URL+module+'/list'+prev_ext+'-K' + k + next_ext+'.html';
+			}, 99)
+		}
+	})
+})
+</script>
+{template 'footer'}

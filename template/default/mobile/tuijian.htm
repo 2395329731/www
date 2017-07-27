@@ -1,0 +1,123 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>我要推荐 - {$AJ[sitename]}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+<meta name="format-detection" content="telephone=no,address=no,email=no" />
+<meta name="mobileOptimized" content="width" />
+<meta name="handheldFriendly" content="true" />
+<meta http-equiv="Cache-Control" content="max-age=0" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="static/mobile_jjr.css?v=3" rel="stylesheet" type="text/css" />
+
+<script src="{AJ_SKIN}js/mobile/zepto.js?v=3" type="text/javascript"></script>
+<link href="static/mobile_alert.css?v=3" rel="stylesheet" type="text/css" />
+<script src="{AJ_SKIN}js/mobile/mobile_alert.js?v=3" type="text/javascript"></script>
+</head>
+
+<body>
+    <section class="main animated fadeInDown">
+        <form class="main-box" id="group_join">
+         <input name="tuijian" type="hidden" value="{$_username}" >
+            <p class="rb-row">
+                <input type="text" id="gj_name" name="truename" placeholder="客户姓名" class="input"/>
+            </p>
+            <p class="rb-row">
+                <input type="tel" id="gj_mobile" name="mobile" placeholder="手机号码" class="input"/>
+            </p>
+            <p class="rb-row rb-select">
+                <input type="tel" id="gj_house"name="hname"  placeholder="意向楼盘" value="" class="input"/>
+            </p>
+            <input type="hidden" id="gj_h_id" name="hids" value=""/>
+            <p class="rb-row">
+                <input type="text" id="remark" name="info" placeholder="备注" class="input"/>
+            </p>
+            <div class="recommend-tips">
+                <h6>提示</h6>
+                <p>请务必提交真实的客户信息，若多次提交虚假信息，您的账号会被禁用。</p>
+            </div>
+            <p class="rb-submit">
+                <button type="submit" class="btn">马上推荐</button>
+            </p>
+        </form>
+    </section>
+    <div class="pop-bg"></div>
+    <footer class="foot">
+    <p>
+       <a href="index.php" class="fr">&copy;{$AJ[sitename]}</a>
+    </p>
+</footer>
+ <script>
+        $("#group_join").on("submit",function(){
+            if(!$("#gj_name").val().length){
+                alert("客户姓名不得为空");
+                $("#gj_name").focus();
+            }else if(!$("#gj_h_id").val().length){
+                alert("预约楼盘必须通过下拉列表选择");
+                $("#gj_house").focus();
+            }else if(!/^1[3458]\d{9}$/.test($("#gj_mobile").val())){
+                alert("手机号码格式错误")
+                $("#gj_mobile").focus();
+            }else
+                $.ajax({
+                    url:"{$MODULE[1][linkurl]}api/house.php?action=waptuijian",
+                    type:"post",
+                    dataType:"json",
+                    data:$("#group_join").serialize(),
+                    success:function(data){
+                        alert(data.alert)
+                        if(data.state=="succ"){
+                            $("#gj_name").val("")
+                            $("#gj_house").val("")
+                            $("#gj_mobile").val("")
+                            $("#gj_h_id").val("")
+                            $("#remark").val("")
+                        }
+                    }
+                })
+                return false;
+        })
+        var $t=$("#gj_house").on("focus",function(){
+            al({
+                t:"选择楼盘",
+		p:'<input type="search" style="width:100%" id="gj_select" x-webkit-speech name="key" placeholder="请输入关键字或拼音"><div id="h_pop"></div>',
+		of:function(){
+			var $pop=$("#h_pop").on("click","a",function(){
+					al.remove.call($(".alert"));
+					$("#gj_house").val($(this).text());
+					$("#gj_h_id").val($(this).data("val"))
+				}),
+
+                        $t=$("#gj_select");
+                    $t.focus()[0].oninput=function(){
+                        $.ajax({
+                            url: "{$MODULE[1][linkurl]}api/house.php?action=fxlp",
+                            dataType: 'jsonp',
+                            data:{
+                                key:$t.val()
+                            },
+                            success:function(data) {
+                                if (data.length > 0) {
+                                    var i = 0;
+                                    l = data.length,
+                                    str = "";
+                                    for (; i < l; i++) {
+                                        str += '<a href="javascript:" data-val="'+data[i].hid+'">' + data[i].name + '</a>';
+                                    }
+                                    $pop.html(str);
+                                } else {
+                                    $pop.empty();
+                                }
+                            }
+                        });
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{template 'header'}
+<script type="text/javascript">
+	$("#fenxiao").attr("class","on");
+</script>	
+<link href="{AJ_SKIN}fenxiao.css" rel="stylesheet" type="text/css" />
+<div id="main" class="i_x_admin_certification i_x_tuijian cf">
+		<div class="bread">
+		您当前的位置：<a href="{$MODULE[1][linkurl]}">{$AJ[sitename]}</a>&gt;<a href="{$MODULE[1][linkurl]}fenxiao">分销平台</a>&gt;
+			<span>已赚取的佣金</span>
+		</div>
+        <div class="left fl">
+	<div class="head_img">
+		<div class="img_div" id="img_div">
+			<img src="{useravatar($_username, 'large')}"/>
+			<a id="ghtx_btn" href="{$MODULE[2][linkurl]}avatar.php" target="_blank">更换头像</a>
+		</div>
+		<span>{$_truename}</span>
+	</div>
+	<ul class="i_x_yj_list">	
+		<li class="tj"><a  href="{$MODULE[1][linkurl]}fenxiao/client.php" ><i></i><span>用户中心首页</span></a></li>
+		<li class="jl"><a href="{$MODULE[1][linkurl]}fenxiao/tuijian.php"><i></i><span>我要推荐买房</span></a></li>
+		<li class="tj"><a   href="{$MODULE[1][linkurl]}fenxiao/client.php" ><i></i><span>已推荐买房人</span></a></li>
+		<li class="jl"><a class="on"   href="{$MODULE[1][linkurl]}fenxiao/amount.php"><i></i><span>已赚取的佣金</span></a></li>
+		<li class="sm"><a  href="{$MODULE[2][linkurl]}validate.php?action=truename"><i></i><span>我的实名认证</span></a></li>
+	</ul>
+	<a href="{$MODULE[2][linkurl]}login.php" class="zjz_quite">退出登陆</a>
+
+</div>		
+<script type="text/javascript">
+	seajs.use('',function() {
+		var $a=$('#ghtx_btn');
+		$('#img_div').on({
+			'mouseover':function() {
+				$a.show();
+			},
+			'mouseout':function() {
+				$a.hide();
+			}
+		});
+	});
+	</script>
+<div class="right fr">
+			<h2><span>已赚取的佣金</span><p class="tj_btn"><a class="tx" id="tx" href="{$MODULE[2][linkurl]}cash.php" title="点击提现">立即提现</a></p></h2>
+			<p class="tip">共有<span class="red">{$items}</span>条佣金记录</p>
+			<table cellpadding="3" cellspacing="1" border="0" class="amount" >
+				<tr>
+					<th>记录ID</th>
+                    <th>成交客户</th>
+					<th>金额</th>
+					<th>处理状态</th>
+					<th>时间</th>
+				</tr>
+				{loop $amount $k $v}
+				<tr >
+					<td>{$v[itemid]}</td>
+                    <td>{$v[kehu]}</td>
+					<td>{$v[amount]}元</td>
+					<td>{$v['dstatus']}</td>
+					<td>{timetodate($v['addtime'],5)}</td>
+				</tr>{/loop}
+                			</table>
+			<div class="pagination">{$pages}
+	</div>
+  </div>
+	</div>
+	{template 'footer'}
+

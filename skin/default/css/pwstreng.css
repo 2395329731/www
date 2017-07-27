@@ -1,0 +1,13 @@
+#pwStreng{display: inline-block;width: 200px;height: 8px;line-height: 8px;background: #eee;padding:1px 0 1px 2px;margin: 11px 9px 11px 0;vertical-align: middle;border-radius: 4px;overflow: hidden;}
+#pwStreng i{display: block;float: left;width: 16px;height: 6px;overflow: hidden;margin: 0 2px 0 0;border: 1px #fff solid;background: #c00;}
+#pwStreng i:first-child{border-bottom-left-radius: 3px;border-top-left-radius: 3px;}
+#pwStreng i:last-child{border-bottom-right-radius: 3px;border-top-right-radius: 3px;}
+#pwStreng i.c1{background: #f40;}
+#pwStreng i.c2{background: #f80;}
+#pwStreng i.c3{background: #fc0;}
+#pwStreng i.c4{background: #cc0;}
+#pwStreng i.c5{background: #8c0;}
+#pwStreng i.c6{background: #4c0;}
+#pwStreng i.c7{background: #0cc;}
+#pwStreng i.c8{background: #0cf;}
+#pwStreng i.c9{background: #0df;}

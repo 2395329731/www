@@ -1,0 +1,426 @@
+{if $action != 'ajax'}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>{$head_title}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width"/>
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="generator" content="AIJIACMS - www.aijiacms.com"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="{$site_name}"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png"/>
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="128x128" href="apple-touch-icon-precomposed.png">
+<meta name="msapplication-TileImage" content="apple-touch-icon-precomposed.png">
+<meta name="msapplication-TileColor" content="#007AFF">
+<link rel="shortcut icon" type="image/x-icon" href="{AJ_PATH}favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="{AJ_PATH}favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="static/lib/jquery/jquery.mobile.custom.structure.min.css"/>
+<link rel="stylesheet" type="text/css" href="static/style.css"/>
+{if $CSS}
+{loop $CSS $css}
+<link rel="stylesheet" type="text/css" href="static/{$css}.css"/>
+{/loop}
+{/if}
+<script type="text/javascript" src="static/lib/jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+$(document).bind("mobileinit", function() {
+　　{if isset($EXT[mobile_ajax]) && $EXT[mobile_ajax]}
+	$.mobile.defaultPageTransition = 'slide';
+	{else}
+	$.mobile.ajaxEnabled = false;
+	{/if}
+});
+var AJPath = 'ajax.php';
+var Dbrowser = '{$AJ_MOB[browser]}';
+{if !AJ_DEBUG}
+if(!('ontouchend' in document) && window.location.href.indexOf('device.php') == -1) window.location='device.php';
+{/if}
+</script>
+
+<script type="text/javascript" src="static/js/common.js"></script>
+{if $JS}
+{loop $JS $js}
+<script type="text/javascript" src="static/{$js}.js"></script>
+{/loop}
+{/if}
+<script type="text/javascript" src="static/js/fix.js"></script>
+</head>
+<body>
+<div data-role="page">
+<div class="ui-toast"></div>
+<div class="ui-mask"></div>
+<div class="ui-sheet"></div>
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-back">
+{if $itemid || $catid || $areaid || $kw}
+<a href="{$back_link}" data-direction="reverse"><img src="static/img/icon-back.png" width="24" height="24"/><span>返回</span></a>
+{else}
+<a href="channel.php" data-direction="reverse"><img src="static/img/icon-back.png" width="24" height="24"/><span>频道</span></a>
+{/if}
+</div>
+<div class="head-bar-title">{$head_name}</div>
+<div class="head-bar-right">
+<a href="javascript:{if $itemid}Dsheet('{if $could_purchase}<a href=&#34;purchase.php?moduleid={$moduleid}&itemid={$itemid}&#34;><span>立即购买</span></a>|{/if}{if $could_inquiry}<a href=&#34;message.php?action=send&typeid=1&touser={$username}&title={encrypt('我对您发布的“'.$title.'”很感兴趣', AJ_KEY.'SEND')}&#34; data-transition=&#34;slideup&#34;><span>发送询价</span></a>|{/if}<a href=&#34;{if $AJ_MOB[browser]=='weixin'||$AJ_MOB[browser]=='qq'}javascript:share_tips();{else}share.php?moduleid={$moduleid}&itemid={$itemid}{/if}&#34;  data-transition=&#34;slideup&#34;><span>分享好友</span></a>|<a href=&#34;{mobileurl($moduleid)}&#34; data-direction=&#34;reverse&#34;><span>{$MOD[name]}首页</span></a>|<a href=&#34;channel.php&#34; data-direction=&#34;reverse&#34;><span>频道列表</span></a>', '取消');{else}Dsheet('<a href=&#34;search.php?action=mod{$moduleid}&catid={$catid}&areaid={$areaid}&#34;><span>{$MOD[name]}搜索</span></a>|<a href=&#34;category.php?moduleid={$moduleid}&#34;><span>按分类浏览</span></a>|<a href=&#34;area.php?moduleid={$moduleid}&#34;><span>按地区浏览</span></a>', '取消');{/if}"><img src="static/img/icon-action.png" width="24" height="24"/></a>
+</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+{/if}
+<link href="{AJ_SKIN}css/mobile.css?v=3" rel="stylesheet" type="text/css" /><link href="{AJ_SKIN}css/mobile_alert.css?v=3" rel="stylesheet" type="text/css" />
+<script src="{AJ_SKIN}js/mobile/zepto.js?v=3" type="text/javascript"></script><script src="{AJ_SKIN}js/mobile/swipe.js?v=3" type="text/javascript"></script><script src="{AJ_SKIN}js/mobile/iscroll.js?v=3" type="text/javascript"></script><script src="{AJ_SKIN}js/mobile/mobile_alert.js?v=3" type="text/javascript"></script>
+{if $itemid}
+	<div class="detail_huandeng">
+				<div id="swipe" >
+			<div class="swipe" >
+		
+				
+							{if $thumb}	<a href="#" class="fl">
+					<u style="background-image:url({$thumb})"></u>
+				</a> {/if}
+									<!--{php $tags=tag("moduleid=12&&condition=houseid=$itemid&pagesize=4&order=itemid desc&template=null");}-->
+{loop $tags $k $t}		<a href="#" class="fl">
+					<u style="background-image:url({$t[thumb]})"></u>
+				</a>{/loop}
+							</div>
+			<p>
+							
+				
+							
+				{if $thumb}<i class="on" ></i>{/if}
+				
+				<!--{php $tags=tag("moduleid=12&&condition=houseid=$itemid&pagesize=4&order=itemid desc&template=null");}-->
+{loop $tags $k $t}	<i></i>
+{/loop}
+							</p>
+						
+			           {if $enable} <div class="js_wap_share btn-share"></div>{/if}
+			<div id="storageimg" class="none">{$thumb}</div>
+			<div id="lpdizhi" class="none">{area_pos($areaid, ' ')}</div>
+			<div id="lptel" class="none">{$telephone}</div>
+		</div>
+			</div>
+            
+          
+	<div class="detail">
+					<span class="tags">{search_cats($catid, '6')}</span>
+					
+					<h3>{$title}</h3>
+		<table>
+			<tr>
+				<td colspan="2"><b>均价：{if $price}{$price}元/平{else}待定{/if} </b></td>
+			</tr>
+						<tr>
+				<td colspan="2">特点：<span class="red">{$tedian}</span></td>
+			</tr>
+						<tr>
+				<td>区域：{area_pos($areaid, ' ')}</td>
+				<td>产权年限：{$lp_year}年</td>
+			</tr>
+			<tr>
+				<td>销售状态：{$TYPE[$typeids]}</td>
+				<td>建筑特色：{getbox_diaoval('lpts','checkbox',$lpts,'newhouse_6')}</td>
+			</tr>
+		</table>
+	</div>
+    
+    <div class="detail_a">
+		<a href="" class="a_right">相册</a>
+       <!--{php $tags=tag("moduleid=12&&condition=houseid=$itemid&pagesize=4&order=itemid desc&template=null");}-->
+ {loop $tags $i $t}         
+				<a href="index.php?moduleid=12&amp;itemid={$t[itemid]}" class="a_right cf">
+			
+			<img src="{$t[thumb]}" alt="">{$title}<br>
+			
+			<span class="gray">
+								</span>
+					</a>
+			{/loop}
+			</div>
+	<!--{php $tags=tag("moduleid=8&condition=houseid=$itemid&length=42&pagesize=5&order=itemid desc&template=null");}-->
+	{if $tags}
+		<div class="detail">
+		<h3><a href="" class="a_right">楼盘动态</a></h3>
+		<p class="g_l_t">
+ {loop $tags $i $t} 	
+						<a href="index.php?moduleid=8&amp;itemid={$t[itemid]}"><u class="c"></u>{timetodate($t[addtime], 5)}<span class="red">{$t[title]}</span></a>{/loop}
+					</p>
+	</div>
+	{/if}
+		<div class="detail overflow">
+		<h3>楼盘详情</h3>
+		<p>开盘时间：{$selltime}</p>
+		<p>交房时间：{$completion}</p>
+		<p>物业类型：{search_cats($catid, '6')}</p>
+		<p>建筑类型：{getbox_diaoval('buildtype','checkbox',$buildtype,'newhouse_6')}</p>
+		<p>装修情况：{getbox_diaoval('fitment','checkbox',$fitment,'newhouse_6')}</p>
+		<p>建筑面积：{$lp_area}㎡</p>
+		<p>规划面积：{$lp_totalarea}㎡</p>
+		<p>规划户数：当期户数{$lp_number}户</p>
+		<p>容积率：{$lp_volume} </p>
+		<p>绿化率：{$lp_green}%</p>
+		<p>停车位：{$lp_car}</p>
+		
+				<p>售楼地址：{$address}</p>
+		<p>楼盘地址：{$sell_address}</p>
+		<p>开 发 商：{$kfs}</p>
+		<div class="show_down"><span class="a_down">展开</span><span class="a_up">收起</span></div>
+	</div>
+	<div class="detail">
+				<h3>交通地图</h3>
+			<img src="http://api.map.baidu.com/staticimage?width=400&height=200center={$AJ[map_mid]}&zoom=14&markers={if $map}{$map}{else}{$AJ[map_mid]}{/if}&markerStyles=m,A,0xff0000" alt="{$title}" class="d_map">
+				
+		<h3>公交线路</h3>
+		<p>{$bus}</p>
+	</div>
+	
+		<div class="detail overflow">
+		<h3>项目介绍</h3>
+			<p><p>&nbsp;&nbsp;{$content}</p></p>
+		<div class="show_down"><span class="a_down">展开</span><span class="a_up">收起</span></div>
+	</div>
+     <div class="detail">
+   
+	{if $AJ_MOB[browser] == 'weixin' ||  $AJ_MOB[browser] == 'qq'}{template 'chip-share', 'mobile'}{/if}
+{template 'chip-comment', 'mobile'}
+</div>
+<style>.foot-bar {width:100%;height:48px;overflow:hidden;background:#F8F8F8;border-top:#B2B2B2 1px solid;position:fixed;z-index:9;left:0;bottom:48px;}</style>
+	 <div class="detail">
+ <div class="foot-bar-fix"></div>
+</div>
+	<div id="fixed">
+		<div class="table">
+			<div class="td">
+				<p>联系电话：<br>{$telephone}</p>
+			</div>
+			<div class="td">
+				<a href="tel:{$telephone}" class="red_btn bg_blue">电话咨询</a>
+			</div>
+		<div class="td">
+				<a href="javascript:" class="red_btn" id="group_sub">团购报名</a>
+			</div>
+		</div>
+	</div>
+<script>
+var $swi=$("#swipe i");
+swipe = Swipe(document.getElementById('swipe'), {
+	startSlide: 0,
+	auto: 4000,
+	transitionEnd: function(index, element) {
+		$swi.removeClass("on").eq(index).addClass("on")
+	}
+});
+$("#group_sub").on("click",function(){
+	al({
+		t:"团购报名",
+		p:'<form action="" id="group_form"><input type="hidden" name="hid" value="'+{$itemid}+'"><input type="hidden" name="mid" value="'+{$mid}+'"><input type="hidden" name="title" value="{$title}"><input type="hidden" name="fromuser" value="{$_username}"><input type="hidden" name="touser" value="{$username}"><input type="hidden" name="linkurl" value="{$linkurl}"><input type="hidden" name="email" value="{$_email}"><input type="hidden" name="sex" value="先生"><input id="username" type="text" class="al_i" name="truename" placeholder="姓名"><input type="text" id="mobile" class="al_i" name="mobile" placeholder="手机号码"><button type="submit" class="al_a">提交</button></form>',
+		of:function(){
+			$("#group_form").on("submit",function(){
+				if(!$("#username").val().length){
+					alert("用户名不得为空");
+					$("#username").focus();
+				}else if(!/^1[3458]\d{9}$/.test($("#mobile").val())){
+					alert("手机号码格式错误")
+					$("#mobile").focus();
+				}else
+					$.ajax({
+						url:"{$MODULE[6][linkurl]}house.php?action=wapgroup",
+						dataType:"json",
+						data:$("#group_form").serialize(),
+						success:function(data){
+							alert(data.alert)
+							if(data.state=="succ")
+								al.remove()
+						}
+					})
+				return false;
+			})
+		}
+	})
+})
+$("#gb_xf").on("click",function(){
+	al({
+		t:"获取优惠",
+		p:'<form action="" id="group_form"><input type="hidden" name="hid" value="'+950+'"><input id="username" type="text" class="al_i" name="username" placeholder="姓名"><input type="text" id="mobile" class="al_i" name="mobile" placeholder="手机号码"><button type="submit" class="al_a">提交</button></form>',
+		of:function(){
+			$("#group_form").on("submit",function(){
+				if(!$("#username").val().length){
+					alert("用户名不得为空");
+					$("#username").focus();
+				}else if(!/^1[3458]\d{9}$/.test($("#mobile").val())){
+					alert("手机号码格式错误")
+					$("#mobile").focus();
+				}else
+					$.ajax({
+						url:"",
+						dataType:"json",
+						data:$("#group_form").serialize(),
+						success:function(data){
+							alert(data.alert)
+							if(data.state=="succ")
+								al.remove()
+						}
+					})
+				return false;
+			})
+		}
+	})
+})
+$(".overflow").on("click",".show_down",function(){
+	$(this).parent().toggleClass("on")
+})
+
+//分享功能
+$(".js_wap_share").click(function(){
+	var name = $("header h1").text();
+	var lpdizhi = $("#lpdizhi").text();
+	var lptel = $("#lptel").text();
+    var title = "我发现了一个不错的楼盘【"+name+"】" ;
+    var summary = name+"位于"+lpdizhi+",咨询电话："+lptel+",更多详情请点击";
+    var PicUrl = $('#storageimg').text();
+    var titlesina= "{$AJ[ciytname]}"+"{$AJ[sitename]}";
+    var type = "6";
+    myShare(this,{title:title,summary:summary,PicUrl:PicUrl,titlesina:titlesina,type:type})
+});
+</script>
+	{else}
+	
+	<div class="list">
+     
+		<nav id="nav">
+			<div>
+				<span class="a_down">{if empty($areaid)}区域{else}{area_pos($_GET['areaid'], ' ')}{/if}</span>
+				<ol>
+					<li><a href="index.php?moduleid=6&c={$_GET['c']}&catid={$_GET['catid']}&p={$_GET['p']}">全部区域</a></li>
+					{php $mainareas = get_mainarea($cityid)}
+									{loop $mainareas $k $v}
+														<li><a {if $areaid==$v[areaid]}class="on"{/if} href="index.php?moduleid=6&c={$_GET['c']}&catid={$_GET['catid']}&p={$_GET['p']}&areaid={$v[areaid]}">{$v[areaname]}</a></li>
+														 {/loop}
+					</li>
+									</ol>
+			</div><i class="l"></i>
+			<div>
+				<span class="a_down">{if empty($p)}价格{else}{$range_name}{/if}</span>
+				 <ol>
+				 	<li><a href="index.php?moduleid=6&areaid={$_GET['areaid']}&c={$_GET['c']}&catid={$_GET['catid']}">全部</a></li>
+					{php $range_arr = getbox_name('range','newhouse_6')}
+					    {loop $range_arr $key $v}
+										<li ><a {if $p==$key}class="on"{/if} href="index.php?moduleid=6&areaid={$_GET['areaid']}&c={$_GET['c']}&catid={$_GET['catid']}&p={$key}">{$v}</a></li>
+										 {/loop}
+									 </ol>
+			</div><i class="l"></i>
+			<div>
+				<span class="a_down">{if empty($c)}特色{else}{$lpts_name}{/if}</span>
+				<ol>
+					<li><a href="index.php?moduleid=6&areaid={$_GET['areaid']}&p={$_GET['p']}&catid={$_GET['catid']}">全部</a></li>
+							{php $lpts_arr = getbox_name('lpts','newhouse_6')}
+					    {loop $lpts_arr $key $v}	<li><a href="index.php?moduleid=6&areaid={$_GET['areaid']}&p={$_GET['p']}&catid={$_GET['catid']}&c={$key}">{$v}</a></li>
+								 {/loop}		
+									</ol>
+			</div><i class="l"></i>
+			<div>
+				<span class="a_down">{if empty($catid)}类型{else}{get_cats($_GET['catid'], '6')}{/if}</span>
+				<ol>
+					<li><a href="index.php?moduleid=6&areaid={$_GET['areaid']}&p={$_GET['p']}&c={$_GET['c']}">全部</a></li>
+					 {php $maincat = get_maincat(0,6)}
+						 {loop $maincat $k $v}
+										<li><a href="index.php?moduleid=6&areaid={$_GET['areaid']}&p={$_GET['p']}&c={$_GET['c']}&catid={$v[catid]}">{$v[catname]}</a></li>
+									  {/loop}
+									</ol>
+			</div><i class="l"></i>
+		</nav>
+				<div class="house_list" id="h_l">
+				{loop $lists $t}
+			
+			<a href="{$t[linkurl]}">
+				<img src="{if $t[thumb]}{$t[thumb]}{else}static/img/nopic-60.png{/if}">
+				<i class="tag{$t[typeid]}"></i>
+				<h5><span class="fr  red ">{if $t[price]}{$t[price]}元/平{else}待定{/if}</span>{$t[title]}</h5>
+				<p><span class="gray">[{area_pos($t[areaid], '')}]</span></p>
+				<p>{$t[address]}</p>
+				<p><span class="red">{$t[tedian]}</span></p>
+			</a>
+			
+			{/loop}
+						
+		</div>
+				<div id="load_more">
+			{if $pages}<div class="pages">{$pages}</div>{/if}
+		</div>
+			</div>
+			<script>
+var $swi=$("#swipe i");
+swipe = Swipe(document.getElementById('swipe'), {
+	startSlide: 0,
+	auto: 4000,
+	transitionEnd: function(index, element) {
+		$swi.removeClass("on").eq(index).addClass("on")
+	}
+});
+$("#swipe").on("click",".close_ad",function(){
+	$("#swipe").remove()
+})
+	$("#nav div,#nav li").on("click",function(e){
+		$(this).toggleClass("on").siblings().filter(".on").removeClass("on");
+		e.stopPropagation()
+	})
+	var $nav=$("#nav"),
+		$w=$(window).on("scroll",function(){
+			if($w.scrollTop()>45)
+				$nav.css("position","fixed")
+			else
+				$nav.css("position","relative")
+		})
+	var index=0,
+		$h_l=$("#h_l"),
+		$l=$("#load_more").on("click",function(){
+		$l.html("<i></i>正在加载…")
+		$.ajax({
+			url:"{$MODULE[6][linkurl]}house.php?action=house",
+			dataType:"json",
+			data:{'index':++index,'params':""},
+			success:function(data){
+				var html="";
+				if(data.length>0){
+					for(var i=0,l=data.length;i<l;i++){
+						html+='<a href="'+data[i].url+'"><img src="'+data[i].pic_url+'"><i class="tag'+data[i].tag+'"></i>'+(data[i].usertype == 1?'<u>个人</u>':'')+'<h5><span class="fr '+(data[i].price=="0"?'gray':'red')+'">'+(data[i].price=="0"?'面议':data[i].price+"万")+'</span>'+data[i].title+'</h5><p><span class="gray">['+data[i].areaname
+						if(data[i].circlename){
+							html+="&nbsp;"+data[i].circlename
+						}
+						html+=']</span></p><p>';
+						if(data[i]['room']){html+=data[i]['room']+'室';if(data[i]['hall']){html+=data[i]['hall']+'厅 &nbsp;'}}
+						if(data[i]['area']){html+=data[i]['area']+'平米&nbsp;';}
+						if(data[i]['floor']){html+=data[i]['floor']+'/'+data[i]['totalfloor']+'层&nbsp;';}
+						if(data[i]['decorate']){html+=data[i]['decorate']+'&nbsp;</p><p>';}
+						for(var j=0,k=data[i].tagtext.length;j<k;j++){
+							html+='<span class="tags">'+data[i].tagtext[j]+'</span>';
+						}
+						html+='</p></a>';
+					}
+					$l.html("<span>加载更多</span>");
+					$h_l.append(html)
+				}else{
+					$l.remove();
+					$("#no_more").show();
+				}
+			}
+		})
+	})
+</script>
+	
+	{/if}
+	
+{if $action != 'ajax'}
+{if $pages}<div class="pages">{$pages}</div>{/if}
+{template 'footer', 'mobile'}
+{/if}

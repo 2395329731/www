@@ -1,0 +1,513 @@
+{template 'header', 'member'}
+{if $action=='add' || $action=='edit'}
+	<ul id="fbp">
+		<li class="on"><b>1.</b><i></i>填写房源信息</li>
+		<li><b>2.</b><i class="p2"></i>上传房源图片</li>
+		<li class="l"><b>3.</b><i class="p3"></i>填写联系方式</li>
+	</ul>
+	<iframe src="" name="send" id="send" style="display:none;"></iframe>
+	<form method="post" id="dform" action="{$AJ[file_my]}" target="send" onsubmit="return check();">
+	<input type="hidden" name="action" value="{$action}"/>
+	<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="itemid" value="{$itemid}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<input type="hidden" name="post[typeid]" value="{if $_groupid<=5}0{else}1{/if}"  />
+	<input type="hidden" name="swf_upload" id="swf_upload"/>
+			<div class="con">
+			<div class="tabT">
+				<h3>基本信息</h3>
+			</div>
+			<ul class="formul black">
+				<li id="villagenamecon">
+					<span class="inl"> <b>*</b>
+						小区名称：
+					</span>
+					<input type="text" class="txt" id="villagename" name="post[housename]" value="{$housename}"  >
+					<input type="hidden" name="post[houseid]" id="cid" value="">
+					<p class="gray9">请输入小区名称，如：“青园”或“qyxq”，然后在下面打开的列表中选择即可。</p>
+				</li>
+				<li >
+					<span class="inl"> <b>*</b>
+						区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域：
+					</span>
+						{if $areaid}{ajax_area_select('post[areaid]', '请选择', $areaid)}{else}{ajax_area_select('post[areaid]', '请选择', $cityid)}{/if}
+						<input name="post[address]" value="{$address}" id="address" class="txt" type="text">
+						
+					
+				</li>
+				<li>
+					<span class="inl">
+						<b>*</b>
+						价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
+					</span>
+					<input id="price" name="post[price]" type="text" class="txt s" value="{$price}">
+					万 
+					
+					<span class="gray9">输入0或者不填表示面议</span>
+				</li>
+				<li>
+					<span class="inl"> <b>*</b>
+						户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：
+					</span>
+					<input name="post[room]"  value="{$room}"  type="text" id="rooms" class="txt ts" >
+					室
+					<input name="post[hall]"  value="{$hall}"  type="text" id="halls" class="txt ts" >
+					厅
+					<input name="post[toilet]" value="{$toilet}"  type="text" id="toilets" class="txt ts" >
+					卫
+					<input name="post[houseearm]"  value="{$houseearm}" type="text" id="buildarea" class="txt s" value="请输入建筑面积">
+					㎡
+					<span class="gray9"></span>
+				</li>
+				<li>
+					<span class="inl"> <b>*</b>
+						类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
+										{category_select('post[catid]', '选择类型', $catid, $moduleid)}
+									
+					第
+					<input name="post[floor1]" id="floors" type="text" value="{$floor1}" class="txt ts" >
+					层/共
+					<input name="post[floor2]" id="totalfloors" type="text" value="{$floor2}" class="txt ts" >层<span class="gray9"></span>
+										<input id="houseage" name="post[houseyear]" type="text" class="txt s" value="{if $houseyear}{$houseyear}{else}请输入建造年代{/if}">
+					年
+										
+										<span class="gray9"></span>
+				</li>
+				
+				
+				{if $FD}{fields_htmltwo('<li>', '', $item)}{/if}
+								<li>
+					<span class="inl">交通状况：</span>
+				<input  name="post[bus]" type="text" size="30" value="{$bus}"  class="txt" /><span class="spRemind">例:11、13路公交车</span></li>
+				<li>
+					<span class="inl">
+						地图标注：
+					</span>
+				{php include AJ_ROOT.'/api/map/'.$AJ['map'].'/post.inc.php';}
+
+				
+				</li>
+			</ul>
+		</div>
+		<div class="con">
+			<div class="tabT">
+				<h3>详细信息</h3>
+			</div>
+			<ul class="formul black">
+				<li>
+					<span class="inl">
+						<b>*</b>
+						房源标题：
+					</span>
+					<input type="text" class="txt ttitle" name="post[title]"  value="{$title}" id="housetitle" >			
+					<p>
+						<span class="red">增加点击量，吸引眼球第一步，应重点突出小区亮点！</span>
+						限4-30个中文字。
+					</p>
+				</li>
+				<li>
+					<span class="inl">
+						<b>*</b>
+						房源描述：
+					</span>
+					<div class="cf" >
+<textarea name="post[content]" id="content" class="dsn">{$content}</textarea>
+{deditor($moduleid, 'content', $group_editor, '100%', 350)}<br/>
+
+1、建议您描述以下方面：房源的性能及优点、配套、交通、环境等；<br/>
+2、为避免不必要的纠纷，请使用本公司图片；<br/>
+<span id="dcontent" class="f_red"></span>
+
+</div>				</li>
+			</ul>
+		</div>
+		<div class="con" style="height:auto;min-height:0">
+			<div class="tabT">
+				<h3>上传图片</h3>
+			</div>
+			<div class="upimg">
+				
+			<div class="tips_2">
+				{if $picnum >= $MG[maxitem]}
+				请上传<span id="img1name">图片</span>，你已经上传<span id="img1length">{$picnum}</span>张，最多上传<span id="img1length">{$MG[maxitem]}</span>张。
+				{else}
+       						请上传<span id="img1name">图片</span>，最多上传<span id="img1length">{$MG[maxitem]}</span>张，单次最多上传<span id="img1length">{$MG[swfu_max]}</span>张。
+		
+
+
+			
+			
+				<input type="hidden" name="post[thumb]" value="{$thumb}"/>
+				
+{php include AJ_ROOT.'/api/swfupload/editor.inc.php';}
+
+	{/if}								
+
+<ul class="upimgList cf">
+{loop $piclists $k $v}
+	
+										<li>
+						<img src="{$v[thumb]}" width="100" height="75" id="showthumb{$v[itemid]}" title="预览图片" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(this.src, 1);}else{Dphoto({$v[itemid]},{$mid},100,100, Dd('thumb{$v[itemid]}').value, true);}"/>
+						
+						<span class="tit">
+					{if $thumb==$v[thumb]}<label>封面图</label>{/if}&nbsp;&nbsp;&nbsp;<a href="?mid={$mid}&action=item_index&itemid={$v[itemid]}" onclick="return _index();" class="gol" title="点击设为封面"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="?mid={$mid}&action=item_delete&itemid={$v[itemid]}" onclick="return _delete();" class="del" title="点击删除此图片"></a>
+					
+						</span>
+				</li>
+							{/loop}
+									</ul>								
+
+
+			</div>
+		</div></div>
+		<div class="con" style="height:auto;min-height:0">
+			<div class="tabT">
+				<h3>联系方式</h3>
+			</div>
+		<ul class="formul black">
+		       {if $action=='edit'}
+				<li>
+					<span class="inl">
+						<b>*</b>
+						联系人：
+					</span>
+					<input type="text" class="txt s" name="post[truename]"   id="truename" size="15" value="{$truename}" >	</li>
+					<li>
+					<span class="inl">
+						<b>*</b>
+						手机号码：
+					</span>
+				<input name="post[mobile]" id="mobile" type="text " size="18" value="{$mobile}"  class="txt s"/></li>
+				{else}
+				<li>
+					<span class="inl">
+						<b>*</b>
+						联系人：
+					</span>
+					<input type="text" class="txt s" name="post[truename]"   id="truename" size="15" value="{$user['truename']}" >	</li>
+					<li>
+					<span class="inl">
+						<b>*</b>
+						手机号码：
+					</span>
+				<input name="post[mobile]" id="mobile" type="text " size="18" value="{$user['mobile']}"  class="txt s"/></li>
+				{/if}
+                <li {if !$_userid} style="display:none;"{/if}>
+					<span class="inl">我的推荐</span>
+                    <input type="radio" name="post[elite]" value="1"{if $elite} checked{/if}/> 是
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="post[elite]" value="0"{if !$elite} checked{/if}/> 否
+ </li>
+          
+				{if $fee_add}
+			<li><span class="inl">发布信息需：</span>
+		<span class="f_b f_red">{$fee_add}</span> {$fee_unit}
+	{if $fee_currency == 'money'}
+{$AJ[money_name]}余额<span class="f_blue f_b">{$_money}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}charge.php?action=pay" target="_blank" class="t">[充值]</a>
+{else}
+{$AJ[credit_name]}余额
+<span class="f_blue f_b">{$_credit}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}credit.php?action=buy" target="_blank" class="t">[购买]</a>
+{/if}
+</li>	
+{/if}
+				{if $need_password}
+<li><span class="inl">支付密码：</span>{template 'password', 'chip'} <span id="dpassword" class="f_red"></span></li>{/if}
+{if $need_question}
+<li><span class="inl">验证问题：</span>
+{template 'question', 'chip'} <span id="danswer" class="f_red"></span></li>
+{/if}
+{if $need_captcha}
+<li><span class="inl">验证码：</span>
+{template 'captcha', 'chip'} <span id="danswer" class="f_red"></span></li>
+{/if}
+				</ul>
+	
+			
+</div>	
+				 <input type="submit" name="submit" value=" 发布房源信息 " class="subLBtn"/>
+		
+				
+	</form>
+</div>
+<div id="autoVn">
+	
+</div>
+
+<script type="text/javascript">
+seajs.use("jjrfbcon",function(fb){
+	fb.init("esf",{
+  autoc:AGENT_URL + "house.php?action=xq"});
+})
+</script>
+
+</div>
+
+{else}
+
+		<div class="tinfo">
+		<form action="{$MODULE[2][linkurl]}{$AJ[file_my]}">
+<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="status" value="{$status}"/>
+			<h3>搜索房源</h3>
+			<p>
+				{category_select('catid', '物业类型', $catid, $moduleid)}
+		
+			
+				小区/地址：
+				<input name="kw" type="text" class="txt" value="">
+				  <button type="submit" value="Submit" class="sBtn" >搜索房源</button>
+				
+				<a href="{$MODULE[2][linkurl]}{$AJ[file_my]}?mid={$mid}&status=3" class="sBtn">全部房源</a>
+			</p>
+		</form>
+	</div>
+	<div class="con">
+		<div class="tabT">
+			<a id="s3"  href="{$AJ[file_my]}?mid={$mid}">已发布房源({$nums[3]})</a>
+			<a id="s2" href="{$AJ[file_my]}?mid={$mid}&status=2">待审房源({$nums[2]})</a>
+			<a id="s1" href="{$AJ[file_my]}?mid={$mid}&status=1">未通过房源({$nums[1]})</a>
+			<a id="s4" href="{$AJ[file_my]}?mid={$mid}&status=4">过期房源({$nums[4]})</a>
+		</div>
+		<script type="text/javascript">s('mid_{$mid}');m('s{$status}');</script>
+		<form method="post"  id="houseList">
+		<div id="hideMenu">
+		
+			<div class="tool">
+				<span class="fr">
+					共 {$nums[$status]}条房源
+				</span>
+				{if $MG[delete] || $timetype!='add'}
+           <input type="button" class="button_1" onClick="checkall(this.form);" value="全选" />
+			<input type="button" class="button_1" onClick="checkall(this.form);" value="取消选择" />
+			
+			{if $timetype!='add'}
+<input type="submit" value=" 刷新 " class="button_1" onClick="this.form.action='?mid={$mid}&status={$status}&action=refresh';"/>
+{if $MOD[credit_refresh]}
+刷新一条信息一次需消费 <strong class="f_red">{$MOD[credit_refresh]}</strong> {$AJ[credit_name]}，当{$AJ[credit_name]}不足时将不可刷新
+{/if}
+{/if}
+			{if $MG[delete]}
+<input type="submit" value=" 删除 " class="button_1" onClick="if(confirm('确定要删除选中{$MOD[name]}吗？')){this.form.action='?mid={$mid}&status={$status}&action=delete'}else{return false;}"/>
+{/if}{/if}
+			
+							
+								
+							</div>
+						<table width="100%">
+				<tr>
+					<th width="5%">
+						<input type="checkbox" onclick="checkall(this.form);"/></th>
+					<th>基本信息</th>
+					<th width="6%">
+						点击
+					
+					</th>
+					
+					<th width="16%">标签</th>
+					<th width="12%"><span class="red">更新时间</span><span class="black">发布时间</span></th>
+					
+					<th width="10%">操作</th>
+				</tr>
+			</table>
+					</div>
+	
+						<table width="100%" id="tlist">
+				<tr>
+					<th width="5%"></th>
+					<th></th>
+					<th width="6%"></th>
+					
+					<th width="16%"></th>
+					<th width="12%"></th>
+					
+					<th width="10%"></th>
+				</tr>{if $lists}
+		{loop $lists $k $v}<tr>
+				 <td><input type="checkbox" name="itemid[]" value="{$v[itemid]}"/></td>
+      <td>
+						<p>
+							<a target="_black" href="{$v[linkurl]}">{$v[housename]}</a>{if $v[elite]}&nbsp;<span class="f_red" title="主页推荐">[荐]</span> {/if}{if $v[thumb]}&nbsp;<span class="f_red" title="主页推荐">[图]</span> {/if}
+														<br>
+							{$v[catname]}-{if $v[room]}{$v[room]}室{/if}{if $v[hall]}{$v[hall]}厅{/if}{if $v[toilet]}{$v[toilet]}卫{/if}-{$v[houseearm]}平米-
+							<b class="red">{if $v[price]}{$v[price]}万{else}面议{/if}</b>
+							<br>
+							<a href="{$v[linkurl]}" target="_black" title="{$v[alt]}" class="hic">{$v[title]}</a>
+						</p>
+											</td>
+					<td>
+						
+						<b class="blue">{$v[hits]}</b>
+						&nbsp;
+					</td>
+				
+					<td>
+												{if $v[istop]==0}<a href="" onclick="showBoxtop({$v[itemid]});return false;" title="将此房源置顶">置顶</a><br>{else}置顶有效期 {timetodate($v[to_time], 3)}{/if}
+												{if $v[ishot]==0}<a href="" onclick="showBoxhot({$v[itemid]});return false;" title="将此房源急售">急售</a>{else}急售有效期 {timetodate($v[hot_time], 3)}{/if}
+											
+											</td>
+					<td title="最后更新：{timetodate($v[edittime], 3)}">
+						<span class="red">{timetodate($v[edittime], 3)}</span>
+						<span class="black">{timetodate($v[addtime], 3)}</span>
+					</td>
+					
+					<td class="lastTd">
+						<a href="{$AJ[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}">修改房源</a>
+						<br>
+						{if $MG[copy]}<a href="{$AJ[file_my]}?mid={$mid}&action=add&itemid={$v[itemid]}&catid={$v[catid]}">复制房源</a>
+						<br>{/if}
+					{if $MG[delete]}<a href="{$AJ[file_my]}?mid={$mid}&action=delete&itemid={$v[itemid]}" onclick="return confirm('确定要删除吗？此操作将不可撤销');">删除房源</a>{/if}
+					</td>
+		  
+		</tr>{/loop}
+		 {else}
+								<tr>
+				  <td colspan="8" align="center">抱歉，没有找到符合要求的房子，试试其他条件吧！</td>
+				</tr>{/if}
+							</table>
+					
+		</form>
+			
+			  <div class="pages">{$pages}</div>
+			
+			</div>
+			
+	<!--说明-->
+<div class="tgray">
+	<h4>房源管理使用说明：</h4>
+{if $MG[sell_limit] || (!$MG['fee_mode'] && $MOD[fee_add])}
+<div class="limit">
+{if $MG[sell_limit]}
+总共可发 <span class="f_b f_red">{$MG[sell_limit]}</span> 条&nbsp;&nbsp;&nbsp;
+当前已发 <span class="f_b">{$limit_used}</span> 条&nbsp;&nbsp;&nbsp;
+还可以发 <span class="f_b f_blue">{$limit_free}</span> 条&nbsp;&nbsp;&nbsp;
+{/if}
+{if !$MG['fee_mode'] && $MOD[fee_add]}
+发布信息收费 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$AJ[money_unit]}{else}{$AJ[credit_unit]}{/if}/条&nbsp;&nbsp;&nbsp;
+可免费发布 <span class="f_b">{if $MG[sell_free_limit]<0}无限{else}{$MG[sell_free_limit]}{/if}</span> 条&nbsp;&nbsp;&nbsp;
+{/if}
+</div>
+{/if}
+</div>
+</div>
+  <!--底部-->
+
+</div>
+{if $action == 'add' || $action == 'edit'}
+<script type="text/javascript">
+function _p() {
+	if(Dd('tag').value) {
+		Ds('reccate');
+	}
+}
+function check() {
+	var l;
+	var f;
+	f = 'catid_1';
+	if(Dd(f).value == 0) {
+		Dmsg('请选择所属分类', 'catid', 1);
+		return false;
+	}
+	f = 'title';
+	l = Dd(f).value.length;
+	if(l < 2 || l > 30) {
+		Dmsg('信息标题应为2-30字，当前已输入'+l+'字', f);
+		return false;
+	}
+
+{if !$_userid}
+	f = 'company';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('请填写公司名称', f);
+		return false;
+	}
+	if(Dd('areaid_1').value == 0) {
+		Dmsg('请选择所在地区', 'areaid');
+		return false;
+	}
+	f = 'truename';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('请填写联系人', f);
+		return false;
+	}
+	f = 'mobile';
+	l = Dd(f).value.length;
+	if(l < 7) {
+		Dmsg('请填写手机', f);
+		return false;
+	}
+{/if}
+	{if $FD}{fields_js()}{/if}
+	if(Dd('property_require') != null) {
+		var ptrs = Dd('property_require').getElementsByTagName('option');
+		for(var i = 0; i < ptrs.length; i++) {		
+			f = 'property-'+ptrs[i].value;
+			if(Dd(f).value == 0 || Dd(f).value == '') {
+				Dmsg('请填写或选择'+ptrs[i].innerHTML, f);
+				return false;
+			}
+		}
+	}
+{if $need_password}
+	f = 'password';
+	l = Dd(f).value.length;
+	if(l < 6) {
+		Dmsg('请填写支付密码', f);
+		return false;
+	}
+{/if}
+{if $need_question}
+	f = 'answer';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('请填写验证问题', f);
+		return false;
+	}
+	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+		Dd(f).focus();
+		return false;
+	}
+{/if}
+{if $need_captcha}
+	f = 'captcha';
+	l = Dd(f).value;
+	if(!is_captcha(l)) {
+		Dmsg('请填写正确的验证码', f);
+		return false;
+	}
+	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+		Dd(f).focus();
+		return false;
+	}
+{/if}
+	return true;
+}
+var aijiacms_oauth = '{$EXT[oauth]}';
+</script>
+{/if}
+<script type='text/javascript' src='{AJ_SKIN}js/thickbox.js'></script>
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}js/thickbox.css" />
+<script language="javascript">
+
+function showBox(item_id){
+	TB_show('房源成交','saleBargain.php?house_id='+item_id+'&height=370&width=400&modal=true&rnd='+Math.random(),false);
+}
+function showBoxOwner(item_id){
+	TB_show('业主信息','landlordSaleInfo.php?house_id='+item_id+'&height=150&width=400&modal=true&rnd='+Math.random(),false);
+}
+function showBoxtop(item_id){
+	TB_show('房源置顶','saletop.php?itemid='+item_id+'&height=200&width=400&modal=true&rnd='+Math.random(),false);
+}
+function showBoxhot(item_id){
+	TB_show('房源急售','salehot.php?itemid='+item_id+'&height=200&width=400&modal=true&rnd='+Math.random(),false);
+}
+
+</script>
+		
+
+{/if}
+
+
+</div>
+{template 'footer'}

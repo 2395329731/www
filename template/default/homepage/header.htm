@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={AJ_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{$COM[company]}{/if}</title>
+{if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}
+{if $head_description}<meta name="description" content="{$head_description}"/>{/if}
+<meta name="generator" content="AIJIACMS HOUSE - www.aijiacms.com"/>
+<meta name="template" content="{$template}"/>
+{if $head_mobile}
+<meta http-equiv="mobile-agent" content="format=xhtml; url={$head_mobile}"> 
+<meta http-equiv="mobile-agent" content="format=html5; url={$head_mobile}">
+{/if}
+<link rel="stylesheet" type="text/css" href="{AJ_STATIC}{$MODULE[4][moduledir]}/skin/common.css"/>
+<link rel="stylesheet" type="text/css" href="{$HSPATH}style.css"/>
+{if !AJ_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
+<script type="text/javascript" src="{AJ_STATIC}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript">
+var DTPath = '{AJ_PATH}';
+var SKPath = '{AJ_SKIN}';
+var EXPath = '{$MODULE[3][linkurl]}';
+var DTTour = '{$MODULE[4][linkurl]}tour.php';
+{if $itemid && $AJ[anticopy]}
+document.oncontextmenu=function(e){return false;};
+document.onselectstart=function(e){return false;};
+{/if}
+{if !$domain && AJ_DOMAIN}
+if(window.location.href.indexOf('{AJ_DOMAIN}') != -1){document.domain = '{AJ_DOMAIN}';}
+{/if}
+</script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/homepage.js"></script>
+{if $css}<style type="text/css">{$css}</style>{/if}
+</head>
+<body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor} {/if}{if $background}url('{$background}') no-repeat center 0{/if};"{/if}>
+<div class="m"><div class="top" id="top"><a href="{$COM[linkurl]}" title="{$COM[company]}" rel="sidebar" onclick="window.external.addFavorite(this.href, this.title);return false;">收藏本页</a> | <a href="{$COM[linkurl]}" onclick="javascript:try{this.style.behavior='url(#default#homepage)';this.setHomePage(location.href);}catch(e){}return false;">设为主页</a> | <a href="javascript:Go(DTTour);">随便看看</a>{if $EXT[wap_enable]} | <a href="javascript:Go('{$EXT[wap_url]}index.php?moduleid=4&username={$username}');">手机版</a>{/if}</div></div>
+<div class="m">
+<div class="sign">
+{if $COM[vip]}
+<div><strong>{$COM[year]}</strong><span title="指数满分为10">{$COM[vip]}</span></div>
+{else}
+<img src="{AJ_STATIC}{$MODULE[4][moduledir]}/image/free_bg.gif" alt="普通会员"/>
+{/if}
+</div>
+<div class="head">
+{if $logo}<div class="logo"><a href="{$COM[linkurl]}"><img src="{$logo}" alt="{$COM[company]}" onload="if(this.width>300)this.width=300;"/></a></div>{/if}
+<div>
+<h1>{$COM[company]}</h1>
+<h4>{dsubstr($COM['business'], $logo ? 60 : 80, '...')}</h4>
+</div>
+</div>
+</div>
+<div class="m">
+<div class="menu" id="menu"{if count($MENU)>8} style="height:60px;"{/if}>
+	<ul>
+	<li class="{if $file=='homepage'}menu_on{else}menu_li{/if}"><a href="{$COM[linkurl]}"><span>网站首页</span></a></li>
+	{loop $MENU $k $v}
+	<li class="{if $file==$menu_file[$k]}menu_on{else}menu_li{/if}"><a href="{$v[linkurl]}"><span>{$v[name]}</span></a></li>
+	{/loop}
+	</ul>
+</div>
+</div>
+{if $bannert || $banner}
+<div class="m">
+<div class="banner">
+{if $bannert == 2}
+<script type="text/javascript">
+var config = '5|0xFFFFFF|0x333333|80|0xFAFAFA|0x333333|0x000000';
+var files = "{$banner1}|{$banner2}{if $banner3}|{$banner3}{/if}{if $banner4}|{$banner4}{/if}{if $banner5}|{$banner5}{/if}";
+var links = '';
+var texts = '';
+document.write('<embed src="{AJ_PATH}file/flash/slide.swf" wmode="opaque" FlashVars="config='+config+'&bcastr_flie='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&menu="false" quality="high" width="{$bannerw}" height="{$bannerh}" type="application/x-shockwave-flash" extendspage="http://get.adobe.com/flashplayer/"></embed>');
+</script>
+{elseif $bannert == 1}
+<embed src="{$bannerf}" quality="high" loop="true" extendspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" width="{$bannerw}" height="{$bannerh}"></embed>
+{elseif $banner}
+<img src="{$banner}" width="100%"/>
+{/if}
+</div>
+</div>
+{/if}
+<div class="m">
+<div class="pos" id="pos">
+<span class="f_r">
+<script type="text/javascript">show_date();</script>
+</span>
+<span id="position"></span>
+</div>
+</div>
+<div class="m">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+{if $side_pos==0}
+<td width="{$side_width}" valign="top" id="side">{template 'side', $template}</td>
+<td width="10" id="split"></td>
+{/if}
+<td valign="top" id="main">

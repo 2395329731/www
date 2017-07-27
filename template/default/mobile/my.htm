@@ -1,0 +1,128 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$head_title}</title>
+    <meta name="keywords" content="会员中心" />
+    <meta name="description" content="会员中心" />
+        <meta name="mobile-agent"content="format=html5; url={$head_mobile}">
+    <meta name="mobile-agent"content="format=xhtml; url={$head_mobile}">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+     <link rel="stylesheet" href="static/Jingle.css" />
+ <style>
+ body * {
+      -webkit-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
+}
+ </style>
+   
+    </head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" title="会员中心" data-footer="false" class="active">
+        <div id="fix_js" class="fix_css">
+    <header>
+        <nav class="left">
+            <a id="back" class="dn" href="#" data-target="back"><span class="icon-f053 left fz20"></span></a>
+            <a id="logo" class="dn" href="index.php"><img src="{if $AJ[waplogo]}{$AJ[waplogo]}{else}{AJ_SKIN}image/waplogo.png{/if}" alt="{$AJ[sitename]}" width="110" height="43"></a>
+        </nav>
+        <h1 id="title" class="title"></h1>
+        <nav class="right">
+            <a id="edit" class="icon dn" href=""><span class="icon-e7cc left fz17"></span></a>
+            <a class="icon" href="my.php"><span class="icon-e756 left fz19"></span></a>
+            <a class="menu icon" href="channel.php"><span class="icon-f0ca left fz22"></span></a>
+        </nav>
+    </header>
+</div>
+
+      <article id="up_refresh_article"  class="active">
+            <div>
+                <div class="p5"></div>
+                <ul class="list inset">
+                    <li id="userLogin">
+                                {if $_userid}                                                                <div class="grid">
+                           <div class="col-0">
+                               <div class="mem-img">
+                                   <img src="{useravatar($_username, 'large')}"  height="71" width="71"/>
+                               </div>
+                           </div>
+                           <div class="col-1">
+                               <div class="grid fz14 p10">
+                                   <div class="col-1">欢迎,{$_username}</div>
+                                   <div class="col-0"><a href="logout.php" class="block"><i class="icon icon-e762 left f-pomegranate"></i>退出</a></div>
+                               </div>
+                               <div class="fz14 p5">
+                                   <a href="{$MURL}edit.php" class="button alizarin small block"><i class="icon-e641"></i>修改资料</a>
+                               </div>
+                           </div>
+                        </div>
+                                                                 {else}
+                                                                    
+                         
+                                                                        <div class="grid">
+                            <div class="col-0">
+                                <div class="mem-img">
+                                    <i class="icon-e63e"></i>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <div class="col-1 p5">
+                                <a href="login.php?forward=my.php" class="button alizarin small block" data-icon="icon-e603">会员登录</a>
+                                  
+                                </div>
+                                <div class="grid fz14">
+                                    <div class="col-1 p5"><a href="forgot.php" data-target="section" class="button carrot small block" data-icon="icon-f059">忘记密码</a></div>
+                                    <div class="col-1 p5"><a href="register.php" class="button alizarin small block" data-icon="icon-e641">会员注册</a></div>
+                                </div>
+                            </div>
+                        </div>{/if}
+                                                                    </li>
+                                          
+                                                                    
+                                                                    
+                </ul>
+                <div class="grid fz14 p5">
+                    <div class="col-1 p5"><a href="user.php?mid=5&action=add" class="asbestos button small block" data-icon="icon-e610">发布二手</a></div>
+                    <div class="col-1 p5"><a href="user.php?mid=7&action=add" class="concrete button small block" data-icon="icon-e60f">发布出租</a></div>
+                </div>
+                <!-- <ul class="list inset f-asbestos">
+                    <li data-icon="icon-f054"><a href="#cart" data-target="section"><i class="icon-e73c left"></i>我的订单</a><div class="tag">100</div></li>
+                </ul> -->
+                <div class="p5"></div>
+                <ul class="list inset f-asbestos">
+                    <li data-icon="icon-f054"><a href="message.php" data-target="section"><i class="icon-e014 left"></i>站内信息</a><div class="tag">{$_message}</div></li>
+                    <li data-icon="icon-f054"><a href="chat.php" data-target="section"><i class="icon-f005 left"></i>站内交谈</a><!-- <div class="tag">1</div> --></li>
+                     <li data-icon="icon-f054"><a href="user.php?mid=5" data-target="section"><i class="icon-e637 left"></i>我的二手房</a></li>
+                    <li data-icon="icon-f054"><a href="user.php?mid=7" data-target="section"><i class="icon-e635 left"></i>我的租房</a></li>
+                    <li data-icon="icon-f054"><a href="user.php?mid=16" data-target="section"><i class="icon-e637 left"></i>我的求购</a></li>
+                     <li data-icon="icon-f054"><a href="tuijian.php" data-target="section"><i class="icon-e637 left"></i>我要推荐</a></li>
+                    <li data-icon="icon-f054"><a href="client.php" data-target="section"><i class="icon-e635 left"></i>我的客户</a></li>
+                    <li data-icon="icon-f054"><a href="amount.php" data-target="section"><i class="icon-e637 left"></i>我的佣金</a></li>
+                    <!-- <li data-icon="icon-f054"><a href="user.php?mid=8" data-target="section"><i class="icon-e635 left"></i>我的资讯</a></li> -->
+                </ul>
+                <div class="p5"></div>
+                <ul class="list inset f-asbestos">
+                    <li data-icon="icon-f054"><a href="guestbook.php" ><i class="icon-e7cc left"></i>意见反馈</a></li>
+                </ul>
+               
+                <div class="footer">
+    <a href="mobile.php?action=pc">电脑版</a>
+    <a href="more.php">更多</a>
+    <a href="guestbook.php">反馈</a>
+</div>
+            </div>
+        </article>
+    </section>
+   
+  
+</body>
+</html>      

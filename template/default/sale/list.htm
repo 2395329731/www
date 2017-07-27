@@ -1,0 +1,314 @@
+{template 'header'}
+
+	<div id="main">
+		<div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a>&gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&gt;<span>房源搜索</span></div>
+		<div class="hslist" id="hslist">
+			<h2 class="modTab">
+				<a href="{$MOD[linkurl]}list.html" class="on">区域找房</a>
+				<a href="{$MODULE[1][linkurl]}map">地图找房</a>
+				<a href="{$MODULE[18][linkurl]}">小区找房</a>
+			</h2>
+						<div class="hs_b">
+                <div class="cf">
+                    <span>区域：</span>
+					 <p id="hs_area" class="hs_hidep ">
+                   
+                        <a href="javascript:" class="hs_hide"><u class="hs_mo">更多</u><u class="hs_le">收起</u></a>
+                       <a {if empty($areaid)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'r')}.html">全部</a>
+                                                       	{loop $mainarea $k $v}<a {if $areaid==$v[areaid]}class="c"{/if} href="{$MOD[linkurl]}list-r{$v[areaid]}{deal_str($lst,'r')}.html">{$v[areaname]}</a>{/loop}	
+                                   {if $areaid}
+                        </p>   
+                        
+						<span class="i">
+								<a {if empty($bid)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'b')}.html">全部</a>
+								{php $mainareas = get_mainarea($areaid)}
+						{loop $mainareas $k $v}
+								<a {if $bid==$v[areaid]}class="c"{/if} href="{$MOD[linkurl]}list-b{$v[areaid]}{deal_str($lst,'b')}.html">{$v[areaname]}</a>{/loop}	</span>{/if}  </p>       
+                                    </div>
+              
+				<div class="cf">
+			
+						<span>价格：</span>
+					&nbsp;&nbsp;
+							<a {if empty($range)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'p')}.html">全部</a>
+							
+                                                              	{php $range_arr = getbox_name('range','sale_5')}
+					    {loop $range_arr $key $v}
+					 <a {if $range==$key}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'p')}-p{$key}.html">{$v}</a>{/loop}
+					 <em class="autoF">
+						<form action="list{deal_str($lst,'p')}-e" method="get" >
+						<input type="number" value="{$minprice}"> - 
+						<input type="number" value="{$maxprice}"> 万
+						<button type="button" class="pobtn">筛选</button>
+					</form>
+				</em>
+                              				
+                              
+				
+					
+				</div>
+				<div class="cf">
+					
+						<span>面积：</span>
+						&nbsp;&nbsp;
+                           <a {if empty($area)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'c')}.html">全部</a>
+                                                             {php $mianji = array('40平米以下', '40-60平米', '60-80平米', '80-100平米', '100-120平米', '120-150平米','150平米以上');}
+{loop $mianji $k $v} 
+							   	               <a {if $area==($k+1)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'c')}-c{$k+1}.html">{$v}</a>
+											   {/loop}  
+											   <em class="autoF">
+						<form action="list{deal_str($lst,'p')}-m" method="get" >
+						<input type="number" value="{$minarea}"> - 
+						<input type="number" value="{$maxarea}">平米
+						<button type="button" class="pobtn">筛选</button>
+					</form>   
+					</em>   
+					</form>
+					
+				</div>
+				<div class="cf">
+					<span>户型：</span>
+						<p> 
+                      	<a {if empty($hu)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'x')}.html">全部</a>
+				{php $huxing = array('一室', '二室', '三室', '四室', '五室以上');}
+{loop $huxing $k $v} <a {if $hu==($k+1)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'x')}-x{$k+1}.html">{$v}</a>{/loop}
+                   </p>          				
+				</div>
+				<div class="hs_more" id="hs_more">
+					<span>更多：</span>
+					<div class="hs_mlist">装修不限						<ul>
+							<li><a {if empty($fix)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'v')}.html">不限</a></li>
+							   	               {php $fix_arr = getbox_name('fix','sale_5')}
+					    {loop $fix_arr $key $v}
+					<li><a {if $fix==$key}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'f')}-f{$key}.html">{$v}</a></li>{/loop}
+                                						</ul>
+					</div>
+					<div class="hs_mlist">楼层不限						<ul>
+							        <li><a href="{$MOD[linkurl]}list{deal_str($lst,'l')}.html" >不限</a></li>
+				                    <li> <a href="{$MOD[linkurl]}list{deal_str($lst,'l')}-l1.html" >6层以下</a></li>
+                                	<li><a href="{$MOD[linkurl]}list{deal_str($lst,'l')}-l2.html" >6-12层</a></li>
+                                	<li><a href="{$MOD[linkurl]}list{deal_str($lst,'l')}-l3.html" >12-20层</a></li>
+                                	<li><a href="{$MOD[linkurl]}list{deal_str($lst,'l')}-l4.html" >20层以上</a></li>
+                                						</ul>
+					</div>
+					<div class="hs_mlist">朝向不限						<ul>
+							<li><a href="{$MOD[linkurl]}list{deal_str($lst,'s')}.html">不限</a></li>
+                                                     {php $toward_arr = getbox_name('toward','sale_5')}
+					    {loop $toward_arr $key $v}
+					<li><a  href="{$MOD[linkurl]}list-s{$key}{deal_str($lst,'s')}.html" >{$v}</a></li>{/loop}  
+                                						</ul>
+					</div>
+					<div class="hs_mlist">房龄不限						<ul>
+							<li><a href="{$MOD[linkurl]}list{deal_str($lst,'y')}.html">不限</a></li>
+                                                           {php $yearr = array('2000年以前', '2000年以后', '2005年以后', '2010年以后');}
+{loop $yearr $k $v}
+					<li><a  href="{$MOD[linkurl]}list-y{$k+1}{deal_str($lst,'y')}.html" >{$v}</a></li>{/loop}  
+                                						</ul>
+					</div>
+					<div class="hs_mlist">类型不限						<ul >
+							<li><a href="{$MOD[linkurl]}list{deal_str($lst,'t')}.html">不限</a></li>
+                                                             {php $maincat = get_maincat(0,5)}
+{loop $maincat $k $v}<li><a   href="{$MOD[linkurl]}list{deal_str($lst,'t')}-t{$v[catid]}.html">{$v[catname]}</a></li>{/loop}
+                                						</ul>
+					</div>
+				</div> 
+				{if !empty($lstaddr)}
+				
+				<div class="hs_sltd">
+                        您已选择： {$lstaddr}  <a href="list.html" class="clear">重置筛选条件</a>
+                    </div>
+					{/if}
+                			</div>		</div>
+		<div class="cf">
+			<div class="hlist_fl">
+				<h2>
+					<span class="hl_page">
+						共为您找到 <b class="red">{$items}</b> 个房源<a class="pre" href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==1}1{else}{$page-1}{/if}.html"></a>{$page}						<a class="next" href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==$total}{$total}{else}{$page+1}{/if}.html">下一页</a>					</span>
+					<span class="modTab">
+					<a {if empty($hot)} class="on"{/if} href="list.html" >全部房源</a>
+	                	<a {if $hot=="1"} class="on"{/if} href="list{deal_str($lst,'u')}-h1.html" >热推房源</a>
+	                	<a {if $hot=="3"} class="on"{/if} href="list{deal_str($lst,'u')}-h3.html" >急售房源</a>
+	                	<a {if $hot=="2"} class="on"{/if} href="list{deal_str($lst,'u')}-h2.html" >推荐房源</a>
+	                	<a {if $source=="1"} class="on"{else} class="red"{/if} href="list{deal_str($lst,'u')}-u1.html" >个人房源</a>
+					
+					</span>
+				</h2>
+				<div class="hlist_sort">
+					<div class="cf">
+						<div class="fr ">
+							<div class="hs_mlist" style="float:right" id="h_s2">发布时间								<ul>
+								
+                                     <li>  <a href="{$MOD[linkurl]}list{deal_str($lst,'o')}.html"  {if empty($opentime)} class="c" {/if}>不限</a> </li>
+					<li><a href="{$MOD[linkurl]}list{deal_str($lst,'o')}-o3.html" {if $opentime=="3"} class="c" {/if} >3天内发布</a></li>
+					<li><a href="{$MOD[linkurl]}list{deal_str($lst,'o')}-o7.html" {if $opentime=="7"}  class="c" {/if}>7天内发布</a></li>
+					<li><a href="{$MOD[linkurl]}list{deal_str($lst,'o')}-o15.html" {if $opentime=="15"}  class="c" {/if}>15天内发布</a></li>
+					<li><a href="{$MOD[linkurl]}list{deal_str($lst,'o')}-o30.html" {if $opentime=="30"}  class="c" {/if}>30天内发布</a></li>
+                                                                           
+                                        									
+								</ul>
+							</div>
+						</div>
+						<div class="hs_mlist" id="h_s1">默认排序							<ul>
+                                		<li>
+								<a href="list{deal_str($lst,'n')}-n2.html" >面积从大到小</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n3.html" >面积从小到大</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n4.html" >单价从高到低</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n5.html" >单价从低到高</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n6.html" >总价从高到低</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n7.html" >总价从低到高</a>
+							</li>
+							</ul>
+						</div>
+						<a href="{if $ord==2}list{deal_str($lst,'n')}-n3.html{else}list{deal_str($lst,'n')}-n2.html{/if}"  class="A1 {if $ord==2}down{/if}{if $ord==3}up{/if}">面积</a>
+						<a href="{if $ord==4}list{deal_str($lst,'n')}-n5.html{else}list{deal_str($lst,'n')}-n4.html{/if}"  class="A1 {if $ord==4}down{/if}{if $ord==5}up{/if}">单价</a>
+						<a href="{if $ord==6}list{deal_str($lst,'n')}-n7.html{else}list{deal_str($lst,'n')}-n6.html{/if}"  class="A1 {if $ord==6}down{/if}{if $ord==7}up{/if}">总价</a>
+					</div>
+					
+				</div>
+
+                				
+           {if $page==1 && $kw}
+		{ad($moduleid,$catid,$kw,6)}
+		{load('m'.$moduleid.'_k'.urlencode($kw).'.htm')}
+		{/if}
+								{if $tags}
+
+{if $page == 1}{load('ad_m'.$moduleid.'_c'.$catid.'.htm')}{/if}
+		{if $tags}{template 'list-'.$module, 'tag'}{/if}
+            {else}
+	
+		{template 'noresult', 'message'}
+	
+		{/if}
+									  
+				
+			</div>
+			<div class="hlist_fr">
+				<div class="hlist_btn cf">
+					<a href="{$MODULE[2][linkurl]}my.php?mid=5&action=add" class="obtn fl" target="_blank"><i class="edit"></i>发布出售</a>
+					<a href="{$MODULE[2][linkurl]}" class="obtn fr" target="_blank"><i class="bag"></i>管理房源</a>
+				</div>
+                				<div class="lista">
+					<h4>您最近浏览过的房源</h4>
+					      <table>
+                                                                    <tbody>
+																	{loop $browseHouse $k $t} <tr>
+                                        <td><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{dsubstr($t[housename], 16, $suffix = '..')} </a></td>
+                                        <td>&nbsp;{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}</td>
+                                        <td>{$t[houseearm]}㎡</td>
+                                        <td>&nbsp;{if $t[price]}{$t[price]}万{else}面议{/if}	</td>
+                                    </tr>
+                                            {/loop}
+                                                            </tbody></table>
+                        				</div>			
+									<div class="lista">	{ad($moduleid,$catid,$kw,7)}</div>	<div class="lista">
+					<h4><a href="{$MODULE[4][linkurl]}list-u1.html" target="_blank" class="more">更多&gt;&gt;</a>经纪人排行</h4>
+                     
+                        <ul class="jjrl">
+						<!--{tag("table=member&condition=groupid=6&areaid=$cityid&order=userid desc&pagesize=10&template=sale-jjr")}-->
+                                           
+                                                    </ul>
+                    				</div>                
+			</div>
+		</div>
+	
+		
+                  
+        	</div>
+	
+
+
+<script>
+seajs.use(["pk","autofh","autoc","autab","cookie"],function(pk){
+	pk({
+		elm:"#hlist a.hlist_db",
+		hlength:4,
+		url:"{$MOD[linkurl]}pk/",
+		type:"房源"
+	})
+	$("#hname").autoC("{$MODULE[6][linkurl]}house.php?action=xiaoqu");
+	$("#hota").autab("h2 span a","ul")
+	$("#hs_more div").add("#h_s1,#h_s2").on({
+		mouseenter:function(){
+			$(this).find("ul").show()
+		},
+		mouseleave:function(){
+			$(this).find("ul").hide()
+		}
+	})
+	$("#hslist em.autoF").autofh()
+	//$("#hslist").find("form").autofh()
+	$("#hlist").on("mouseenter","li",function(){
+		$(this).addClass('on')
+	}).on("mouseleave","li",function(){
+		$(this).removeClass('on')
+	}).on("click","li",function(){
+		$(this).find("h3 a")[0].click();
+	}).on("click","a",function(e){
+		e.stopPropagation();
+	}).find("li").each(function(i){
+		if(i%3==2)
+			$(this).css("border-right","0")
+	}).last().css("border-right","0")
+	var $hotarea=$("#hotarea")
+	$hotarea.on("mouseover","dt",function(){
+		$hotarea.find("dd").hide().end().find("dt").removeClass("s");
+		$(this).addClass("s").next().show();
+	})
+	var $hs_area=$("#hs_area").on("click",".hs_hide",function(){
+		if($.cookie("hs_hide")){
+			$hs_area.removeClass("on")
+			$.cookie("hs_hide","")
+		}else{
+			$hs_area.addClass("on")
+			$.cookie("hs_hide",1)
+		}
+	})
+	if($hs_area.height()>32){
+		$hs_area.addClass("hs_hidep").find(".hs_hide").css("display","inline-block")
+	}
+	if($.cookie("hs_hide")){
+		$hs_area.addClass("on")
+	}
+	$("#pics_result").on("change",function(){
+		var h=window.location.href;
+		if($(this).prop("checked")&&h.indexOf("v4")<0){
+			h=h.split(".htm")
+			setTimeout(function() {
+			window.location.href = h[0]+"-v4.html";
+			}, 99)
+		}else if(!$(this).prop("checked")&&h.indexOf("v4")>0){
+			h=h.split("-v4")
+			setTimeout(function() {
+			window.location.href = h[0]+h[1];
+			}, 99)
+		}
+	})
+	$("#B1").click(function(){
+		$.cookie("esf_list","3");
+		window.location.reload();
+	})
+	$("#B2").click(function(){
+		$.cookie("esf_list","1");
+		window.location.reload();
+	})
+	$("#B3").click(function(){
+		$.cookie("esf_list","2");
+		window.location.reload();
+	})
+});
+</script>
+<script type="text/javascript">
+	$("#esflist").attr("class","on");
+</script>
+{template 'footer'}	

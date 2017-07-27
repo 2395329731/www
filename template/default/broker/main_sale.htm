@@ -1,0 +1,28 @@
+<div class="houseinfo mt10">
+      <h3><span>最新{$main_name[$HM]}</span><a href="{userurl($username, 'file=sale', $domain)}">更多>></a></h3>
+      <ul class="house">
+	  <!--{php $tags=tag("moduleid=5&condition=status>2 and username='$username' &pagesize=".$main_num[$HM]."&order=edittime desc&fields=*&length=56&template=null");}-->
+	  {loop $tags $i $t}
+	  			 		 <div class="b_elist_lloupan">
+           	  <div class="b_elist_lloupanimg fl"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb])}" width="100" height="75"></div>
+                <div class="b_elist_lloupantxt fl">
+                	<ul>
+                      <li class="title"><a href="{$t[linkurl]}" class="title" target="_blank" title="{$t[alt]}">{$t[title]}</a></li>
+                      <li><a href="{$MODULE[18][linkurl]}show.php?itemid={$t[houseid]}" target="_blank">{$t[housename]}</a>  {$t[address]}</li>
+                     <li>户型：{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}{if $t[toilet]}{$t[toilet]}卫{/if}，楼层：{$t[floor1]}/{$t[floor2]} 房龄：{$t[houseyear]}年</li>
+                      <li><span>{if $t[username] && $AJ[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
+			{if $t[qq] && $AJ[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
+			{if $t[ali] && $AJ[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
+			{if $t[msn] && $AJ[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
+			{if $t[skype] && $AJ[im_skype]}{im_skype($t[skype])}&nbsp;{/if}</span>&nbsp;
+                      <span>{timetodate($t[edittime], 3)}前发布</span></li>
+                    </ul>
+                </div>
+              <div class="b_elist_lloupantxt2 fl">{if $t[houseearm]}{$t[houseearm]}平米{else}暂无{/if}</div>
+                <div class="b_elist_lloupantxt3 fl">{if $t[price]>0}{$t[price]}万元{else}面议{/if}</div>
+                <div class="clear"></div>
+            </div>
+			
+		 		{/loop}
+		 		       </ul><div class="clear"></div>
+    </div>

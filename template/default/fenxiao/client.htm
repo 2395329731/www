@@ -1,0 +1,122 @@
+{template 'header'}
+<script type="text/javascript">
+	$("#fenxiao").attr("class","on");
+</script>	
+<link href="{AJ_SKIN}fenxiao.css" rel="stylesheet" type="text/css" />
+<div id="main" class="i_x_admin_certification i_x_tuijian cf">
+		<div class="bread">
+			您当前的位置：<a href="{$MODULE[1][linkurl]}">{$AJ[sitename]}</a>&gt;<a href="{$MODULE[1][linkurl]}fenxiao">分销平台</a>&gt;
+			<span>我已推荐的买房人</span>
+		</div>
+        <div class="left fl">
+	<div class="head_img">
+		<div class="img_div" id="img_div">
+			<img src="{useravatar($_username, 'large')}"/>
+			<a id="ghtx_btn" href="{$MODULE[2][linkurl]}avatar.php" target="_blank">更换头像</a>
+		</div>
+		<span>{$_truename}</span>
+	</div>
+	<ul class="i_x_yj_list">	
+		<li class="tj"><a  href="{$MODULE[1][linkurl]}fenxiao/client.php" ><i></i><span>用户中心首页</span></a></li>
+		<li class="jl"><a href="{$MODULE[1][linkurl]}fenxiao/tuijian.php"><i></i><span>我要推荐买房</span></a></li>
+		<li class="tj"><a  class="on"  href="{$MODULE[1][linkurl]}fenxiao/client.php" ><i></i><span>已推荐买房人</span></a></li>
+		<li class="jl"><a  href="{$MODULE[1][linkurl]}fenxiao/amount.php"><i></i><span>已赚取的佣金</span></a></li>
+		<li class="sm"><a  href="{$MODULE[2][linkurl]}validate.php?action=truename"><i></i><span>我的实名认证</span></a></li>
+	</ul>
+	<a href="{$MODULE[2][linkurl]}login.php" class="zjz_quite">退出登陆</a>
+
+</div>		
+<script type="text/javascript">
+	seajs.use('',function() {
+		var $a=$('#ghtx_btn');
+		$('#img_div').on({
+			'mouseover':function() {
+				$a.show();
+			},
+			'mouseout':function() {
+				$a.hide();
+			}
+		});
+	});
+	</script>
+<div class="right fr">
+			<h2><span>我已推荐的买房人</span><p class="tj_btn"><a class="tj" href="{$MODULE[1][linkurl]}fenxiao/tuijian.php">推荐买房人</a></p></h2>
+			<ul class="i_x_data cf">
+				<li><span>{$sy}</span><p>全部推荐的买房人</p></li>
+				<li><span>{$nums[1]}</span><p>已预约的买房人</p></li>
+				<li><span>{$nums[2]}</span><p>已到访的买房人</p></li>
+				<li><span>{$nums[3]}</span><p>已交定金的买房人</p></li>
+				<li><span>{$nums[4]}</span><p>已成交的买房人</p></li>
+			</ul>
+			<table id="line">
+				<tr>
+					<th>我已推荐的买房人</th>
+					<th>网站跟进情况</th>
+				</tr>{loop $lists $k $v}
+                                        <tr>
+                            <td class="first_td" >
+                                <p class="name">{$v[truename]}</p>
+                                <p class="phone_num">{$v[mobile]}</p>
+                                                            </td>
+                            <td>
+                                <div class="line" >
+                                    <div class="r1 r_win z1">
+                                    	<b></b>
+                                        <p>等待客服联系</p>
+                                        <div class="alert_msg">
+                                        	<i></i>
+                                            <span class="red">等待客服联系</span>
+                                                                                    </div>
+                                    </div>
+                                    <div class="r2 r_win z{if $v[status]>0}1{else}3{/if}">
+                                    	<b></b>
+                                        <p>预约</p>
+                                        <div class="alert_msg">
+                                        	<i></i>
+                                            <span class="red">预约</span>
+                                                                                    </div>
+                                    </div>
+                                    <div class="r3 r_win z{if $v[status]>1}1{else}3{/if}">
+                                    	<b></b>
+                                        <p>到访</p>
+                                        <div class="alert_msg">
+                                        	<i></i>
+                                            <span class="red">到访</span>
+                                                                                    </div>
+                                    </div>
+                                    <div class="r4 r_win z{if $v[status]>2}1{else}3{/if}">
+                                    	<b></b>
+                                        <p>交定金</p>
+                                        <div class="alert_msg">
+                                        	<i></i>
+                                            <span class="red">交定金</span>
+                                                                                    </div>
+                                    </div>
+                                    <div class="r5 r_win z{if $v[status]>3}1{else}3{/if}">
+                                    	<b></b>
+                                        <p>成交</p>
+                                        <div class="alert_msg">
+                                        	<i></i>
+                                            <span class="red">成交</span>
+                                                                                    </div>
+                                    </div>
+                                    <div class="r6 r_win z{if $v[status]==4}1{else}3{/if}">
+                                    	<b></b>
+                                        <p>发放佣金</p>
+                                        <div class="alert_msg">
+                                        	<i></i>
+                                            <span class="red">发放佣金</span>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    推荐时间：{timetodate($v['addtime'],5)}                                   </div>
+                            </td>
+                        </tr>{/loop}
+                				</table>
+			<div class="pagination">{$pages}
+							</div>
+		</div>
+	</div>
+	{template 'footer'}
+

@@ -1,0 +1,32 @@
+{template 'header'}
+<link href="{AJ_SKIN}zxother_6.0.css" media="all" rel="stylesheet" type="text/css">
+<div class="sBg_">
+  <div class="divTab">
+    <ul>
+      
+	  {php $maincat = get_maincat(0,13)}
+		{loop $maincat $k $v}
+         <li class="{if $v[catid]==$catid}h{/if}"><a href='{$MODULE[13][linkurl]}list-{$v[catid]}.html '>{$v[catname]}</a></li>  {/loop} 
+      
+         <li class="fl_r"><b>已有<font color="#FF0000">{$items}</font>人招标</b></li>
+    </ul>
+  </div>
+  <div class="fbForm_">
+    
+   
+  <div class="viz_"></div>
+  <div class="zbLi">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="tabt">
+      <tbody><tr>
+        <td class="a">{$city_name}装修招标</td>
+        <td class="b">所属区域</td>
+        <td class="c">信息类型</td>
+        <td class="g">发布时间</td>
+      </tr>
+    </tbody></table>
+     {if $tags}{template 'list-'.$module, 'tag'}{/if}
+    </div>
+  </div>
+ </div>
+<div style="height:7px; overflow:hidden;"></div>
+{template 'footer'}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<link href="{AJ_SKIN}reset.css" rel="stylesheet" type="text/css" />
+	<link href="{AJ_SKIN}fabu.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>
+	<script src="{AJ_SKIN}js/sea.js" type="text/javascript"></script>	<title>免费发布房源</title>
+</head>
+<body>
+	<div id="uf_map"></div>
+	<p class="red">点击地图快速选取位置，地图可放大拖拽，亦可自行修改详细地址。</p>
+	<form id="add_form">小区名称：<input type="text" id="add_name" name="communityname" class="xiaoqu"/>
+		<input type="hidden" name="laticoor" id="laticoor">
+		<input type="hidden" name="longcoor" id="longcoor">
+		<input type="hidden" id="city" name="city" />
+		<input type="hidden" id="type" name="type" value="community" />
+		<input type="hidden" id="area" name="areaname" />
+		区域:{if $areaid}{ajax_area_select('areaid', '请选择', $areaid)}{else}{ajax_area_select('areaid', '请选择', $cityid)}{/if}
+		详细地址：<input type="text" id="address" name="address" placeholder="点击地图选择" />
+		<a href="javascript:" class="obtn" id="add"><button type="submit"></button>添加小区</a>
+	</form>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A0d7a1091e5b98f5430228d016ee0ac7"></script>
+<script>
+seajs.use("alert",function(alertM){
+	var $f=$("#add_form").on("submit",function(){
+			if(!$add_name.val().length){
+				$add_name.trigger("focus");
+				alertM("请输入小区名称",{cName:"alert"})
+			}else if(!$area.val().length){
+				alertM("请点选地图确认区域",{cName:"alert"})
+			}else{
+				alertM("正在添加，请稍候",{cName:"loading",time:"y"})
+				$.ajax({
+					url:"{$MODULE[6][linkurl]}house.php?action=addcommunity",
+					type:'post',
+					dataType:"json",
+					data:$f.serialize()
+				}).done(function(data){
+					alertM(data.alert,{cName:data.state,rf:function(){
+						if(data.state=="succ")
+							window.parent.setEsf(data.name,data.id,data.address,data.areaid,data.map)
+					}})
+				})
+			}
+			return false;
+		}).on("click","a",function(){
+			$f.trigger("submit");
+			return false;
+		}),
+		$x=$("#laticoor"),
+		$y=$("#longcoor"),
+		$add_name=$("#add_name").trigger("focus");
+		$city=$("#city"),
+		$area=$("#area"),
+		$address=$("#address"),
+		map = new BMap.Map("uf_map", {
+			minZoom: 12
+		}),
+		point = new BMap.Point({$map_mid}),
+		myGeo = new BMap.Geocoder(),
+		marker = new BMap.Marker(point);
+	map.enableScrollWheelZoom();
+	map.centerAndZoom(point, 12);
+	map.addControl(new BMap.NavigationControl());
+	map.addOverlay(marker);
+	map.addEventListener("click", function(e) {
+		myGeo.getLocation(e.point, function(result){      
+			if(result){
+				$x.val(e.point.lat)
+				$y.val(e.point.lng)
+				$city.val(result.addressComponents.city)
+				$area.val(result.addressComponents.district)
+				$address.val(result.addressComponents.city+result.addressComponents.district+result.addressComponents.street+result.addressComponents.streetNumber).trigger("focus")
+				$add_name.trigger("focus")
+			}
+			marker.setPosition(e.point)
+		});
+	});
+	var h=window.location.href.split("#");
+	if(h.length>1)
+		$add_name.val(unescape(h[1]))
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+{template 'header', $template}
+  <link rel="stylesheet" type="text/css" href="{AJ_SKIN}sell/pages.css"/>
+  <div class="shop_main">
+    <div class="left_side">
+       <!--经纪人信息-->
+      <div class="message">
+        <h1><a href="{$COM[linkurl]}">{$COM[truename]}的店铺</a></h1>
+        <div class="m_tex">
+          <p class="photo"><img src="{useravatar($COM[username], 'large')}" width="140" height="140"><br>
+            <b>{$COM[truename]}</b></p>
+			
+          <a class="btn_1" href="{$MODULE[2][linkurl]}message.php?action=send&touser={$COM[username]}" style="cursor:pointer;"></a>
+          <p class="renzheng">
+		  {if $COM[vtruename]}<img align="absmiddle" title="已通过身份证认证" src="{AJ_SKIN}image/sell/identity_yes.gif">{else}<img align="absmiddle" title="未通过身份证认证" src="{AJ_SKIN}image/sell/identity_no.gif">{/if}
+		   {if $COM[vcompany]}<img align="absmiddle" title="已通过职业资格认证" src="{AJ_SKIN}image/sell/aptitude_yes.gif">{else}<img align="absmiddle" title="未通过职业资格认证" src="{AJ_SKIN}image/sell/aptitude_no.gif">{/if}</p>
+          <ul>
+            <li>电话：<span class="red">{if $domain}{$COM[mobile]}{else}{anti_spam($COM[mobile])}{/if}{if $AJ[sms] && $COM[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($COM[mobile])}" target="_blank"><img src="{AJ_SKIN}image/sendsms.gif" align="absmiddle" title="发送短信" alt=""/></a>{/if}</span></li>
+            <li>即时通讯：{if $COM[username] && $AJ[im_web]}{im_web($COM[username])}&nbsp;{/if}
+	{if $COM[qq] && $AJ[im_qq]}{im_qq($COM[qq])}&nbsp;{/if}
+	{if $COM[ali] && $AJ[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
+	{if $COM[msn] && $AJ[im_msn]}{im_msn($COM[msn])}&nbsp;{/if}
+	{if $COM[skype] && $AJ[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}</li>
+            <li>服务：{area_pos($COM[areaid], '/')}</li>
+            <li>公司：{$COM[company]} </li>
+			<li>认证：{if $COM[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="资料通过工商认证"/>{/if}
+	{if $COM[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="资料通过实名认证"/>{/if}
+	{if $COM[vbank]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_bank.gif" width="16" height="16" align="absmiddle" title="资料通过银行帐号认证"/>{/if}
+	{if $COM[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" width="16" height="16" align="absmiddle" title="资料通过手机认证"/>{/if}
+	{if $COM[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" width="16" height="16" align="absmiddle" title="资料通过邮件认证"/>{/if}
+	{if $COM[validated]}&nbsp;<img src="{AJ_SKIN}image/check_right.gif" align="absmiddle"/> 企业资料通过{$COM[validator]}认证{/if}	</li>
+          </ul>
+        </div>
+      </div>
+            <!--筛选房源-->
+      <div class="left_box">
+        <div class="tit"><span class="fl"></span>
+          <h1>筛选房源</h1>
+          <span class="fr"></span></div>
+        <div class="box_bottom">
+          <dl>
+           
+			         
+                        <dd>按价格</dd>
+						{php $price = array('200元以下', '200-500元', '500-1000元', '1000-1500元', '1500-2000元', '2000-3000元','3000元以上');}
+{loop $price $k $v}  <dt><a href='{$MODULE[1][linkurl]}index.php?homepage={$username}&file=rent&r={$_GET['r']}&a={$_GET['a']}&p=<?php echo $k+1;?>' class='{if $_GET['p']==($k+1)}select{else}{/if}'>{$v}</a></dt>{/loop}
+
+			         
+			             <dd>按面积</dd>
+                      {php $mianji = array('40平米以下', '40-60平米', '60-80平米', '80-100平米', '100-120平米', '120-150平米','150平米以上');}
+{loop $mianji $k $v}  <dt><a href='{$MODULE[1][linkurl]}index.php?homepage={$username}&file=rent&r={$_GET['r']}&p={$_GET['p']}&a=<?php echo $k+1;?>' class='{if $_GET['a']==($k+1)}select{else}{/if}'>{$v}</a></dt>{/loop}
+			             <dt class="bo-none"> </dt>
+            <dd>按户型</dd>
+                       {php $huxing = array('一室', '二室', '三室', '四室', '其它');}
+{loop $huxing $k $v}  <dt><a href='{$MODULE[1][linkurl]}index.php?homepage={$username}&file=sale&p={$_GET['p']}&a={$_GET['a']}&r=<?php echo $k+1;?>' class='{if $_GET['r']==($k+1)}select{else}{/if}'>{$v}</a></dt>{/loop}
+			           </dl>
+        </div>
+      </div>
+    </div>
+    <!--右边-->
+    <div class="right">
+      <div class="nav">
+<span class="a_guanli"><a href="{$MODULE[2][linkurl]}"></a></span>
+
+<a href="{$COM[linkurl]}" class="{if $file=='homepage'}select{else}{/if}">首页</a>
+{loop $MENU $k $v}
+<a href="{$v[linkurl]}" class="{if $file==$menu_file[$k]}select{else}{/if}">{$v[name]}</a>
+{/loop}</div> 
+
+     <div class="list_tit"><span class="fl"></span>
+        <div class="center">
+          <p>当前有<span>{$items}</span>套租房满足您的条件</p>
+          <h1>全部房源</h1><div class="b_elist_linput_defult"><span class="b_elist_linput_time"><em><a href="javascript:;">默认排序</a></em><div class="down_list"><A 
+href="{$MODULE[1][linkurl]}index.php?homepage={$username}&file=rent&r={$_GET['r']}&a={$_GET['a']}&p={$_GET['p']}">默认排序</A> <A 
+href="{$MODULE[1][linkurl]}index.php?homepage={$username}&file=rent&r={$_GET['r']}&a={$_GET['a']}&p={$_GET['p']}&order=ed">按发布时间从新到旧</A> <A 
+href="{$MODULE[1][linkurl]}index.php?homepage={$username}&file=rent&r={$_GET['r']}&a={$_GET['a']}&p={$_GET['p']}&order=ea">按发布时间从旧到新</A> <A 
+href="{$MODULE[1][linkurl]}index.php?homepage={$username}&file=rent&r={$_GET['r']}&a={$_GET['a']}&p={$_GET['p']}&order=hd">按面积从大到小排序</A> <A 
+href="{$MODULE[1][linkurl]}index.php?homepage={$username}&file=rent&r={$_GET['r']}&a={$_GET['a']}&p={$_GET['p']}&order=ha">按面积从小到大排序</A> <A 
+href="{$MODULE[1][linkurl]}index.php?homepage={$username}&file=rent&r={$_GET['r']}&a={$_GET['a']}&p={$_GET['p']}&order=pd">按租金从高到低排序</A> <A 
+href="{$MODULE[1][linkurl]}index.php?homepage={$username}&file=rent&r={$_GET['r']}&a={$_GET['a']}&p={$_GET['p']}&order=pa">按租金从低到高排序</A></div></span>
+            
+          </div><script language="javascript">
+$(document).ready(function(){
+	 //导航下拉
+	   $('.b_elist_linput_defult').hover(
+	   function(){
+	      $('.down_list').show().end();	
+	   },
+	   function(){
+	      $('.down_list').hide().end();	
+	   }
+	   );
+})
+</script>
+        </div>
+        <span class="fr"></span></div>
+      <!--列表-->
+      <div class="list">
+        <ul>
+		
+	
+		{loop $lists $i $t}
+		          <li><span class="pic"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb])}" width="120" height="90"></a></span>
+              <span class="txt"><h1><a href="{$t[linkurl]}" class="title" target="_blank" title="{$t[alt]}">{dsubstr($t[alt], 42, $suffix = '')}</a> </h1> <p> <a href="{$MODULE[18][linkurl]}show.php?itemid={$t[houseid]}" target="_blank">{$t[housename]}</a> &nbsp;&nbsp;户型：{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}{if $t[toilet]}{$t[toilet]}卫{/if}<br>面积：{$t[houseearm]}平米 &nbsp;&nbsp;楼层：{$t[floor1]}/{$t[floor2]}层<br>
+              地址：[{area_pos($t[areaid], '')}]{$t[address]}</p> </span>
+              <span class="price">{if $t[price]>0}{$t[price]}元/月{else}面议{/if}</span>
+              <span class="time">{timetodate($t[edittime], 3)}更新</span>
+            <div class="clear"></div>
+          </li>
+		   {/loop}
+		        
+		          </ul>
+      </div>
+           <div class="pagination">
+          <div class="pagination-inner"> {$pages}</div>
+        </div>
+    </div>
+  </div>
+  <!--底部-->
+{template 'footer', $template}

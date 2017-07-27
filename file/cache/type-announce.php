@@ -1,0 +1,1 @@
+<?php defined('IN_AIJIACMS') or exit('Access Denied'); return array (2 => array ('typeid' => '2','parentid' => '0','typename' => '本站公告','style' => '',),); ?>

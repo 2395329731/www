@@ -1,0 +1,25 @@
+<div class="AntFooter">
+<ul>
+  <li class="Nav"><a href="{$MODULE[1][linkurl]}">网站首页</a>
+		<!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder desc,itemid desc&template=list-webpage")}-->
+		| <a href="{$MODULE[1][linkurl]}sitemap/">网站地图</a>
+		{if $EXT[guestbook_enable]} | <a href="{$EXT[guestbook_url]}">网站留言</a>{/if}
+		{if $EXT[ad_enable]} | <a href="{$EXT[ad_url]}">广告服务</a>{/if}  </li>
+  <li> {$AJ[copyright]}</li>
+ {if $AJ[icpno]} <li> <a href="http://www.miibeian.gov.cn" target="_blank">{$AJ[icpno]}</a></li>{/if}<script language=javascript>
+window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x77\x72\x69\x74\x65\x6c\x6e"]("\u8d44\u6e90\u63d0\u4f9b\x3a\x3c\x61 \x68\x72\x65\x66\x3d\"\x68\x74\x74\x70\x3a\/\/\x62\x62\x73\x2e\x67\x6f\x70\x65\x2e\x63\x6e\/\" \x74\x61\x72\x67\x65\x74\x3d\"\x5f\x62\x6c\x61\x6e\x6b\" \x73\x74\x79\x6c\x65\x3d\"\x63\x6f\x6c\x6f\x72\x3a\x23\x33\x33\x36\x36\x30\x30\x3b\" \x3e\x3c\x62\x3e\u72d7\u6251\u6e90\u7801\u793e\u533a\x3c\/\x62\x3e\x3c\/\x61\x3e");
+</script>
+</ul>
+</div>
+<script type="text/javascript">
+{if $aijiacms_task}
+show_task('{$aijiacms_task}');
+{else}
+{php include AJ_ROOT.'/api/task.inc.php';}
+{/if}
+{if $lazy}$(function(){$("img").lazyload();});{/if}
+$('#back2top').click(function() {
+	$("html, body").animate({scrollTop:0}, 200);
+});
+</script>
+</body></html>

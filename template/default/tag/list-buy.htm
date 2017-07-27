@@ -1,0 +1,14 @@
+{loop $tags $k $t}
+			<!--list-->
+				<table class="qzlist">
+					<tr>
+						<td class="gray">
+					<a class="blue f14" href="{$t[linkurl]}" target="_blank" title="{$t[title]}">{$t[title]}</a> {area_poss($t[areaid], '', 1)}						</td>
+												<td class="w1">{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}</td>
+												<td class="w2"><strong>{if $t[price]}{$t[price]}元{else}面议{/if}</strong></td>
+						<td class="w2"><strong>{$t[houseearm]}平米</strong></td>
+						<td class="w2 gray">{timetodate($t[edittime], 3)}</td>
+					</tr>
+				</table>
+{/loop}		
+{if $showpage && $pages}<div class="pagination">{$pages}</div>{/if}

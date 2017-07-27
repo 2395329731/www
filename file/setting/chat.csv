@@ -1,0 +1,8 @@
+chatid,ID,
+fromuser,发起人,
+fgettime,发起人收到信息时间,
+freadtime,发起人读取信息时间,
+touser,接收人,
+tgettime,接收人收到信息时间,
+treadtime,接收人读取信息时间,
+forward,来源页面,

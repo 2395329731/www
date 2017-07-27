@@ -1,0 +1,1 @@
+<option value="18">住宅</option><option value="19">商铺</option><option value="54">写字楼</option></select>

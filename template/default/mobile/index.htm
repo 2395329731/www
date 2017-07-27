@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8"/>
+	{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<link rel="apple-touch-icon" href="{AJ_SKIN}images/mobile/app144.png" />
+	<link rel="apple-touch-icon-precomposed" href="{AJ_SKIN}images/mobile/app144.png" />
+	<link href="{AJ_SKIN}images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+	<link href="{AJ_SKIN}css/mobile.css?v=3" rel="stylesheet" type="text/css" /><link href="{AJ_SKIN}css/mobile_alert.css?v=3" rel="stylesheet" type="text/css" /><script src="{AJ_SKIN}js/mobile/zepto.js?v=3" type="text/javascript"></script><script src="{AJ_SKIN}js/mobile/swipe.js?v=3" type="text/javascript"></script><script src="{AJ_SKIN}js/mobile/iscroll.js?v=3" type="text/javascript"></script><script src="{AJ_SKIN}js/mobile/mobile_alert.js?v=3" type="text/javascript"></script><script src="{AJ_SKIN}js/mobile/imagesloaded.js?v=3" type="text/javascript"></script>	
+  
+	<title>{$head_title}</title>
+</head>
+<header class="index_header">
+		<div class="fl">
+			<a href="index.php" class="a_down">{$AJ[city_sitename]}</a>
+		</div>
+		<div class="fr">
+			<a href="javascript:" id="dh" class="daohang_ico"></a>
+		</div>
+		<a href="index.php" class="logo">
+			<img src="{if $AJ[waplogo]}{$AJ[waplogo]}{else}{AJ_SKIN}image/waplogo.png{/if}" alt="{$AJ[sitename]}">
+		</a>
+	</header>
+    <div class="content_header"></div>
+<script>
+	$("#dh").on("click",function(){
+		al({
+			id:"daohang",
+			targetElement: '.content_header',
+			t:"频道导航",
+			p:'<div class="pd_list"><ul><li><a href="index.php">首页</a></li><li><a href="index.php?moduleid=6">新房</a></li>><li><a href="index.php?moduleid=5">二手房</a></li><li><a href="index.php?moduleid=7">租房</a></li><li><a href="index.php?moduleid=8">资讯</a></li></ul></div>'
+		})
+	})
+</script>
+	<div class="index">	
+	<div class="search" id="hs"><img src="{AJ_SKIN}images/mobile/index_seach.png"></div>
+	   <script>
+$("#hs").on("click",function(){
+	al({
+		id:'sousuo',
+		t:"房源搜索",
+		animationStart:'block',
+		animationEnd:'none',
+		isBlur:'none',
+			p:'<div id="form_search"><form action="index.php" method="get"><input type="hidden" name="moduleid"  value="6" /><div class="category"><p><span class="theact">新房</span><i></i></p><ul><li><label><input type="radio" name="moduleid" rel="新房" value="6" /> 新房</label></li><li><label><input type="radio" name="cell" rel="租房" value="7" /> 租房</label></li><li><label><input type="radio" name="moduleid" rel="二手房" value="5" /> 二手房</label></li><li><label><input type="radio" name="moduleid" rel="资讯" value="news" /> 资讯</label></li></ul></div><input type="search" class="key" x-webkit-speech="" name="kw" placeholder="请输入关键词"><button type="submit" class="search_ico_red"></button></form></div></div>',
+		of:function(){
+			var $pop=$("#h_pop"),
+				$f=$("#form_search form"),
+				$t=$("#form_search .key");
+			$t[0].oninput=function(){
+				$.ajax({
+					url: "",
+					dataType: 'json',
+					data: $f.serialize(),
+					success:function(data) {
+						if (data.length > 0) {
+							var i = 0;
+							l = data.length,
+							str = "";
+							for (; i < l; i++) {
+								str += '<a href="'+data[i].href+'">' + data[i].name + '</a>';
+							}
+							$pop.html(str);
+						} else {
+							$pop.empty();
+						}
+					}
+				});
+			}
+		}
+	})
+});
+</script>
+		<div id="swipe">
+    <div class="swipe">
+	<!--{php $tags=tag("moduleid=8&condition=status=3 and level=2 and thumb!=''&areaid=$cityid&length=16&order=hits desc&pagesize=5&target=_blank&template=null");}-->
+	{loop $tags $k $t}
+                        <a href="{$t[linkurl]}" class="fl"><img src="{imgurl($t[thumb])}"/></a>
+                          {/loop}
+             
+    </div>
+    <p>
+                  <i class="on"></i>
+                    <i ></i>
+                    <i ></i>
+                    <i ></i>
+                    <i ></i>
+            </p>
+</div>
+		<nav class="cf">
+			<a href="index.php?moduleid=6">
+				<img src="{AJ_SKIN}images/mobile/ico1.png">新房</a>
+			<a href="index.php?moduleid=5">
+				<img src="{AJ_SKIN}images/mobile/ico3.png">二手房</a>
+			<a href="index.php?moduleid=7">
+				<img src="{AJ_SKIN}images/mobile/ico4.png">租房</a>
+		 <a href="index.php?moduleid=8">
+				<img src="{AJ_SKIN}images/mobile/ico6.png">资讯</a>
+			
+		</nav>		
+		<div style="margin:12px 5px;border-bottom:1px #ddd solid;border-top:1px #ddd solid;padding-top:7px;">
+			<a href="tuijian.php"><img src="static/img/zhuan.jpg" width="315"></a>
+		</div>
+
+		<section class="news_list">
+			<h3>
+				<a href="index.php?moduleid=8" class="a_right">今日头条</a>
+			</h3>
+			<ul><!--{php $tags=tag("moduleid=8&condition=status=3 and level=1&areaid=$cityid&length=40&order=addtime desc&pagesize=6&target=_blank&template=null");}-->
+	{loop $tags $k $t}
+                       <li> <a href="{$t[linkurl]}" >{$t[title]}</a></li>
+                          {/loop}
+							</ul>
+		</section>
+		<section class="h_list">
+			<h3 id="swipe3a">
+				<a href="javascript:" data-i="0" class="on">热门楼盘</a>
+				
+				
+			
+			</h3>
+			<div id="swipe3">
+				<div class="swipe">
+			
+					<div class="fl">
+						<div class="house_list">	<!--{php $tags=tag("moduleid=6&condition=status=3  and isnew=1 and thumb!=''&areaid=$cityid&length=10&pagesize=5&order=addtime desc&target=_blank&template=null");}-->
+{loop $tags $k $t}
+															<a href="{$t[linkurl]}">
+									<img src="{imgurl($t[thumb])}">
+									<h5><span class="fr red">{if $t[price]}{$t[price]}元/㎡{else}待定{/if}</span>{$t[title]}</h5>
+									<span class="gray">[{area_poss($t[areaid], ' ')}]</span><br>
+									{dsubstr($t[address], 28, '..')}<br>
+									<span class="red">{dsubstr($t[tedian], 28, '..')}</span>
+								</a>
+										 {/loop}
+													</div>
+												<a href="index.php?moduleid=6" class="i_sh_bottom"><span>查看全部楼盘</span></a>
+											</div>
+				
+										
+									</div>
+			</div>
+		</section>
+		<section class="h_list">
+			<h3 id="swipe4a">
+				<a href="javascript:" data-i="0" class="on">二手房</a>
+				
+			</h3>
+			<div id="swipe4">
+				<div class="swipe">
+					
+					<div class="fl">
+						<div class="house_list">
+							<!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$cityid&length=22&pagesize=5&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+														<a href="{$t[linkurl]}">
+								<img src="{imgurl($t[thumb])}">
+								<i class="tag0"></i>
+																<u>个人</u>
+																<h5><span class="fr red">{if $t[price]}{$t[price]}万{else}面议{/if}</span>{$t[title]}</h5>
+								<p><span class="gray">[{area_pos($t[areaid], '')}]</span></p>
+								<p>{if $t[room]}{$t[room]}室{else}待定{/if}{if $t[hall]}{$t[hall]}厅{/if}&nbsp;{$t[houseearm]}平米&nbsp;{$t[floor1]}/{$t[floor2]}层&nbsp;房龄：{$t[houseyear]}年&nbsp;								</p>
+							</a>{/loop}
+													</div>
+												<a href="index.php?moduleid=5&typeid=0" class="i_sh_bottom"><span>查看全部个人房源</span></a>
+											</div>
+					<div class="fl">
+						<div class="house_list">
+													<!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$cityid&catid=10&length=22&pagesize=3&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+														<a href="{$t[linkurl]}">
+								<img src="{imgurl($t[thumb])}">
+								<i class="tag0"></i>
+																
+																<h5><span class="fr red">{if $t[price]}{$t[price]}万{else}面议{/if}</span>{$t[title]}</h5>
+								<p><span class="gray">[{area_pos($t[areaid], '')}]</span></p>
+								<p>{if $t[room]}{$t[room]}室{else}待定{/if}{if $t[hall]}{$t[hall]}厅{/if}&nbsp;{$t[houseearm]}平米&nbsp;{$t[floor1]}/{$t[floor2]}层&nbsp;房龄：{$t[houseyear]}年&nbsp;								</p>
+							</a>{/loop}
+													</div>
+											</div>
+				</div>
+			</div>
+		</section>
+		<section class="h_list">
+				<h3 id="swipe2a">
+				<a href="javascript:" data-i="0" class="on">租房</a>
+				
+			</h3>
+			<div id="swipe2">
+				<div class="swipe">
+					
+					<div class="fl">
+						<div class="house_list">
+							<!--{php $tags=tag("moduleid=7&condition=status=3&areaid=$cityid&typeid=0&length=22&pagesize=5&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+														<a href="{$t[linkurl]}">
+								<img src="{imgurl($t[thumb])}">
+								<i class="tag0"></i>
+																<u>个人</u>
+																<h5><span class="fr red">{if $t[price]}{$t[price]}元/月{else}面议{/if}</span>{$t[title]}</h5>
+								<p><span class="gray">[{area_pos($t[areaid], '')}]</span></p>
+								<p>{if $t[room]}{$t[room]}室{else}待定{/if}{if $t[hall]}{$t[hall]}厅{/if}&nbsp;{$t[houseearm]}平米&nbsp;{$t[floor1]}/{$t[floor2]}层&nbsp;房龄：{$t[houseyear]}年&nbsp;								</p>
+							</a>{/loop}
+													</div>
+												<a href="index.php?moduleid=5&typeid=0" class="i_sh_bottom"><span>查看全部个人房源</span></a>
+											</div>
+					<div class="fl">
+						<div class="house_list">
+													<!--{php $tags=tag("moduleid=7&condition=status=3&areaid=$cityid&catid=15&length=22&pagesize=3&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+														<a href="{$t[linkurl]}">
+								<img src="{imgurl($t[thumb])}">
+								<i class="tag0"></i>
+																
+																<h5><span class="fr red">{if $t[price]}{$t[price]}元/月{else}面议{/if}</span>{$t[title]}</h5>
+								<p><span class="gray">[{area_pos($t[areaid], '')}]</span></p>
+								<p>{if $t[room]}{$t[room]}室{else}待定{/if}{if $t[hall]}{$t[hall]}厅{/if}&nbsp;{$t[houseearm]}平米&nbsp;{$t[floor1]}/{$t[floor2]}层&nbsp;房龄：{$t[houseyear]}年&nbsp;								</p>
+							</a>{/loop}
+													</div>
+											</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	{template 'footer', $TP}
+<script>
+	$("#i_close").on("click",function(){
+		$("#fixed").remove();
+	})
+
+	var $swi=$("#swipe i");
+	swipe = Swipe(document.getElementById('swipe'), {
+		startSlide: 0,
+		auto: 4000,
+		transitionEnd: function(index, element) {
+			var $t=$swi.filter(".on"),
+				l=$swi.length-1;
+			$swi.removeClass("on")
+			if($t.index()==l)
+				$swi.eq(0).addClass("on")
+			else
+				$t.next().addClass("on")
+		}
+	});
+	var $sw2i=$("#swipe2a a").on("click",function(){
+		swipe2.slide($(this).data("i"))
+	});
+	var $sw3i=$("#swipe3a a").on("click",function(){
+		swipe3.slide($(this).data("i"))
+	});
+	var $sw4i=$("#swipe4a a").on("click",function(){
+		swipe4.slide($(this).data("i"))
+	});
+	var swipe2 = Swipe(document.getElementById('swipe2'),{
+		transitionEnd: function(index, element) {
+			$sw2i.removeClass("on").eq(index).addClass("on")
+		}
+	});
+	var swipe3 = Swipe(document.getElementById('swipe3'),{
+		transitionEnd: function(index, element) {
+			$sw3i.removeClass("on").eq(index).addClass("on")
+		}
+	});
+	var swipe4 = Swipe(document.getElementById('swipe4'),{
+		transitionEnd: function(index, element) {
+			$sw4i.removeClass("on").eq(index).addClass("on")
+		}
+	});
+
+$(".i_sh_list").on("click","i",function(){
+	$(this).parent().toggleClass("on")
+})
+$("#group_join").on("submit",function(){
+	if(!$("#gj_h_id").val().length){
+		alert("预约楼盘必须通过下拉列表选择");
+		$("#gj_house").focus();
+	}else if(!/^1[3458]\d{9}$/.test($("#gj_mobile").val())){
+		alert("手机号码格式错误")
+		$("#gj_mobile").focus();
+	}else if(!$("#gj_code").val().length){
+		alert("验证码不得为空")
+		$("#gj_code").focus();
+	}else
+		$.ajax({
+			url:"groupbuy",
+			dataType:"json",
+			data:$("#group_join").serialize(),
+			success:function(data){
+				alert(data.alert)
+				if(data.state=="succ"){
+					$("#gj_house").val("")
+					$("#gj_mobile").val("")
+					$("#gj_code").val("")
+					$("#gj_h_id").val("")
+				}
+			}
+		})
+	return false;
+})
+$("#get_code").on("click",function(){
+	var $t=$(this);
+	if(!/^1[3458]\d{9}$/.test($("#gj_mobile").val())){
+		alert("手机号码格式错误")
+		$("#gj_mobile").focus();
+	}else
+		$.ajax({
+			url:"/getcode.html",
+			dataType:"json",
+			data:{
+				mobile:$("#gj_mobile").val()
+			},
+			success:function(data){
+				if (data.state == "succ") {
+					$t.prop("disabled",true).text("等待120秒");
+					var i = 119;
+					var setin = setInterval(function() {
+						$t.html("等待" + i + "秒")
+						if (--i < 0) {
+							$t.prop("disabled",false).html("获取验证码");
+							clearInterval(setin);
+						}
+					}, 999)
+				}
+			}
+		})
+	return false;
+})
+var $t=$("#gj_house").on("focus",function(){
+	al({
+		t:"选择楼盘",
+		p:'<input type="search" style="width:100%" id="gj_select" x-webkit-speech name="key" placeholder="请输入关键字或拼音"><div id="h_pop2"></div>',
+		of:function(){
+			var $pop=$("#h_pop2").on("click","a",function(){
+					al.remove.call($(".alert"));
+					$("#gj_house").val($(this).text());
+					$("#gj_h_id").val($(this).data("val"))
+				}),
+				$t=$("#gj_select");
+			$t.focus()[0].oninput=function(){
+				$.ajax({
+					url: "hgetname.html",
+					dataType: 'json',
+					data:{
+						key:$t.val()
+					},
+					success:function(data) {
+						if (data.length > 0) {
+							var i = 0;
+							l = data.length,
+							str = "";
+							for (; i < l; i++) {
+								str += '<a href="javascript:" data-val="'+data[i].hid+'">' + data[i].name + '</a>';
+							}
+							$pop.html(str);
+						} else {
+							$pop.empty();
+						}
+					}
+				});
+			}
+		}
+	})
+})
+</script>
+	<footer>
+	<p>
+		<a href="mobile.php?go=pc">电脑版</a>｜<a target="_blank" href="my.php">发布房源</a>｜<a href="more.php">更多</a><a href="./" class="fr">&copy;{$AJ[sitename]}</a>
+	</p>
+</footer>
+</body>
+</html>

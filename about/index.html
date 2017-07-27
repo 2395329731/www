@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://localhost/mobile/about.php?itemid=1">
+<link rel="archives" title="AIJIACMS房产网站" href="http://localhost/archiver/"/>
+<link rel="shortcut icon" type="image/x-icon" href="http://localhost/favicon.ico"/>
+<link href="http://localhost/skin/default/reset.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="http://localhost/skin/default/style.css"/><link href="http://localhost/skin/default/esf.css" rel="stylesheet" type="text/css" /><script type="text/javascript" src="http://localhost/lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="http://localhost/file/script/config.js"></script>
+<script type="text/javascript" src="http://localhost/file/script/jquery.js"></script>
+<script type="text/javascript" src="http://localhost/file/script/common.js"></script>
+<script type="text/javascript" src="http://localhost/file/script/page.js"></script>
+<script src="http://localhost/skin/default/js/sea.js" type="text/javascript"></script>
+<title>关于我们_AIJIACMS房产网站</title>
+<script type="text/javascript">
+GoMobile('http://localhost/mobile/about.php?itemid=1');
+ var apptype = "house";
+</script>
+</head><body>
+<!-- <div id="top_bar">
+<div class="cf wrap">
+<div class="fl" id="aijiacms_member"></div>
+<div class="fr">
+<ul>
+            <li class="home"><a class="a" href="http://localhost/" title="首页">首页</a></li>
+<li class="favorite" id="favorite"><a class="a" href="http://localhost/extend/shortcut.php" title="保存桌面">保存桌面</a></li>
+<li class="phone"><a class="a" href="http://localhost/mobile/mobile.php" target="_blank">手机版</a></li>
+                <li class="h_qrcode"><a href="javascript:Dqrcode();">二维码</a>&nbsp;</li>                <li class="top_nav" ><a class="a" href="http://localhost/map">地图找房</a></li>
+</ul>
+</div>
+</div>
+</div> -->
+<div id="aijiacms_qrcode" style="display:none;"></div><h1 class="hide_title">关于我们</h1><div class="nav_box">
+<div id="nav">
+<h1><a href="http://localhost/"><img src="http://localhost/skin/default/images/logo.gif" alt="AIJIACMS房产网站"/></a></h1>
+<a href="http://localhost/map" target="_blank" class="i_smap chenjianqiang" >地图找房</a>
+<form id="i_search" method="post" target="_blank" autocomplete="off" onSubmit="return false;" class="chenjianqiang">
+<div class="search_item" data-type="house"><span>新房</span><s><i></i><u></u></s></div>
+<ul class="search_item_list none">
+
+
+<li data-type="house">新房</li>
+
+<li data-type="sale">二手房</li>
+
+<li data-type="rent">出租</li>
+
+<li data-type="news">资讯</li>
+
+<li data-type="video">视频</li>
+
+<li data-type="buy">求购</li>
+
+<li data-type=""></li>
+
+
+</ul>
+<input type="text" name="keyword" class="keyword "  x-webkit-speech value="请输入搜索内容" id="input_chen">
+<button type="submit" title="房源搜索" id="button_chen">搜索</button>
+</form>
+<!-- <a href="http://localhost/member/publish.php" target="_blank" class="fabu">免费发布房源</a> -->
+</div>
+</div>
+<script>
+seajs.use("hsearch",function(hs){
+    
+hs("#i_search",{
+house:{
+url:"http://localhost/house/list-k",
+initUrl:"http://localhost/house/list.html",
+hz:".html",
+msg:"请输入楼盘名称(中文/拼音/简拼)、地址",
+autoUrl:"http://localhost/house/house.php?action=house"
+},
+sale:{
+url:"http://localhost/sale/list-k",
+initUrl:"http://localhost/sale/list.html",
+hz:".html",
+msg:"请输入小区名称/地址/标题",
+autoUrl:"http://localhost/house/house.php?action=xiaoqu"
+},
+rent:{
+url:"http://localhost/rent/list-k",
+initUrl:"http://localhost/rent/list.html",
+hz:".html",
+msg:"请输入小区名称/地址/标题",
+autoUrl:"http://localhost/house/house.php?action=xiaoqu"
+},
+buy:{
+url:"http://localhost/buy/list-k",
+initUrl:"http://localhost/buy/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+group:{
+url:"http://localhost/group/list-k",
+initUrl:"http://localhost/group/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+community:{
+url:"http://localhost/community/list-k",
+initUrl:"http://localhost/group/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:"http://localhost/house/house.php?action=xiaoqu"
+},
+video:{
+url:"http://localhost/video/search-k",
+initUrl:"http://localhost/video/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+home:{
+url:"search-k",
+hz:".html",
+initUrl:"list.html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+company:{
+url:"http://localhost/company/search-k",
+hz:"",
+initUrl:"http://localhost/company/list.html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+news:{
+url:"http://localhost/news/search-k",
+initUrl:"http://localhost/news/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:""
+}
+
+});
+});
+</script>
+<div class="nav_menu c_blue">
+<ul>
+<li><a href="http://localhost/"  class="on"><span>首页</span><em></em></a></li>
+<li><a href="http://localhost/house/" ><span>新房</span></a><em></em> <!--color:;-->
+</li><li><a href="http://localhost/sale/" ><span>二手房</span></a><em></em> <!--color:;-->
+</li><li><a href="http://localhost/rent/" ><span>出租</span></a><em></em> <!--color:;-->
+</li><li><a href="http://localhost/news/" ><span style="">资讯</span></a><em></em> <!--color:#FF0000;-->
+</li><li><a href="http://localhost/buy/" target="_blank" ><span>求购</span></a><em></em> <!--color:;-->
+</li><li><a href="http://localhost/community/" ><span>小区</span></a><em></em> <!--color:;-->
+</li><li><a href="http://localhost/video/" ><span>视频</span></a><em></em> <!--color:;-->
+</li></ul>
+</div>
+<div class="m">
+<div class="nav">当前位置: <a href="http://localhost/">首页</a> &raquo; <a href="http://localhost/about/index.html">关于我们</a></div>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td valign="top" class="left_menu">
+<ul>
+<li class="left_menu_li"><a href="http://localhost/">网站首页</a></li>
+<li class="left_menu_li" id="webpage_1"><a href="http://localhost/about/index.html">关于我们</a></li>
+<li class="left_menu_li" id="webpage_2"><a href="http://localhost/about/contact.html">联系方式</a></li>
+<li class="left_menu_li" id="webpage_3"><a href="http://localhost/about/agreement.html">使用协议</a></li>
+<li class="left_menu_li" id="webpage_4"><a href="http://localhost/about/copyright.html">版权隐私</a></li>
+</ul>
+</td>
+<td valign="top">
+<div class="left_box">
+
+<div style="border-bottom:#C0C0C0 1px dotted;margin:5px 15px 5px 15px;line-height:36px;" class="t_c px14"><strong>关于我们</strong></div>
+<div class="content" id="content">关于我们</div>
+<br/>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript">try{Dd('webpage_1').className='left_menu_on';}catch(e){}</script>
+<div id="footer">
+<p> <a target="_blank" href="http://localhost/">网站首页</a>
+| <a href="http://localhost/about/index.html" class="bottom_text2">关于我们</a> 
+| <a href="http://localhost/about/contact.html" class="bottom_text2">联系方式</a> 
+| <a href="http://localhost/about/agreement.html" class="bottom_text2">使用协议</a> 
+| <a href="http://localhost/about/copyright.html" class="bottom_text2">版权隐私</a> 
+<span>|</span> <a href="http://localhost/sitemap/">网站地图</a>
+ <span>|</span> <a href="http://localhost/guestbook/">网站留言</a> <span>|</span> <a href="http://localhost/ad/">广告服务</a></p>
+
+<p>ICP备案号：备案申请中 客服热线  （工作时间：周一至周五8:00至18:00）
+<script language=javascript>
+window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x77\x72\x69\x74\x65\x6c\x6e"]("\u8d44\u6e90\u63d0\u4f9b\x3a\x3c\x61 \x68\x72\x65\x66\x3d\"\x68\x74\x74\x70\x3a\/\/\x62\x62\x73\x2e\x67\x6f\x70\x65\x2e\x63\x6e\/\" \x74\x61\x72\x67\x65\x74\x3d\"\x5f\x62\x6c\x61\x6e\x6b\" \x73\x74\x79\x6c\x65\x3d\"\x63\x6f\x6c\x6f\x72\x3a\x23\x33\x33\x36\x36\x30\x30\x3b\" \x3e\x3c\x62\x3e\u72d7\u6251\u6e90\u7801\u793e\u533a\x3c\/\x62\x3e\x3c\/\x61\x3e");
+</script>
+</p>
+<p>  Copyright © 2010-2014 爱家网-爱家房产系统 All Rights Reserved  </p>
+</div>
+<script type="text/javascript">
+show_task('moduleid=3&html=webpage&itemid=1');
+</script>
+</body>
+</html>

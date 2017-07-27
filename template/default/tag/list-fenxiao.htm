@@ -1,0 +1,69 @@
+
+						               {loop $tags $i $t} 
+									      
+						                   <div class="fxbk clearfix">
+			<h2><a href="{$MODULE[1][linkurl]}fenxiao/d-{$t[itemid]}.html" target="_blank">{$t[title]} </a><em>[{area_pos($t[areaid], '')}]</em></h2>
+			<div class="house clearfix">
+				 <a href="{$MODULE[1][linkurl]}fenxiao/d-{$t[itemid]}.html" target="_blank"><img src="{imgurl($t[thumb])}" width="670" height="310" alt="新龙城"/></a>
+		<div class="houses_info clearfix">
+<div class="blank15"></div>
+			 <div class="w330 r clearfix">
+						<h3>赚佣金:{if $t[yongjin]}{$t[yongjin]}{else}待定{/if}</h3>
+<div class="blank10"></div>
+						<h4>市场价{if $t[price]}{$t[price]}元/m&sup2;{else}待定{/if}</h4>
+<div class="blank20"></div>
+				<span class="houses_where clearfix">
+					<p>楼盘位置：{area_pos($t[areaid], '')}<br>开盘日期：<i>{if $t[selltime]}{$t[selltime]}{else}待定{/if}</i></p>
+					<a class="J_Submit" href="{$MODULE[1][linkurl]}fenxiao/d-{$t[itemid]}.html" target="_blank">了解详情</a>
+				</span>
+				<span class="tuijian">
+					 <em><div class="count08" >{$t[star0]}</div></em>人推荐
+					 <a class="J_Submit" href="{$MODULE[1][linkurl]}fenxiao/tuijian.php?hid={$t[itemid]}&hname={$t[title]}" target="_blank">推荐购房</a>
+				</span>
+				<span class="tuijian">
+					 <em><div  class="count08" >{$t[star1]}</div></em>人已预约看房
+					 <a class="J_Submit" href="{$t[linkurl]}" target="_blank">我要购房</a>
+				</span>
+			 </div>
+			 <div class="blank15"></div>
+			<div class="houses_time clearfix">
+				 <span class="l">已成交:<em><div  class="count08" >{$t[star4]}</div></em>套</span>
+					<div class="l pl10" >&nbsp;&nbsp;&nbsp;</div>
+
+				 <span>活动结束剩</span>
+				 <span id="totimer{$i}" class="pri-txt">{timetodate($t[totime], 'Y年n月j日 H:i')}</span>
+			<script type="text/javascript">
+		var totime{$i} = new Date({timetodate($t['totime'], 'Y,').(timetodate($t['totime'], 'n')-1).timetodate($t['totime'], ',j,H,i,s')}).getTime();
+		function _totimer{$i}() {
+			var t = new Date();
+			var s = Math.floor((totime{$i} - t.getTime())/1000);
+			var h = '';
+			var i;
+			if(s > 0) {
+				i = Math.floor(s/86400);	
+				h += '<span>'+i+'</span>天';
+				s = Math.floor(s%86400);
+				i = Math.floor(s/3600);	
+				h += '<span>'+i+'</span>时';
+				s = Math.floor(s%3600);	
+				i = Math.floor(s/60);			
+				h += '<span>'+i+'</span>分';
+				s = Math.floor(s%60);
+				h += '<span>'+s+'</span>秒';
+			} else {
+				h = '<span class="f_red">活动已结束</span>';
+			}
+			Dd('totimer{$i}').innerHTML = h;
+		}
+		_totimer{$i}();
+		setInterval("_totimer{$i}()", 1000); 
+		</script>
+				 </div>
+			</div>
+			</div>
+		</div>
+{/loop}
+						
+							
+			<div class="pagination">{$pages}</div>
+			

@@ -1,0 +1,35 @@
+<div class="xf_sh_list_b">
+								<ul class="list">
+						               {loop $tags $k $t} 
+									      
+						                            <li class="cf {if $t[level]}tg{else} pt{/if}">
+													 {if $t[level]}<div class="icon">推荐</div>{/if}      
+                            	                                <div class="thumb fl">
+                                    <div class="img"><a href="{$t[linkurl]}"  title="{$t[alt]}" target="_blank"><img src="{imgurl($t[thumb])}" alt="{$t[alt]}" width="160" height="120"></a>
+							</div>
+                                    <div class="text">
+                                        <h3><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a><i class="selstag{$t[typeid]}"></i></h3>
+                                        <p>地址：[{area_pos($t[areaid], '')}] {dsubstr($t[address], 42, '...')}<a href="{$t[linkurl]}peitao.html" class="loc xxicon icon-6" target="_blank">查看地图</a></p>
+                                        <p>类型：{search_cats($t[catid], '6')}&nbsp;&nbsp;</p>                                        <div class="other tag cf">
+                                      {if $t[lpts]}{getbox_val('lpts','checkbox',$t[lpts],'newhouse_6')}{/if}                                </div>
+                                    </div>
+                                                                        
+                                                                    </div>
+                                <div class="detail fr">
+                                    <div class="jg">{if $t[price]}{$t[price]}<span>元/平米</span>{else}待定{/if}</div>
+                                   
+                                    <div class="tel"><i></i>{$t[telephone]}</div>
+                                    <div class="other">
+                                        <a href="{$t[linkurl]}wenfang.html" class="wd" target="_blank"><i></i>问答</a>
+                                        <a href="{$t[linkurl]}dianping.html" class="pl" target="_blank"><i></i>评论</a>
+										
+                                        <a href="javascript:void(0);" class="db" data-val="{$t[itemid]}"  data-url="{$t[linkurl]}" data-name="{$t[alt]}"><i></i>对比</a>
+                                    </div>
+                                </div>
+                            </li>{/loop}
+											</ul>
+
+							</div>
+							
+			<div class="pagination">{$pages}</div>
+			

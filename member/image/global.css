@@ -1,0 +1,123 @@
+HTML {
+	HEIGHT: 100%
+}
+BODY {
+	HEIGHT: 100%
+}
+BODY {
+	FONT-SIZE: 12px; BACKGROUND: #fff; MARGIN: 0px; WORD-BREAK: break-all; LINE-HEIGHT: 150%; FONT-FAMILY: "宋体",tahoma,Arial,"Century Gothic",verdana,Helvetica,sans-serif
+}
+DIV {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+h7 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	FONT-SIZE: 12px
+}
+H2 {
+	FONT-SIZE: 12px
+}
+H3 {
+	FONT-SIZE: 12px
+}
+H4 {
+	FONT-SIZE: 12px
+}
+H5 {
+	FONT-SIZE: 12px
+}
+H6 {
+	FONT-SIZE: 12px
+}
+h7 {
+	FONT-SIZE: 12px
+}
+UL {
+	LIST-STYLE-TYPE: none
+}
+INPUT {
+	VERTICAL-ALIGN: middle
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+A {
+	TEXT-DECORATION: none
+}
+.clearfix:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+.clearfix {
+	DISPLAY: inline-block
+}
+ HTML .clearfix {
+	HEIGHT: 1%
+}
+.clearfix {
+	DISPLAY: block
+}
+.valign {
+	VERTICAL-ALIGN: middle
+}
+.valign SPAN {
+	VERTICAL-ALIGN: middle
+}
+.valign IMG {
+	VERTICAL-ALIGN: middle
+}
+.valign {
+	OVERFLOW: hidden; TEXT-ALIGN: center
+}
+.valign SPAN {
+	DISPLAY: inline-block
+}
+.valign IMG {
+	DISPLAY: inline-block
+}
+.valign SPAN {
+	WIDTH: 0px; HEIGHT: 100%
+}
+.D-None {
+	DISPLAY: none
+}
+.D-Block {
+	DISPLAY: block
+}

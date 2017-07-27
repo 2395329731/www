@@ -1,0 +1,100 @@
+{template 'header'}
+{template 'menu', 'newhouse'}	<div class="cf">
+			<div class="detail_fl">
+				<div class="bodyb">
+					<div class="price_t">
+					 <!--{php $tags=tag("table=newhouse_price&condition=status=3 and pid=$itemid&pagesize=1&order=addtime desc&template=null");}-->
+	{loop $tags $i $t}	
+						<table>
+							<tr>
+								<td width="160">{date('Y年m月', $t[addtime])}均价</td>
+								<td width="160">环比上月</td>
+								<td><a href="{$MODULE[1][linkurl]}tool" class="bbtn" target="_blank"><i class="jsq"></i>房贷计算器</a></td>
+							</tr>
+							<tr>
+								<td><b>{if $price}{$price}</b>元/平方米{else}{$t[price]}</b>{/if}	</td>
+								<td><u {if $t[trend]==0}class=""{elseif $t[trend]==1}class="up"{elseif $t[trend]==2}class="down"{/if}><i></i></u>	</td>								
+							</tr>
+						</table>
+						<p>价格说明：<span class="red">{$t[note]}</span></p>{/loop}					</div>
+											<div class="detail_info">
+							<h4>价格走势</h4>
+							<div id="price_panl"></div>
+						</div>
+																<div class="detail_info">
+							<h4>历史价格</h4>
+							<table>
+								<tr>
+									<th width="120">记录时间</th>
+									<th width="99">均价</th>
+									<th>价格描述</th>
+								</tr>
+					 <!--{php $tags=tag("table=newhouse_price&condition=status=3 and pid=$itemid&pagesize=10&order=addtime desc&template=null");}-->
+	{loop $tags $i $t}						<tr>
+										<td>{date('Y-m-d', $t[addtime])}</td>
+										<td>{$t[price]}元/平方米</td>
+										<td class="alignl">{$t[note]}</td>
+									</tr>
+												{/loop}
+							</table>
+						</div>
+																		
+									</div>
+			</div>
+				<div class="detail_fr">
+				<div class="bodyb">
+	<div class="detail_fr_info">
+		<h4>{$title}楼盘详情</h4>
+		<p class="cf"><a href="{$linkurl}"><img src="{imgurl($thumb)}"></a>
+			<a href="{$linkurl}wenfang.html">楼盘问答（<span class="red">{get_wfnum($itemid)}</span> 贴）</a><br>
+			<a href="{$linkurl}dianping.html">楼盘点评（<span class="red">{get_dpnum($itemid)}</span> 条）</a><br>
+			<a href="{$linkurl}#iwantgroupbuy">团购报名（<span class="red">{get_buynum($title)}</span> 人）</a>
+		</p>
+		<p>
+			参考售价：<b class="red"> {if $price}{$price}</b>元/平方米{else}待定</b>{/if}
+										<br>
+			项目类型：{search_cats($catid, '6')}
+										<br>
+			所属商圈：<a href="{$MOD[linkurl]}list-b{$areaid}.html" target="_blank">{area_pos($areaid, ' ')}</a>			<br>
+			楼盘地址{$address}<br>
+		</p>
+	</div>
+</div>
+<div class="fr_mobile">{if $telephone}{$telephone}{else}热线尚未开通{/if}</div>
+<!--印象
+<div class="bodya">
+	<h4>{$title}楼盘印象</h4>
+	<form id="impression" class="cf">
+		<input type="text" placeholder="我的印象，最多5个字">
+		<a href="javascript:" class="obtn"><button type="submit"></button><i class="add"></i>添加印象</a>
+		            				<span class="t5" data-id="847">证件不全<i>已有<b>3</b>人支持</i></span>
+							<span class="t5" data-id="373">位置很不错<i>已有<b>4</b>人支持</i></span>
+						</form>
+</div>
+<script>
+seajs.use("ipn",function(ipn){
+	ipn("#impression","{$MOD[linkurl]}detail/impression.html","790")
+});
+</script>
+<--印象!-->					<div class="lista">
+		<h4>{$title}周边楼盘</h4>
+		<ul class="lmr">
+			 <!--{tag("moduleid=6&condition=status=3 and isnew=1&areaid=$areaid&length=16&pagesize=10&order=addtime desc&template=list-loupan")}-->
+		</ul>
+	</div>
+					<div class="lista">
+		<h4>大家都在看</h4>
+		<ul class="lmr">
+						 <!--{tag("moduleid=6&condition=status=3 and isnew=1&areaid=$cityid&length=16&pagesize=10&order=addtime desc&template=list-loupan")}-->
+					</ul>
+	</div>
+			</div>
+		</div>
+	<div class="detail_shengming">免责声明：本网站所刊载的"新房"所有资料及图表仅供参考使用，不声明或保证其内容之正确性或可靠性。刊载这些文档不视为{$title}已取得商品房预售许可证或达到可以销售的标准，且不构成对任何楼盘的购买的邀约或意图。参阅本网站上所刊的文档的人士，应被视为已确认得悉上述立场。购房者依据本网站提供的信息、资料及图表进行房屋交易做造成的任何后果与本网站无关。本网站有权但无此义务，改善或更正资料及图表任何部分之错误或疏忽。以上信息仅供参考，所有信息以开发商提供为准！
+</div>
+<script>
+seajs.use("highcharts",function(hs){
+	hs('price_panl',"{$title}", {get_houseprice($itemid)},'元/平米')
+});
+</script>
+{template 'footer'}

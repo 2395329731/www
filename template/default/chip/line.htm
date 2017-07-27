@@ -1,0 +1,21 @@
+var aijiacms_userid = {$_userid};
+var aijiacms_username = '{$_username}';
+var aijiacms_message = {$_message};
+var aijiacms_chat = {$_chat};
+var aijiacms_member = '';
+{if $_userid}
+aijiacms_member += ' <ul><li>您好：{$_truename}</li><li class="message"><a class="message_a {if $_message}has_message{/if}" href="{$MODULE[2][linkurl]}message.php" target="_blank">消息(<span>{$_message}</span>)</a></li><li class="user_place"><a class="user_place_a" href="{$MODULE[2][linkurl]}" title="用户中心" target="_blank">用户中心</a></li><li class="esc"><a href="{$MODULE[2][linkurl]}logout.php">[退出]</a></li></ul>';
+{else}
+	{if $EXT[oauth]}
+	var oauth_site = '{get_cookie('oauth_site')}';
+	var oauth_user = '{get_cookie('oauth_user')}';
+	aijiacms_member += (oauth_user && oauth_site) ? '<img src="{AJ_PATH}api/oauth/'+oauth_site+'/ico.png" align="absmiddle"/> 欢迎，<strong>'+oauth_user+'</strong> | <a href="{AJ_PATH}api/oauth/'+oauth_site+'/index.php?time={$AJ_TIME}">绑定帐号</a> | <a href="javascript:" onclick="oauth_logout();">注销登录</a>' : '欢迎，<span class="f_red">客人</span> | <a href="{$MODULE[2][linkurl]}{$AJ[file_login]}">请登录</a> | <a href="{$MODULE[2][linkurl]}{$AJ[file_register]}">免费注册</a> | <a href="{$MODULE[2][linkurl]}send.php">忘记密码?</a>';
+	{else}
+	aijiacms_member += ' <span>您好，欢迎来到{$AJ[sitename]}！</span><span class="login"><b>[</b><a href="{$MODULE[2][linkurl]}login.php" title="">登陆</a><b>]</b></span>&nbsp;&nbsp;<span><b>[</b><a href="{$MODULE[2][linkurl]}{$AJ[file_register]}" title="">免费注册</a><b>]</b></span>';
+	{/if}
+{/if}
+$('#aijiacms_member').html(aijiacms_member);
+{if $AJ[city]}
+$('#aijiacms_city').html('{$city_name}');
+{/if}
+{if $_userid && $AJ[pushtime]}window.setInterval('PushNew()',{$AJ[pushtime]}*1000);{/if}

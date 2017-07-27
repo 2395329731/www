@@ -1,0 +1,8 @@
+
+{loop $tags $k $t} 
+
+ <li><a href="{userurl($t[username], '')}" target="_blank"><span class="name">{$t[truename]}</span></a><span class="imgmoney">{if $t[vip]}<img src="{AJ_SKIN}image/vip.gif"/> <img src="{AJ_SKIN}image/vip_{$t[vip]}.gif"/></span>{/if}</span></li>
+
+  {/loop}
+			
+			

@@ -1,0 +1,6 @@
+{loop $tags $k $t}
+<li><span>{if $t[price]}{$t[price]}{else}待定{/if}</span>
+	<a href="{$t[linkurl]}"  target="_blank">{$t[title]}</a>
+							</li>
+   {/loop}
+		

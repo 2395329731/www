@@ -1,0 +1,61 @@
+{template 'header', $template}
+  <div class="shop_main">
+    <div class="left_side">
+      <!--经纪人信息-->
+      <div class="message">
+        <h1><a href="{$COM[linkurl]}">{$COM[truename]}的店铺</a></h1>
+        <div class="m_tex">
+          <p class="photo"><img src="{useravatar($COM[username], 'large')}" width="140" height="140"><br>
+            <b>{$COM[truename]}</b></p>
+			
+          <a class="btn_1" href="{$MODULE[2][linkurl]}message.php?action=send&touser={$COM[username]}" style="cursor:pointer;"></a>
+          <p class="renzheng">
+		  {if $COM[vtruename]}<img align="absmiddle" title="已通过身份证认证" src="{AJ_SKIN}image/sell/identity_yes.gif">{else}<img align="absmiddle" title="未通过身份证认证" src="{AJ_SKIN}image/sell/identity_no.gif">{/if}
+		   {if $COM[vcompany]}<img align="absmiddle" title="已通过职业资格认证" src="{AJ_SKIN}image/sell/aptitude_yes.gif">{else}<img align="absmiddle" title="未通过职业资格认证" src="{AJ_SKIN}image/sell/aptitude_no.gif">{/if}</p>
+          <ul>
+            <li>电话：<span class="red">{if $domain}{$COM[mobile]}{else}{anti_spam($COM[mobile])}{/if}{if $AJ[sms] && $COM[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($COM[mobile])}" target="_blank"><img src="{AJ_SKIN}image/sendsms.gif" align="absmiddle" title="发送短信" alt=""/></a>{/if}</span></li>
+            <li>即时通讯：{if $COM[username] && $AJ[im_web]}{im_web($COM[username])}&nbsp;{/if}
+	{if $COM[qq] && $AJ[im_qq]}{im_qq($COM[qq])}&nbsp;{/if}
+	{if $COM[ali] && $AJ[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
+	{if $COM[msn] && $AJ[im_msn]}{im_msn($COM[msn])}&nbsp;{/if}
+	{if $COM[skype] && $AJ[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}</li>
+            <li>服务：{area_pos($COM[areaid], '/')}</li>
+            <li>公司：{$COM[company]} </li>
+			<li>认证：{if $COM[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="资料通过工商认证"/>{/if}
+	{if $COM[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="资料通过实名认证"/>{/if}
+	{if $COM[vbank]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_bank.gif" width="16" height="16" align="absmiddle" title="资料通过银行帐号认证"/>{/if}
+	{if $COM[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" width="16" height="16" align="absmiddle" title="资料通过手机认证"/>{/if}
+	{if $COM[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" width="16" height="16" align="absmiddle" title="资料通过邮件认证"/>{/if}
+	{if $COM[validated]}&nbsp;<img src="{AJ_SKIN}image/check_right.gif" align="absmiddle"/> 企业资料通过{$COM[validator]}认证{/if}	</li>
+          </ul>
+        </div>
+      </div>
+      	  <!--公告栏-->      <!--筛选房源-->
+      <div class="left_box">
+	  {if $side_pos==0}
+<td width="{$side_width}" valign="top" id="side">{template 'side', $template}</td>
+<td width="10" id="split"></td>
+{/if}
+        
+		
+      </div>
+    </div>
+    <!--右边-->
+    <div class="right">
+      <div class="nav">
+<span class="a_guanli"><a href="{$MODULE[2][linkurl]}"></a></span>
+
+<a href="{$COM[linkurl]}" class="{if $file=='homepage'}select{else}{/if}">首页</a>
+{loop $MENU $k $v}
+<a href="{$v[linkurl]}" class="{if $file==$menu_file[$k]}select{else}{/if}">{$v[name]}</a>
+{/loop}
+</div>      
+      <!--个人-->
+      
+    {loop $HMAIN $HM $MAIN}
+{template 'main_'.$main_file[$HM], $template}
+{/loop}
+      
+    </div>
+  </div>
+    {template 'footer', $template}

@@ -1,0 +1,149 @@
+{template 'header', $module}
+<div class="tinfo">
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="{$MODULE[2][linkurl]}wenfang.php"><span>问题受理</span></a></td>
+
+</tr>
+</table>
+</div>
+
+
+{if $action == 'edit'}
+<form method="post" action="{$MODULE[2][linkurl]}wenfang.php" onsubmit="return check();">
+<input type="hidden" name="forward" value="{$forward}"/>
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="itemid" value="{$itemid}"/>
+<table cellspacing="1" cellpadding="10" class="tb">
+
+<tr>
+<td class="tl">问房人</td>
+<td class="tr f_b">{if $username}{$username}{else}匿名{/if}</td>
+</tr>
+<tr>
+<td class="tl">问题内容</td>
+<td class="tr" style="line-height:180%;">{$content}</td>
+</tr>
+
+<tr>
+<td class="tl">提交时间</td>
+<td class="tr">{$addtime}</td>
+</tr>
+<tr>
+
+<td class="tl"><span class="f_hid">*</span> 受理状态</td>
+<td>
+<input type="radio" name="status" value="2" {if $status== 2}checked{/if}/> 待审
+<input type="radio" name="status" value="3" {if $status== 3}checked{/if}/> 通过
+
+</td>
+</tr>
+
+<tr>
+<td class="tl">问题回复</td>
+<td class="tr"><textarea name="reply" id="content" class="dsn">{$reply}</textarea>
+{deditor($moduleid, 'content', 'Simple', '98%', 200)} <span id="dcontent" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">受理时间</td>
+<td class="tr f_blue">{$replydate}</td>
+</tr>
+<tr>
+<td class="tl">受理人</td>
+<td class="tr">{$replyer}</td>
+</tr>
+
+
+</table>
+<div class="sbt"><input type="submit" name="submit" value=" 确 定 " class="sBtn">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="sBtn"/></div>
+</form>
+<script type="text/javascript">s('ask');m('home');</script>
+{elseif $action == 'show'}
+<table cellspacing="1" cellpadding="10" class="tb">
+
+<tr>
+<td class="tl">问题标题</td>
+<td class="tr f_b">{$item_title}</td>
+</tr>
+<tr>
+<td class="tl">问题内容</td>
+<td class="tr" style="line-height:180%;">{$content}</td>
+</tr>
+<tr>
+<td class="tl">提交时间</td>
+<td class="tr">{$addtime}</td>
+</tr>
+<tr>
+
+<td class="tl"><span class="f_hid">*</span> 受理状态</td>
+<td>
+{if $status== 2}待审{/if}
+{if $status== 3}通过{/if}
+</td>
+</tr>
+
+<tr>
+<td class="tl">问题回复</td>
+<td class="tr">{$reply}
+</td>
+</tr>
+<tr>
+<td class="tl">受理时间</td>
+<td class="tr f_blue">{$replydate}</td>
+</tr>
+<tr>
+<td class="tl">受理人</td>
+<td class="tr">{$replyer}</td>
+</tr>
+
+
+</table>
+{else}
+<div class="ls">
+<table cellspacing="0" cellpadding="0" class="tb">
+<tr>
+<th>流水号</th>
+<th>状态</th>
+<th>内容</th>
+<th width="150">添加时间</th>
+<th>会员名</th>
+
+<th width="60">回复</th>
+<th width="60">删除</th>
+</tr>
+{loop $asks $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td>&nbsp;{$v[itemid]}&nbsp;</td>
+<td>&nbsp;{if $v[status]== 2}待审{else}通过{/if}&nbsp;</td>
+<td align="left"><a href="{$MODULE[2][linkurl]}wenfang.php?action=show&itemid={$v[itemid]}" class="t">{$v[content]}</a></td>
+<td>{$v[addtime]}</td>
+
+
+<td>{if $v[username]}{$v[username]}{else}匿名{/if} </td>
+
+{if $v[username]==$_username}
+<td>
+
+</td>
+<td>
+
+</td>
+{else}
+<td>
+<a href="{$MODULE[2][linkurl]}wenfang.php?action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="修改" alt=""/></a>
+</td>
+<td>
+<a href="javascript:confirmURI('确定要删除吗？此操作将不可撤销', '{$MODULE[2][linkurl]}wenfang.php?action=delete&itemid={$v[itemid]}');"><img width="16" height="16" src="image/delete.png" title="删除" alt=""/></a>
+</td>
+{/if}
+</tr>
+{/loop}
+</table>
+</div>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('wenfang');m('home');</script>
+{/if}
+</div>
+</div></div></div>
+{template 'footer'}

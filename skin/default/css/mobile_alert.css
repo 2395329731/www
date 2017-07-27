@@ -1,0 +1,207 @@
+.blur{
+	-webkit-filter: blur(8px);
+}
+/* 弹出动画 */
+@-webkit-keyframes alm {
+	0% {
+		-webkit-transform: scale(0);
+		opacity: 0
+	}
+	100% {
+		-webkit-transform: scale(1);
+		opacity: 1
+	}
+}
+@-webkit-keyframes alr {
+	0% {
+		-webkit-transform: scale(1);
+		opacity: 1
+	}
+	100% {
+		-webkit-transform: scale(0);
+		opacity: 0
+	}
+}
+
+/* 左向右滑动动画 */
+@-webkit-keyframes ltor {
+	0% {
+		-webkit-transform: translate(-100%,0);
+		opacity: 0
+	}
+	100% {
+		-webkit-transform: translate(0,0);
+		opacity: 1
+	}
+}
+@-webkit-keyframes rtol {
+	0% {
+		-webkit-transform: translate(0,0);
+		opacity: 1
+	}
+	100% {
+		-webkit-transform: translate(-100%,0);;
+		opacity: 0
+	}
+}
+.block{display:block;}
+.none{display:none;}
+.alert{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: rgba(255, 255, 255, .8);
+	z-index: 99;
+}
+.animate{
+	-webkit-backface-visibility: hidden;
+	-webkit-animation-duration: .35s;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-fill-mode: both;
+	backface-visibility: hidden;
+	animation-duration: .35s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: both;
+}
+.alm {
+	-webkit-animation-name: alm;
+	animation-name: alm
+}
+.alr {
+	-webkit-animation-name: alr;
+	animation-name: alr
+}
+.ltor {
+	/*-webkit-animation-name: ltor;
+	animation-name: ltor*/
+}
+.rtol {
+	-webkit-animation-name: rtol;
+	animation-name: rtol
+}
+#al_t {
+	border-bottom: 2px #f60 solid;
+	margin: 9px;
+	padding: 0 4px;
+	font-size: 16px;
+	line-height: 32px;
+	color: #f60;
+}
+.al_c {
+	display: block;
+	float: right;
+	width: 24px;
+	height: 24px;
+	background:#f80 url(../images/mobile/i_close.png) no-repeat 50% 50%;
+	background-size: 12px 12px;
+}
+#al_p {
+	margin: 9px;
+	font-size: 14px;
+}
+#al_p label{
+	margin: 0 9px 0 0;
+}
+input.al_i_r{
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	margin: 0 4px;
+}
+input.al_i, .al_a {
+	display: block;
+	width: 90%;
+	height: 32px;
+	line-height: 32px;
+	border-radius: 0;
+	padding: 0 9px;
+	margin: 9px auto;
+	font-size: 14px;
+	background: #fff;
+}
+.al_a {
+	background: #f60;
+	border-radius: 3px;
+	color: #fff;
+	letter-spacing: 1em;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+	margin-top: 36px;
+	text-align: center;
+}
+	display: block;
+	background: #fff;
+	margin: 24px auto;
+}
+.al_la a{
+	display: block;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	font-size: 14px;
+	border-bottom: 1px #ddd solid;
+}
+.al_la a:last-child{
+	border-bottom: 0;
+}
+
+
+.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.flex-1{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;}
+
+
+/* 不同功能使用不同样式 */
+	/* .qhcs 切换城市 */
+	.qhcs{ margin:110px auto 0; width: 260px;box-shadow:0 0 10px rgba(0,0,0,.9); background-color: #fff; }
+	.qhcs #al_t {border-bottom: 2px #f60 solid;	margin: 9px 0; color: #f60;}
+	.qhcs #al_p {font-size: 14px; margin: 0; }
+	.qhcs .al_la{margin:20px 12px; }
+	.qhcs .al_la ul{ width: 234px; border: 1px solid #ddd; border-width:1px 0 0 1px;}
+	.qhcs .al_la ul:after{ content:''; display:block; visibility:hidden; height:0; clear:both;}
+	.qhcs .al_la ul li{ float:left; width:77px; height:28px; border: 1px solid #ddd; border-width:0 1px 1px 0;}
+	.qhcs .al_la ul li a{display: block; height: 28px; line-height: 28px; text-align: center;}
+	.qhcs .guanbi{height: 30px; line-height: 30px; text-align: center; border-top: 1px solid #ccc; float: none; width: 100%;background:none; }
+
+	/* .daohang 页头导航 */
+	.daohang{
+		position:absolute; 
+		left:0; 
+		top:0; 
+		width: 100%; 
+		z-index:99; 
+		background-color: #fff;
+		box-shadow: 0 3px 5px rgba(0,0,0,.3);
+	}
+	.daohang #al_t {border-bottom: 1px solid #ccc; 	color: #000;}
+	.daohang .pd_list:after{content: ''; display: block; height: 0; visibility: hidden; clear: both;}
+	.daohang .pd_list li{float:left; margin-bottom: 10px; padding-right:13px; height:24px; line-height:24px; color: #666;}
+
+	/* 房源搜索 */
+	.sousuo{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background: #fff;
+		z-index: 99;
+	}
+	.sousuo .switch{background-color: #fff; padding-bottom: 20px;}
+	.sousuo #al_t{height: 40px; line-height: 40px; margin: 0; padding: 5px 14px; background-color: #d7073b; border: 0; text-align: center; color: #fff; font-size: 16px;}
+	.sousuo .al_c{float: left; margin:8px 0; background: url(../images/mobile/down2.png) no-repeat bottom center; background-size: 90% auto; -webkit-transform:rotate(90deg);transform:rotate(90deg);}
+	.sousuo .category{position:absolute; width:70px; margin-left:-70px;}
+	.sousuo .category p{width:59px; border:1px solid #ccc; border-width:1px 0 1px 1px; height:28px; line-height:28px; padding:0 5px;}
+	.sousuo .category i{position:absolute; top:13px; right:5px; border:5px solid rgba(0,0,0,0); border-top-color:#ccc; }
+	.sousuo .key{ border-width:1px 0; box-shadow:none; width:100%;}
+	.sousuo #form_search ul{position:absolute; left:0; top:0; width:62px; padding:0 5px; border:1px solid #ccc; line-height:30px; background:#fff; display:none;}
+	.sousuo #form_search li{ height:30px; line-height:30px; white-space:nowrap;}
+	.sousuo #form_search li input{ width:auto;}
+	.sousuo #form_search label{ margin:0;}
+	.sousuo #h_pop h2{border-bottom: 1px solid #ccc; height: 32px; line-height: 32px; color: #000;}
+
+
+
+

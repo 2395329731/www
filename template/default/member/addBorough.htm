@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> 增加小区</title>
+<script src="{AJ_PATH}file/script/agent/jquery-1.4.2.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div id="modalWindow">
+
+	<form name="dataForm" method="POST" action="">
+    <p>
+        <label>小区名字:</label>
+        <input type="text" id="addBoroughName" name="addBoroughName" class="input" value="" /> 
+    </p>
+     <p>
+        <label>所在区域:</label>
+		{if $areaid}{ajax_area_select('addBoroughCityarea', '请选择', $areaid)}{else}{ajax_area_select('addBoroughCityarea', '请选择', $cityid)}{/if}	
+  
+    </p>
+	 <p>
+        <label>物业类型:</label>
+        <select  id="addBoroughType" name="addBoroughType" class="select">
+		 {php $maincat = get_maincat(0,6)}
+		 {loop $maincat $k $v} 
+				     <option value="{$v[catid]}">{$v[catname]}</option>	
+                   			   {/loop}</select>
+    </p> 
+ 	<p>
+        <label>小区地址:</label>
+        <input type="text" id="addBoroughAddr" name="addBoroughAddr" class="input" size="40" value="" />
+<input type="hidden" id="status" name="status"  value="3"/>
+   </p>
+        
+ 
+     <p>
+        <input type="button" id="addButton" value="增加小区" onclick="return addBorough()" />
+    </p>
+    </form>
+</div>
+<script language="javascript">
+
+function addBorough(){
+	var name = document.getElementById('addBoroughName').value;
+	var area_id =  document.getElementById('areaid_1').value;
+	var address =  document.getElementById('addBoroughAddr').value;
+	var catid =  document.getElementById('addBoroughType').value;
+	var status =  document.getElementById('status').value;
+		if(!name || !area_id || !address  ){
+		alert("请把信息填全");
+		return false;
+	}
+	
+	
+ $.post('ajaxs.php?action=saveBorough',{borough_name:name,cityarea_id:area_id,borough_address:address,status:status,catid:catid},function(data){
+		//返回小区ID
+		
+		if(data ==0){
+			alert('增加小区出错');
+			return false;
+		}
+		if(data.indexOf('|')){
+			var temp = data.split('|');
+			if(temp[0] < 0){
+				alert("添加小区出错");
+				return false;
+			}
+			if(temp[1] == -1){
+				alert("你添加的小区已存在");
+			}
+			window.parent.addToBoroughItem(temp[0],name,address,area_id);
+			window.parent.TB_remove();
+		}else{
+			alert('增加小区出错');
+			return false;
+		}
+	});
+	
+	return false;
+}
+</script>
+</body>
+</html>

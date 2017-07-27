@@ -1,0 +1,117 @@
+* html{
+	overflow:scroll;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+body {text-align:center;margin:0 auto;background:rgb(247,251,252);font-family:"\5b8b\4f53", Helvetica, sans-serif}
+body,table,td,th,ul,li{font-size:12px;line-height:24px; }
+body,table,td,th,ul,li,div,input,select,textarea{font-family:"\5b8b\4f53", Helvetica, sans-serif; font-size:12px; color:#222}
+
+body{background:rgb(247,251,252);}
+h1, h2, h3, h4, h5, h6 {margin:0;padding:0;text-align:left;}
+img {border:0;vertical-align:middle;}
+a {color:#3A6EA5;text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active{blr:expression(this.onFocus=this.blur())}
+a:focus {
+    outline:none;
+    -moz-outline:none;
+}
+ul, li , dl, dt, dd, form {margin:0;padding:0;list-style:none;}
+ol li {list-style:decimal;}
+dd {padding:5px;font-size:14px;}
+select{font-size:12px}
+input, textarea {padding:3px;font-size:12px;margin-right:2px;}
+textarea{line-height:18px; overflow:auto; border:1px solid;border-color:#999 #ccc #ccc #999}
+fieldset {margin:10px;position:relative}
+legend {font-weight:bold;font-size:14px;padding:0 8px;}
+td span {color:#666;}
+
+a.button {background:#F2F9FD;display:inline;padding:3px 10px;text-align:center;border:1px solid #B5CFD9}
+.radio ,.checkbox {border:none;padding:0;vertical-align:middle;}
+
+.button {background:url(../images/button.gif) no-repeat;color:#ffffff;width:80px;height: 24px; border:0px; line-height:10px; font-size:12px;margin-right: 5px; cursor:pointer}
+
+.button {background:url(../images/button.gif) no-repeat;color:#ffffff;width:80px;height: 24px; border:0px;line-height:10px; font-size:12px;margin-right: 5px; cursor:pointer}
+
+.cancel {background:#eee;border:1px solid;border-color:#fff #999 #999 #fff;color:#222222;height:23px;}
+
+.border_bottom {border-bottom:1px solid #ccc}
+
+.errmsg {display:block;line-height:30px;padding:5px;border:1px solid #DD3C10;background:#FFEBE8;margin:5px;}
+.sucmsg {display:block;line-height:30px;padding:5px;border:1px solid #FFEC19;background:#FFFBCC;margin:5px;}
+
+#wrap {margin:10px auto; margin-bottom:0px; border:1px #C4D5DF solid;background:#FFF; width:97%;}
+
+/*选项卡*/
+.tab {width:100%;height:30px;overflow:hidden;background:#e5eaf3}
+.tab ul {width:100%;height:30px;overflow:hidden;background:url(../images/tab_bg.gif) bottom repeat-x;}
+.tab ul li {float:left;margin:3px 5px;font-size:14px; width:auto;}
+* html .tab ul li {float:left;margin:3px 5px;font-size:14px; width:auto; width:100px}
+.tab ul li a {display:block;height:26px;line-height:26px; padding:0px 6px}
+.tab ul li a:hover{text-decoration:none}
+.tab ul li a.on {background:#fcfcfc;color:#333;font-weight:bold;border:1px solid #C4D5DF;border-bottom:none;border-bottom:none;position:relative;z-index:10;bottom:0px;}
+
+/*主体*/
+.main {border-bottom:1px #B2C1C6 solid; overflow:hidden;padding:5px 0;text-align:left;height:100%; bottom:0px}
+.sub {width:100%; margin-bottom:16px}
+.sub th {background:#E9F0F6;color:#222222;font-weight:normal;text-align:left;padding:3px;}
+.sub td {border:none;padding:3px; border-bottom:#F7F7F7 1px solid}
+.sub td a{color:#222222}
+.sub td ul {width:660px; clear:both; margin:0px; padding:5px 0px}
+.sub td ul li{width:155px; float:left; padding:5px 0px}
+
+/*搜索*/
+.search {width:100%;}
+.search a{color:#222222}
+.search a:hover{color:#ff3300}
+
+/*列表*/
+.datalist {width:100%; margin:5px 0px; overflow:hidden}
+.datalist th {border-top:2px solid #afc7d8;background:#edf0f6;font-weight:normal;border-bottom:1px solid #ccc;border-left:1px solid #ccc;text-align:center;padding:2px;}
+.datalist th a{color:#222222}
+.datalist th a:hover{color:#ff0000}
+.datalist .firstcol {border-left:0 none;}
+.datalist td {font-size:12px;padding:2px 5px;border-bottom:1px solid #e9e9e9; line-height:20px}
+.datalist td a{color:#222222}
+.datalist td a:hover{color:#ff3300}
+
+.mainlist {width:100%; margin:5px 0px; overflow:hidden}
+.mainlist td {font-size:12px;border-bottom:1px solid #e9e9e9; padding:3px 5px; line-height:20px}
+.mainlist td li{height:22px; line-height:22px}
+.mainlist td a{color:#222222}
+.mainlist td a:hover{color:#ff3300}
+
+a.aspan{display:compact; clear:both; background:url(../images/bnt_bg.png) no-repeat; width:60px; line-height:20px; margin-top:0px; padding:4px 6px; text-align:center;color:#3A6EA5; text-decoration:none}
+a.aspan:hover{text-decoration:underline}
+/*ajax*/
+.ajaxbox {border:1px solid #D7E7EA;background:#fff;}
+.ajaxtable * {font-size:12px;}
+.ajaxtable {width:100%;border:5px solid #F8FBFB;border-spacing:0;}
+.ajaxtable th {background:#7DC3F6}
+.ajaxtable .bottom td {}
+
+/*分页*/
+.multipage {height:24px;overflow:hidden;font-size:12px;float:left;}
+.multipage span {line-height:22px;height:22px;display:block;background:#fff;float:left;padding:0 10px;border:1px solid #ccc;margin-right:3px;}
+.multipage a {line-height:22px;height:22px;display:block;border:1px solid #ccc;background:#fff;float:left;padding:0 10px;margin-right:3px;}
+.multipage a:hover {border:1px solid #2782D6;}
+.multipage .on {background:#2782D6;color:#fff;font-weight:bold}
+.multipage .go {border:1px solid #ccc;height:21px;line-height:21px;padding:0;}
+
+
+/*缩略图*/
+.thumb {max-width: 500px;max-height: 500px;} 
+
+/*鼠标悬停*/
+.tr_hover td { background:#fbffe4}
+
+.upgradebt{background:url(../images/bnt_bg.png) no-repeat; width:60px; height:20px; border:0px; cursor:pointer}
+.upgradebt:hover{color:#FF0000}
+
+/* 文本效果 */
+.inputtxt{border:1px solid;border-color:#999 #ccc #ccc #999; background-color:#FFFFFF}
+.inputtxt:hover{background-color:#FCFCFC}
+textarea,select{background-color:#FFFFFF}
+textarea:hover{background-color:#FCFCFC}
+textarea{background-image:url(../../../images/input.png)}

@@ -1,0 +1,57 @@
+{template 'top', 'info'}
+<link href="{AJ_SKIN}zxother_6.0.css" media="all" rel="stylesheet" type="text/css">
+<div class="sBg_">
+  <div class="divTab">
+    <ul>
+      <li class="{if  $_GET[catid]==''}h{else}{/if}"><a href="{$MODULE[13][linkurl]}list.php">招标零成本</a></li>
+	  {php $maincat = get_maincat(0,13)}
+		{loop $maincat $k $v}
+         <li class="{if $v[catid]==$catid}h{/if}"><a href='{$MODULE[13][linkurl]}list.php?catid={$v[catid]} '>{$v[catname]}</a></li>  {/loop} 
+      
+         <li class="fl_r"><b>已有<font color="#FF0000">{$items}</font>人招标</b></li>
+    </ul>
+  </div>
+  <div class="fbForm_">
+    <div class="nr_info"><img class="nimg" src="{AJ_SKIN}images/zx/z_03.jpg"></div>
+    <div class="fm_">
+      <div class="zb_fb">
+        <ul>
+          <li class="menu1"></li>
+          <li class="menu2 hover2"></li>
+          <!--hover2-->
+        </ul>
+      </div>
+      
+      <div class="Frmain_">
+          <div class="sdfb_" id="menu2_div" style="display: block; "> <img src="{AJ_SKIN}images/zx/kf_03.jpg">
+          <div class="tel_"><img class="nobo" src="{AJ_SKIN}images/zx/tel-1_03.gif"></div>
+          <input class="button" type="button" value="" onClick="location.href='{$MODULE[2][linkurl]}my.php?mid=13&action=add'">
+          <div class="tel_h">或者拔打 <span>{$AJ[telephone]}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="viz_"></div>
+  <div class="zbLi">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="tabt">
+      <tbody><tr>
+        <td class="a">{$city_name}装修招标</td>
+        <td class="b">所属区域</td>
+        <td class="c">信息类型</td>
+        <td class="g">发布时间</td>
+      </tr>
+    </tbody></table>
+     {if $page==1 && $kw}
+		{ad($moduleid,$catid,$kw,6)}
+		{load('m'.$moduleid.'_k'.urlencode($kw).'.htm')}
+		{/if}
+		{if $tags}
+		{template 'list-'.$module, 'tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+    </div>
+  </div>
+ </div>
+<div style="height:7px; overflow:hidden;"></div>
+{template 'foot', 'info'}

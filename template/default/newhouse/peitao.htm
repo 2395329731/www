@@ -1,0 +1,144 @@
+{template 'header'}
+{template 'menu', 'newhouse'}		<div class="cf">
+							<div class="mapicon cf" id="mapicon">
+					<p class="lp" name="house">楼盘</p>
+					<p class="gj" name="">公交</p>
+					<p class="cy" name="">餐饮</p>
+					<p class="yh" name="">银行</p>
+					<p class="xx" name="">学校</p>
+					<p class="yy" name="">医院</p>
+					<p class="jyz" name="">加油站</p>
+					<a href="{$MODULE[1][linkurl]}map/house.html#l1={$x}&l2={$y}&l3=16&keyword={$title}" class="seeB" style="margin-left:199px">在大地图上查看</a>
+					<a href="javascript:" class="reset" id="resetSearch">重置地图</a>
+					<a href="javascript:" class="print" onclick="window.print();">打印本页</a>
+				</div>
+				<div class="cf mapindex">
+					<div class="fr maplist" id="map_traffic_search_box">
+						<dl>
+							<dt><a href="{$linkurl}" target="_blank">{$title}</a></dt>
+							<dd>{$address}</dd>
+						</dl>
+						
+						<h4 name="type"></h4>
+						<ul name="result_list"  id="search_box">                	
+						</ul>
+					</div>
+					<div id="map" class="fl" style="height:450px;width:912px"></div>
+					</div>
+				
+						<div class="detail_fl">
+				<div class="bodyb">
+					<div class="detail_info">
+						<h4>交通状况</h4>
+						<p>{$lp_bus}</p>
+					</div>
+					<div class="detail_info">
+						<h4>周边配套</h4>
+						<p>
+							
+公交线路：<br />{$lp_bus}<br />
+教育配套：<br />{$lp_edu}<br />
+医疗设施：<br />{$lp_hospital} <br />
+金融机构：<br />{$lp_bank}<br />
+					</p>
+					</div>
+					<div class="detail_info nobo">
+						<h4>项目介绍</h4>
+						<p>
+							<p>&nbsp;{$content}</p>						</p>
+					</div>
+				</div>
+			</div>
+			<div class="detail_fr">
+				<div class="bodyb">
+	<div class="detail_fr_info">
+		<h4>{$title}楼盘详情</h4>
+		<p class="cf"><a href="{$linkurl}"><img src="{imgurl($thumb)}"></a>
+			<a href="{$linkurl}wenfang.html">楼盘问答（<span class="red">{get_wfnum($itemid)}</span> 贴）</a><br>
+			<a href="{$linkurl}dianping.html">楼盘点评（<span class="red">{get_dpnum($itemid)}</span> 条）</a><br>
+			<a href="{$linkurl}#iwantgroupbuy">团购报名（<span class="red">{get_buynum($title)}</span> 人）</a>
+		</p>
+		<p>
+			参考售价：<b class="red"> {if $price}{$price}</b>元/平方米{else}待定</b>{/if}
+										<br>
+			项目类型：{search_cats($catid, '6')}
+										<br>
+			所属商圈：<a href="{$MOD[linkurl]}list-b{$areaid}.html" target="_blank">{area_pos($areaid, ' ')}</a>			<br>
+			楼盘地址{$address}<br>
+		</p>
+	</div>
+</div>
+<div class="fr_mobile">{if $telephone}{$telephone}{else}热线尚未开通{/if}</div>			
+			<div class="lista">
+		<h4>{$title}周边楼盘</h4>
+		<ul class="lmr">
+			 <!--{tag("moduleid=6&condition=status=3 and isnew=1&areaid=$areaid&length=16&pagesize=10&order=addtime desc&template=list-loupan")}-->
+		</ul>
+	</div>
+					<div class="lista">
+		<h4>大家都在看</h4>
+		<ul class="lmr">
+						 <!--{tag("moduleid=6&condition=status=3 and isnew=1&areaid=$cityid&length=16&pagesize=10&order=addtime desc&template=list-loupan")}-->
+					</ul>
+	</div>
+			</div>
+		</div>
+	<div class="detail_shengming">免责声明：本网站所刊载的"新房"所有资料及图表仅供参考使用，不声明或保证其内容之正确性或可靠性。刊载这些文档不视为{$title}已取得商品房预售许可证或达到可以销售的标准，且不构成对任何楼盘的购买的邀约或意图。参阅本网站上所刊的文档的人士，应被视为已确认得悉上述立场。购房者依据本网站提供的信息、资料及图表进行房屋交易做造成的任何后果与本网站无关。本网站有权但无此义务，改善或更正资料及图表任何部分之错误或疏忽。以上信息仅供参考，所有信息以开发商提供为准！
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=A0d7a1091e5b98f5430228d016ee0ac7"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+<script type="text/javascript">
+seajs.use(["alert","snail-baiduaroundhouse"],function(alertM){
+
+	XF_DETAIL_MAP.setURL('{$MODULE[6][linkurl]}');
+	XF_DETAIL_MAP.setH(true);
+	XF_DETAIL_MAP.drawMap(parseFloat("{$x}"),parseFloat("{$y}"),"{$title}","map");
+	XF_DETAIL_MAP.getMaps();
+	var $ps=$('#mapicon p').on("click",function(){
+		$("#map_traffic_search_box h4").text($(this).text())
+		XF_DETAIL_MAP.distanceClose();
+		XF_DETAIL_MAP.resetTo();
+
+		XF_DETAIL_MAP.setKEY($(this).text());
+		if($(this).attr('name') == 'house'){
+			XF_DETAIL_MAP.setH(true);
+		}else{
+			XF_DETAIL_MAP.setH(false);
+		}
+		$ps.removeClass("on");
+		$(this).addClass("on");
+		XF_DETAIL_MAP.getMaps();
+	})
+	$("#resetSearch").click(function(){
+		XF_DETAIL_MAP.setH(true);
+		XF_DETAIL_MAP.getMaps();
+	})
+	var $f=$("#send_map").on("submit",function(){
+		if (/^1[3458]\d{9}$/.test($.trim($f.find("input#sendf").val()))) {
+			$.ajax({
+				url:$f.attr("action"),
+				dataType:"jsonp",
+				data:$f.serialize(),
+				type:"POST"
+			}).done(function(data){
+				alertM(data.alert,{cName:data.state})
+			}).fail(function(){
+				alertM("发送信息失败，请检查网络连接是否已断开",{cName:"error"});
+			})
+		}else{
+			alertM("手机号码格式错误", {
+				cName: "error",
+				rf: function() {
+					$f.find("input").trigger("focus");
+				}
+			});
+		}
+		return false;
+	}).on("click","a.obtn",function(){
+		$f.trigger("submit")
+	});
+})
+</script>
+
+
+{template 'footer'}

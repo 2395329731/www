@@ -1,0 +1,370 @@
+{template 'header_member', 'mobile'}
+{template 'cssjs', 'mobile'}
+<header class="aui-bar aui-bar-nav aui-bar-info" id="aui-header">
+        <a class="aui-btn aui-bar-info aui-pull-left" href="{if $action == ''}{$MYURL}?action=info{else}javascript:history.go(-1);{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+    <div class="aui-title">{$head_name}</div>
+    {if $action=='add'}
+{else}
+    <a href="{$MUSER}?mid={$mid}&action=add" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add fz14">添加</span>
+    </a>
+    {/if}
+</header>
+<div class="aui-bar-fix"></div>
+{if $action=='add' || $action == 'edit'}
+{else}
+<div class="aui-content">
+<div class="aui-tab" id="aui-tab">
+        <ul class="aui-tab-nav" id="sell_info">
+            <li id="tabbar3"><a href="{$MUSER}?mid={$mid}status=3">已发布<span class="aui-badge aui-badge-info">{$nums[3]}</span></a></li>
+            <li id="tabbar2"><a href="{$MUSER}?mid={$mid}&status=2">审核中<span class="aui-badge aui-badge-info">{$nums[2]}</span></a></li>
+            <li id="tabbar1"><a href="{$MUSER}?mid={$mid}&status=1">未通过<span class="aui-badge aui-badge-info">{$nums[1]}</span></a></li>
+        </ul>
+</div>
+</div>
+{/if}
+<span id="msg"></span>
+{if $action=='add' || $action == 'edit'}
+<div class="aui-content">
+<form id="sell-form" class="fromset">
+	<input type="hidden" name="action" value="{$action}"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+    <input type="hidden" name="post[typeid]" value="{if $_groupid<=5}0{else}1{/if}"  />
+	<input type="hidden" name="ok" value="1"/>
+    <p class="aui-padded-10 aui-text-center">基本信息</p>
+        <div class="aui-form">
+        <div class="aui-input-row">
+                <span class="aui-input-addon ">小区名称</span>
+                <input type="text" name="post[housename]" id="housename" class="aui-input" value="{$housename}" placeholder="小区名称"/>
+            </div>
+           <div class="aui-input-row">
+                <span class="aui-input-addon ">户型</span>
+                 <select name="post[room]" id="typeid">
+                 {php $huxing = array('1室', '2室', '3室', '4室', '5室');}
+              {loop $huxing $k $v}
+              <option value="{$k}" {if ($k+1)==$room}selected = "selected"{/if}>{$v}</option>
+              {/loop}
+              </select>
+                               &nbsp;  <select name="post[hall]" title="厅">
+										<option value="100">0厅</option>
+<option value="1">1厅</option>
+<option value="2">2厅</option>
+<option value="3">3厅</option>
+<option value="4">4厅</option>
+<option value="5">5厅</option>
+									</select>
+                                   &nbsp; <select name="post[toilet]" title="卫">
+										<option value="1">1卫</option>
+<option value="2">2卫</option>
+<option value="3">3卫</option>
+<option value="4">4卫</option>
+<option value="5">5卫</option>
+<option value="100">0卫</option>
+									</select>
+              </div>
+
+           
+             <div class="aui-input-row">
+                <span class="aui-input-addon ">总价</span>
+                <input type="number" name="post[price]" id="price" class="aui-input" value="{$price}" placeholder="总价(万元)"/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon ">面积</span>
+                <input type="text" name="post[houseearm]" id="houseearm" class="aui-input" value="{$houseearm}" placeholder="面积(平方米)"/>
+            </div>
+              
+            <script src="user/dist/lrz.bundle.js"></script>
+            <div class="aui-input-row">
+
+                <span class="aui-input-addon ">图片</span>
+                <div class="pic-list baguetteBoxOne gallery" id="imgslist">
+                {if $thumb}<li><a href="{$thumb}"><img src="{$thumb}"></a></li>{/if}
+            {loop $piclists $k $v}<li><a href="{$v[thumb]}"><img src="{$v[thumb]}"></a></li>{/loop}
+                
+               
+				<li id="addpic"><img src="image/add.jpg"></li>				
+			</div>
+                    <input accept="image/*" type="file" id="uploadimg" multiple/>
+<div class="aui-upprogress aui-text-center displaynone" id="uploading"><svg id="container"></svg></div></div>
+<script>
+$(function(){
+	{if $action == 'edit'}
+	$('#imgslist li:not(#addpic)').each(function() {
+	addPress($(this));
+	});
+    baguetteBox.run('.baguetteBoxOne');
+	//$('#imgslist li:not(#addpic)').touchTouch();
+	{/if}
+});
+</script>
+<script type="text/javascript" id="uploadjs" src="script/upload.js" data="{$mid}"></script>
+
+{template 'wang', 'mobile'}
+<script type="text/javascript">
+$(function() {
+	"use strict";
+
+	$('#content-e').artEditor({
+		 artmid: '{$mid}',
+		imgTar: '#artUpload',
+		limitSize: 8,   // 兆
+		showServer: false,
+		uploadUrl: 'br',
+		data: {},
+		uploadField: 'image',
+		placeholader: '详细说明',
+		validHtml: '',
+		uploadSuccess: function(res) {
+			// return img url
+			return res.path;
+		},
+		uploadError: function(res) {
+			// something error
+			console.log(res);
+
+		}
+	});
+});
+</script>
+
+            <p class="aui-padded-10 aui-text-center aui-bg-default" >详情信息</p>
+            <div class="aui-content " id="otherinfo">
+            <div class="aui-input-row">
+                <label class="aui-input-addon ">标题</label>
+                <input type="text" name="post[title]" id="title" class="aui-input" value="{$title}" placeholder="标题"/>
+            </div>
+
+            <div class="aui-input-row">
+                <span class="aui-input-addon ">物业类型</span>
+                {ajax_category_select('post[catid]', '选择分类', $catid, $moduleid, 'size="1"')}
+            </div>
+             <div class="aui-input-row"><span class="aui-input-addon">地区</span>
+            {php $mareaid = ($areaid=='') ? ($m_user['areaid']) : ($areaid); }
+{ajax_area_select('post[areaid]', '请选择', $mareaid, '', 2)}</div>
+ <div class="aui-input-row">
+                <span class="aui-input-addon">地址</span>
+                <input type="text" name="post[address]" id="address" class="aui-input" value="{$address}" placeholder="地址"/>
+            </div>
+            
+            
+            <div class="aui-input-row">
+                <span class="aui-input-addon">朝向</span>&nbsp;
+             
+
+									</select>
+                                    &nbsp;<select name="post[toward]" title="朝向">
+										<option value="">朝向</option>
+										<option value="1" {if $toward == 1}selected{/if}>南</option>
+<option value="2" {if $toward == 2}selected{/if}>北</option>
+<option value="3" {if $toward == 3}selected{/if}>东</option>
+<option value="4" {if $toward == 4}selected{/if}>西</option>
+<option value="5" {if $toward == 5}selected{/if}>东南</option>
+<option value="6" {if $toward == 6}selected{/if}>东北</option>
+<option value="7" {if $toward == 7}selected{/if}>西南</option>
+<option value="8" {if $toward == 8}selected{/if}>西北</option>
+<option value="9" {if $toward == 9}selected{/if}>南北</option>
+<option value="10" {if $toward == 10}selected{/if}>东西</option>
+									</select>
+                                    &nbsp;<select name="post[houseyear]" title="房龄">
+										<option value="">房龄</option>
+										<option value="-1">不详</option>
+<option value="2015" {if $houseyear == 2015}selected{/if}>2015 年</option>
+<option value="2014" {if $houseyear == 2014}selected{/if}>2014 年</option>
+<option value="2013" {if $houseyear == 2013}selected{/if}>2013 年</option>
+<option value="2012" {if $houseyear == 2012}selected{/if}>2012 年</option>
+<option value="2011" {if $houseyear == 2011}selected{/if}>2011 年</option>
+<option value="2010" {if $houseyear == 2010}selected{/if}>2010 年</option>
+<option value="2009" {if $houseyear == 2009}selected{/if}>2009 年</option>
+<option value="2008" {if $houseyear == 2008}selected{/if}>2008 年</option>
+<option value="2007" {if $houseyear == 2007}selected{/if}>2007 年</option>
+<option value="2006" {if $houseyear == 2006}selected{/if}>2006 年</option>
+<option value="2005" {if $houseyear == 2005}selected{/if}>2005 年</option>
+<option value="2004" {if $houseyear == 2004}selected{/if}>2004 年</option>
+<option value="2003" {if $houseyear == 2003}selected{/if}>2003 年</option>
+<option value="2002" {if $houseyear == 2002}selected{/if}>2002 年</option>
+<option value="2001" {if $houseyear == 2001}selected{/if}>2001 年</option>
+<option value="2000" {if $houseyear == 2000}selected{/if}>2000 年</option>
+<option value="1999" {if $houseyear == 1999}selected{/if}>1999 年</option>
+<option value="1998" {if $houseyear == 1998}selected{/if}>1998 年</option>
+<option value="1997" {if $houseyear == 1997}selected{/if}>1997 年</option>
+<option value="1996" {if $houseyear == 1996}selected{/if}>1996 年</option>
+<option value="1995" {if $houseyear == 1995}selected{/if}>1995 年</option>
+<option value="1994" {if $houseyear == 1994}selected{/if}>1994 年</option>
+<option value="1993" {if $houseyear == 1993}selected{/if}>1993 年</option>
+<option value="1992" {if $houseyear == 1992}selected{/if}>1992 年</option>
+<option value="1991" {if $houseyear == 1991}selected{/if}>1991 年</option>
+<option value="1990" {if $houseyear == 1990}selected{/if}>1990 年</option>
+<option value="1989" {if $houseyear == 1989}selected{/if}>1989 年</option>
+<option value="1988" {if $houseyear == 1988}selected{/if}>1988 年</option>
+<option value="1987" {if $houseyear == 1987}selected{/if}>1987 年</option>
+<option value="1986" {if $houseyear == 1986}selected{/if}>1986 年</option>
+<option value="1985" {if $houseyear == 1985}selected{/if}>1985 年</option>
+<option value="1984" {if $houseyear == 1984}selected{/if}>1984 年</option>
+<option value="1983" {if $houseyear == 1983}selected{/if}>1983 年</option>
+<option value="1982" {if $houseyear == 1982}selected{/if}>1982 年</option>
+<option value="1981" {if $houseyear == 1981}selected{/if}>1981 年</option>
+<option value="1980" {if $houseyear == 1980}selected{/if}>1980 年</option>
+<option value="1979" {if $houseyear == 1979}selected{/if}>1979 年</option>
+<option value="1978" {if $houseyear == 1978}selected{/if}>1978 年</option>
+<option value="1977" {if $houseyear == 1977}selected{/if}>1977 年</option>
+<option value="1976" {if $houseyear == 1976}selected{/if}>1976 年</option>
+<option value="1975" {if $houseyear == 1975}selected{/if}>1975 年</option>
+<option value="1974" {if $houseyear == 1974}selected{/if}>1974 年</option>
+<option value="1973" {if $houseyear == 1973}selected{/if}>1973 年</option>
+<option value="1972" {if $houseyear == 1972}selected{/if}>1972 年</option>
+<option value="1971" {if $houseyear == 1971}selected{/if}>1971 年</option>
+<option value="1970" {if $houseyear == 1970}selected{/if}>1970 年</option>
+<option value="1969" {if $houseyear == 1969}selected{/if}>1969 年</option>
+<option value="1968" {if $houseyear == 1968}selected{/if}>1968 年</option>
+<option value="1967" {if $houseyear == 1967}selected{/if}>1967 年</option>
+<option value="1966" {if $houseyear == 1966}selected{/if}>1966 年</option>
+<option value="1965" {if $houseyear == 1965}selected{/if}>1965 年</option>
+<option value="1964" {if $houseyear == 1964}selected{/if}>1964 年</option>
+<option value="1963" {if $houseyear == 1963}selected{/if}>1963 年</option>
+<option value="1962" {if $houseyear == 1962}selected{/if}>1962 年</option>
+<option value="1961" {if $houseyear == 1961}selected{/if}>1961 年</option>
+<option value="1960" {if $houseyear == 1960}selected{/if}>1960 年</option>
+<option value="1959" {if $houseyear == 1959}selected{/if}>1959 年</option>
+<option value="1958" {if $houseyear == 1958}selected{/if}>1958 年</option>
+<option value="1957" {if $houseyear == 1957}selected{/if}>1957 年</option>
+<option value="1956" {if $houseyear == 1956}selected{/if}>1956 年</option>
+<option value="1955" {if $houseyear == 1955}selected{/if}>1955 年</option>
+<option value="1954" {if $houseyear == 1954}selected{/if}>1954 年</option>
+<option value="1953" {if $houseyear == 1953}selected{/if}>1953 年</option>
+<option value="1952" {if $houseyear == 1952}selected{/if}>1952 年</option>
+<option value="1951" {if $houseyear == 1951}selected{/if}>1951 年</option>
+									</select>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">所在楼层</span>
+                <input type="text" name="post[floor1]" id="floor1" class="aui-input" value="{$floor1}" placeholder="所在楼层"/> <span class="aui-input-addon">总楼层</span>
+                <input type="text" name="post[floor2]" id="floor2" class="aui-input" value="{$floor2}" placeholder="总楼层"/>
+            </div>
+           
+         
+
+         </div>
+        <p>
+          <p class="aui-padded-10 aui-text-center aui-bg-default">联系方式</p>
+<div class="aui-input-row">
+                <span class="aui-input-addon">联系人</span>
+                <input type="text" name="post[truename]" id="truename" class="aui-input" value="{$truename}" placeholder="联系人"/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">联系电话</span>
+                <input type="text" name="post[mobile]" id="mobile" class="aui-input" value="{$mobile}" placeholder="联系电话"/>
+            </div>
+            <div class="aui-btn-row" id="btn-main" onclick="Daddr();">
+                <div class="aui-btn aui-btn-info fz16" style="width:90%;" id="btn-submit">确认</div>
+            </div>
+
+        </div>
+</form>
+    </div>
+<script type="text/javascript">
+function showother() {
+        var $show = $('#otherinfo');
+        if ($show.hasClass('displaynone')) {
+            $show.removeClass('displaynone'); 
+        } else {
+            $show.addClass('displaynone');
+        }
+    }
+	
+function Daddr() {
+	var arrImgs = [];
+   $('#imgslist li:not(#addpic)').each(function() {
+   // 将图片追加到数组中
+   arrImgs.push($(this).find("img").attr("src"));
+   });
+   
+   	var typeid = $("#typeid").val();
+    if (typeid == '') {
+        layer.msg('未选择信息类型');
+        return false;
+    }
+	var len;
+	len = Dd('title').value.length;
+	if(len < 2 || len > 30) {
+		laymsg('信息标题应为2-30字，当前已输入'+len+'字');
+		return false;
+	}
+	len = Dd('catid_1').value;
+	if(len == 0) {
+		laymsg('请选择分类');
+		return false;
+	}
+	
+
+	var edittext=$.trim($("#content-e").text());
+    var len = edittext.length;
+	if(len > 2000) {
+		laymsg('输入这么多字累了吧亲');
+		return false;
+	}
+
+	var exitcon = $('#content-e').getValue();
+	$("#content").attr('value',exitcon);
+
+	$("#btn-submit").text("正在处理...");
+	$("#btn-main").removeAttr("onclick");
+	setTimeout(function () {
+        $("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("提 交");
+    }, 5000);
+	
+    $.post('{$MUSER}?mid={$mid}&thumbs='+arrImgs+'', $('#sell-form').serialize(), function(data) {
+		if(data.error == 'ok') {
+			{if $action=='add'}laymsg('添加成功');{else}laymsg('修改成功');{/if}
+			setTimeout(function() {
+				Go('{$MUSER}?mid={$mid}');
+			}, 1000);
+		} else {
+			laymsg(data.error);
+		}
+	},'json');
+}
+
+</script>
+{else}
+{if $lists}
+
+<ul class="aui-list-view aui-in" id="sell_list">
+{loop $lists $t}
+<li id="{$t[itemid]}">
+<div class="aui-list-view-cell aui-img drop-div">
+                <img class="aui-img-object aui-pull-left" src="{if $t[thumb]}{$t[thumb]}{else}image/nopic.png{/if}" width="50" height="50" alt="" onerror="this.src='static/img/nopic-60.png';">
+                <div class="aui-img-body aui-pull-left">
+                    <a href="{$t[linkurl]}">{dsubstr($t[title], 20)}</a>
+                    <p class="aui-ellipsis-1 h7">{$v[catname]}&nbsp;&nbsp;<span class="aui-mr-5"><i class="aui-iconfont aui-icon-attentionfill aui-text-gray"></i>{$t[hits]}</span><span class="aui-mr-5"><i class="aui-iconfont aui-icon-time aui-text-gray"></i>{timetodate($t[edittime], 4)}</span></p>
+                </div>
+                </div>
+  <div class="hidden-menu">
+    <p class="two"><a href="{$MURL}{$MUSER}?mid={$mid}&action=edit&itemid={$t[itemid]}">修改</a></p>
+    <p class="one" onclick="delitemid({$mid},{$t[itemid]});">删除</p>
+    
+  </div>
+                
+</li>
+
+{/loop}
+</ul>
+{if $pages}<div class="pages aui-text-center">{$pages}</div>{/if}
+{else}
+<ul class="aui-list-view">
+<li class="aui-list-view-cell aui-img">
+                <div class="aui-img-body aui-pull-left">
+                    <p class="aui-ellipsis-1">暂无信息</p>
+                </div>
+</li>
+</ul>
+
+{/if}
+</div>
+
+<script type="text/javascript" src="script/addpan.js" charset="utf-8"></script>
+{/if}
+<script type="text/javascript">tabbar('tabbar{$status}');</script>
+{template 'footer_member', 'mobile'}

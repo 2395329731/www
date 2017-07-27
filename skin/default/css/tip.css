@@ -1,0 +1,11 @@
+.tip,.tip_err{position: absolute;display:none;padding: 0 0 0 9px;z-index: 10;cursor: pointer;}
+.tip_ft,.tip_bt{position: absolute;width: 0;height: 0;overflow: hidden;}
+.tip span,.tip_err span{display: inline-block;background: #fff;border: 1px #5a5 solid;padding: 1px 6px;color: #999;}
+.tip_err span{border: 1px #f99 solid;background: #fff1f1 url("../images/mod/err.png") no-repeat 4px 7px;padding: 1px 6px 1px 24px;color: #666;}
+.tip_suc{position: absolute;display:none;width: 14px;height: 30px;background:transparent url("../images/mod/suc.png") no-repeat 0 50%;}
+.tip_suc *{display: none;}
+.tip_bt{left: 0;top: 5px;border: 9px transparent dashed;border-right:9px #5a5 solid;}
+.tip_ft{left: 1px;top: 6px;border: 8px transparent dashed;border-right:9px #fff solid;z-index: 9;}
+.tip_bt,.tip_ft{border-left: 0;}
+.tip_err .tip_bt{border-right:9px #f99 solid;}
+.tip_err .tip_ft{border-right:9px #fff1f1 solid;}

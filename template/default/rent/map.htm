@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>二手房地图找房-{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}mapMain.css" />
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}jquery.popup.css" />
+<script>
+function MM_over(mmObj) {
+var mSubObj = mmObj.getElementsByTagName("div")[0];
+mSubObj.style.display = "block";
+mSubObj.style.backgroundColor = "#fff";
+}
+function MM_out(mmObj) {
+var mSubObj = mmObj.getElementsByTagName("div")[0];
+mSubObj.style.display = "none";
+
+}
+</script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+<script type="text/javascript" src="{AJ_PATH}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>
+<SCRIPT type=text/javascript src="{AJ_SKIN}js/jquery-1.4.2.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript src="{AJ_SKIN}js/common.js"></SCRIPT>
+
+
+<style type="text/css">
+.partbd ul li{display:block; float:left; width:50px; line-height:22px;  height:22px; text-align:center; text-decoration:none;}
+.partbd ul li a{display:inline-block;}
+.partbd li a:link, .partbd li a:visited {display: inline-block; height: 17px;line-height: 17px;padding: 0 5px;text-decoration:none;}
+.partbd li a:hover{background: none repeat scroll 0 0 #30c8f7;color:#ffffff;text-decoration:none;}
+
+
+.PartAs_wrap_house UL.PartAs_wrap_house_left {
+	WIDTH: 421px; DISPLAY: block; OVERFLOW: hidden;  float:left
+}
+
+.PartAs_wrap_house UL.PartAs_wrap_house_center{
+	 width:410px; float:left; DISPLAY: block; OVERFLOW: hidden;
+}
+
+.PartAs_wrap_house UL.PartAs_wrap_house_center li{
+	 width:410px;
+}
+
+.PartAs_wrap_house UL.PartAs_wrap_house_right{
+	 width:80px; float:left; DISPLAY: block; OVERFLOW: hidden; margin-left:8px;
+}
+.PartAs_wrap_house UL.PartAs_wrap_house_right li{
+	 width:110px;
+}
+
+		.EliteMap {margin:0;clear:both;padding:8px 5px 0 5px;border:#DDDDDD 1px solid;border-top:0;height:1%;}
+		.EliteMap dl {float:left;width:120px;height:120px;line-height:150%;margin:0;padding:0;text-align:center;}
+		.EliteMap dt {margin:0;padding:0;}
+		.EliteMap dt img {width:100px;height:75px;border:#AAAAAA 1px solid;padding:1px;}
+		.EliteMap dd {margin:0;padding:0;}
+	</style>
+
+</head>
+<body onresize='SetMapSize();g_Map.checkResize();' onunload="GUnload()">
+<script type="text/javascript">var sh = '{$MODULE[1][linkurl]}map?&p={$_GET['p']}&r={$_GET['r']}&a={$_GET['a']}&areaid={$_GET['areaid']}&catid={$_GET['catid']}';</script>
+<div id="maphead">
+  <div id="maptop">
+    <div class="webguide fr"><a href="{$MODULE[1][linkurl]}" target="_blank">网站首页</a> - <a href="{$MODULE[6][linkurl]}" target="_blank">新房中心</a> - <a href="{$MODULE[5][linkurl]}" target="_blank">二手房</a> - <a href="{$MODULE[8][linkurl]}" target="_blank">房产资讯</a></div>
+    <div class="maplogo fl"><a href="{$MODULE[1][linkurl]}"><img src="{if $MODULE[$moduleid][logo]}{AJ_SKIN}image/logo_{$moduleid}.gif{elseif $AJ[logo]}{$AJ[logo]}{else}{AJ_SKIN}image/logo.gif{/if}" alt="{$AJ[sitename]}" width="151" height="27"/></a><img src="{AJ_SKIN}images/map/mapin.gif"></div><!-- 切换城市开始 -->
+	  <script type="text/javascript">
+function gocity(s) {
+	Go('{$MODULE[1][linkurl]}city.php?action=go&'+s);
+}
+</script>
+     {if $AJ[city]}  <div onmouseover="MM_over(this)" onmouseout="MM_out(this)" class="city" style=" line-height:30px; padding-left:5px;  float:left; position:relative; top:2px; border-left:1px dashed #CCCCCC; z-index:9999"> <span  style="display:block; cursor:pointer;   width:60px; background:url({AJ_SKIN}/image/city.jpg)  -40px 18px no-repeat;"> <span id="aijiacms_city">{$city_name}</span> </span> 
+          <!-- 隐藏层开始 -->
+          <div  class="partbd" style="display:none; position:absolute; top:30px; width:250px;  padding:10px; z-index:9999; border:1px solid #30c8f7; background-color:#FFFFFF">
+            <ul> {php $citys = get_city(0)}
+			{loop $citys $k $v}<li><a href="{if $v[domain]}{$v[domain]}{else}javascript:gocity('areaid={$v[areaid]}');{/if}">{$v[name]}</a></li>{/loop}  
+			
+            </ul>
+          </div>
+          <!-- 隐藏层结束 -->
+      </div>
+	  {/if}
+      <!-- 切换城市结束 -->
+    <div class="mapmenu fl"><a href="{$MODULE[1][linkurl]}map/newhouse.php" class="mapnav" title="新房地图">新房地图</a>
+	<a href="{$MODULE[1][linkurl]}map" class="onmap ablue" title="二手房地图">二手房地图</a>
+<a href="{$MODULE[7][linkurl]}map.php" class="mapnav" title="租房地图">租房地图</a></div>
+  </div>
+  <div class="clear"></div>
+  <div id="mapss">
+ 
+    <div class="mapsstit fl">二手房搜索:</div>
+    <div class="mapsscont fl">
+  
+    <select onchange="Go(sh+'&areaid='+this.value)" class="slect">
+                           <option value="0" selected="selected">选择区域 </option>
+						    {php $mainarea = get_mainarea($cityid)}
+						    {loop $mainarea $k $v}    
+						   <option value="{$v[areaid]}" {if $v[areaid]==$areaid}selected="selected"{/if}>{$v[areaname]}</option>{/loop}
+                            </select> 
+							
+      <select onchange="Go(sh+'&catid='+this.value)" class="slect">
+                           <option value="0" selected="selected">物业类型 </option>
+						   
+						    {php $maincat = get_maincat(0,5)}
+{loop $maincat $k $v}  
+						   <option value="{$v[catid]}" {if $v[catid]==$catid}selected="selected"{/if}>{$v[catname]}</option>{/loop}
+                            </select> 
+							
+     <select onchange="Go(sh+'&p='+this.value)" class="slect">
+                           <option value="0" selected="selected">售价 </option>
+						   {php $jiage = array('30万以下', '30万-50万', '50万-80万', '80万-100万', '100万-120万', '120万-150万','150万-200万');}
+						    {loop $jiage $k $v}    
+						   <option value="<?php echo $k+1;?>" {if $_GET['p']==($k+1)}selected="selected"{/if}>{$v}</option>{/loop}
+                            </select>
+							 
+								 <select onchange="Go(sh+'&r='+this.value)" class="slect">
+                           <option value="0" selected="selected">户型 </option>
+						   {php $huxing = array('一室', '二室', '三室', '四室', '其它');}
+						    {loop $huxing $k $v}    
+						   <option value="<?php echo $k+1;?>" {if $_GET['r']==($k+1)}selected="selected"{/if}>{$v}</option>{/loop}
+                            </select> 
+							 <select onchange="Go(sh+'&a='+this.value)" class="slect">
+                           <option value="0" selected="selected">面积 </option>
+						   {php $mianji = array('40平米以下', '40-60平米', '60-80平米', '80-100平米', '100-120平米', '120-150平米','150平米以上');}
+						    {loop $mianji $k $v}    
+						   <option value="<?php echo $k+1;?>" {if $_GET['a']==($k+1)}selected="selected"{/if}>{$v}</option>{/loop}
+                            </select> 
+     
+    </div>
+     
+   
+      
+    <div class="clear"></div>
+    
+  </div>
+</div>
+<div id="mapnoti">
+  <div class="fr"><a href="{$MOD[linkurl]}list.php" target="_blank" title="列表视图" class="maplist">列表视图</a><a href="javascript:hidemenu()" title="全屏地图" class="mapfull" id="changemapfull">全屏地图</a></div>
+  <div class="fl lineh23">提示：按住“鼠标左键”并“移动鼠标”可拖动地图；点击地图上的小标就可看到相应的房产信息；放大地图可看到更多。</div>
+  <div class="clear"></div>
+</div>
+<div class="clear"></div>
+
+
+
+
+
+<div id="head" style="display:none;"></div>
+<div id="divHideRoute" style="display:none;"></div>
+
+<div class="mapbox" id="CenterMap">
+  <div id="map" style="clear:both;width:100%; height: 550px; "></div>
+</div>
+<div id="mapfoot">{$AJ[copyright]} </div>
+<script type="text/javascript">
+function cls(field){if(field.value=="请输入查询关键字"){field.value="";field.style.color="#333"}}
+function rls(field){if(field.value==""){field.value="请输入查询关键字";field.style.color="#999"}}
+//地图宽高自适应
+var con1=document.getElementById("maptop");
+var con2=document.getElementById("mapss");
+var con3=document.getElementById("mapnoti");
+var con4=document.getElementById("mapfoot");
+theHeight = document.documentElement.clientHeight;
+function hidemenu(){
+  var _this;
+  _this=function(e){return document.getElementById(e);};
+  if(_this("maphead").style.display == "none"){
+     _this("maphead").style.display = "block";
+     _this("changemapfull").style.background="url({AJ_SKIN}images/map/mapfull.gif)";
+     _this("changemapfull").innerHTML = "全屏地图";
+	 $("#myMap").height(theHeight - con1.offsetHeight - con2.offsetHeight - con3.offsetHeight - con4.offsetHeight);
+	 }
+  else {
+     _this("maphead").style.display = "none";
+     _this("changemapfull").style.background="url({AJ_SKIN}images/map/mapnormal.gif)";
+     _this("changemapfull").innerHTML = "退出全屏";
+	 _this("changemapfull").title = "退出全屏";
+	 $("#myMap").height(theHeight - con3.offsetHeight - con4.offsetHeight);
+     }
+}
+$("#myMap").height(theHeight - con1.offsetHeight - con2.offsetHeight - con3.offsetHeight - con4.offsetHeight);
+</script>
+
+
+
+<div id="divHideRoute" style="display:none;"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+
+	var map = new BMap.Map("map"); 				// 创建地图实例
+	var point = new BMap.Point(<?php echo $map_mid;?>);	// 创建点坐标
+	map.centerAndZoom(point, 15);
+	map.addControl(new BMap.NavigationControl()); 		//添加平移缩放控件
+	map.addControl(new BMap.ScaleControl()); 			//添加比例尺
+	map.addControl(new BMap.OverviewMapControl()); 		//添加缩略图
+	map.enableScrollWheelZoom(true); 				//鼠标滚轮
+
+	//创建楼盘数组
+	var ProjData = <?php echo $s;?>
+	
+	
+
+	//标注DEMO
+	function addMarker(index) {
+		//map.clearOverlays();
+		var myIcon = new BMap.Icon("{AJ_SKIN}images/map/z_jt.gif", new BMap.Size(123, 35), {
+			anchor: new BMap.Size(10, 25),
+			imageOffset: new BMap.Size(0, 5)	//Margin-Left, Margin-Top
+		});
+		var Lng = ProjData[index].point.split("|")[0];
+		var Lat = ProjData[index].point.split("|")[1];
+		var sContent = "<div id=\"tC\">" + ProjData[index].Developer + "</div>";
+		var point = new BMap.Point(Lng, Lat);
+		var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+
+		var marker = new BMap.Marker(point, { icon: myIcon });
+		var label = new BMap.Label("<b class='redB'>" + ProjData[index].Project + "</b>", { "offset": new BMap.Size(-6, -13) });
+		marker.setLabel(label);
+		map.addOverlay(marker);
+		label.setStyle({
+			borderColor: "#AE41F8",
+			borderTop: "0",
+			backgroundImage: "url({AJ_SKIN}images/map/z_middle.gif)",
+			backgroundRepeat: "repeat-x",
+			color: "#FFF",
+			padding: "4px",
+			marginTop: "-4px"
+			//cursor: "pointer"
+		});
+		(function() {
+			var _json = ProjData[index];
+			var _iw = createInfoWindow(_json);
+			var _marker = marker;
+			_marker.addEventListener("click", function() {
+				this.openInfoWindow(_iw);
+			});
+		})()
+	}
+	function createInfoWindow(json) {
+		var iw = new BMap.InfoWindow("<dl class='mapShowProj'><dt><a target='_blank' href='" + json.ProjURL + "'><img id='imgDemo' src='" + json.ProjPic + "' title='" + json.Project + "'/></a></dt><dd><a target='_blank' href='" + json.ProjURL + "'><b>" + json.Project + "</b></a><br />地　址：" + json.ProjAdd + "<br />电　话：" + json.Tel + "<br /><a href='" + json.ProjURL + "' target='_blank' style='border:0;margin:0 0 0 120px;color:#FF6600;'>查看详细资料>></a></dd></dl>");
+		return iw;
+	}
+	for (var i = 0; i < ProjData.length; i++) {
+		addMarker(i);
+	}
+
+</script>

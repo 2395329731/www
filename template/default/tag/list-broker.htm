@@ -1,0 +1,34 @@
+
+{loop $tags $k $t}
+					        <div class="detailed">
+          <div class="detailed_lef"><a href="{userurl($t[username], '')}" target="_blank"><img data-src="{useravatar($t[username], 'large')}" width="117" height="153"></a></div>
+          <div class="detailed_rig">
+            <span class="fr shop"><a href="{userurl($t[username], '')}" target="_blank" class="bblue">进入店铺>></a></span><h3><a href="{userurl($t[username], '')}"  class="bblue" target="_blank">{userinfos($t[username])}</a> 
+			{if $t[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="通过工商认证"/>{/if}
+	{if $t[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="通过实名认证"/>{/if}
+			 </h3>
+            <ul class="it_info">
+              <li style=" width:120px;">电话:<span class="orange">{$t[mobile]}</span> </li>
+              <li  style=" width:180px;">门店:<a href="{userurl(get_agent($t[companyid]), '')}" class="bblue" target="_blank">{$t[company]}</a></li>
+              <li  style=" width:120px;">房源:<a href="{userurl($t[username], '')}" class="bblue" target="_blank">售({get_num('sale_5',$t[username])})</a>&nbsp;<a href="{userurl($t[username], '')}" class="bblue" target="_blank">租({get_num('rent_7',$t[username])})</a></li>
+              <li   style=" width:120px; margin-left:2px;"> 登陆:<span>{timetodate($t[logintime], 3)}</span></li>
+            </ul>
+            <div class="detailed_riga"> 
+			<div class="detailed_rigatitle"> <span class="aa">经纪人推荐</span> <span class="bb">户型</span> <span class="cc">面积</span> <span class="cc">总价</span> </div>
+			  <!--{php $tags=tag("moduleid=5&condition=status=3 and username='".$t[username]."'&length=36&pagesize=3&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}     
+			 <div class="detailed_rigatitleh"> <a href="{userurl($t[username], '')}" title="{$t[title]}" class="aa bblue">{$t[title]}</a><span class="bb">{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}{if $t[toilet]}{$t[toilet]}卫{/if}</span> <span class="cc">{$t[houseearm]}平米</span> <span class="cc red">{if $t[price]}{$t[price]}万{else}面议{/if}</span> </div>
+		    {/loop}
+			 
+		              
+         
+
+
+            </div>
+          </div>
+        </div>
+{/loop}
+
+{if $showpage && $pages}<div class="pagination">{$pages}</div>{/if}		    
+
+

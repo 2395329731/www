@@ -1,0 +1,197 @@
+{template 'header'}
+<link href="{AJ_SKIN}xiaoqu.css" rel="stylesheet" type="text/css"/>
+<div id="main">
+	<div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a>&gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&nbsp;&gt;{$title}</div>
+<div class="Atitle">
+	<h1>{$title}</h1>
+	<div class="subNav cf">
+		<ul class="cf">
+			<li><a  href="{$linkurl}">小区概况</a></li>
+            <li><a  href="{$linkurl}price.html">价格走势</a></li>
+            <li><a   href="{$linkurl}sale.html">二手房</a></li>
+            <li><a class="on" href="{$linkurl}rent.html">租房</a></li>
+            <li><a  href="{$linkurl}map.html">周边地图</a></li>
+           
+		</ul>
+	</div>
+</div>		<div class="">
+<div class="conl1" id="conl1">
+	<div class="cf" style="padding-top:9px;">
+		</div>
+				<div class="cf">
+			<span class="a_name">居室：</span>
+			<span>
+				<a {if empty($hu)}class="c"{/if} href="{$linkurl}rent{deal_str($lst,'i')}.html">不限</a>
+                	{php $huxing = array('一室', '二室', '三室', '四室', '五室以上');}
+{loop $huxing $k $v} <a {if $hu==($k+1)}class="c"{/if} href="{$linkurl}rent{deal_str($lst,'i')}-i{$k+1}.html">{$v}</a>{/loop}         
+                                			</span>
+		</div>
+		<div class="cf">
+			<span class="a_name">租金：</span>
+			<span>
+				<a {if empty($range)}class="c"{/if} href="{$linkurl}rent{deal_str($lst,'r')}.html">不限</a>
+									              			{php $range_arr = getbox_name('range','rent_7')}
+					    {loop $range_arr $key $v}
+					 <a {if $range==$key}class="c"{/if} href="{$linkurl}rent{deal_str($lst,'p')}-p{$key}.html">{$v}</a>{/loop}
+              										 	<em class="autof">
+						<form action="{$linkurl}rent{deal_str($lst,'p')}-e" method="get">
+						<input type="number" value="{$minprice}"> - 
+						<input type="number" value="{$maxprice}"> 元
+						<button type="button"></button>
+					</form>
+				</em>
+			</span>
+		</div>
+		<div class="cf">
+			<span class="a_name">面积：</span>
+			<span>
+			<a {if empty($area)}class="c"{/if} href="{$linkurl}rent{deal_str($lst,'c')}.html">不限</a>
+				  {php $mianji = array('40平米以下', '40-60平米', '60-80平米', '80-100平米', '100-120平米', '120-150平米','150平米以上');}
+{loop $mianji $k $v} 
+							   	               <a {if $area==($k+1)}class="c"{/if} href="{$linkurl}rent{deal_str($lst,'c')}-c{$k+1}.html">{$v}</a>{/loop}
+               				   				   	<em class="autof">
+					<form action="{$linkurl}rent{deal_str($lst,'c')}-m" method="get">
+						<input type="text" value="{$minarea}"> - 
+						<input type="text" value="{$maxarea}"> 平
+						<button type="button"></button>
+					</form>
+				</em>
+			</span>
+		</div>
+
+	</div>
+</div>		<!--小区概括-->
+		<div class="cf mt20">
+			<div class="fl w740">
+				<div class="subNav cf">
+					<ul class="fl">
+
+						<li>
+							<a href="{$linkurl}rent{deal_str($lst,'u')}.html" {if empty($source)} class="on" {/if}>全部</a> 
+						</li>
+						<li>
+						<a href="{$linkurl}rent{deal_str($lst,'u')}-u2.html" {if $source=="2"} class="on" {/if}>中介</a> 
+						</li>
+						<li>
+					<a href="{$linkurl}rent{deal_str($lst,'u')}-u1.html" {if $source=="1"} class="on" {/if}>个人</a> 
+						</li>
+					</ul>
+					<div class="fr">
+						<div class="fenye fr">
+						<span>共找到房源<b class="red">{$items}</b>套</span>		<span>
+								<a href="{$linkurl}rent{deal_str($lst,'g')}-g{if $page==1}1{else}{$page-1}{/if}.html">上一页</a>
+								{$page}	<a href="{$linkurl}rent{deal_str($lst,'g')}-g{if $page==$total}{$total}{else}{$page+1}{/if}.html">下一页</a>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="lmc-bottom cf">
+					<div class="TelIcon fr">
+					<a href="{if $ord==2}{$linkurl}rent{deal_str($lst,'n')}-n3.html{else}{$linkurl}rent{deal_str($lst,'n')}-n2.html{/if}"  class="A1 {if $ord==2}down{/if}{if $ord==3}up{/if}">面积</a>
+						<a href="{if $ord==6}{$linkurl}rent{deal_str($lst,'n')}-n7.html{else}{$linkurl}rent{deal_str($lst,'n')}-n6.html{/if}"  class="A1 {if $ord==6}down{/if}{if $ord==7}up{/if}">总价</a>
+					</div>
+					<div class="s_list fr" id="s_list1">
+						<span>选择排序方式</span>
+						<ul>
+							<li>
+								<a href="{$linkurl}rent{deal_str($lst,'n')}-n2.html" >面积从大到小</a>
+							</li>
+							<li>
+								<a href="{$linkurl}rent{deal_str($lst,'n')}-n3.html" >面积从小到大</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n6.html" >总价从高到低</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n7.html" >总价从低到高</a>
+							</li>
+						</ul>
+					</div>
+					<span class="fr">排序：</span>
+				</div>
+				<ul>
+												{if $tags}{template 'list-crent', 'tag'}{/if}		
+								
+							</div>
+			<div class="w240 fr">
+								<div class="modD">
+					<h4><span class="blue">{$AJ[city_sitename]}二手房</span>月价格走势</h4>
+					<div class="r_fjzs">
+						
+						<p>本月均价：{if get_avg_price($itemid)}<strong class="orange">{get_avg_price($titemid)}</strong>元/平米 {else}<strong>待定</strong>{/if} </p>
+						<p>同比上月：<strong  class="orange up_icon"
+						>{$percent_change}</strong></p>
+						<div id="hc1" style="height:140px"></div>
+						
+						
+						
+						
+					</div>
+				</div>					
+		<div class="modD">
+			<h4>热门小区</h4>
+				<ul class="name-price">
+					<!--{php $tags=tag("moduleid=18&condition=status=3&areaid=$cityid&length=22&pagesize=6&order=hits desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+																			<li class="cf">
+							<span class="red"> <strong>{if get_avg_price($t[itemid])}{get_avg_price($t[itemid])}</strong>元/㎡{else}待定</strong>{/if}
+														</span><a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a>
+						</li>{/loop}
+																			</ul>
+				</div>
+				<div class="modD">
+
+					<h4>周边售房信息</h4>
+				<ul class="name-price">
+						<!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$areaid&length=22&pagesize=6&order=hits desc&target=_blank&template=null");}-->
+						{loop $tags $i $t}	<li class="cf">
+							<span class="red"> <strong>{if $t[price]}{$t[price]}</strong>万{else}待定</strong>{/if}
+														</span><a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a>
+						</li>{/loop}	
+					</ul>
+					</div>
+				<div class="modD">
+					<h4>周边租房信息</h4>
+				<ul class="name-price">
+												<!--{php $tags=tag("moduleid=7&condition=status=3&areaid=$areaid&length=22&pagesize=6&order=hits desc&target=_blank&template=null");}-->
+						{loop $tags $i $t}	<li class="cf">
+							<span class="red"> <strong>{if $t[price]}{$t[price]}</strong>元/月{else}待定</strong>{/if}
+														</span><a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a>
+						</li>{/loop}	
+																			</ul>
+				</div>			</div>
+		</div>
+		<div class="bottom-link">
+			<dl class="cf">
+				<dt>附近小区</dt>
+				<dd class="cf"><!--{php $tags=tag("moduleid=18&condition=status=3&areaid=$areaid&length=22&pagesize=5&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}	<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a>
+ {/loop}
+														</dd>
+			</dl>
+		</div>	</div>
+	<script type="text/javascript">
+seajs.use(["jquery","highcharts","autofh"],function($,highcharts){
+	$("#s_list1").hover(function(){
+		$(this).addClass("on");
+	},function(){
+		$(this).removeClass("on");
+	})
+	$("#conl1 em.autof").autofh();
+	highcharts('hc1',"{$title}",[{get_linedate($itemid)}],[{get_lineprice($itemid)}],'元/平米');
+})
+</script>
+<script type="text/javascript">
+seajs.use(["jquery","superm"],function($,sm){
+	sm.start([
+		{
+			name:"share"
+		}
+
+	]);
+	$("#subhouse").click(function(){
+		sm.open("sub",{t:this,type:''})
+	})
+})
+</script>
+{template 'footer'}

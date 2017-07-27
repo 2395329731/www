@@ -1,0 +1,27 @@
+<ul id="hlist" class="hlist">
+{loop $tags $k $t}
+    <li>
+                            <a href="{$t[linkurl]}" class="hl_img" target="_blank" title="{$t[alt]}">
+                                  <u class=" {if $t[ishot]} hl_u2{/if}"></u>                
+                                <img src="{imgurl($t[thumb])}" alt="{$t[alt]}">
+                            </a>
+                            <div>
+                                <h3><a href="{$t[linkurl]}" target="_blank">{$t[title]} {if $t[istop]}<u class="ding"></u> {/if}</a></h3>
+                                <p><a href="{$MODULE[18][linkurl]}{$t[houseid]}/" target="_blank" >{$t[housename]}</a> {area_pos($t[areaid], '')}{$t[address]}</p>
+                                                             {if $t[fyts]}   <p>
+                                                                           <!--{php $ts=explode(",",$t[fyts]);}-->
+                    {loop $ts $ks $vs}
+                     <span class="ts" style="background:#{rand(0,255)};">{$vs}</span>
+                    {/loop}  </p>{/if}
+                                                                <p>{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}{if $t[toilet]}{$t[toilet]}卫{/if}<i>|</i>{$t[houseearm]}平米<i>|</i>：{floor($t['price']*10000/$t['houseearm'])}元/㎡<i>|</i>{$t[floor1]}/{$t[floor2]}层<i>|</i>{getbox_diaoval('fix','checkbox',$t[fix],'sale_5')}<i>|</i>朝向{getbox_diaoval('toward','checkbox',$t[toward],'sale_5')}<i>|</i>房龄{$t[houseyear]}年                                </p>
+                                <p class="gray9"><a href="{userurl($t[username], '')}"  target="_blank" title="{$t[truename]}" class="gray9">{$t[truename]}</a>{timetodate($t[edittime], $datetype)}更新</p>
+                                <span class="price"><b>{if $t[price]}{$t[price]}</b>万元{else}面议</b>{/if}</span>
+								 <a href="javascript:" class="hlist_db" data-val="{$t[itemid]}" data-url="{$t[linkurl]}" data-name="{dsubstr($t[alt], 12, $suffix = '..')}">比比看</a>
+                           
+								
+                               
+                            </div>
+                        </li>
+						{/loop}	
+</ul>	
+{if $showpage && $pages}<div class="pagination">{$pages}</div>{/if}

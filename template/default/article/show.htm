@@ -1,0 +1,163 @@
+{template 'header'}
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<link href="{AJ_SKIN}article.css" rel="stylesheet" type="text/css"/>
+<div class="mt5"></div>
+<div id="main" class="cf news_main">
+		<h2 class="breadCrumb cf">
+		<p class="fl"><i></i><a href="{$MODULE[1][linkurl]}">首页</a>
+                            <span>>></span><a href="{$MOD[linkurl]}">{$MOD[name]}</a>
+                            <span>>></span>{cat_pos($CAT, ' &raquo; ')}
+                    </p>
+		<form class="fr cf" name="search" action="{$MOD[linkurl]}search.php" method="GET">
+			<input class="search fl" id="search" type="text" name="kw" value=""  />
+			<input class="search_btn fl" type="submit" value="" />
+		</form>
+	</h2>
+	<div id="main_left" class="fl">
+        <h1 class="h1_title">
+            <p>{$title}</p>        </h1>
+        		<p class="title_sm"> <span>{if $copyfrom}&nbsp;&nbsp;来源：{if $fromurl}<a href="{$fromurl}" target="_blank">{/if}{$copyfrom}{if $fromurl}</a>{/if}{/if}</span><span>发布日期：：{$adddate}</span>浏览次数：<span id="hits">{$hits}</span>	 </p>
+			{if $houseid} 
+ <div class="tuan-box">
+ <form action="{$MODULE[1][linkurl]}guestbook/index.php" method="post" name="kft">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="23%" rowspan="2"><img src="{AJ_SKIN}images/news/tuanpic.gif" width="152" height="105"  style=" border:0; margin-top:5px" /></td>
+    <td width="77%" valign="top">
+      
+    </td>
+  </tr>
+  <tr>
+    <td valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <!--<td colspan="2"><h2>报名看房团</h2></td>-->
+        </tr>
+      <tr>
+        <td valign="middle"><p style="padding-left:28px;">姓名：<input name="post[truename]" type="text"  class="tuan_txt"/></p>
+<p style="padding-left:28px;">电话：<input name="post[telephone]" type="text"  class="tuan_txt" /></p>
+<p>意向楼盘：<input name="post[content]" type="text"  class="tuan_txt" value="{$housename}"/></p></td>
+        <td><input type="submit" name="submit" value="" style="background:url({AJ_SKIN}images/news/tuan_btn.gif) no-repeat; width:70px; height:66px;cursor: pointer; border:0; margin-top:0px"  />
+		</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</form>
+</div>  
+{/if}  
+                    <div class="news_zy">
+                <p><span>摘要：</span>{$introduce}</p>
+            </div>
+                                <div id="surround_adb"></div>
+		<div id="content">{$content}</div>
+                	{if $voteid}<div class="pd20">{loop $voteid $v}
+		{load('vote_'.$v.'.htm')}{/loop}</div>
+		{/if}        		<div class="tags cf">
+			<span class="fr f14">{if $author}【编辑：{$author}】{/if}</span>关键字:{loop $keytags $t}
+		<a href="{$MOD[linkurl]}search.php?kw={urlencode($t)}" target="_blank" rel="nofollow">{$t}</a>
+		{/loop}</div>
+		           {if $pages}<div class="page_num a1">{$pages}</div>{/if}
+                  {if $subtitles}
+		<div class="subtitle">
+		<strong>本文导航：</strong>
+		<ul>
+		{loop $titles $i $t}
+		{if $subtitles > $i}
+		<li>
+		({php echo $i+1;})
+		{if $page == $i+1}
+		<strong>{$t}</strong>
+		{else}
+		<a href="{$MOD[linkurl]}{if $i}{itemurl($item, $i+1)}{else}{$item[linkurl]}{/if}" title="{$t}">{$t}</a>
+		{/if}
+		</li>
+		{/if}
+		{/loop}
+		</ul>
+		<div class="c_b"></div>
+		</div>
+		{/if}
+                        <!---->
+						{if $MOD[page_srelate]}
+            <div class="news_bottom_list cf">
+                <p>相关阅读</p>
+                <ul class="fl">
+                                                <!---->{if $keytags}
+													<!--{php $tags=tag("moduleid=$moduleid&length=44&condition=status=3 and itemid<>$itemid and keyword like '%".$keytags[0]."%'&areaid=$cityid&pagesize=".$MOD[page_srelate]."&order=".$MOD[order]."&cols=2&template=null");}-->
+												{loop $tags $i $t}<li><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>{/loop}
+		{else}	<!--{php $tags=tag("moduleid=$moduleid&length=44&catid=$catid&condition=status=3 and itemid!=$itemid&areaid=$cityid&pagesize=".$MOD[page_srelate]."&order=".$MOD[order]."&cols=2&template=null");}-->
+												{loop $tags $i $t}<li><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>{/loop}
+            {/if}                            </ul>
+            </div>{/if}
+        		<div class="share">
+            			<p>分享到：</p>
+				<!-- Baidu Button BEGIN -->
+			<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+			<a class="bds_qzone"></a>
+			<a class="bds_tsina"></a>
+			<a class="bds_tqq"></a>
+			<a class="bds_renren"></a>
+			<a class="bds_t163"></a>
+			<span class="bds_more"></span>
+			</div>
+			<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6781031" ></script>
+			<script type="text/javascript" id="bdshell_js"></script>
+			<script type="text/javascript">
+			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+			</script>
+			<!-- Baidu Button END -->
+			<div class="share_btn">
+				<a class="first" href="{$linkurl}" target="_blank">打印</a> <a class="second" id="copyhref" href="javascript:">复制网址</a> <a class="third" href="javascript:" id="shoucang">收藏</a>
+			</div>
+		</div>
+			
+<div class="pl_main">
+	
+	{template 'comment', 'chip'}
+	
+</div>
+</div>
+		<div id="main_right" class="fl">
+         {if $MOD[page_lrecimg]}
+		<div class="right_list">
+    <h2><span>推荐图文</span><a href="{$MODULE[8][linkurl]}" target="_blank">更多..</a></h2>
+    <ul class="zt_list">   <!--{php $tags=tag("moduleid=$moduleid&length=20&condition=status=3 and level=3 and thumb!=''and areaid=$cityid and catid=$catid&pagesize=".$MOD[page_lrecimg]."&order=".$MOD[order]."&width=100&height=60&target=_blank&template=null");}-->
+	{loop $tags $k $t}
+                         <li><a class="cf"  href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">
+					 <img class="fl" src="{imgurl($t[thumb])}" width="100" height="60" alt="{$t[alt]}" >
+                    <div class="fl txt"><p class="fl txt">{$t[title]}</p></div>
+                </a>
+            </li>{/loop}
+            </ul>
+</div> {/if}
+		<div class="right_list">
+    <h2><span>最新资讯</span></h2>
+    <ul class="zx_list">
+   <!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and catid=$catid and areaid=$cityid&length=42&&order=addtime desc&pagesize=10&target=_blank&template=null");}-->
+	{loop $tags $k $t}
+		
+        	               <li class="li{$k+1}"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+						   {/loop}
+              
+            </ul>
+</div>
+		<div class="right_list">
+    <h2><span>热点楼盘</span><a href="{$MODULE[6][linkurl]}list.html"  title="热点楼盘" target="_blank">更多..</a></h2>
+    <ul class="zt_list">   <!--{php $tags=tag("moduleid=6&condition=status=3 and isnew=1 &areaid=$cityid&length=12&pagesize=6&order=hits desc&template=null");}-->
+								{loop $tags $k $t}
+                    <li class="cf">
+              <a  href="{$t[linkurl]}" title="{$t[titlle]}" target="_blank"><img  class="fl" src="{imgurl($t[thumb])}" width="100" height="60" alt="{$t[alt]}" ></a>
+                <div class="fl txt_div">
+                   <a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><h4>{$t[title]}</h4></a>
+                    <p>均价：{if $t[price]}{$t[price]}元{else}待定{/if} </p>
+                    <p>{area_pos($t[areaid], ' ')}</p>
+                </div>
+            </li>
+                    {/loop}
+            </ul>
+</div>
+
+        	</div></div>
+
+{if $content}<script type="text/javascript" src="{AJ_STATIC}file/script/content.js"></script>{/if}	
+{template 'footer'}	

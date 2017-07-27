@@ -1,0 +1,5 @@
+
+{loop $tags $k $t} 
+	<li><a href="{userurl($t[username], '')}" class="jAvatar" target="_blank"><img src="{useravatar($t[username], 'large')}"></a>
+			<p><a href="{userurl($t[username], '')}">{$t[truename]}</a>
+				<br>区域：{area_pos($t[areaid], '')}<br>电话：{$t[mobile]}			</p></li> {/loop}

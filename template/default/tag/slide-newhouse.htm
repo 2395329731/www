@@ -1,0 +1,19 @@
+
+ <script language="javascript" type="text/javascript">
+			<!--
+			var Flash_Width = 310;
+			var Flash_Height = 200;
+			var Txt_Height = 20;
+			var Swf_Height = parseInt(Flash_Height + Txt_Height);
+			var Pics_ = '{loop $tags $i $t}{if $i}|{/if}{$t[thumb]}{/loop}';
+			var Links_ = '{loop $tags $i $t}{if $i}|{/if}{$t[linkurl]}{/loop}';
+			var Texts_ = '{loop $tags $i $t}{if $i}|{/if}{$t[alt]}{/loop}';
+			document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ Flash_Width +'" height="'+ Swf_Height +'">');
+			document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="{AJ_STATIC}file/flash/Flash.swf"><param name="quality" value="high"><param name="bgcolor" value="#F0F0F0">');
+			document.write('<param name="menu" value="false"><param name="wmode" value="opaque">');
+			document.write('<param name="FlashVars" value="pics='+Pics_+'&links='+Links_+'&texts='+Texts_+'&borderwidth='+Flash_Width+'&borderheight='+Flash_Height+'&textheight='+Txt_Height+'">');
+			document.write('<embed src="{AJ_STATIC}file/flash/Flash.swf" wmode="opaque" FlashVars="pics='+Pics_+'&links='+Links_+'&texts='+Texts_+'&borderwidth='+Flash_Width+'&borderheight='+Flash_Height+'&textheight='+Txt_Height+'" menu="false" bgcolor="#F0F0F0" quality="high" width="'+ Flash_Width +'" height="'+ Swf_Height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');
+			document.write('</object>');
+			//-->
+			</script>
+			

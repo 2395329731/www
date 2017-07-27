@@ -1,0 +1,234 @@
+
+{template 'header'}
+<div class="m">	
+<link href="{AJ_SKIN}/houses_style.css" rel="stylesheet" type="text/css" />
+<link href="{AJ_SKIN}/house_zhuye_js.css" rel="stylesheet" type="text/css">
+
+<script>
+function newslist(cid, id){
+	jQuery(".newslist_"+cid+"_li").removeClass("current").addClass("nocur");
+	jQuery("#newslist_"+cid+"_li"+id).removeClass("nocur").addClass("current");
+	jQuery(".newslist_"+cid+"_ul").hide();
+	jQuery("#newslist_"+cid+"_ul"+id).show();
+}	
+/*视频滑动门*/
+function show_menu(num){
+for(i=1;i<5;i++){
+	if($('li'+i)){
+	$('h'+i).style.display='none';
+	$('li'+i).style.display='none';
+	$('f'+i).className='shipin03';
+	 }
+}
+	  $('h'+num).style.display='block';//触发以后标题块
+	  $('li'+num).style.display='block';//触发以后信息块
+	  $('f'+num).className='shipin030';//触发以后TAG样式
+}
+
+</script>
+
+
+<script language="Javascript" src="{AJ_SKIN}js/house_zhuye.js"></script>
+
+<!--zhuye img div-->
+<div class="cArea">
+<!--当前位置 begin-->
+<div class="column">
+<div class="a1 linka">
+<a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a>&raquo;  <a href="{$linkurl}">{$title}</a>  &raquo; 楼盘主页</div>
+<div class="a2 linka">
+<form name="detailForm" id="detailForm" action="{$MODULE[2][linkurl]}favorite.php" method="post">
+<input type="hidden" name="action" value="add"/>
+<input type="hidden" name="title" value="{$title}"/>
+<input type="hidden" name="url" value="{$linkurl}"/>
+</form>
+<a href="javascript:document.getElementById('detailForm').submit();" class="a-comm">收藏</a>
+
+
+ 
+<a href="javascript:void(0);" onclick="print();">打印</a>  │  
+<span>最后更新:{$editdate}</span>
+</div>
+</div>
+<!--当前位置 end-->
+<div class="hr10"></div>
+
+
+
+<!--楼盘名称 begin-->
+<div class="tab_a">
+<div class="tab_a_l">
+<div class="a1"><h1>{$title}</h1></div>
+<div class="a2 ">{$TYPE[$typeid]}</div>
+<div class="a3">{get_cats($catid,  $moduleid)}</div>
+</div>
+<div class="tab_a_r">
+<span class="reda">{$hits}</span> 人关注 
+参加{$title}购房团 
+[<span class="linka"><a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid)}">我要团购</a>] 
+</span>
+</div>
+</div>
+<!--楼盘名称 end-->
+<div class="hr10"></div>
+
+
+<!--浮动导航begin-->
+<div id="index_nav_box">
+<div class="qlink" id="index_nav">
+
+<!--楼盘顶部导航栏目 begin-->
+
+<DIV class="subNav">
+<UL class="clearfix">
+{php $menu = array('xinxi'=>'详细信息', 'huxing'=>'户型', 'dongtai'=>'销售动态', 'jiage'=>'价格明细', 'peitao'=>'地图配套', 'xiangce'=>'图片相册', 'zixun'=>'相关资讯', 'wenfang'=>'问房');}
+<li ><a href="{$linkurl}">楼盘主页</a></li>
+{loop $menu $k $v} 
+<li class={if dongtai==$k}this{else}''{/if}><a href="{$MODULE[6][linkurl]}{$k}.php?itemid={$itemid}">{$v}</a></li>
+{/loop}
+</UL>
+</DIV>
+
+<!--楼盘顶部导航栏目 end-->
+<div class="hr10"></div>
+
+</div>
+</div>
+<!--浮动导航end-->
+</div>
+
+<!--当前位置 cArea--><div class="cArea">
+<div class="cen_box">
+<div class="cen_wrap">
+<div class="title_map link5"><span class="nstyle">{$title}销售动态<font style="color: #999; font-weight: normal;"></font></span></div>
+<div class="title_detail_cen"><div class="title_news_lr">
+<ul>
+<!--{tag("moduleid=8&table=aijiacms_article_8 m,aijiacms_article_data_8 c&prefix=&condition=m.itemid=c.itemid and m.catid=35 and m.houseid=$itemid&pagesize=20&order=m.itemid desc&template=list-dongtai")}--></ul>
+ 
+</div></div>
+<div class="cen_end"></div>
+<div class="hr10"></div>
+</div>
+</div>
+
+
+
+
+<div class="right">
+     <!--周边楼盘+同价位楼盘 begin-->
+     <div class="PartBs">
+            <div class="PartBsc1">
+        <ul>
+          <li class="SearchD" id="i1" onmouseover="Search4(1)">周边楼盘</li>
+          <li class="SearchC" id="i2" onmouseover="Search4(2)">同价位楼盘</li>
+        </ul>
+      </div>
+     
+      <DIV class="rig_cont px7"  id=j1>
+            <UL class="hlist_a">
+             <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_03">区县</SPAN><SPAN class="td_02">价格(元/㎡)</SPAN></LI>
+
+
+ 
+  <!--{loop $same_quyu_list $key $value}-->
+  <LI>
+<SPAN class="td_1">・<A   href="{$MODULE[6][linkurl]}{$value[linkurl]}" target="_blank">{$value[title]}</A></SPAN>
+<SPAN class="td_5 link6">{area_poss($value[areaid], ' ')}</SPAN>
+<SPAN class="td_4">{if $value[price]}{$value[price]}{else}一房一价{/if}</SPAN>
+ </LI><!--{/loop}-->
+            </UL>
+      </DIV>
+      
+    <DIV class="rig_cont px7 search_undis"  id=j2>
+            <UL class="hlist_a">
+           <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_03">区县</SPAN><SPAN class="td_02">价格(元/㎡)</SPAN></LI>
+ <!--{loop $same_price_list $key $value}-->
+  <LI>
+<SPAN class="td_1">・<A   href="{$MODULE[6][linkurl]}{$value[linkurl]}" target="_blank">{$value[title]}</A></SPAN>
+<SPAN class="td_5 link6">{area_poss($value[areaid], ' ')}</SPAN>
+<SPAN class="td_02 link6">{if $value[price]}{$value[price]}{else}一房一价{/if}</SPAN>
+ </LI><!--{/loop}-->
+            </UL>
+      </DIV> 
+  
+     <div class="rig_end"></div>
+     </div>
+     <!--周边楼盘+同价位楼盘 end-->
+     <div class="hr10"></div>
+     
+
+
+     <!--热点楼盘+最新楼盘 begin-->
+     <div class="PartBs">
+            <div class="PartBsc1">
+        <ul>
+          <li class="SearchD" id="c1" onmouseover="Search1(1)">热点楼盘</li>
+          <li class="SearchC" id="c2" onmouseover="Search1(2)">最新楼盘</li>
+        </ul>
+      </div>
+     
+      <DIV class="rig_cont px7"  id=d1>
+            <UL class="hlist_a">
+             <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_03">区县</SPAN><SPAN class="td_02">价格(元/㎡)</SPAN></LI>
+
+	  <!--{tag("moduleid=6&table=newhouse&condition=status=3 and isnew=1&areaid=$cityid&pagesize=10&order=hits desc&template=list_xinxihouse")}-->
+            </UL>
+      </DIV>
+      
+    <DIV class="rig_cont px7 search_undis"  id=d2>
+            <UL class="hlist_a">
+             <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_03">区县</SPAN><SPAN class="td_02">价格(元/㎡)</SPAN></LI>
+
+
+ 
+               <!--{tag("moduleid=6&table=newhouse&condition=status=3 and isnew=1&areaid=$cityid&pagesize=10&order=addtime desc&template=list_xinxihouse")}-->
+
+            </UL>
+      </DIV> 
+  
+     <div class="rig_end"></div>
+     </div>
+     <!--热点楼盘+最新楼盘 end-->
+     <div class="hr10"></div>
+
+
+     <!--精品楼盘推荐 begin-->
+     <div class="rig_wrap">
+     <div class="title_rig link5">
+ 		<span class="link_span"></span>
+精品楼盘推荐
+  </div>
+      <DIV class="rig_cont px7">
+            <UL class="hlist_a">
+             <LI class="title">
+<SPAN class="td_1">楼盘名称</SPAN>
+<SPAN class="td_3">区域</SPAN>
+<SPAN class="td_02">价格(元/㎡)</SPAN>
+</LI>
+
+   <!--{tag("moduleid=6&table=newhouse&condition=status=3 and isnew=1 and level>0&areaid=$cityid&pagesize=10&order=addtime desc&template=list_xinxihouse")}-->
+            </UL>
+      </DIV>
+     <div class="rig_end"></div>
+     </div>
+     <!--精品楼盘推荐 end-->
+     <div class="hr10"></div>
+</div>
+
+</div>
+<!--楼盘导航栏目 begin-->
+<div class="cArea">
+<DIV class="subNavcc">
+        <UL class="clearfixcc">
+            <li><a href="{$linkurl}">楼盘主页</a></li>				
+{loop $menu $k $v} 
+<li class={if dongtai==$k}this1{else}''{/if}><a href="{$MODULE[6][linkurl]}{$k}.php?itemid={$itemid}">{$v}</a></li>
+{/loop}</UL>
+ </DIV>
+ <!--楼盘导航栏目 end-->
+</div>
+<script language=Javascript src="{AJ_SKIN}js/lpjs01.js"></script>
+<script language=Javascript src="{AJ_SKIN}js/lpjs02.js"></script>
+
+{template 'zoom', 'chip'}
+{template 'footer'}

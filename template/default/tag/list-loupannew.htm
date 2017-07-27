@@ -1,0 +1,2 @@
+{loop $tags $k $t}
+ <LI><SPAN class="td_1">・<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{dsubstr($t[title], 12, '')}</a></SPAN><SPAN class="td_2 link6">{area_poss($t[areaid], ' ')}</SPAN><SPAN class="td_4">{if $t[price]}{$t[price]}元/㎡{else}一房一价{/if}</SPAN></LI>{/loop}

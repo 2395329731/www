@@ -1,0 +1,178 @@
+{template 'header'}
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}/lpfx.css">
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}/lpfxs.css"/>
+<div id="main">
+<div class="blank15"></div>
+<div class="jgcrumbs">
+您所在的位置：&gt; <a href="{$MODULE[1][linkurl]}fenxiao">楼盘分销</a> &gt; <span>分销内容详情</span>
+</div>
+
+<!--楼盘详情-->
+<div class="exp_house p10 clearfix">
+ <div class="blank5"></div>
+     <div class="title clearfix">
+         <h2>{$title}<em>&nbsp;[{area_poss($areaid, ' ')}] 价格：{if $price}{$price}3200元/m&sup2;{else}待定{/if}</em></h2>
+     </div>
+<div class="blank10"></div>
+    <div class="hs_sale clearfix">
+        <i>为您推荐&nbsp;&gt;</i>
+        <font>{$tedian}</font>
+    </div>
+    <div class="hsimg clearfix">
+       <img src="{imgurl($thumb)}" width="1178" height="410" alt="{$title}"/>
+         <div class="hs_info clearfix">
+          <div class="r">
+          <a class="i1" href="{$MODULE[1][linkurl]}fenxiao/tuijian.php?hid={$itemid}&hname={$title}">推荐购房</a>
+            <a class="i2" href="{$linkurl}">我要购房</a>
+          </div>
+          <ul>
+            <li>该楼盘已成交<em><div  class="count08" >{$star4}</div></em>套</li>
+            <li>已预订<em><div  class="count08" >{$star1}</div></em>套</li>
+            <li>已推荐<em><div  class="count08" >{$star0}</div></em>套</li>
+            <li>推荐佣金<em>{$yongjin}</em></li>
+            <li><em >还剩 <span id="totimer" class="pri-txt">{timetodate($totime, 'Y年n月j日 H:i')}</span>结束</em></li>
+				 <script type="text/javascript">
+		var totime = new Date({$jsdate}).getTime();
+		function _totimer() {
+			var t = new Date();
+			var s = Math.floor((totime - t.getTime())/1000);
+			var h = '';
+			var i;
+			if(s > 0) {
+				i = Math.floor(s/86400);	
+				h += '<span>'+i+'</span>天';
+				s = Math.floor(s%86400);
+				i = Math.floor(s/3600);	
+				h += '<span>'+i+'</span>小时';
+				s = Math.floor(s%3600);	
+				i = Math.floor(s/60);			
+				h += '<span>'+i+'</span>分';
+				s = Math.floor(s%60);
+				h += '<span>'+s+'</span>秒';
+			} else {
+				h = '<span class="f_red">活动已结束</span>';
+			}
+			Dd('totimer').innerHTML = h;
+		}
+		_totimer();
+		setInterval("_totimer()", 1000); 
+		</script>
+          </ul>
+         </div>
+    </div>
+</div>
+</div>
+<div class="wrap">
+<!--分销推荐楼盘右边内容-->
+<!--联系地址内容-->
+<div class="blank15"></div>
+<div class="w770 l clearfix">
+      <div class="fxleft_left p20 clearfix">
+           <div class="adress">
+               <p><span>物业类型：</span>{search_cats($catid, '6')}</p>
+               <p><span>项目位置：</span>{area_poss($areaid, ' ')}</p>
+               <p><span>面积段：</span>{$lp_area}平米</p>
+               <p><span>开盘时间：</span>{$selltime}</p>
+               <p><span>入住时间：</span>{$completion}</p>
+               <p><span>物业费：</span>{$lp_costs}元/平方米·月</p>
+               <p><span>售楼地址：</span>{$address}</p>
+               <p><span>开发商：</span>{$kfs}</p>
+               <p class="call"><em>{if $telephone}{$telephone}{else}热线尚未开通{/if}</em></p>
+           </div>
+        <div class="map r">
+		{php $map_height = 262; }
+	{php @include AJ_ROOT.'/api/map/baidu/show.inc.php';}
+    
+    </div>
+          </div>
+<div class="blank15"></div>
+<!--户型-->
+<div class="fxleft_left clearfix">
+     <div class="huxing clearfix">
+         <h2>楼盘户型</h2>
+         <ul>
+		 	  <!--{php $tags=tag("moduleid=12&table=aijiacms_photo_12 m,aijiacms_photo_item_12 c&prefix=&condition=m.itemid=c.item  and m.houseid=$itemid&catid=24&pagesize=10&order=c.itemid asc&template=null");}-->
+ {loop $tags $i $t}    
+              <li>
+             <a target="_blank" href="{$t[linkurl]}#id={$i+1}" ><img width="162" height="162" src="{$t[thumb]}" alt="{$title} "></a>
+             <p>{$t[introduce]}-{$t[mianji]}m&sup2;</p>
+          </li>
+          {/loop}
+  </ul>
+     </div>
+</div>
+<div class="blank15"></div>
+<!--楼盘相册-->
+    <div class="fxleft_left clearfix">
+        <div class="photo clearfix">
+             <h2>楼盘相册</h2>
+             <ul>
+                     <!--{php $tags=tag("moduleid=12&table=aijiacms_photo_12 m,aijiacms_photo_item_12 c&prefix=&condition=m.itemid=c.item  and m.houseid=$itemid&catid!=24&pagesize=8&order=c.itemid asc&template=null");}-->
+ {loop $tags $i $t}          <li>
+                   <a target="_blank" href="{$t[linkurl]}#id={$i+1}" ><img src="{$t[thumb]}" width="226" height="168" alt="{$title} "></a>
+                    <p>{$t[title]}</p>
+                </li>
+                  {/loop}
+               </ul>
+          </div>
+    </div>
+<div class="blank15"></div>
+<!--选项卡-->
+ <div class="fxleft_left">
+     <div id="tab-tit" class="tab-tit">
+           <span>项目介绍</span>
+           <span>项目配套</span>
+           <span>交通状况</span>
+           <span>建材装修</span>
+           <span>楼层状况</span>
+           <span>车位信息</span>
+           <span>相关信息</span>
+     </div>
+     <div id="tab-con" class="tab-con">
+         <ul><li><p>{$content}</p></li></ul>
+         <ul><li>学校：</b>{$lp_edu}<br>		<b style="font-weight:bold">医疗：</b>{$lp_hospital}<br>															<b style="font-weight:bold">金融：</b>{$lp_bank}</li></ul>
+         <ul><li>{$lp_bus}</li></ul>
+         <ul><li>{getbox_diaoval('fitment','checkbox',$fitment,'newhouse_6')}</li></ul>
+         <ul><li>{getbox_diaoval('buildtype','checkbox',$buildtype,'newhouse_6')}</li></ul>
+         <ul><li>{$lp_car}个</li></ul>
+         <ul><li><strong>建筑面积:</strong>{$lp_area}平米/m&sup2;<br>
+                 <strong>规划面积:</strong>{$lp_totalarea}平米<br>
+                 <strong>规划户数:</strong>{$lp_number}<br>
+                 <strong>绿 化 率:</strong>{$lp_green}%<br>
+                 <strong>容 积 率:</strong>{$lp_volume}<br>
+                 <strong>物业公司:</strong>{$lp_company}<br>
+                 <strong>物业地址:</strong>{$sell_address}<br>
+                 <strong>物 业 费:</strong>{$lp_costs}元/平米/月<br>
+                 <strong>开盘日期:</strong>{$selltime}<br>
+                 <strong>交房日期:</strong>{$completion}	<br></li>
+         </ul>
+     </div>
+
+</div>
+</div>
+    <div class="w210 fxleft_bk r clearfix">
+<!--同地区楼盘-->
+       <div class="area">
+           <h2>同地区楼盘</h2>
+           <div class="content clearfix">
+           <ul>	<!--{php $tags=tag("moduleid=6&condition=status=3 and isnew=1&areaid=$areaid&length=42&pagesize=6&order=hits desc&template=null");}-->
+ {loop $tags $i $t} 	
+                                      <li>
+                 <a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb])}" alt="{$t[alt]}" width="186" height="116"></a>
+                  <p class="l">{$t[title]}</p>
+                  <span class="r">{if $t[price]}{$t[price]}元/平米{else}待定{/if}</span>
+              </li>     {/loop}    </ul>
+                    </div>
+       </div>
+
+
+   
+</div>
+</div>
+<div class="blank15"></div>
+<!--统一底部-->
+<script type="text/javascript" src="{AJ_SKIN}js/jq.imgchange.js"></script>
+<script type="text/javascript">
+    $('#tab-con ul').imgChange({thumbObj:'#tab-tit span',autoChange:0,speed:0})
+</script>
+{template 'footer'}

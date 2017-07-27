@@ -1,0 +1,195 @@
+{template 'header', $template}
+<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a>{if $itemid} &raquo; {$title}{/if}</div>
+{if $itemid}
+<div class="main_head"><div><strong>{$title}</strong></div></div>
+<div class="main_body">	
+		<table width="100%" align="center">
+		<tr>
+		<td width="270" valign="top">
+			<div class="album">
+				<table width="100%" cellpadding="0" cellspacing="0">
+				<tr align="center">
+				<td width="250" valign="top"><div><span id="abm" title="点击图片查看大图"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/></span></div></td>
+				</tr>
+				<tr>
+				<td>
+				{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}</td>
+				</tr>
+				<tr align="center">
+				<td height="30" onclick="PAlbum(Dd('DIMG'));"><img src="{AJ_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> 点击图片查看大图</td>
+				</tr>
+				</table>
+			</div>
+		</td>
+		<td valign="top">
+			<div id="imgshow" style="display:none;"></div>
+			<table width="100%" cellpadding="4" cellspacing="4">
+			<tr>
+			<td width="80" class="f_dblue">房源名称：</td>
+			<td><span id="hits" class="f_r">浏览次数：{$hits}</span><strong>{$title}</strong>&nbsp;</td>
+			</tr>
+			
+			<tr>
+			<td class="f_dblue">价&nbsp;&nbsp;&nbsp; 格：</td>
+			<td><strong style="font-size: 18px; color: #CC0000">{if $price}{$price}元/月{else}面议{/if}</td>
+			</tr>
+			
+			
+			<tr>
+			<td class="f_dblue">所在小区：</td>
+			<td>{$housename}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区域：<span style="color: #CC0000"></span>{area_pos($areaid, ' ')}</td>
+			</tr>
+				<tr>
+			<td class="f_dblue">户&nbsp;&nbsp;&nbsp; 型：</td>
+			<td> {$room}室{$hall}厅{$toilet}卫{$balcony}阳台&nbsp;
+                                </td>
+			</tr>
+			<td class="f_dblue">面&nbsp;&nbsp; 积：</td>
+			<td> {$houseearm}平方米</td>
+			</tr>
+				<tr>
+			<td class="f_dblue">产权性质：</td>
+			<td> {if $cqxz==1}私产{elseif $cqxz==2}公产{elseif$cqxz==3}商品房{elseif $cqxz==4}期房{elseif $cqxz==5}经济适用房{elseif $cqxz==6}使用权房
+								{elseif $cqxz==7}房改房{/if}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;楼 层： 第{$floor1}层(共{$floor2}层)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;朝 向：
+		{if $toward==1}东{elseif $toward==2}西{elseif $toward==3}南
+								{elseif $toward==4}北{elseif $toward==5}东南{elseif $toward==6}西南
+								{elseif $toward==7}东北{elseif $toward==8}西北{elseif $toward==9}南北
+								{elseif $toward==10}东西{/if}
+								
+			</tr>
+			
+			
+			
+			<tr>
+			<td class="f_dblue">物业类型：</td>
+			<td>{cat_pos($CAT, ' &raquo; ')}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		装 修：
+			{$zhuanxiu}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建筑年代：{$houseyear}年&nbsp;</td>
+			</tr>
+			
+		
+			
+			<tr>
+			<td class="f_dblue">配套设施：</td>
+			<td class="f_b f_orange">{$peitao}</td>
+			</tr>
+			<tr>
+			<td class="f_dblue">交通状况：</td>
+			<td>{$bus}&nbsp;</td>
+			</tr>
+			<tr>
+			<td class="f_dblue">房源特色：</td>
+			<td>{$fyts}</td>
+			</tr>
+			<tr>
+			<td class="f_dblue">更新日期：</td>
+			<td>{$editdate}&nbsp;&nbsp;有效期至：{if $todate}{$todate}{else}长期有效{/if}{if $expired} <span class="f_red">[已过期]</span>{/if}</td>
+			</tr>
+			{if $could_inquiry && !$expired}
+			<tr>
+			<td class="f_dblue">&nbsp;</td>
+			<td><a href="#message"><img src="{AJ_SKIN}image/btn_inquiry.gif" alt="意向登记"/></a></td>
+			</tr>
+			{/if}
+			</table>
+			<script type="text/javascript">
+			document.write('<br/><br/><center><a href="{$MODULE[4][linkurl]}home.php?action=prevrent&itemid={$itemid}&username={$username}" class="t">&#171;上一个房源</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MODULE[4][linkurl]}home.php?action=nextrent&itemid={$itemid}&username={$username}" class="t">下一个房源&#187;</a></center>');
+			</script>
+		</td>
+		</tr>
+		</table>
+	</div>
+
+	<div class="main_head"><div><strong>详细信息</strong></div></div>
+	<div class="main_body">
+		{if $CP}{template 'property', 'chip'}{/if}
+		<div class="content" id="content">{$content}</div>
+	</div>
+	{if $could_inquiry}
+	<div class="main_head"><div><strong><span id="message_title">意向登记单</span><a name="message"></a></strong></div></div>
+	<div class="main_body">
+		<iframe src="{$inquiry_url}" name="fra" id="fra" style="width:98%;height:488px;" scrolling="no" frameborder="0"></iframe>
+	</div>
+	{/if}
+	{if $could_comment && in_array($moduleid, explode(',', get_module_setting(3, 'comment_module')))}
+	<div id="comment_div" style="display:;">
+		<div class="main_head"><div><span class="f_r px12">共<span id="comment_count">0</span>条&nbsp;&nbsp;</span><strong><span id="message_title">相关评论</span></strong></div></div>
+		<div class="main_body"><iframe src="{$MODULE[3][linkurl]}comment.php?mid={$moduleid}&itemid={$itemid}" id="aijiacms_comment" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+		</div>
+	</div>
+	{/if}
+	<script type="text/javascript">
+	try {Dd('type_{$typeid}').style.backgroundColor = '#F1F1F1';}catch (e){}
+	</script>
+	<script type="text/javascript">
+	var content_id = 'content';
+	var img_max_width = {$MOD[max_width]};
+	</script>
+	<script type="text/javascript" src="{AJ_STATIC}file/script/content.js"></script>
+{else}
+<div class="main_head"><div><strong>房源分类</strong></div></div>
+<div class="main_body">
+	<div class="px13 lh18">
+	<!--{php $tags=tag("table=type&condition=item='product-".$userid."'&pagesize=40&order=listorder asc,typeid desc&template=null");}-->
+	<div><span class="f_r"><a href="{$MENU[$menuid][linkurl]}" class="t">显示全部</a>&nbsp;</span>&nbsp;&nbsp;<strong>我公司经营以下几类房源，请查看： </strong></div>
+	<table width="98%" cellpadding="3" cellspacing="3" align="center">
+	{loop $tags $i $t}
+	{if $i%3==0}<tr>{/if}
+	<td width="33%" id="type_{$t[typeid]}"><a href="{userurl($username, 'file=rent&typeid='.$t['typeid'], $domain)}" title="{$t[typename]}" id="name_{$t[typeid]}">{set_style($t[typename], $t[style])}</a></td>
+	{if $i%3==2}</tr>{/if}
+	{/loop}
+	</table>
+	</div>
+</div>
+<div class="main_head">
+<div>
+<span class="f_r f_n px12">
+{if $view}
+<a href="{userurl($username, 'file=rent&typeid='.$typeid, $domain)}">以橱窗方式浏览</a> | <strong>以目录方式浏览</strong>
+{else}
+<strong>以橱窗方式浏览</strong> | <a href="{userurl($username, 'file=rent&view=1&typeid='.$typeid, $domain)}">以目录方式浏览</a>
+{/if}
+</span>
+<strong>{$MENU[$menuid][name]}</strong>
+</div>
+</div>
+<div class="main_body">
+{if $view}
+	<table cellpadding="5" cellspacing="1" width="100%" align="center">
+	<tr bgcolor="#F1F1F1">
+	<th width="100">图片</th>
+	<th>标 题</th>
+	<th width="110">更新时间</th>
+	</tr>
+	{loop $lists $k $v}
+	<tr align="center"{if $k%2==1} bgcolor="#FBFBFB"{/if}>
+	<td height="100"><a href="{$v[linkurl]}"><img src="{imgurl($v[thumb], 1)}" width="80" height="80" alt="" style="border:#C0C0C0 1px solid;"/></a></td>
+	<td align="left" class="lh18" valign="top"><a href="{$v[linkurl]}" class="px13">{$v[title]}</a><br/><span class="f_gray">{$v[introduce]}</span>
+	</td>
+	<td>{timetodate($v[edittime], 3)}</td>
+	</tr>
+	{/loop}
+	</table>
+{else}
+	<table cellpadding="0" cellspacing="0" width="100%">
+	{loop $lists $k $v}
+	{if $k%4==0}<tr align="center">{/if}
+	<td valign="top" width="25%" height="180">
+	<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
+		<a href="{$v[linkurl]}"><img src="{imgurl($v[thumb], 1)}" width="100" height="100" alt="{$v[alt]}"/></a>
+		<div><a href="{$v[linkurl]}">{$v[title]}</a></div>
+		<p>{timetodate($v[edittime], 3)}</p>
+	</div>
+	</td>
+	{if $k%4==3}</tr>{/if}
+	{/loop}
+	</table>
+{/if}
+	<div class="pages">{$pages}</div>
+</div>
+
+<script type="text/javascript">
+try {Dd('type_{$typeid}').innerHTML = '<strong>'+Dd('name_{$typeid}').innerHTML+'</strong>';}catch (e){}
+</script>
+{/if}
+{template 'footer', $template}

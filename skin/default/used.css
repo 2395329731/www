@@ -1,0 +1,149 @@
+@charset "utf-8";
+/* CSS By Lj 2013/05/13*/
+body{background-color:#ffffff;color:#333333;font-size:12px;}
+.bblue{color:#176ad0;}.blue{color:#1361b0; }.red{color:red;}.gray{color:#666;}.green{color:#6aab0e;}.lgray{color:#999;}.lwhite{color:#f2f2f2;}.yellow{color:#feea83;}.black{color:#000;}.white{color:#fff;}.orange{color:#ff7011}
+a{color:#333;text-decoration:none;outline:none}a:hover{color:#d41212;text-decoration:underline;}
+h2,h3,h4,h5,h6{font-size:14px;}
+#Main{width:960px;zoom:1;overflow:hidden;margin:0 auto;}
+
+/* CSS By Lj 2013/05/13*/
+#Main_cont{width:695px;float:left;}
+.searBar{width:998px;zoom:1;overflow:hidden;border:solid 1px #dbdbdb;margin-bottom:10px}
+.fil-search{width:978px;zoom:1;overflow:hidden;margin:10px;}
+.searBar dl {line-height: 26px;overflow: hidden;zoom: 1;}
+.area-fil,.price-fil {width:978px;height:25px;}
+.searBar dt{float:left;display: inline;width: 60px;font-weight:bold;height:25px;}
+.searBar dd a,.price-fil a{float:left;padding-right:11px;white-space: nowrap;color:#176ad0;}
+.searBar dd a:hover,.price-fil a:hover{color:#f60;}
+.price-fil dt{float:left;display: inline;width: 60px;font-weight:bold;height:25px;}
+.area-fil a.on,.price-fil a.on{font-weight:bold; color:#f60;}
+
+.house_content{width:693px;zoom:1;overflow:hidden;border:solid 1px #dbdbdb; border-top:solid 2px #ff9900;margin-bottom:10px}
+.mhead{padding: 10px 10px 0;margin-bottom: 10px; position:relative;}
+.mhead h2{background:url(../images/broker/house_icon.jpg) 10px 5px no-repeat;padding-left:28px;border-bottom:1px solid #e1e1e1;padding-bottom:5px;height:20px;}
+.mhead h1{background:url(../images/broker/con_w.jpg) 10px 5px no-repeat;padding-left:28px;border-bottom:1px solid #e1e1e1;padding-bottom:5px;height:20px}
+.mhead span{font-size:12px;font-weight:normal;padding-top:5px;margin-right:10px;}
+.house_box{width:673px;zoom:1;overflow:hidden;margin:10px;}
+.house_box dl{width:146px;float:left;line-height:21px;color:#666;margin:5px 11px;display:inline;overflow:hidden;}
+.house_box dl span{color:#f95606;font-size:14px;font-weight:bold}
+.house_box dl dd p{position:relative;width:146px;height:110px;overflow:hidden;}
+.house_box dl dd p span{position:absolute;display:block;left:0px; bottom:0px; background:#000;opacity:0.6;filter:alpha(opacity=50);width:146px;font-size:12px;color:#fff; font-weight:normal;height:20px; line-height:24px; text-align:center;}
+.house_Con{width:695px;zoom:1;overflow:hidden;margin-bottom:10px}
+.house_Con_a{width:340px;zoom:1;overflow:hidden;border:solid 1px #dbdbdb; border-top:solid 2px #7ebe23;}
+.new_house{width:321px;height:75px;background:#f2f2f2;margin:10px;position:relative;}
+.new_house_txt{width:177px;margin-left:10px;float:left;padding-top:10px;line-height:20px;color:#585858;}
+.new_house_txt span{font-size:14px;color:#ff7011;font-weight:bold;}
+.decicon-new{position: absolute;top: -3px;right:-3px;width:40px;height:41px;z-index:10;background:url(../images/broker/decion.png) right top no-repeat scroll transparent;_background:0;}
+
+.house_content .area-navs {width:440px;overflow:hidden;height:20px;margin-bottom:5px;top:12px;left:128px;position:absolute;}
+.area-navs a {height:20px;line-height:15px;float:left;font-weight:bold;font-size:12px;padding-right:3px;color:#ff9900;}
+.area-navs span{color:#dbd7d7;width:10px;height:20px;padding-left:8px;float:left;padding-top:0;}
+.village{width:673px;margin:10px;overflow:hidden;}
+.village_house{width:250px;height:203px;margin-right:10px;float:left;}
+.village_txt{width:413px;height:203px;float:left;overflow:hidden;}
+.village_txt li .span-1{width:68px;margin-left:10px;}
+.village_txt li .span-2{width:250px;}
+.price_house{width:380px;height:185px;float:left;margin-right:20px;}
+.price_search{width:273px;height:175px;float:left;overflow:hidden;padding-top: 10px;}
+.stat{line-height:2;padding: 0px 0 5px 12px;color:#545454;}
+.stat_house{width: 260px;height:64px;padding:13px 0 0 13px;}
+.stat_house p{padding-bottom:12px;}
+.boxer{height:26px;}
+.button{background:url(../images/broker/sous.jpg) no-repeat;width:66px;height:26px;border:0;overflow:hidden;float:left;}
+.txtLine{width:182px;height:22px;border:solid 1px #ddd;margin-right:10px;float:left;padding-top:2px;}
+/*left end*/
+.sidebar{float:right;width:250px;}
+.xuqiu{width:210px;height:66px;margin:0px auto;padding-top:8px;}
+.xuqiu li{height:35px;font-size:14px;font-weight:bold;}
+.qiuz{background:url(../images/broker/yellow_Bg.jpg) no-repeat;width:95px;height:30px;border:0;text-align:center;color:#fa9505;line-height:30px;}
+.qiuz a{color:#fa9505;text-decoration:none;}
+.qiuz a:hover,.qiug a:hover{color:#FF0000; text-decoration:underline;}
+.qiug{background:url(../images/broker/dblue_bg.jpg) no-repeat;width:95px;height:30px;border:0;text-align:center;color:#33a3f1;line-height:30px;}
+.qiug a{color:#33a3f1;text-decoration:none;}
+.rightBox{width:250px;zoom:1;overflow:hidden;margin-bottom:10px;}
+.rightBox_head{background:url(../images/broker/bg_rig.jpg) no-repeat;width:248px;height:33px;border:solid 1px #dfdfdf;line-height:35px;float:left;font-weight:bold;font-size:14px;overflow:hidden;}
+.rightBox_head p{width:210px;margin:0 auto;padding-left:20px;}
+.rightBox_head span{float:right;font-weight:normal;font-size:12px;}
+.rightBox_cont{width:248px;zoom:1;overflow:hidden;border:solid 1px #dfdfdf;border-top:0;}
+.rightBox_line,.rightBox_pic{width:263px;zoom:1;overflow:hidden;margin:10px 10px 10px 12px;color:#666;}
+.rightBox_line li{height:24px;line-height:24px; overflow:hidden;}
+.rightBox_line li span{color:#999;}
+.brokerpic{float:left;border: 1px solid #e2e2e2;padding:2px;width:80px;height:100px;background: #fff url(../images/broker/man.jpg) no-repeat center;}
+.rightBox_pic li{height:22px;line-height:22px;text-indent:10px;overflow: hidden;}
+.maptext{background:#FFFFFF;border:1px solid #d9d9d9;font-size:12px;padding:3px;display:inline;height:16px;width:174px;float:left;margin-right:10px;_margin-right:5px;overflow:hidden;}
+.map_search{width:223px;height:24px;margin:10px 0px 0 0;_margin:5px 0 0 0;}
+.rightBox_map{width:223px;zoom:1;overflow:hidden;margin:0px 10px 10px 15px;color:##666;}
+.tool_box{width:223px;zoom:1;overflow:hidden;margin:10px 10px 10px 15px;}
+.tool{height:65px;}
+.tool p{width:85px;float:left;text-align:center;}
+/*right end*/
+/* CSS By Lj 2013/05/21*/
+table {border-collapse: collapse;border-spacing: 0;}tbody {display: table-row-group;vertical-align: middle;border-color: inherit;}tr {display: table-row;vertical-align: inherit;border-color: inherit;}td, body, select {font-size: 12px;color: #333;}
+.order_by {height: 38px;border-bottom: 1px dashed #ccc;margin: 0px;}
+
+.order_by a:hover{background:#feeeb1;}
+.order_by a.on{background:#feeeb1;}
+.houselis,.detailed,.list_item{width:673px;padding:15px 0;border-bottom:dashed 1px #d4d4d4;zoom:1;overflow:hidden;}
+.houselis div {word-wrap:break-word;word-break:break-all;}
+.h_pic {float:left;width:120px;text-align:center;}
+.h_pic img {width: 112px;height: 84px;border: 1px solid #e2e2e2;padding: 2px;background: url(../images/broker/loading.gif) no-repeat center;}
+.h_txt{width:300px;margin-left:10px;float:left;}
+.h_txt h3 { position:relative}
+.h_txt h3 span{position:absolute;height:18px;width:80px;}
+.h_txt ul{padding-top:10px;}
+.h_txt ul p{height:30px;}
+.h_txt ul li{height:20px;}
+.h_botton{width:75px;float:left;padding-top:35px;margin-left:10px;}
+.h_M{width:80px;float:left;padding-top:40px;margin-left:10px; text-align:center}
+.h_price{width:100px;text-align:center;padding-top:25px;float:right}
+.h_price b{font-size:18px;color:#ff5c01;font-family:"微软雅黑";}
+.PageLink {text-align: center;margin-right: auto;margin-bottom: 0;margin-left: auto;padding:20px 0px;margin-top: 15px;}
+.PageLink a{border: 1px solid #CCCCCC;margin: 0 2px;padding: 5px 8px;text-decoration: none;color: #0257a7;}
+.PageLink a:hover{background:#ffede1;color: #fd6d66;border:solid 1px #fd6d01;}
+.PageLink a.current{background:#ffede1;color: #fd6d66;border:solid 1px #fd6d01;}
+
+.ib_top {height:34px;width:695px;border-bottom:1px solid #dfdfdf;}
+.ib_top  a{float:left;background:#f6f6f6;border:1px solid #d1d1d1;font-size:14px;font-family:"微软雅黑";width:96px;height:32px;line-height:30px; text-align:center;margin-right: -1px;position: relative;bottom: -1px;}
+.ib_top .on {background:#fff;border-top: 2px solid #fe9900;font-weight:bold;color:#ff7011;border-bottom:0px; text-decoration:none;}
+
+/*jingjr*/
+.order_by p{float:left;line-height:25px;}
+.onetr {display: inline;float: left;line-height:25px;}
+.it_ors{float:right;}
+.odrslct{font-size:12px;height:21px;}
+.detailed_lef{width:117px;float:left;border:solid 1px #e2e2e2;}
+.detailed_rig{width:546px;float:right;}
+.detailed_rig img.rank {padding: 2px 0 0 1px;}
+.shop{font-size:12px;font-weight:normal;background:url(../images/broker/house_jjr.jpg) no-repeat;width:80px; height:18px; line-height:22px; padding-left:20px;}
+.it_info{width:546px;height:20px;margin:5px 0px;line-height:20px;}
+.it_info li{float:left;color:#666666;}
+/*.it_info_A{width:155px;}
+.it_info_B{width:100px;height:18px;padding-left:5px;line-height:14px;margin-top:5px;}*/
+.detailed_riga{width:542px;float:left;border:1px solid #e3dfdf;display:inline;padding:1px;}
+.detailed_rigatitle{height:25px;background:#f6f6f6;width:522px;padding:0 10px;overflow:hidden;}
+.detailed_rigatitleh{height:25px;font-family:Tahoma;width:522px;padding:0 10px;overflow:hidden;color:#666;}
+.detailed_top{margin:0 10px;height:25px;}
+.detailed_rigatitle span{float:left;line-height:24px;font-weight:bold;}
+.detailed_rigatitleh span,.detailed_rigatitleh a{float:left; line-height:24px;}
+.aa{width:280px; text-align:left; overflow: hidden;}
+.bb{width:92px;text-align:center; overflow: hidden;}
+.cc{width:75px;text-align:center; overflow: hidden;}
+
+/*agent*/
+.ss {float:right;width: 233px;}
+.ss .fipt {border: 1px solid #ccc;padding: 3px;height: 14px;border-right: 0;width: 150px;line-height: 15px;}
+.ss input {display: inline;float: left;font-size: 12px;}
+.ss .fbtn {width:40px;height:22px;background: url(../images/broker/icons_list.gif) no-repeat;border: 0;color: #fff;cursor: pointer;line-height: 23px;
+overflow: hidden;}
+
+.it_houseshop{width:330px;zoom:1;overflow:hidden;}
+.it_logo{float:left;}
+.it_logo img {border: 1px solid #e3dfdf;padding: 2px;background: #fff;}
+.it_house_r {float:left;margin-left:10px;width:184px;}
+.it_house_r h3{font-size:14px;margin-top:3px;}
+.it_house_r ul{margin-top:5px;font-family:Tahoma;overflow:hidden;}
+.it_house_r ul li{color:#666;overflow:hidden;height:20px;line-height:18px;}
+.it_house_r ul li span{color:#999;}
+
+
+

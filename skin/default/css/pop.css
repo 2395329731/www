@@ -1,0 +1,43 @@
+.autopop{position:absolute;background:#fff;border:1px #ccc solid;box-shadow:0px 1px 4px #ccc;color:#666;z-index:190;text-align:left;display:none;}
+.autopop li{height:24px;padding:0 6px;cursor:pointer;overflow:hidden;margin:1px}
+.autopop li.notpop{cursor:default;}
+.autopop li b{font-weight:normal;color:#333;}
+.autopop li.b{height:32px;line-height:32px;background:#eee;border-top:1px #ccc solid;text-align:center;}
+.autopop li.b b{font-size:14px;color:#333;}
+.autopop li.bt{border-top:1px #ccc solid}
+.autopop li.pop{background:#eee}
+.form_atags div{
+	position: relative;
+	border: 1px #ddd solid;
+	margin: 0 0 4px 0;
+	background: #fff;
+	padding: 0 4px;
+	_zoom:1;
+	-webkit-transition:all 2s ease-out;
+	-moz-transition:all 2s ease-out;
+	-o-transition:all 2s ease-out;
+	transition:all 2s ease-out;
+}
+.form_atags div.on{
+	border-color: #f00;
+	background: #fcc;
+	-webkit-transition:all .2s ease;
+	-moz-transition:all .2s ease;
+	-o-transition:all .2s ease;
+	transition:all .2s ease;
+}
+.form_atags a{
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin: -9px 0 0 0;
+	width: 18px;
+	height: 18px;
+	overflow: hidden;
+	background:url(../images/mod/cha.gif) no-repeat 0 0;
+	cursor: pointer;
+}
+.form_atags a:hover{
+	background-position: 100% 0;
+}

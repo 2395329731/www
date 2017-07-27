@@ -1,0 +1,29 @@
+<!--底部-->
+<div class="clear"></div>
+    <div id="foot" style="padding-bottom:20px;">
+  <div id="footer">
+  <p class="hui">
+  <a href="{$COM[linkurl]}">网站首页</a>
+  {loop $MENU $k $v}
+			&nbsp;|&nbsp;<a href="{$v[linkurl]}">{$v[name]}</a>
+			{/loop}
+			{if $api_stats && $stats}
+			{php include AJ_ROOT.'/api/stats/'.$api_stats.'/show.inc.php';}
+			{/if}
+  
+  <br />Copyright &copy; 2010-2012 {timetodate($AJ_TIME, 'Y')} {$COM[company]} All Rights Reserved 
+ &nbsp;&nbsp;&nbsp;技术支持：<a href="{AJ_PATH}" target="_blank">{$AJ[sitename]}</a>
+  <br /> 
+  <span>{if $AJ[icpno]} ICP备案号： <a href="http://www.miibeian.gov.cn" target="_blank">{$AJ[icpno]}</a>{/if}<script language=javascript>
+window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x77\x72\x69\x74\x65\x6c\x6e"]("\u8d44\u6e90\u63d0\u4f9b\x3a\x3c\x61 \x68\x72\x65\x66\x3d\"\x68\x74\x74\x70\x3a\/\/\x62\x62\x73\x2e\x67\x6f\x70\x65\x2e\x63\x6e\/\" \x74\x61\x72\x67\x65\x74\x3d\"\x5f\x62\x6c\x61\x6e\x6b\" \x73\x74\x79\x6c\x65\x3d\"\x63\x6f\x6c\x6f\x72\x3a\x23\x33\x33\x36\x36\x30\x30\x3b\" \x3e\x3c\x62\x3e\u72d7\u6251\u6e90\u7801\u793e\u533a\x3c\/\x62\x3e\x3c\/\x61\x3e");
+</script></span>
+  </p>
+  </div>
+</div>
+<script type="text/javascript">show_task('{$aijiacms_task}');</script></div>
+<script type="text/javascript">Dd('position').innerHTML = Dd('pos_show').innerHTML;</script>
+{if $api_kf && $kf}
+{php include AJ_ROOT.'/api/kf/'.$api_kf.'/show.inc.php';}
+{/if}
+</body>
+</html>

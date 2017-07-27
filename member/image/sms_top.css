@@ -1,0 +1,69 @@
+.sms_top_nav {
+	MARGIN: 0px auto; WIDTH: 1000px
+}
+.sms_top_channel {
+	MARGIN: 0px auto; WIDTH: 1000px
+}
+.sms_top_nav {
+	BACKGROUND: url(bg_sms_top.gif) no-repeat; HEIGHT: 70px
+}
+.sms_top_msg {
+	PADDING-LEFT: 810px; OVERFLOW: hidden; PADDING-TOP: 10px; HEIGHT: 30px
+}
+.sms_top_msg SPAN {
+	FLOAT: left; WIDTH: 165px; HEIGHT: 15px
+}
+.sms_top_msg SPAN A {
+	FLOAT: left
+}
+.sms_top_function {
+	LINE-HEIGHT: 30px; HEIGHT: 30px
+}
+.sms_top_function_a {
+	FLOAT: left
+}
+.sms_top_function_b {
+	FLOAT: left
+}
+.sms_top_function_a {
+	PADDING-LEFT: 322px; WIDTH: 100px
+}
+.sms_top_function_a A {
+	COLOR: #fff; TEXT-DECORATION: underline
+}
+.sms_top_function_b {
+	DISPLAY: inline; FONT-SIZE: 14px; MARGIN-LEFT: 455px; WIDTH: 520px; TEXT-ALIGN: center
+}
+.sms_top_function_b LI {
+	DISPLAY: inline-block; FLOAT: left; WIDTH: 102px
+}
+.sms_top_channel {
+	CLEAR: both; BACKGROUND: url(bg_sms_channel.gif) repeat-x; HEIGHT: 33px
+}
+.sms_top_ch_a {
+	FLOAT: left; HEIGHT: 26px
+}
+.sms_top_ch_b {
+	FLOAT: left; HEIGHT: 26px
+}
+.sms_top_ch_c {
+	FLOAT: left; HEIGHT: 26px
+}
+.sms_top_ch_a {
+	PADDING-LEFT: 24px; WIDTH: 360px; PADDING-TOP: 7px
+}
+.sms_top_ch_b {
+	PADDING-LEFT: 25px; BACKGROUND: url(bg_sms_top.gif) no-repeat 0px -76px; WIDTH: 300px; PADDING-TOP: 7px
+}
+.sms_top_ch_c {
+	PADDING-LEFT: 28px; BACKGROUND: url(bg_sms_top.gif) no-repeat -384px -76px; WIDTH: 252px; PADDING-TOP: 4px
+}
+.input_help {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; WIDTH: 145px; PADDING-TOP: 2px; HEIGHT: 14px
+}
+.submit_help {
+	BACKGROUND: url(bg_sms_top.gif) no-repeat -930px -79px; WIDTH: 70px; CURSOR: pointer; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 22px; BORDER-BOTTOM-STYLE: none
+}
+#header {
+	BACKGROUND: url(head_bgd.gif) repeat-x; WIDTH: 100%
+}

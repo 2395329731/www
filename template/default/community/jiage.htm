@@ -1,0 +1,105 @@
+{template 'header'}	
+<link href="{AJ_SKIN}xiaoqu.css" rel="stylesheet" type="text/css"/>
+<div id="main"><div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a>&gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&nbsp;&gt;{$title}</div>
+<div class="Atitle">
+	<h1>{$title}</h1>
+	<div class="subNav cf">
+		<ul class="cf">
+			<li><a  href="{$linkurl}">小区概况</a></li>
+            <li><a class="on" href="{$linkurl}price.html">价格走势</a></li>
+            <li><a   href="{$linkurl}sale.html">二手房</a></li>
+            <li><a  href="{$linkurl}rent.html">租房</a></li>
+            <li><a  href="{$linkurl}map.html">周边地图</a></li>
+           
+		</ul>
+	</div>
+</div>		
+			<!--小区概括-->	
+		<div class="cf mt20">	
+			<div class="fl w900">
+				<div class="xqdt" id="tab1">
+					<ul class="cond-bar">
+						<li class="on">二手房房价走势</li>
+								
+					</ul>
+					<div class="jgzs">
+						<p class="mb10">
+			<a class="blue fr" href="{$linkurl}sale.html">查看最新二手房>></a>
+			本月均价：{if get_avg_price($itemid)}<strong class="orange">{get_avg_price($titemid)}</strong>元/平米 {else}<strong>待定</strong>{/if} &nbsp;&nbsp;&nbsp;同比上月：			<span class="up_icon"><strong>{$percent_change}</strong></span>					<br>
+						</p>
+												<div style="width:740px;height:200px" id="hc1"></div>
+												
+					</div>
+					
+				</div>
+				
+			</div>
+			<div class="w260 fr">
+									
+		<div class="modD">
+			<h4>热门小区</h4>
+				<ul class="name-price">
+					<!--{php $tags=tag("moduleid=18&condition=status=3&areaid=$cityid&length=22&pagesize=6&order=hits desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+																			<li class="cf">
+							<span class="red"> <strong>{if get_avg_price($t[itemid])}{get_avg_price($t[itemid])}</strong>元/㎡{else}待定</strong>{/if}
+														</span><a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a>
+						</li>{/loop}
+																			</ul>
+				</div>
+				<div class="modD">
+
+					<h4>周边售房信息</h4>
+				<ul class="name-price">
+						<!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$areaid&length=22&pagesize=6&order=hits desc&target=_blank&template=null");}-->
+						{loop $tags $i $t}	<li class="cf">
+							<span class="red"> <strong>{if $t[price]}{$t[price]}</strong>万{else}待定</strong>{/if}
+														</span><a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a>
+						</li>{/loop}	
+					</ul>
+					</div>
+				<div class="modD">
+					<h4>周边租房信息</h4>
+				<ul class="name-price">
+												<!--{php $tags=tag("moduleid=7&condition=status=3&areaid=$areaid&length=22&pagesize=6&order=hits desc&target=_blank&template=null");}-->
+						{loop $tags $i $t}	<li class="cf">
+							<span class="red"> <strong>{if $t[price]}{$t[price]}</strong>元/月{else}待定</strong>{/if}
+														</span><a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a>
+						</li>{/loop}	
+																			</ul>
+				</div>			</div>
+		</div>
+		<div class="bottom-link">
+			<dl class="cf">
+				<dt>附近小区</dt>
+				<dd class="cf"><!--{php $tags=tag("moduleid=18&condition=status=3&areaid=$areaid&length=22&pagesize=5&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}	<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a>
+ {/loop}
+														</dd>
+			</dl>
+		</div>	</div>
+	<script type="text/javascript">
+seajs.use(["jquery","highcharts","autofh"],function($,highcharts){
+	$("#s_list1").hover(function(){
+		$(this).addClass("on");
+	},function(){
+		$(this).removeClass("on");
+	})
+	$("#conl1 div.autoF").autofh();
+	highcharts('hc1',"{$title}",[{get_linedate($itemid)}],[{get_lineprice($itemid)}],'元/平米');
+})
+</script>
+<script type="text/javascript">
+seajs.use(["jquery","superm"],function($,sm){
+	sm.start([
+		{
+			name:"share"
+		}
+
+	]);
+	$("#subhouse").click(function(){
+		sm.open("sub",{t:this,type:''})
+	})
+})
+</script>
+{template 'footer'}

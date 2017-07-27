@@ -1,0 +1,6 @@
+{loop $tags $i $t}	
+<div class="item"> <a href="{$t[linkurl]}" target="_blank"><img src="{if $t[thumb]}{$t[thumb]}{else}{AJ_SKIN}image/nopic60.gif{/if}" width="120" height="120" border="0"/></a></br>
+<h4><a href="{$t[linkurl]}"{if $target} target="{$target}"{/if}>{$t[title]}</a></h4>
+</div>
+
+{/loop}

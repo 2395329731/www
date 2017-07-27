@@ -1,0 +1,42 @@
+.orange, a.orange, a.orange:visited {color:#f60}
+#FCYY{padding:0 9px;font-size:12px;margin:0 0 -20px 0}
+#FCYY h2{font-weight:600;padding:12px 0 0 0}
+#FCYY h2 em{font-weight:normal;color:#666;font-style:normal}
+#FCYY form{padding:0}
+#FCYY form li{line-height:34px;color:#666}
+#FCYY form .txt{height:30px;line-height:30px;width:200px;margin:0 9px 9px 0;padding:0 4px}
+#FCYY form .txt2{width:80px}
+#FCYY form span{display:inline-block;width:80px;height:32px;line-height:32px;text-align:right;color:#666;vertical-align:top}
+#FCYY form span b{position:relative;top:5px;right:4px;font-size:18px;color:#f00;text-align:left}
+#FCYY form label{cursor:pointer;vertical-align:middle;margin:0 9px 0 0}
+#FCYY form input.radio {border:0;margin:0 2px;vertical-align:middle}
+#FCYY .zhuce{width:130px;text-align:center}
+.FCbtn1{width:84px;height:34px;border:none;cursor:pointer;display:block;background:url(images/esf/FCbtn.gif) no-repeat 0 0}
+.FCbtn1_1{width:126px;height:34px;border:none;cursor:pointer;background:url(images/esf/FCbtn.gif) no-repeat 0 -51px;position:absolute;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px)}
+#FCbtn2{height:32px;display:inline-block;padding-left:3px;background:url(images/esf/FCbtn2.gif) no-repeat left top;font-style:normal;vertical-align:top}
+#FCbtn2 a,#FCbtn2 em{height:32px;line-height:32px;display:block;_display:inline-block;background:url(images/esf/FCbtn2.gif) no-repeat right top;padding:0 10px 0 7px;font-size:12px}
+#FCbtn2 em{color:#999}
+#FCYY .daojishi a{color:#d4d4d4}
+#FCYY ul{padding-left:20px}
+#FCYY .yiyuyue{background:#fdfbe3;padding:5px 10px;border:1px #f8dac6 solid}
+#FCYY .yiyuyue p{font-size:14px;color:#f00}
+#FCYY textarea.txt {width:400px;height:75px;line-height:25px;margin:0 9px 0 2px;padding:0 4px}
+#FCYY .FCbtn2{float:left}
+.okh{margin:20px 0 20px 35px;padding:0 0 0 72px;background:url(../images/login/ok.png) no-repeat 0 0;line-height:36px;color:#666}
+.okh .big {display:block;font-size:14px;font-weight:normal;padding:0 0 0 20px;border-left:1px #ddd solid;color:#333;line-height:28px}
+.okh .big b {font-size:24px;display:block;color:#090;margin:0 0 9px 0;font-family:"Microsoft Yahei",SimSun,sans-serif}
+.okh #FCbtn2{margin-top:20px}
+.okh .big{font-size:12px}
+#FCYY form li#fcyyinfo{color:#f00;font-size:14px;margin:0;height:auto;line-height:30px;padding:0 0 0 80px}
+#wtjjrlist{height:480px;position:relative;overflow:auto;margin:9px 0 0 0}
+#alertP #wtjjrlist li{_display:inline;position:relative;color:#666;margin:16px 8px 0 8px;float:left;width:180px;border:1px #ccc solid;padding:9px 0 9px 99px;overflow:hidden;font-size:12px;height:132px}
+#alertP #wtjjrlist li.on{border:1px #faa solid;background:#fee}
+#alertP #wtjjrlist a.blue{color: #327bed}
+#wtjjrlist .Img{position:absolute;top:9px;left:9px;width:72px;height:72px;background:url(images/common/loading.gif) no-repeat 50% 50%;padding:2px;border:1px #ddd solid}
+#wtjjrlist label{display:block;position:absolute;top:99px;left:12px;width:37px;height:32px;line-height:32px;padding:0 0 0 36px;overflow:hidden;background:url(images/user_new/sel.png)}
+#wtjjrlist input{position:absolute;top:-99em;left:-99em}
+#wtjjrlist .on label{text-indent:-9em;background:url(images/user_new/seled.png)}
+#wtjjrinfo{float:left;padding:0 0 0 24px;color:#f00}
+#alertP .mt5{margin: 24px 9px;line-height: 32px;}
+#alertP .GFxiaozhushou{font-size: 12px;color: #535353}
+#alertP .mt5 .GFxiaozhushou{margin: 36px 0 0 0}

@@ -1,0 +1,15 @@
+<?php
+defined('IN_AIJIACMS') or exit('Access Denied');
+preg_match("/^[0-9\.\,]{17,21}$/", $map) or $map = '';
+?>
+
+<input type="text" name="post[map]" id="map" value="<?php echo $map;?>" readonly size="50" onclick="MapMark();"/>&nbsp;&nbsp;
+<a href="javascript:MapMark();" class="t">标注</a>&nbsp;|&nbsp;<a href="javascript:DelMark();" class="t">清空</a>
+<script type="text/javascript">
+function MapMark() {
+	Dwidget(DTPath+'api/map/baidu/mark.php?map='+Dd('map').value, '百度地图 - 在地图上双击鼠标完成标注', 600, 400);
+}
+function DelMark() {
+	Dd('map').value='';
+}
+</script>

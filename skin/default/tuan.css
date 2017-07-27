@@ -1,0 +1,1089 @@
+@charset "gb2312";
+
+body{ margin:0; padding:0; font-size:12px; line-height:24px; color:#4d4d4d; background:#f7f7f7}
+a{ text-decoration:none; color:#999999}
+a:hover{ text-decoration:underline; color:#dd262e;}
+h1,h2,h3,h4,h5,h6,p,ul,form{ margin:0; padding:0; list-style:none}
+.clear{ clear:both}
+img{ border:none; padding:0; margin:0}
+
+/*head*/
+.head_continer{ margin:0; background:url(images/tuan/head_bg.gif) repeat-x #FFFFFF; }
+.head{ margin:0 auto; width:990px; }
+.head_top{ height:26px}
+.head_top .guanli{ float:right; background: url(images/tuan/guanli_bg.gif) no-repeat; width:315px; height:26px; line-height:22px; margin:2px 0 0 0; padding:0 0 0 20px}
+.head_top .guanli a{ color:#FFFFFF; display:block; float:left}
+.head_top .guanli img{display:block; float:left; margin:0 8px; padding:5px 0 0 0 }
+.head_top .guanli .guanzhu{ margin:0 12px 0 0; padding:0 ;_margin:0 5px 0 0 }
+
+.logo_bg{ margin:5px 0 0 0; height:100px;}
+.logo_bg ul li{ display:block; float:left}
+.logo_bg ul .kouhao{ margin:0 0 0 35px}
+.logo_bg ul .tel{ width:209px; height:28px; background:url(images/tuan/tel_bg.gif) no-repeat; padding:46px 0 0 90px; font-size:22px; font-family:"微软雅黑"; font-weight:bold; color:#dd262e}
+
+.nav_continer{ height:45px; background:url(images/tuan/nav_bg.gif) repeat-x #fcf9f5;}
+.nav{ margin:0 auto; width:975px; padding:0 0 0 15px; height:47px}
+.nav a{ display:block; float:left; color:#404040; font-size:14px; font-weight:bold; height:47px;}
+.nav span{ display:block; float:left; margin:20px 19px 0 19px}
+.nav .focus{ background:url(images/tuan/focus_bg.gif) no-repeat; width:58px; height:47px; padding:10px 0 0 15px; color:#FFFFFF;}
+.nav .qiugou{ float:right; margin:8px 15px 0 0}
+.nav .f{ margin:13px 0 0 0; height:40px;}
+
+/********index********/
+.col_continer{ background:#fcf9f5;_padding:0 0 40px 0}
+.col{ margin:0 auto 20px auto; width:990px;}
+.col .left{ float:left; width:720px; border:1px solid #d4d4d4; background:#FFFFFF; margin:20px 0 0 0; padding:0 0 10px 0}
+.col .left h2{ height:40px; line-height:40px; background:url(images/tuan/h3_bg.gif) repeat-x; font-family:"微软雅黑"; padding:0 0 0 33px}
+
+.col .left .picbox {MARGIN: auto; WIDTH: 100%; PADDING-TOP: 20px; margin-bottom:20px;}
+.col .left .picbox LI {FLOAT: left; HEIGHT: 210px;WIDTH: 300px;PADDING-TOP: 10px;PADDING-BOTTOM: 5px; PADDING-LEFT: 15px;  PADDING-RIGHT: 10px; DISPLAY: inline;LINE-HEIGHT: 22px; MARGIN-BOTTOM: 20px; BACKGROUND: url(images/tuan/hg_li_bg.gif) #f6f6f6 no-repeat;  COLOR: #7c7c7c; MARGIN-LEFT: 25px;}
+.col .left .picbox LI img { width:290px; height:180px;}
+.col .left .picbox LI A {LINE-HEIGHT: 30px; DISPLAY: block; COLOR: #dd262e; FONT-WEIGHT: bold}
+
+
+.col .right{ float:right; width:221px; margin:20px 0 0 0}
+.col .right .diaocha{ background:url(images/tuan/diaocha_bg.gif) no-repeat; height:39px; width:204px; padding:47px 0 0 17px}
+.col .right .xinxi{ background:url(images/tuan/xinxi_bg.gif) no-repeat; height:38px; width:204px; padding:48px 0 0 17px; margin:15px 0 0 0}
+.col .right .kefu{ background:url(images/tuan/kefu_bg.gif) no-repeat; width:221px; height:117px; padding:11px 13px 0 5px; margin:15px 0 0 0}
+.col .right .kefu ul{ margin:0 0 0 62px; line-height:19px}
+.col .right .kefu img{ padding:25px 0 0 10px}
+.col .right .kefu .tel{ font-size:18px; color:#d90f0f; font-weight:bold}
+.col .right .kefu .time{ color:#999999}
+
+#process .zcdl DT {	BACKGROUND: url(images/tuan/footer.jpg) no-repeat}
+#process .zxtf DT {	BACKGROUND: url(images/tuan/footer.jpg) no-repeat}
+#process .zckf DT {	BACKGROUND: url(images/tuan/footer.jpg) no-repeat}
+#process .xxxf DT {	BACKGROUND: url(images/tuan/footer.jpg) no-repeat}
+#process .rgqy DT {	BACKGROUND: url(images/tuan/footer.jpg) no-repeat}
+#process .next {BACKGROUND: url(images/tuan/footer.jpg) no-repeat}
+#process {BORDER-BOTTOM: #dbdbdb 1px solid; BORDER-LEFT: #dbdbdb 1px solid; BACKGROUND-COLOR: #fff; MARGIN: 20px auto; WIDTH: 988px; BORDER-TOP: #dbdbdb 1px solid; BORDER-RIGHT: #dbdbdb 1px solid; PADDING-TOP: 22px}
+#process DL {PADDING-BOTTOM: 20px; PADDING-LEFT: 29px; WIDTH: 150px; FLOAT: left}
+#process DT {TEXT-INDENT: -9999em; WIDTH: 115px; HEIGHT: 29px}
+#process DD {PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-LEFT: 10px; PADDING-RIGHT: 20px; COLOR: #4d4d4d; PADDING-TOP: 0px}
+#process DD A {COLOR: #4d4d4d; MARGIN-LEFT: 10px}
+#process .zcdl DT {BACKGROUND-POSITION: 0px 0px}
+#process .zxtf DT {WIDTH: 120px; BACKGROUND-POSITION: 0px -29px}
+#process .zckf DT {BACKGROUND-POSITION: 0px -58px}
+#process .xxxf DT {BACKGROUND-POSITION: 0px -87px}
+#process .rgqy DT {BACKGROUND-POSITION: 0px -116px}
+#process .fgx {PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 135px; PADDING-RIGHT: 0px; BACKGROUND: #dbdbdb; HEIGHT: 1px; OVERFLOW: hidden; PADDING-TOP: 0px}
+#process .next {WIDTH: 14px; DISPLAY: block; BACKGROUND-POSITION: 0px -145px; FLOAT: left; HEIGHT: 21px}
+#process .zcdl {PADDING-LEFT: 45px; WIDTH: 145px}
+#process .zxtf {WIDTH: 154px}
+
+.col .bottom{ border:1px solid #d4d4d4; background:#FFFFFF; margin:20px 0 0 0; padding:13px 0 0 40px}
+.col .bottom ul{ float:left; height:112px; margin:15px 0 0 0}
+.col .bottom img{float:left; margin:0 49px}
+.col .bottom .h1{ color:#868686; font-size:14px; font-weight:bold; margin:0 0 7px 0}
+.col .bottom ul li{ line-height:20px; }
+.col .bottom ul a{color:#616161}
+.col .bottom ul .know{ color:#d00000; margin:0 0 5px  0; font-size:15px; }
+.col .bottom .btn{ background:url(images/tuan/btn_bg.gif) no-repeat; width:56px; height:27px; line-height:27px; text-align:center; border:none; color:#FFFFFF}
+.col .bottom .input{ width:157px; height:27px; line-height:27px; background:url(images/tuan/input_bg.gif) no-repeat; border:none; margin:1px 0 0 0; color:#999999;_position: relative; top:2px}
+
+
+/************shanghai****************/
+
+.col_left{ float:left; width:750px; margin:20px 0 0 0; overflow:hidden}
+.col_left .bd{ height:390px; width:355px;  margin:0 20px 20px 0; float:left; overflow:hidden;}
+.col_left ul{ width:318px; border:1px solid #d9d9d9; padding:16px; background:#FFFFFF;}
+.col_left ul .cuxiao{position:relative; height:196px; overflow:hidden;_height:196px}
+.col_left ul .yuanjia{ position:absolute; bottom:0px; background:#000000; color:#FFFFFF; height:20px; line-height:20px; width:298px; padding:0 10px;opacity:0.5;}
+.col_left ul .yuanjia .baomings{ float:right}
+.col_left ul:hover{ border:1px solid #E43003}
+.col_left ul .yuanjia .baomings b{ color:#FFFF00}
+.col_left ul .yuanjia .zhuzhai{ text-decoration:line-through}
+.col_left ul .h1{ line-height:26px; margin:0 0 10px 0;_ margin:0 0 10px 0}
+.col_left ul a{ font-size:18px; font-weight:bold; color: #000000; font-family:"微软雅黑"}
+.col_left ul .youhui{ color:#dd262e}
+.col_left ul .youhui:hover{ text-decoration:none}
+.col_left ul .price:hover{color:#dd262e;}
+.col_left ul li img{ display:block; border:1px solid #d9d9d9; width:316px; height:196px;_height:196px}
+.col_left ul .junjia{ background:url(images/tuan/junjia_bg.gif) no-repeat; height:48px; line-height:48px; color:#FFFFFF; font-size:20px; font-weight:bold;  font-family:"微软雅黑"; padding:0 5px 0 10px}
+.col_left ul .junjia .kankan{ float:right; display:block; background: url(images/tuan/kankan_bg.gif) no-repeat; width:85px; height:30px; margin:10px 0 0 0}
+.col_left ul .junjia .kankan:hover{ background:url(images/tuan/kankan_hover.gif) no-repeat;}
+.col_left ul .junjia .kankan_over{ float:right; display:block; background: url(images/tuan/kankan_over.gif) no-repeat; width:85px; height:30px; margin:10px 0 0 0}
+
+.col_left .qidai{ height:203px; width:280px; padding:140px 0 0 70px; border:none; font-size:25px; font-weight:bold; color: #b2b2b2; font-family:"微软雅黑"; line-height:30px}
+.col_left .qidai a{ font-size:14px; font-weight: normal; color: #335396; font-family: "宋体"; }
+.col_left .qidai:hover{ border:none}
+
+
+.col_right{ float:right; width:223px; margin:20px 0 0 0}
+.col_right .box{ width:207px; height:200px; background:url(images/tuan/ad_bg.gif) no-repeat; padding:0 0 0 15px;}
+.col_right .box a{ color:#000000}
+.col_right .box a:hover{ color:#dd262e}
+.col_right .box h3{ height:32px; line-height:32px; color:#da1010; font-size:14px}
+.col_right .box .ad{ margin:20px 0 0 0 }
+.col_right .box .ad li{ display:block; float:left; width:85px; line-height:18px}
+.col_right .box .ad .f{ margin:0 0 0 10px}
+.col_right .box .ad .zongjia{ color:#bb3333}
+.col_right .box .tejia li{ line-height:22px}
+.col_right .box .tejia span{ color:#bb3333}
+.col_right .box .tejia span:hover{ color:#ff6600}
+
+.col_right .kefu{ background:url(images/tuan/kefu_bg.gif) no-repeat; width:203px; height:117px; padding:11px 13px 0 5px; margin:15px 0 7px 0}
+.col_right .kefu ul{ margin:0 0 0 62px; line-height:19px}
+.col_right .kefu img{ padding:25px 0 0 9px}
+.col_right .kefu .tel{ font-size:18px; color:#dd262e; font-weight:bold}
+.col_right .kefu .time{ color:#999999}
+
+
+/******tejia*******/
+
+.choose .hd{ height:50px; line-height:50px; background:url(images/tuan/hd_bg.gif) no-repeat bottom; color:#ff6d0b; font-size:22px; font-family:"微软雅黑"; padding:0 0 0 4px; margin:10px 0 0 0}
+.choose .hd span{ color:#515151; font-size:17px; font-family:"微软雅黑"; }
+.choose .bd .tiaojian{ width:828pxpx; height:120px; background:url(images/tuan/tiaojian_bg.gif) repeat-x ; margin:16px 0 0 0; padding:10px 0 0 27px;  border:1px solid #e5cfc6}
+.choose .bd .tiaojian img{ float:left; margin:12px 0 0 0}
+.choose .bd .tiaojian ul{ margin:0 0 0 38px; float:left}
+.choose .bd .tiaojian li{ height:22px; line-height:22px}
+.choose .bd .tiaojian span{ color:#4d4d4d ; font-weight:bold;}
+.choose .bd .tiaojian li a{ color:#4d4d4d ; margin-left:10px}
+.choose .bd .shaixuan{background:#FFFFFF; margin:0 auto; padding:10px 14px; border:1px solid #cccccc; border-top:none }
+.choose .bd .shaixuan .tianjia{ float:left; width:800px}
+.choose .bd .shaixuan .tianjia span{ float:left}
+.choose .bd .shaixuan .tianjia .neirong{ float:left; width:600px}
+.choose .bd .shaixuan .if{ float:right; color:#0f8f9b}
+.choose .bd .shaixuan .if:hover{ text-decoration:underline}
+.choose .bd .shaixuan .neirong a{ border:1px solid #c7c7c7; background:#f6f6f6 url(images/tuan/del_icon.gif) no-repeat right 0; height:18px; line-height:18px; padding:1px 25px 1px 5px; font-size:12px; margin:7px 0 0 5px}
+.choose .bd .shaixuan .neirong a:hover{ text-decoration:none}
+
+.item_list{ margin:10px 0 0 0}
+.item_list .hd{ background:url(images/tuan/item_hd.gif) repeat-x; height:33px; line-height:33px; border:1px solid #cecece; padding:0 10px}
+.item_list .hd .tiaojian{ float:left}
+.item_list .hd .tiaojian b,.item_list .hd .tiaojian a{ display:block; float:left}
+.item_list .hd .tiaojian a{ border:1px solid #c7c7c7; background:#f6f6f6 url(images/tuan/tianjian_icon.gif) no-repeat right 0; height:18px; line-height:18px; padding:0px 25px 0px 5px; font-size:12px; margin:7px 0 0 5px}
+.item_list .hd .tiaojian a:hover{ text-decoration:none}
+.item_list .hd .total{ float:right}
+.item_list .hd .total b{ color:#f47005}
+.item_list .bd{ padding:10px 0}
+.item_list .bd li{ display:block; float:left; border:1px solid #cccccc; background:#FFFFFF; padding:10px; width:210px; height:300px;margin:7px;_margin:6px;overflow:hidden; position:relative}
+.item_list .bd li .tejia_icon{ background:url(images/tuan/tejia.gif) repeat 0 0; width:56px; height:56px; right:15px; position:absolute; top:125px}
+.item_list .bd li .title a{ color:#454545; font-size:14px; font-weight:bold;}
+.item_list .bd li .title .kb{ float:right; background:url(images/tuan/kb.gif) 0 6px no-repeat; padding:0 0 0 15px; font-size:12px; font-weight:normal; color:#0f8f9b; }
+.item_list .bd li p{ color:#666666; line-height:20px}
+.item_list .bd li .mianji img{ float:right; position:relative; top:-4px}
+.item_list .bd li .tejia{ border-top:1px solid #dddddd; margin:8px 0 0 0; padding:8px 0 5px 0}
+.item_list .bd li .tejia b{ display:block; float:left; color:#fa4506; font-size:15px}
+.item_list .bd li .tejia span{ display:block; float:left; background:url(images/tuan/jinsheng.gif) no-repeat 0 0; width:82px; height:25px; line-height:25px; color:#FFFFFF; padding:0 0 0 15px; margin:0 0 0 5px; font-size:14px}
+
+.page_tj{ margin:20px 0 0 0; padding:10px 0; border-top:1px solid #CCCCCC; text-align:right }
+.page_tj a{ border:1px solid #c4c4c4; background:#FFFFFF; padding:2px 5px}
+.page_tj a:hover{ text-decoration:none; background:#e5e5e5; color:#dd262e}
+
+
+/*分页*/
+.page{padding:0 0 0 180px; width:100%; }
+
+
+/*更多优惠*/
+.youhui_more{ margin:30px 0 0 0; position:relative; width:990px; overflow:hidden}
+.youhui_more .hd{ height:50px; line-height:50px; background:url(images/tuan/youhui_bg.gif) no-repeat bottom; color:#ff6d0b; font-size:22px; font-family:"微软雅黑"; padding:0 0 0 4px; margin:10px 0 0 0}
+.youhui_more .hd span{ color:#515151; font-size:17px; font-family:"微软雅黑"; }
+.youhui_more .bd{ border:1px solid #cecece; background:#FFFFFF; padding:20px 40px; margin:20px 0 0 0}
+.youhui_more .bd li{ display:block; float:left; margin:0 18px; _margin:0 10px; width:190px;}
+.youhui_more .bd li .title{ padding:5px 0 0 0}
+.youhui_more .bd li .title a{ color:#454545; font-size:15px; font-weight:bold}
+.youhui_more .bd li .title span{ float:right}
+.youhui_more .bd li .title span a{ font-size:12px; font-weight:normal; color:#0f8f9b}
+.youhui_more .bd li .youhui{ color:#E10000}
+.youhui_more .bd li  .guanzhu img{ float:right}
+.youhui_more .bd li  .guanzhu b{ color:#fb5c24}
+
+.slides_container {display:none;z-index:1;position:relative; width:990px;overflow:hidden;height:340px;}
+.slides_container .slide {height:340px;display:block; width:990px }
+#slides .prev{ position:absolute; left:10px; top:180px; background:url(images/tuan/prev.gif) no-repeat 0 0; width:12px; height:30px; z-index:999}
+#slides .next{ position:absolute; right:10px; top:180px; background:url(images/tuan/next.gif) no-repeat 0 0; width:12px; height:30px; z-index:999}
+/*page*/
+.pagination{list-style:none;position:relative;bottom:15px; left:40%;display:none;margin:0;padding:0;z-index:2}
+.pagination li{ display:block; float:left; width:12px; height:12px; line-height:12px;overflow:hidden; margin:0 5px 0 0}
+.pagination li a{ display:block; width:50px; height:12px; text-align:center; color:#FFFFFF; background:#666666}
+.pagination li a:hover{text-decoration:none}
+.pagination .current a {background:#EC0000; color:#FFFFFF}
+
+
+.clear {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 0px; CLEAR: both; PADDING-TOP: 0px; _display: inline
+}
+.fl {
+	FLOAT: left
+}
+.fr {
+	FLOAT: right
+}
+DIV {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+A {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+EM {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+I {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	MARGIN: 0px; FONT-FAMILY: Arial,Helvetica,宋体,sans-serif; BACKGROUND: #fff; COLOR: #333; FONT-SIZE: 12px
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+IMG {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; PADDING-TOP: 0px
+}
+IMG.img_loding {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+#container {
+	Z-INDEX: 0; POSITION: relative; MARGIN: auto; WIDTH: 950px; BACKGROUND: #fff
+}
+#content {
+	WIDTH: 100%
+}
+TEXTAREA {
+	resize: none
+}
+.clear {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 0px; CLEAR: both; PADDING-TOP: 0px; _display: inline
+}
+.span_letters {
+	PADDING-LEFT: 20px
+}
+.span_letters A {
+	PADDING-RIGHT: 5px
+}
+.SearchSuggestion {
+	Z-INDEX: 1; BORDER-BOTTOM: #808080 1px solid; BORDER-LEFT: #808080 1px solid; OVERFLOW: hidden; BORDER-TOP: #808080 1px; BORDER-RIGHT: #808080 1px solid
+}
+.SearchSuggestion UL {
+	PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #fff; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.SearchSuggestion UL LI DIV.records {
+	PADDING-RIGHT: 10px; FLOAT: right
+}
+.SearchSuggestion UL LI DIV.slabel {
+	FLOAT: left
+}
+.SearchSuggestion UL LI DIV._ca {
+	CLEAR: both
+}
+.SearchSuggestion UL LI.selected {
+	BACKGROUND-COLOR: #ffb
+}
+.SearchSuggestion UL LI {
+	PADDING-BOTTOM: 1px; LINE-HEIGHT: 25px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 10px; DISPLAY: block; WHITE-SPACE: nowrap; OVERFLOW: hidden; CURSOR: pointer
+}
+.fl {
+	FLOAT: left
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.search_bar {
+	Z-INDEX: 20; POSITION: relative; WIDTH: 970px; HEIGHT: 36px
+}
+.search_bar .search_bar_middle {
+	BORDER-BOTTOM: #dedede 0px solid; POSITION: relative; BORDER-LEFT: #dedede 1px solid; LINE-HEIGHT: 36px; BACKGROUND: url(http://pages.aifcdn.com/img/afnav/7/afblock_bg.gif) repeat-x 0px -3px; HEIGHT: 36px; BORDER-TOP: #dedede 0px solid; BORDER-RIGHT: #dedede 1px solid
+}
+.search_bar .search_bar_middle A.nav_link {
+	POSITION: absolute; WIDTH: 225px; DISPLAY: block; BACKGROUND: url(http://pages.aifcdn.com/img/afnav/7/bg_afnewnav.gif) no-repeat -5px -140px; HEIGHT: 36px; TOP: 0px; LEFT: 5px
+}
+.search_bar .search_bar_middle A.nav_link_home {
+	POSITION: absolute; WIDTH: 225px; DISPLAY: block; BACKGROUND: url(http://pages.aifcdn.com/img/afnav/7/bg_afnewnav.gif) no-repeat -5px -100px; HEIGHT: 36px; TOP: 0px; LEFT: 5px
+}
+.search_bar .search_filter {
+	POSITION: relative; MARGIN: 0px 0px 0px 260px; DISPLAY: inline
+}
+.nav_title {
+	FONT-FAMILY: 宋体; HEIGHT: 36px; COLOR: #111; FONT-SIZE: 12px; CURSOR: pointer
+}
+.nav_title .s_v {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 12px; WIDTH: 11px; PADDING-RIGHT: 0px; BACKGROUND: url(http://pages.aifcdn.com/img/afnav/7/bg_afnewnav.gif) no-repeat -352px 0px; HEIGHT: 11px; PADDING-TOP: 0px
+}
+.nav_title .s_v_o {
+	BACKGROUND-POSITION: -352px -22px
+}
+.nav_panel {
+	Z-INDEX: 25; BORDER-BOTTOM: #cdcdcd 0px solid; POSITION: absolute; BORDER-LEFT: #cdcdcd 1px solid; BACKGROUND-COLOR: #fff; DISPLAY: block; BORDER-TOP: #cdcdcd 1px solid; TOP: 30px; BORDER-RIGHT: #cdcdcd 1px solid; LEFT: 0px
+}
+.nav_panel UL LI {
+	BORDER-BOTTOM: #cdcdcd 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; LIST-STYLE-TYPE: none; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; WHITE-SPACE: nowrap; PADDING-TOP: 0px
+}
+.search_bar .search_input {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 4px; PADDING-TOP: 0px; _padding: 8px 4px 0 10px
+}
+.search_bar .search_input INPUT {
+	BORDER-BOTTOM: #b4b4b4 1px solid; BORDER-LEFT: #808080 1px solid; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; WIDTH: 200px; PADDING-RIGHT: 3px; FONT-FAMILY: 宋体; COLOR: #999; FONT-SIZE: 12px; VERTICAL-ALIGN: middle; BORDER-TOP: #808080 1px solid; BORDER-RIGHT: #b4b4b4 1px solid; PADDING-TOP: 3px; _vertical-align: top
+}
+.search_bar .search_btn {
+	_padding: 8px 0 0 0
+}
+.search_bar .search_btn INPUT {
+	BORDER-BOTTOM-STYLE: none; LINE-HEIGHT: 22px; BORDER-RIGHT-STYLE: none; WIDTH: 55px; BORDER-TOP-STYLE: none; BACKGROUND: url(http://pages.aifcdn.com/img/afnav/7/bg_afnewnav.gif) no-repeat -89px 0px; HEIGHT: 22px; VERTICAL-ALIGN: middle; BORDER-LEFT-STYLE: none; OVERFLOW: hidden; CURSOR: pointer; _vertical-align: top
+}
+.search_keywords {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 20px; WIDTH: 350px; PADDING-RIGHT: 0px; WHITE-SPACE: nowrap; COLOR: #bb0101; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.search_keywords A {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 10px; PADDING-TOP: 0px
+}
+EM {
+	FONT-STYLE: normal
+}
+.tuan_bar {
+	Z-INDEX: 10; POSITION: relative; BORDER-LEFT: #e3e3e3 1px solid; WIDTH: 968px; BACKGROUND: url(images/tuan/tuan_bar_bg.png) repeat-x 0px -82px; HEIGHT: 35px; CLEAR: both; BORDER-RIGHT: #e3e3e3 1px solid
+}
+.ul_bar LI {
+	TEXT-ALIGN: center; LINE-HEIGHT: 35px; WIDTH: 122px; BACKGROUND: url(images/tuan/tuan_bar_bg.png) no-repeat 0px -41px; FLOAT: left; HEIGHT: 35px; COLOR: #fff; FONT-SIZE: 14px
+}
+.ul_bar LI A:link {
+	DISPLAY: block; COLOR: #000; TEXT-DECORATION: none
+}
+.ul_bar LI A:visited {
+	DISPLAY: block; COLOR: #000; TEXT-DECORATION: none
+}
+.ul_bar LI A:hover {
+	DISPLAY: block; COLOR: #000; TEXT-DECORATION: none
+}
+.ul_bar LI A:hover {
+	COLOR: #f60
+}
+.tuan_bar .s {
+	POSITION: absolute; TEXT-ALIGN: right; LINE-HEIGHT: 35px; WIDTH: 255px; HEIGHT: 35px; FONT-SIZE: 14px; TOP: 0px; RIGHT: 10px
+}
+.tuan_bar .s A.my_sc:link {
+	POSITION: relative; PADDING-BOTTOM: 0px; LINE-HEIGHT: 15px; PADDING-LEFT: 23px; PADDING-RIGHT: 15px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_bar_bg.png) no-repeat -75px -256px; HEIGHT: 15px; VERTICAL-ALIGN: top; TOP: 11px; PADDING-TOP: 0px
+}
+.tuan_bar .s A.my_sc:visited {
+	POSITION: relative; PADDING-BOTTOM: 0px; LINE-HEIGHT: 15px; PADDING-LEFT: 23px; PADDING-RIGHT: 15px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_bar_bg.png) no-repeat -75px -256px; HEIGHT: 15px; VERTICAL-ALIGN: top; TOP: 11px; PADDING-TOP: 0px
+}
+.tuan_bar .s A.my_sc:hover {
+	POSITION: relative; PADDING-BOTTOM: 0px; LINE-HEIGHT: 15px; PADDING-LEFT: 23px; PADDING-RIGHT: 15px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_bar_bg.png) no-repeat -75px -256px; HEIGHT: 15px; VERTICAL-ALIGN: top; TOP: 11px; PADDING-TOP: 0px
+}
+.tuan_bar .s EM {
+	COLOR: #fff; FONT-SIZE: 14px
+}
+.tuan_bar .s SPAN {
+	DISPLAY: inline-block
+}
+.tuan_bar .s SPAN A {
+	POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 35px; WIDTH: 120px; DISPLAY: inline-block; HEIGHT: 35px; VERTICAL-ALIGN: top; TEXT-DECORATION: none
+}
+.tuan_bar .s SPAN A:link {
+	COLOR: #ee0c0c
+}
+.tuan_bar .s SPAN A:visited {
+	COLOR: #ee0c0c
+}
+.tuan_bar .s SPAN A I {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 7px; PADDING-RIGHT: 8px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_bar_bg.png) no-repeat -69px -122px; PADDING-TOP: 0px
+}
+.tuan_bar .s SPAN B {
+	MARGIN: 0px 24px 0px 0px; WIDTH: 2px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_bar_bg.png) no-repeat -123px -41px; HEIGHT: 35px; VERTICAL-ALIGN: top
+}
+.tuan_bar .s UL {
+	Z-INDEX: 10; POSITION: absolute; PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; WIDTH: 120px; PADDING-RIGHT: 5px; ZOOM: 1; BACKGROUND: #fe5151; TOP: 0px; PADDING-TOP: 0px; LEFT: 125px
+}
+.tuan_bar .s UL LI {
+	TEXT-ALIGN: left; LINE-HEIGHT: 35px; WIDTH: 120px; BACKGROUND: #fe5151; HEIGHT: 35px; FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: #fda3a3 1px dashed; FONT-WEIGHT: normal
+}
+.tuan_bar .s UL LI A {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_bar_bg.png) no-repeat 5px -1px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+.tuan_bar .s UL LI A:link {
+	COLOR: #fff
+}
+.tuan_bar .s UL LI A:visited {
+	COLOR: #fff
+}
+.tuan_bar .s UL LI A:hover {
+	COLOR: #fff
+}
+.tuan_bar .s UL LI.my {
+	BORDER-TOP-WIDTH: 0px
+}
+.tuan_bar .s UL LI.my EM {
+	POSITION: absolute; WIDTH: 12px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_bar_bg.png) no-repeat -84px -138px; HEIGHT: 4px; OVERFLOW: hidden; TOP: 14px; LEFT: 8px
+}
+.tuan_bar .s UL LI.my A {
+	DISPLAY: inline-block; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.tuan_bar .s UL LI.my A:link {
+	COLOR: #fff; FONT-WEIGHT: 700
+}
+.tuan_bar .s UL LI.my A:visited {
+	COLOR: #fff; FONT-WEIGHT: 700
+}
+.tuan_bar .s UL LI.my A:active {
+	COLOR: #fff; FONT-WEIGHT: 700
+}
+.list_r {
+	WIDTH: 240px; FLOAT: right; OVERFLOW: hidden
+}
+.list_r .b {
+	BORDER-BOTTOM: #dedede 1px solid; BORDER-LEFT: #dedede 1px solid; MARGIN: 0px 0px 10px; WIDTH: 218px; BORDER-TOP: #dedede 1px solid; BORDER-RIGHT: #dedede 1px solid
+}
+.list_r .b LABEL {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 34px; MARGIN: 0px auto; PADDING-LEFT: 10px; WIDTH: 216px; PADDING-RIGHT: 0px; DISPLAY: block; BACKGROUND: url(images/tuan/tuan_list_bg.png) repeat-x 0px -415px; HEIGHT: 34px; FONT-SIZE: 14px; FONT-WEIGHT: 700; PADDING-TOP: 0px
+}
+.list_r .b .c {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 205px; PADDING-RIGHT: 13px; BACKGROUND: #f9f9fb; PADDING-TOP: 10px
+}
+.list_r .b1 .red {
+	COLOR: #eb0606
+}
+.list_r .b1 .c {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 17px; WIDTH: 186px; PADDING-RIGHT: 25px; PADDING-TOP: 10px
+}
+.list_r .b1 .a1 {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; MARGIN: 0px 0px 3px; WIDTH: 184px; DISPLAY: block; HEIGHT: 115px; OVERFLOW: hidden; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid
+}
+.list_r .b1 .a1 IMG {
+	WIDTH: 184px; HEIGHT: 115px
+}
+.list_r .b1 SPAN {
+	LINE-HEIGHT: 18px; DISPLAY: block; OVERFLOW: hidden
+}
+.list_r .b1 SPAN B {
+	MARGIN: 0px 3px 0px 0px; WIDTH: 28px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat -254px -191px; HEIGHT: 15px; VERTICAL-ALIGN: middle; _vertical-align: baseline
+}
+.list_r .b2 .ipt {
+	BORDER-BOTTOM: #ffc79b 1px solid; BORDER-LEFT: #ffc79b 1px solid; PADDING-BOTTOM: 3px; LINE-HEIGHT: 19px; PADDING-LEFT: 3px; WIDTH: 150px; PADDING-RIGHT: 3px; FONT-FAMILY: 宋体,SimSun; HEIGHT: 19px; COLOR: #999; FONT-SIZE: 12px; VERTICAL-ALIGN: middle; BORDER-TOP: #ffc79b 1px solid; BORDER-RIGHT: #ffc79b 0px solid; PADDING-TOP: 3px
+}
+.list_r .b2 .ipt_f {
+	BORDER-BOTTOM: #ffc79b 1px solid; BORDER-LEFT: #ffc79b 1px solid; PADDING-BOTTOM: 3px; LINE-HEIGHT: 19px; PADDING-LEFT: 3px; WIDTH: 150px; PADDING-RIGHT: 3px; FONT-FAMILY: 宋体,SimSun; HEIGHT: 19px; COLOR: #999; FONT-SIZE: 12px; VERTICAL-ALIGN: middle; BORDER-TOP: #ffc79b 1px solid; BORDER-RIGHT: #ffc79b 0px solid; PADDING-TOP: 3px
+}
+.list_r .b2 .ipt_f {
+	COLOR: #333
+}
+.list_r .b2 .bt {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; PADDING-LEFT: 0px; WIDTH: 46px; PADDING-RIGHT: 0px; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat -254px -162px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 27px; VERTICAL-ALIGN: middle; BORDER-LEFT-WIDTH: 0px; CURSOR: pointer; PADDING-TOP: 0px
+}
+.list_r .b3 SPAN {
+	LINE-HEIGHT: 22px; MARGIN: 3px 0px 7px; DISPLAY: block
+}
+.list_r .b3 EM {
+	DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px -253px; HEIGHT: 22px; VERTICAL-ALIGN: middle
+}
+.list_r .b3 A {
+	DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px -253px; HEIGHT: 22px; VERTICAL-ALIGN: middle
+}
+.list_r .b3 EM {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 28px; WIDTH: 95px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.list_r .b3 .em1 {
+	BACKGROUND-POSITION: -199px -280px
+}
+.list_r .b3 .em2 {
+	BACKGROUND-POSITION: -199px -253px
+}
+.list_r .b3 A {
+	WIDTH: 73px
+}
+.list_r .b4 LI {
+	LINE-HEIGHT: 22px; HEIGHT: 22px; OVERFLOW: hidden
+}
+.list_r .b10 LI {
+	LINE-HEIGHT: 22px; HEIGHT: 22px; OVERFLOW: hidden
+}
+.list_r .b4 .tg A:link {
+	COLOR: #333
+}
+.list_r .b4 .tg A:visited {
+	COLOR: #333
+}
+.list_r .b4 .tg A:hover {
+	COLOR: #f60; TEXT-DECORATION: none
+}
+.list_r .b4 .tg A:link I {
+	COLOR: #f60
+}
+.list_r .b4 .tg A:visited I {
+	COLOR: #f60
+}
+.list_r .b4 .tg A:hover I {
+	COLOR: #f60
+}
+.list_r .b5 A {
+	DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px -309px
+}
+.list_r .b6 A {
+	DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px -309px
+}
+.list_r .b8 A:link {
+	DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px -309px
+}
+.list_r .b8 A:visited {
+	DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px -309px
+}
+.list_r .b8 A:hover {
+	DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px -309px
+}
+.list_r .b5 A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-LEFT: 45px; PADDING-RIGHT: 0px; HEIGHT: 24px; PADDING-TOP: 0px
+}
+.list_r .b6 A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-LEFT: 45px; PADDING-RIGHT: 0px; HEIGHT: 24px; PADDING-TOP: 0px
+}
+.list_r .b5 A {
+	BACKGROUND-POSITION: -160px -308px
+}
+.list_r .b6 A {
+	BACKGROUND-POSITION: 0px -309px
+}
+.list_r .b8 A:link {
+	TEXT-ALIGN: center; LINE-HEIGHT: 25px; MARGIN: 3px 13px; WIDTH: 73px; BACKGROUND-POSITION: 0px -278px; HEIGHT: 25px; OVERFLOW: hidden; TEXT-DECORATION: none
+}
+.list_r .b8 A:visited {
+	TEXT-ALIGN: center; LINE-HEIGHT: 25px; MARGIN: 3px 13px; WIDTH: 73px; BACKGROUND-POSITION: 0px -278px; HEIGHT: 25px; OVERFLOW: hidden; TEXT-DECORATION: none
+}
+.list_r .b8 A:hover {
+	TEXT-ALIGN: center; LINE-HEIGHT: 25px; MARGIN: 3px 13px; WIDTH: 73px; BACKGROUND-POSITION: 0px -278px; HEIGHT: 25px; OVERFLOW: hidden; TEXT-DECORATION: none
+}
+.list_r .b7 .c {
+	POSITION: relative; PADDING-BOTTOM: 20px; PADDING-LEFT: 10px; WIDTH: 204px; PADDING-RIGHT: 3px; PADDING-TOP: 10px
+}
+.list_r .b7 SPAN {
+	DISPLAY: block
+}
+.list_r .b7 SPAN I {
+	DISPLAY: inline-block
+}
+.list_r .b7 SPAN EM {
+	DISPLAY: inline-block
+}
+.list_r .b7 SPAN I {
+	WIDTH: 25px; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat -177px -209px; HEIGHT: 29px
+}
+.list_r .b7 SPAN EM {
+	LINE-HEIGHT: 18px; MARGIN: 0px 0px 0px 10px
+}
+.list_r .b7 SPAN EM B {
+	COLOR: #f04c0c; FONT-SIZE: 18px
+}
+.list_r .b7 A { float:left;	MARGIN: 10px 0px 0px 10px;}
+.list_r .b9 LI {
+	LINE-HEIGHT: 24px; HEIGHT: 24px; OVERFLOW: hidden
+}
+.list_r .b9 LI EM {
+	MARGIN: 0px 5px 0px 0px; DISPLAY: inline-block; VERTICAL-ALIGN: middle; OVERFLOW: hidden
+}
+.list_r .b9 LI .name {
+	WIDTH: 80px
+}
+.list_r .b9 LI .address {
+	WIDTH: 50px; FLOAT: left
+}
+.list_r .b9 LI .desc {
+	MARGIN: 0px; WIDTH: 80px; ZOOM: 1; DISPLAY: block; FLOAT: left; COLOR: #b33; VERTICAL-ALIGN: baseline
+}
+.list_r .b9 LI A:link {
+	DISPLAY: block; FLOAT: left; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none
+}
+.list_r .b9 LI A:visited {
+	DISPLAY: block; FLOAT: left; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none
+}
+.list_r .b9 LI A:hover {
+	DISPLAY: block; FLOAT: left; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none
+}
+.list_r .b10 SPAN .a2 {
+	BORDER-LEFT: #000 1px solid; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.list_r .b10 UL {
+	MARGIN: 5px 0px 0px
+}
+.list_r .b10 UL LI A:link {
+	COLOR: #333
+}
+.list_r .b10 UL LI A:visited {
+	COLOR: #333
+}
+.list_r .b10 UL LI A:hover {
+	COLOR: #f60; TEXT-DECORATION: none
+}
+.m_top {
+	BORDER-BOTTOM: #f8e7c2 0px solid; POSITION: relative; BORDER-LEFT: #f8e7c2 1px solid; WIDTH: 718px; BACKGROUND: #fff7e5; HEIGHT: 34px; BORDER-TOP: #f8e7c2 1px solid; BORDER-RIGHT: #f8e7c2 1px solid
+}
+.m_top LABEL {
+	DISPLAY: inline-block
+}
+.m_top SPAN {
+	DISPLAY: inline-block
+}
+.m_top LABEL {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 34px; PADDING-LEFT: 15px; PADDING-RIGHT: 0px; HEIGHT: 34px; PADDING-TOP: 0px
+}
+.m_top .span_c A {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 19px; WIDTH: 42px; PADDING-RIGHT: 0px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat -75px -259px; HEIGHT: 14px; PADDING-TOP: 0px
+}
+.m_top .span_c A:link {
+	COLOR: #000
+}
+.m_top .span_c A:visited {
+	COLOR: #000
+}
+.m_top .span_c A:hover {
+	COLOR: #fd6500; TEXT-DECORATION: none
+}
+.m_top .span_c .a1 {
+	BACKGROUND-POSITION: -75px -259px; LEFT: 0px
+}
+.m_top .span_c .a2 {
+	BACKGROUND-POSITION: -75px -281px
+}
+.m_top .span_c .a3 {
+	WIDTH: 66px; BACKGROUND-POSITION: -207px -354px
+}
+.m_top .span_c .a4 {
+	BACKGROUND-POSITION: -137px -259px
+}
+.m_top .span_c .a5 {
+	WIDTH: 56px; BACKGROUND-POSITION: -207px -336px
+}
+.m_top .span_c .a6 {
+	BACKGROUND-POSITION: -137px -281px
+}
+.m_top EM {
+	BORDER-BOTTOM: #f9e7ba 1px solid; POSITION: absolute; BORDER-LEFT: #f9e7ba 1px solid; LINE-HEIGHT: 30px; WIDTH: 170px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px -338px; HEIGHT: 30px; BORDER-TOP: #f9e7ba 1px solid; TOP: 1px; RIGHT: 1px; BORDER-RIGHT: #f9e7ba 1px solid
+}
+.m_top EM A:link {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 52px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m_top EM A:visited {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 52px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m_top EM A:hover {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 52px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m_top .qq_panel {
+	Z-INDEX: 100; BORDER-BOTTOM: #ffd46e 1px solid; POSITION: absolute; BORDER-LEFT: #ffd46e 1px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #ffffc3; HEIGHT: 45px; OVERFLOW: hidden; BORDER-TOP: #ffd46e 1px solid; TOP: 28px; BORDER-RIGHT: #ffd46e 1px solid; PADDING-TOP: 10px; LEFT: 200px
+}
+.m_top .qq_panel INPUT {
+	BORDER-BOTTOM: #89b4d6 1px solid; BORDER-LEFT: #89b4d6 1px solid; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; WIDTH: 290px; PADDING-RIGHT: 3px; FONT-FAMILY: Arial,Helvetica,sans-serif; FONT-SIZE: 12px; BORDER-TOP: #89b4d6 1px solid; BORDER-RIGHT: #89b4d6 1px solid; PADDING-TOP: 3px
+}
+.lp__nav A:link {
+	LINE-HEIGHT: 28px; MARGIN: 0px 2px 0px 0px; DISPLAY: block; FLOAT: left; HEIGHT: 28px; COLOR: #335396; CURSOR: pointer; TEXT-DECORATION: none
+}
+.lp__nav A:visited {
+	LINE-HEIGHT: 28px; MARGIN: 0px 2px 0px 0px; DISPLAY: block; FLOAT: left; HEIGHT: 28px; COLOR: #335396; CURSOR: pointer; TEXT-DECORATION: none
+}
+.lp__nav SPAN {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 16px; PADDING-RIGHT: 16px; DISPLAY: block; FLOAT: left; HEIGHT: 28px; PADDING-TOP: 0px
+}
+.lp__nav EM {
+	WIDTH: 7px; DISPLAY: block; BACKGROUND: url(http://pages.aifcdn.com/img/afview/33/loupan_icon.gif) no-repeat -49px -355px; FLOAT: left; HEIGHT: 28px
+}
+.lp__nav EM.em_r {
+	WIDTH: 8px; BACKGROUND-POSITION: -56px -355px
+}
+.lp__nav SPAN {
+	BACKGROUND: url(http://pages.aifcdn.com/img/afview/33/loupan_icon.gif) repeat-x 0px -1034px; FONT-SIZE: 14px
+}
+.lp__tuan {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 22px; MARGIN: 3px 0px 0px 50px; PADDING-LEFT: 32px; WIDTH: 195px; PADDING-RIGHT: 0px; DISPLAY: inline-block; WHITE-SPACE: nowrap; BACKGROUND: url(http://pages.aifcdn.com/img/afview/33/loupan_icon.gif) no-repeat 0px -1468px; HEIGHT: 22px; COLOR: #fff; FONT-SIZE: 12px; OVERFLOW: hidden; FONT-WEIGHT: normal; PADDING-TOP: 0px
+}
+.lp__tuan A:link {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 0px; COLOR: #b33; PADDING-TOP: 0px
+}
+.lp__tuan A:visited {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 0px; COLOR: #b33; PADDING-TOP: 0px
+}
+.lp__tuan A:active {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 0px; COLOR: #b33; PADDING-TOP: 0px
+}
+.lp__tuan A:hover {
+	COLOR: #f60
+}
+.lp__nav EM.em_i {
+	WIDTH: 20px; DISPLAY: block; BACKGROUND: url(http://pages.aifcdn.com/img/afview/33/loupan_icon.gif) no-repeat -5px -585px; FLOAT: left; HEIGHT: 28px; OVERFLOW: hidden
+}
+
+/* 加入淘房团 */
+.baoming { float:left; width:100%; margin-top:10px;margin-bottom:16px; }
+.baoming .inputBoxs { width:100%;}
+	  .tips_Title{ float:left; margin-left:0px;margin-top:10px; margin-bottom:10px;color:#f90; font-size:14px; font-weight:bold;LINE-HEIGHT: 20px; }
+
+	.inputForms { float:left; padding:10px 10px 0 0; }
+	.inputForms #inputLeftBg { float:left; width:3px; height:30px; background:url(images/tuan/searchKeyWordBg.gif) repeat-x left top; }
+	.inputForms #inputBg { float:left; height:24px; padding-top:6px; background:url(images/tuan/searchKeyWordBg.gif) repeat-x left bottom; }
+	.inputForms #inputRightBg { float:left; width:3px; height:30px; background:url(images/tuan/searchKeyWordBg.gif) repeat-x right top; }
+	.inputForms #inputBg input { font-size:14px; color:#999; padding:1px 5px; }
+	.inputBoxs #searchBtns { float:left; padding:10px 0 0 0;}
+	.inputBoxs #searchBtns input { float:left;width:72px; height:30px; margin-left:8px; font-size:14px; color:#000; font-weight:bold; letter-spacing:1px; background:url(images/tuan/searchBtn.gif) no-repeat; }
+/* 加入淘房团 over*/
+
+.tuan_map {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 218px; PADDING-RIGHT: 0px; BACKGROUND: #f9f9fb; FLOAT: right; OVERFLOW: hidden; PADDING-TOP: 10px; _width: 215px
+}
+.tuan_map DL {
+	LINE-HEIGHT: 18px; MARGIN: 0px 17px 10px; WIDTH: 184px
+}
+.tuan_map DD {
+	WIDTH: 184px; WHITE-SPACE: nowrap; OVERFLOW: hidden
+}
+.tuan_map DT {
+	WIDTH: 184px; WHITE-SPACE: nowrap; OVERFLOW: hidden;PADDING-BOTTOM: 6px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: 700; PADDING-TOP: 0px}
+.tuan_map .dl2 DT {
+	BORDER-BOTTOM: #dedede 1px solid; BORDER-LEFT: #dedede 1px solid; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 2px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: #dedede 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: #dedede 1px solid; PADDING-TOP: 0px
+}
+.tuan_map .dl2 .map_bd {WIDTH: 182px; HEIGHT: 182px;}
+.tuan_map .dl2 DT A:link {
+	TEXT-ALIGN: center; LINE-HEIGHT: 27px; WIDTH: 182px; DISPLAY: inline-block; BACKGROUND: #f8f8f8; HEIGHT: 27px
+}
+.tuan_map .dl2 DT A:visited {
+	TEXT-ALIGN: center; LINE-HEIGHT: 27px; WIDTH: 182px; DISPLAY: inline-block; BACKGROUND: #f8f8f8; HEIGHT: 27px
+}
+.tuan_map .dl2 DT A:hover {
+	TEXT-ALIGN: center; LINE-HEIGHT: 27px; WIDTH: 182px; DISPLAY: inline-block; BACKGROUND: #f8f8f8; HEIGHT: 27px
+}
+.tuan_map DT A {
+	DISPLAY: inline-block
+}
+.tuan_map DD {
+	MARGIN: 0px
+}
+.tuan_map EM {
+	BORDER-BOTTOM: #dddcdc 1px solid; MARGIN: 20px 10px; DISPLAY: block; BACKGROUND: #fcfcfc; HEIGHT: 1px; OVERFLOW: hidden
+}
+H1 {
+	FONT-STYLE: normal; FONT-SIZE: 14px; FONT-WEIGHT: normal
+}
+H2 {
+	FONT-STYLE: normal; FONT-SIZE: 14px; FONT-WEIGHT: normal
+}
+.m {
+	MARGIN: 10px 0px 0px; WIDTH: 970px
+}
+.list_l {
+	WIDTH: 720px; FLOAT: left; OVERFLOW: hidden
+}
+.list_l .p {
+	BORDER-BOTTOM: #e70000 4px solid; POSITION: relative; BORDER-LEFT: #e70000 4px solid; MARGIN: 0px 0px 10px; WIDTH: 712px; BORDER-TOP: #e70000 4px solid; BORDER-RIGHT: #e70000 4px solid
+}
+.p .hh {
+	Z-INDEX: 1; PADDING-BOTTOM: 18px; LINE-HEIGHT: 32px; PADDING-LEFT: 30px; PADDING-RIGHT: 15px; ZOOM: 1; FONT-FAMILY: 微软雅黑,黑体; COLOR: #000; FONT-SIZE: 24px; FONT-WEIGHT: 700; PADDING-TOP: 25px
+}
+.p .hh B {
+	COLOR: #de0303
+}
+.p .hh SPAN {
+	POSITION: absolute; TEXT-ALIGN: center; WIDTH: 66px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat -254px -93px; HEIGHT: 66px; TOP: -6px; LEFT: -6px
+}
+.p .hh SPAN EM {
+	POSITION: absolute; FONT-SIZE: 22px; TOP: 10px; FONT-WEIGHT: 700; LEFT: 10px
+}
+.p .c {
+	MARGIN: 0px 13px 27px; CLEAR: both
+}
+.p .c .l {
+	WIDTH: 251px; FLOAT: left; OVERFLOW: hidden
+}
+.p .c .b1 {
+	Z-INDEX: 100; POSITION: relative; MARGIN: -7px 0px 0px; WIDTH: 290px; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px 0px; HEIGHT: 87px; LEFT: -29px
+}
+.p .c .b1 SPAN {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 44px; PADDING-LEFT: 35px; WIDTH: 149px; PADDING-RIGHT: 0px; DISPLAY: block; FONT-FAMILY: 微软雅黑,黑体; WHITE-SPACE: nowrap; COLOR: #fff; FONT-SIZE: 18px; OVERFLOW: hidden; FONT-WEIGHT: 700; PADDING-TOP: 20px
+}
+.p .c .b1 A:link {
+	POSITION: absolute; WIDTH: 120px; DISPLAY: block; BACKGROUND: url(images/tuan/tuan_bts.png) no-repeat 0px -208px; HEIGHT: 50px; TOP: 22px; RIGHT: 10px
+}
+.p .c .b1 A:visited {
+	POSITION: absolute; WIDTH: 120px; DISPLAY: block; BACKGROUND: url(images/tuan/tuan_bts.png) no-repeat 0px -208px; HEIGHT: 50px; TOP: 22px; RIGHT: 10px
+}
+.p .c .b1 A.a0:link {
+	BACKGROUND-POSITION: 0px 0px
+}
+.p .c .b1 A.a0:visited {
+	BACKGROUND-POSITION: 0px 0px
+}
+.p .c .b1 A.a2:link {
+	BACKGROUND-POSITION: 0px -52px
+}
+.p .c .b1 A.a2:visited {
+	BACKGROUND-POSITION: 0px -52px
+}
+.p .c .b1 A.a3:link {
+	BACKGROUND-POSITION: 0px -104px
+}
+.p .c .b1 A.a3:visited {
+	BACKGROUND-POSITION: 0px -104px
+}
+.p .c .b1 A.a4:link {
+	BACKGROUND-POSITION: 0px -208px
+}
+.p .c .b1 A.a4:visited {
+	BACKGROUND-POSITION: 0px -208px
+}
+.p .c .b1 A.a5:link {
+	BACKGROUND-POSITION: 0px -156px
+}
+.p .c .b1 A.a5:visited {
+	BACKGROUND-POSITION: 0px -156px
+}
+.p .c .b2 {
+	MARGIN: 0px 0px 10px; WIDTH: 251px; FONT-SIZE: 14px; OVERFLOW: hidden
+}
+.p .c .b2 UL {
+	BORDER-LEFT: #f5e8d2 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 20px; WIDTH: 219px; PADDING-RIGHT: 10px; BACKGROUND: #fefcf0; OVERFLOW: hidden; BORDER-RIGHT: #f5e8d2 1px solid; PADDING-TOP: 15px
+}
+.p .c .b2 LI {
+	LINE-HEIGHT: 27px; WIDTH: 219px; FLOAT: left; HEIGHT: 27px; COLOR: #222; OVERFLOW: hidden
+}
+.p .c .b2 LI H1 {
+	DISPLAY: inline-block; FLOAT: left
+}
+.p .c .b2 LI H2 {
+	DISPLAY: inline-block; FLOAT: left; COLOR: #ce0206; FONT-WEIGHT: 700
+}
+.p .c .b2 EM {
+	WIDTH: 251px; DISPLAY: block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px bottom; HEIGHT: 17px; OVERFLOW: hidden
+}
+.p .c .b3 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 251px; PADDING-RIGHT: 0px; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat 0px -93px; HEIGHT: 85px; FONT-SIZE: 14px; PADDING-TOP: 25px
+}
+.p .c .b3 LABEL {
+	POSITION: relative; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 35px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; FONT-FAMILY: 微软雅黑,黑体; FONT-SIZE: 16px; TOP: -2px; FONT-WEIGHT: 700; PADDING-TOP: 0px
+}
+.p .c .b3 LABEL B {
+	COLOR: #d00206; FONT-SIZE: 18px
+}
+.p .c .b3 SPAN {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.p .c .b3 .timer {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.p .c .b3 .timer strong {
+	MARGIN: 0px 5px; FONT-FAMILY: 微软雅黑,黑体; FONT-SIZE: 16px; FONT-WEIGHT: 700
+}
+.p .c .r {
+	Z-INDEX: 0; POSITION: relative; WIDTH: 422px; ZOOM: 1; FLOAT: right
+}
+.p .c .b4 {
+	BORDER-BOTTOM: #dedede 1px solid; BORDER-LEFT: #dedede 1px solid; WIDTH: 420px; DISPLAY: block; HEIGHT: 315px; OVERFLOW: hidden; BORDER-TOP: #dedede 1px solid; BORDER-RIGHT: #dedede 1px solid
+}
+.p .c .b4 IMG {
+	WIDTH: 420px; HEIGHT: 315px
+}
+#Slide {
+	BORDER-BOTTOM: #dedede 1px solid; BORDER-LEFT: #dedede 1px solid; WIDTH: 420px; HEIGHT: 315px; BORDER-TOP: #dedede 1px solid; BORDER-RIGHT: #dedede 1px solid
+}
+#SlideBox {
+	BORDER-BOTTOM: #dedede 1px solid; BORDER-LEFT: #dedede 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #f2f2f2; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP: #dedede 1px solid; BORDER-RIGHT: #dedede 1px solid; PADDING-TOP: 5px
+}
+#SlidePlayer {
+	WIDTH: 420px; HEIGHT: 315px
+}
+#SlidePlayer IMG {
+	WIDTH: 420px; HEIGHT: 315px
+}
+#SlidePlayer IMG {
+	FLOAT: left
+}
+#SlidePlayer {
+	POSITION: relative; MARGIN: 0px auto; OVERFLOW: hidden
+}
+#Slides {
+	POSITION: absolute; TOP: 0px; LEFT: 0px
+}
+#slider LI {
+	LIST-STYLE-TYPE: none; DISPLAY: inline
+}
+#SlidePlayer .slider__tag {
+	Z-INDEX: 1; POSITION: absolute; PADDING-BOTTOM: 0px; LINE-HEIGHT: 21px; PADDING-LEFT: 0px; BOTTOM: 0px; PADDING-RIGHT: 0px; HEIGHT: 27px; RIGHT: 5px; PADDING-TOP: 0px
+}
+#SlidePlayer .slider__tag LI {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #fff; MARGIN: 1px; PADDING-LEFT: 0px; WIDTH: 15px; PADDING-RIGHT: 0px; DISPLAY: inline; FONT: 11px Arial; FLOAT: left; HEIGHT: 15px; COLOR: #333; OVERFLOW: hidden; CURSOR: pointer; PADDING-TOP: 2px
+}
+#SlidePlayer .slider__tag LI.actived {
+	BACKGROUND-COLOR: #750013; MARGIN: 1px; WIDTH: 15px; FONT: 11px Arial; HEIGHT: 15px; COLOR: #fff
+}
+#SlidePlayer .slider__info {
+	Z-INDEX: 0; POSITION: absolute; TEXT-ALIGN: left; FILTER: alpha(opacity = 50); PADDING-BOTTOM: 0px; LINE-HEIGHT: 35px; PADDING-LEFT: 5px; WIDTH: 315px; BOTTOM: 0px; PADDING-RIGHT: 0px; BACKGROUND: #000; HEIGHT: 35px; COLOR: #fff; FONT-SIZE: 12px; OVERFLOW: hidden; PADDING-TOP: 0px; LEFT: 0px; -moz-opacity: .5; opacity: .5
+}
+.p2 {
+	padding:15px; BORDER-BOTTOM: #dedede 1px solid; POSITION: relative; BORDER-LEFT: #dedede 1px solid; WIDTH: 688px; CLEAR: both; BORDER-TOP: #dedede 1px solid; BORDER-RIGHT: #dedede 1px solid
+}
+.p2 .txt {
+	PADDING-BOTTOM: 10px; WIDTH: 100%; PADDING-RIGHT: 14px; BACKGROUND: #fff; FLOAT: left; FONT-SIZE: 14px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.p2 .txt img { max-width:688px;}
+.p2 .txt .zxdt {
+	HEIGHT: 53px; OVERFLOW: hidden
+}
+.p2 .txt .zxdt SPAN {
+	BORDER-BOTTOM: #ffdbb0 1px solid; POSITION: absolute; BORDER-LEFT: #ffdbb0 1px solid; PADDING-BOTTOM: 9px; LINE-HEIGHT: 12px; MARGIN: 0px 0px 23px; PADDING-LEFT: 0px; WIDTH: 499px; PADDING-RIGHT: 0px; DISPLAY: block; BACKGROUND: #fefdeb; HEIGHT: 12px; BORDER-TOP: #ffdbb0 1px solid; TOP: -1px; BORDER-RIGHT: #ffdbb0 1px solid; PADDING-TOP: 9px; LEFT: -1px
+}
+.p2 .txt .zxdt EM {
+	MARGIN: 0px 10px 0px 22px; WIDTH: 11px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat -300px -191px; HEIGHT: 11px
+}
+.p2 .txt .txt_bg {
+	WIDTH: 500px; HEIGHT: 32px
+}
+.p2 .txt .txt_bg EM {
+	POSITION: absolute; WIDTH: 500px; BACKGROUND: url(images/tuan/tuan_list_bg.png) repeat-x 0px -371px; HEIGHT: 32px; TOP: 0px; LEFT: 0px
+}
+.p2 .txt H1 {
+	PADDING-BOTTOM: 15px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 微软雅黑,黑体; COLOR: #d40201; FONT-SIZE: 18px; FONT-WEIGHT: 700; PADDING-TOP: 0px
+}
+.p2 .txt .c {
+	LINE-HEIGHT: 21px; FONT-SIZE: 14px; OVERFLOW: hidden
+}
+.p2 .txt .c P {
+	MARGIN: 5px 0px;}
+.p2 .txt .c OL LI {
+	LIST-STYLE-TYPE: decimal
+}
+.p2 .txt .c UL LI {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; MARGIN: 0px 0px 0px 22px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.r_boder {
+	MARGIN: 25px 0px 10px
+}
+.p2 .txt .s1 {
+	POSITION: relative; OVERFLOW: hidden
+}
+.p2 .txt .s2 {
+	POSITION: relative; OVERFLOW: hidden
+}
+.p2 .txt .s1 UL LI {
+	POSITION: relative; PADDING-BOTTOM: 5px; LINE-HEIGHT: 22px; PADDING-LEFT: 55px;  PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 10px
+}
+.p2 .txt .said {
+	PADDING-BOTTOM: 8px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 微软雅黑,黑体; COLOR: #933; FONT-SIZE: 18px; FONT-WEIGHT: 700; PADDING-TOP: 25px
+}
+.p2 .txt .s1 UL LI EM {
+	POSITION: absolute; WIDTH: 24px; BACKGROUND: url(images/tuan/tuan_list_bg.png) no-repeat -174px -338px; HEIGHT: 21px; CLEAR: both; TOP: 10px; LEFT: 7px
+}
+.p2 .txt .more {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 35px; FLOAT: right; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+.p2 .txt .s2 {
+	MARGIN: 0px 0px 50px
+}
+.p2 .txt .s2 UL {
+	LINE-HEIGHT: 22px; FONT-SIZE: 14px
+}
+.p2 .txt .s2 UL LI {
+	POSITION: relative; PADDING-BOTTOM: 13px; PADDING-LEFT: 25px;PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.p2 .txt .b1 {
+	TEXT-ALIGN: center; MARGIN: 43px 0px 33px; HEIGHT: 57px; CLEAR: both; OVERFLOW: hidden
+}
+.p2 .b1 .btn_ljbm {
+	WIDTH: 181px; DISPLAY: inline-block; BACKGROUND: url(images/tuan/tuan_bts.png) no-repeat 0px -319px; HEIGHT: 57px
+}
+.p2 .b1 A.top {
+	POSITION: relative; TOP: -5px; LEFT: 70px
+}
+.p2 .txt .b2 {
+	POSITION: absolute; BACKGROUND-COLOR: #f2f2f2; WIDTH: 100%; HEIGHT: 28px; OVERFLOW: hidden; BORDER-TOP: #ddd 1px solid; FONT-WEIGHT: 700; BORDER-RIGHT: #ddd 1px solid; LEFT: 0px
+}
+.p2 .txt .b2 .lp__nav {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 8px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.p2 .txt .b2 .lp__nav EM {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FONT-SIZE: 12px
+}
+.p2 .txt .b2 .lp__nav SPAN {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FONT-SIZE: 12px
+}
+.p2 .txt .b2 .lp__nav SPAN {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 6px; PADDING-RIGHT: 6px; PADDING-TOP: 0px
+}
+.ms_box {
+	Z-INDEX: 1000; BORDER-BOTTOM: #fbe5b6 10px solid; POSITION: absolute; BORDER-LEFT: #fbe5b6 10px solid; WIDTH: 550px; BORDER-TOP: #fbe5b6 10px solid; TOP: 556px; BORDER-RIGHT: #fbe5b6 10px solid; LEFT: 0px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; -webkit-box-shadow: rgba(0,0,255,0.4) 0 0 20px; -moz-box-shadow: rgba(0,0,255,0.4) 0 0 20px; box-shadow: rgba(0,0,255,0.4) 0 0 20px
+}
+.ms_close:link {
+	POSITION: absolute; COLOR: #ccc; TOP: 10px; RIGHT: 10px; TEXT-DECORATION: none
+}
+.ms_close:visited {
+	POSITION: absolute; COLOR: #ccc; TOP: 10px; RIGHT: 10px; TEXT-DECORATION: none
+}
+.ms_close:hover {
+	COLOR: #333
+}
+.ms_close:active {
+	COLOR: #333
+}
+.ms_info {
+	POSITION: relative; PADDING-BOTTOM: 20px; LINE-HEIGHT: 22px; PADDING-LEFT: 110px; WIDTH: 440px; PADDING-RIGHT: 0px; BACKGROUND: #fff; OVERFLOW: hidden; PADDING-TOP: 20px
+}
+.ms_info .ic {
+	POSITION: absolute; WIDTH: 30px; DISPLAY: block; BACKGROUND: url(images/tuan/tuan_bts.png) no-repeat -115px -432px; HEIGHT: 30px; TOP: 30px; LEFT: 50px
+}
+.ms_info .ic_y {
+	WIDTH: 58px; BACKGROUND-POSITION: -51px -428px; HEIGHT: 51px; TOP: 25px
+}
+.ms_info .ic_x {
+	WIDTH: 51px; BACKGROUND-POSITION: 0px -428px; HEIGHT: 51px; TOP: 25px
+}
+.ms_info .ds {
+	LINE-HEIGHT: 24px; COLOR: #999
+}
+.ms_info .dsy {
+	PADDING-BOTTOM: 20px; LINE-HEIGHT: 24px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; COLOR: #333; FONT-SIZE: 14px; PADDING-TOP: 20px
+}
+.ms_info .dsm {
+	PADDING-BOTTOM: 20px; LINE-HEIGHT: 22px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; COLOR: #333; FONT-SIZE: 14px; PADDING-TOP: 10px
+}
+.ms_info .ck INPUT {
+	MARGIN: 0px 0px 0px 55px; DISPLAY: inline-block; VERTICAL-ALIGN: middle
+}
+.ms_info .ck SPAN {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; DISPLAY: inline-block; VERTICAL-ALIGN: middle; PADDING-TOP: 0px
+}
+.ms_info .ds SPAN {
+	COLOR: #333; FONT-SIZE: 14px; FONT-WEIGHT: 700
+}
+.ms_info .ds SPAN.c {
+	COLOR: #b33
+}
+.ms_info UL {
+	MARGIN: 20px 0px 0px; ZOOM: 1; OVERFLOW: hidden
+}
+.ms_info UL LI {
+	MARGIN: 0px 0px 15px; WIDTH: 100%
+}
+.ms_info UL LI EM {
+	WIDTH: 65px; DISPLAY: inline-block; VERTICAL-ALIGN: middle
+}
+.ms_info UL LI INPUT {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; WIDTH: 180px; PADDING-RIGHT: 3px; DISPLAY: inline-block; FONT-FAMILY: 宋体,SimSun; FONT-SIZE: 12px; VERTICAL-ALIGN: middle; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 3px
+}
+.ms_info UL LI SPAN {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; COLOR: red; PADDING-TOP: 0px
+}
+.ms_info .p_submit {
+	MARGIN: 20px 0px 0px 55px; WIDTH: 156px; DISPLAY: block; BACKGROUND: url(images/tuan/tuan_bts.png) no-repeat 0px -348px; HEIGHT: 40px
+}
+.ms_info .submit_miaosha {
+	MARGIN: 20px 0px 0px 55px; WIDTH: 156px; DISPLAY: block; BACKGROUND: url(images/tuan/tuan_bts.png) no-repeat 0px -348px; HEIGHT: 40px
+}
+.ms_info .submit_miaosha {
+	BACKGROUND-POSITION: 0px -388px
+}
+
+.rbox ul {MARGIN: 0 0 0 5px; ZOOM: 1; OVERFLOW: hidden}
+.rbox ul li {MARGIN: 0px 0px 20px 0px; WIDTH: 100%}
+.rbox ul li img {MARGIN: 5px 0px 5px 0px;}
+.rbox ul li .div_info span{ float:left;}
+.rbox ul li .tuangou_bts1{ float:left;MARGIN: 3px 0px 0px 20px; WIDTH: 83px; HEIGHT: 29px; DISPLAY: block; BACKGROUND: url(images/tuan/tuangou_bts1.gif) no-repeat 0px 0px;}
+.rbox ul li .tuangou_bts2{ float:left;MARGIN: 3px 0px 0px 20px; WIDTH: 83px; HEIGHT: 29px; DISPLAY: block; BACKGROUND: url(images/tuan/tuangou_bts2.gif) no-repeat 0px 0px;}
+.rbox ul li .span_t{ line-height:20px;}

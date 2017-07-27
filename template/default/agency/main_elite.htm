@@ -1,0 +1,19 @@
+<div class="b_shop">
+      	<h2><a href="{userurl($username, 'file=sale', $domain)}">更多>></a><span>{$main_name[$HM]}</span></h2>
+        <div class="b_shopesf">
+		<!--{php $tags=tag("moduleid=5&condition=status>2 and username='$username' and elite=1 and thumb<>''&pagesize=".$main_num[$HM]."&order=edittime desc&fields=itemid,title,linkurl,thumb,price,room,hall,toilet,houseearm&length=22&template=null");}-->
+		{loop $tags $i $t}
+		                  <ul class="b_shopesflist b_shopesflist_bnone">
+         	<a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb])}" width="120" height="90"></a>
+            <p><a href="{$t[linkurl]}" class="title" target="_blank" title="{$t[alt]}">{$t[title]}</a> <br>
+            房型：{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}{if $t[toilet]}{$t[toilet]}卫{/if}<br>
+            面积：{$t[houseearm]}平米 <br>
+            价格：{if $t[price]>0}<em>{$t[price]}</em>万元{else}面议{/if}<br>
+            </p>
+         </ul>
+		       {/loop}
+				         <div class="clear"></div>
+        </div>
+        <div></div>
+        
+      </div>

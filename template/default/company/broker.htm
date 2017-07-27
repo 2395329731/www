@@ -1,0 +1,120 @@
+
+{template 'header'}	
+<link href="{AJ_SKIN}/used.css" rel="stylesheet" type="text/css" />
+<div id="Main">
+		<div class="bread">您当前的位置：：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a> &gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a> &gt;经纪人列表
+		</div>
+		<div class="modB">
+			<div class="conl1">
+				<div class="cf" style="padding:9px 0;">
+					<span class="a_name">区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域：</span>
+					<span>
+						<a {if empty($areaid)}class="c"{/if} href="{$MODULE[1][linkurl]}broker/list{deal_str($lst,'r')}.html">不限</a>
+						                         {php $mainarea = get_mainarea($cityid)}
+										        		  	{loop $mainarea $k $v}<a {if $areaid==$v[areaid]}class="c"{/if} href="{$MODULE[1][linkurl]}broker/list-r{$v[areaid]}{deal_str($lst,'r')}.html">{$v[areaname]}</a>{/loop}	
+				      					        					</span>
+									</div>
+			</div>
+		</div>
+  <div id="Main_cont">
+    <div class="house_content">
+      <div class="mhead">
+        <h2><span class="fr"></span>房产经纪人</h2>
+      </div>
+      <div class="house_box">
+        <div class="order_by">
+          <p>共找到<b class="orange">{$items}</b>位经纪人</p>
+       <div class="s_list fr" id="s_list1">
+						<span>默认排序</span>
+						<ul>
+							
+							<li>
+								<a href="list{deal_str($lst,'n')}-n2.html" >积分从大到小</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n3.html" >积分从小到大</a>
+							</li>
+						</ul>
+					</div>
+        </div>
+				{if $tags}{template 'list-broker', 'tag'}{/if}
+      
+
+      </div>
+    </div>
+  </div>
+  <!-- MainContent end-->
+  <div class="sidebar">
+   
+    <div class="rightBox">
+      <div class="rightBox_head">
+        <p><span><a href="{$MODULE[5][linkurl]}" target="_blank">更多>></a></span>热门出售房</p>
+      </div>
+      <div class="rightBox_cont">
+        <ul class="rightBox_line">
+			<!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$cityid&length=42&pagesize=10&order=hits desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+				 <li><span>·</span><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></li>
+				{/loop}
+		        </ul>
+      </div>
+    </div>
+    <div class="rightBox">
+      <div class="rightBox_head">
+        <p><span><a href="{$MODULE[1][linkurl]}broker" target="_blank">更多>></a></span>服务之星</p>
+      </div>
+      <div class="rightBox_cont">
+	  	<!--{php $tags=tag("table=member&condition=groupid=6&areaid=$cityid&order=userid desc&pagesize=6&template=null");}-->
+ {loop $tags $i $t}
+       	          		   <ul class="rightBox_pic">
+          <ol><a href="{userurl($t[username], '')}" target="_blank"><img  class="brokerpic" src="{useravatar($t[username], 'large')}"></a></ol>
+            <li>姓名：<a href="{userurl($t[username], '')}" target="_blank">{userinfos($t[username])}</a></li>
+            <li>公司：<a href="{userurl(get_agent($t[companyid]), '')}" target="_blank">{$t[company]}</a></li>
+            <li>电话：<i class="orange">{$t[mobile]}</i></li>
+            <li>房源：<a href="{userurl($t[username], '')}" target="_blank">售({get_num('sale_5',$t[username])})</a> <a href="{userurl($t[username], '')}" target="_blank">租({get_num('rent_7',$t[username])})</a></li>
+        </ul>{/loop}
+      </div>
+    </div>
+
+   </div>
+  <!-- Sidebar end-->
+</div>
+<script type="text/javascript">
+seajs.use(["jquery"],function($){
+	$("#s_list1").add("tr").hover(function(){
+		$(this).addClass("h")
+	},function(){
+		$(this).removeClass("h")
+	})
+	var $hname=$("#hname");
+	var ht=$hname.attr("data-val");
+	$hname.on("focus",function(){
+		if($hname.val()==ht)
+			$hname.val("");
+	}).on("blur",function(){
+		if($hname.val()=="")
+			$hname.val(ht);
+	}).on("keydown",function(e){
+		if(e.which==13){
+			$("#kwsearch").click()
+			return false
+		}	
+	}).closest("form").submit(function(){
+		if($hname.val()==ht)
+			return false;
+	})
+	$("#kwsearch").click(function(){
+		var kw = $hname.val();
+		if(kw!=""&&kw!=ht){
+			var kw_encode = encodeURIComponent(kw);
+			setTimeout(function(){
+				window.location.href = "http://esf.aijiacms.com/jingjiren/list-K" + kw_encode + ".html";
+			},99)
+		}
+		$hname.focus();
+		return false;
+	});
+
+})
+</script>
+{template 'footer'}	

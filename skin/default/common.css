@@ -1,0 +1,361 @@
+@charset "gb2312";
+/* style Common */
+* { margin:0; padding:0; border:0; }
+body { font-family:"宋体", sans-serif; font-size:12px; color:#666; text-align:left; }
+div,span,ul,li { overflow:hidden; }
+li {list-style:none;}
+/* 黑白网站 html { filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); }*/
+/* CommonFont */
+.familyAlpha { font-family:verdana, "宋体", sans-serif; }
+.familyArial { font-family:Arial; }
+.weightBold { font-weight:bold; }
+.size10px { font-size:10px; }
+.size14px { font-size:14px; }
+.size16px { font-size:16px; }
+.size18px { font-size:18px; }
+.size24px { font-size:24px; }
+.color000 { color:#000; }
+.color333 { color:#333; }
+.color999 { color:#999; }
+.colorC00 { color:#c00; }
+.colorF90 { color:#f90; }
+.colorF60 { color:#f60; }
+.color690 { color:#690; }
+.ItemTitle { color:#690;  font-size:14px; font-weight:bold;}
+
+/* 顶部菜单 */
+#topnav * {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#topnav A {
+	TEXT-DECORATION: none
+}
+#topnav .ba {
+	COLOR: #333
+}
+#topnav .oa:link {
+	COLOR: #333
+}
+#topnav .oa:visited {
+	COLOR: #333
+}
+#topnav .oa:hover {
+	COLOR: #f60
+}
+#topnav {
+	BORDER-BOTTOM: #d2d2d2 1px solid; TEXT-ALIGN: center; LINE-HEIGHT: 25px; BACKGROUND-COLOR: #f6f6f6; HEIGHT: 25px
+}
+#topnav .content {
+	MARGIN: auto; WIDTH: 950px; COLOR: #4d4d4d
+}
+#topnav .content .welcome {
+	FLOAT: left
+}
+#topnav .content .ba {
+	COLOR: #333
+}
+#topnav .content .ba_s {
+	COLOR: #f60
+}
+#topnav .content .agent { float:right; padding:2px 0 5px 0; }
+#topnav .content .agent ul li { float:left; margin:0 0 0 16px; display:inline; }
+#topnav .content .agent a { color:#000; }
+
+/* commonLink */
+a { color:#666; text-decoration:none; }
+a:hover { color:#f90; }
+.aUnderline { text-decoration:underline; }
+
+/* commonHeader */
+#header { width:100%;}
+#logo { float:left; width:185px; height:50px; display:block; margin-left:12px; _margin-left:9px; background:url(images/tuan/logo.gif) no-repeat; }
+#navTop { float:right; padding-right:10px; }
+#navTop ul li { float:left; margin-left:5px; }
+#navMainBox { float:left; *float:none; width:100%; height:34px; margin-top:15px; }
+#navMainBox .navMainBorderLeft { float:left; width:2px; height:34px; background:url(images/tuan/navMainBg.gif) no-repeat left top; }
+#navMainBox .navMainBg { float:left; width:946px; height:34px; background:url(images/tuan/navMainBg.gif) repeat-x left bottom; }
+#navMainBox .navMainBorderRight { float:left; width:2px; height:34px; background:url(images/tuan/navMainBg.gif) no-repeat right top; }
+
+#new {display:block; position:absolute; left:216px; top:50px; width:15px; height:19px; background:url(images/tuan/icon_new.gif) no-repeat left top; z-index:2 }
+#newindex {display:block; position:absolute; left:670px; top:10px; width:15px; height:19px; background:url(images/tuan/icon_new.gif) no-repeat left top; z-index:2 }
+
+/* myFangkeHiddenLayer */
+#myFangkeHiddenLayer { position:absolute; width:66px; border:1px solid #fff5bf; background:#fffbe5; left:670px; top:24px; *left:670px; *top:23px; display:none; }
+#myFangkeHiddenLayer ul li { margin:4px 0 2px 9px; }
+
+/* navMain */
+.navMain { float:left; margin-left:60px; display:inline; }
+.navMain li { float:left; width:89px; height:34px; padding-right:2px; background:url(images/tuan/navMainLinkSplit.gif) no-repeat; text-align:center; display:inline; }
+.navMain li a { float:left; width:100%; font-size:14px; color:#fff; line-height:39px; _line-height:42px; padding:auto 12px; }
+.navMain li a:hover { color:#fff; background:url(images/tuan/navMainOver.gif) no-repeat;  text-decoration:none; }
+.navMain li.linkOn { background:url(images/tuan/navMainClick.gif) no-repeat; margin-left:-4px; z-index:10;}
+.navMain li.linkOn a { color:#fff; font-weight:bold; text-decoration:none; }
+.navMain li.linkOn a:hover { color:#fff; font-weight:bold; text-decoration:none; }
+.navMain #firstLink.linkOn { margin-left:0px; }
+
+.banner_ad { margin:0 auto; width:950px; padding-top:3px; text-align:justify; }
+.banner_ad_half { float:left; width:473px; height:60px; margin-bottom:3px;}
+.banner_ad_half_r { float:right; width:473px; height:60px; margin-bottom:3px;}
+.banner_ad39_half { float:left; width:473px; height:120px; margin-bottom:3px;}
+.banner_ad39_half_r { float:right; width:473px; height:120px; margin-bottom:3px;}
+
+.top{ width:100%; height:26px; line-height:26px; background:url(images/tuan/top_bg.jpg) repeat-x;}
+.top_box{ width:950px; margin:0 auto; height:26px; line-height:26px; font-size:12px; color:#5d5d5d;}
+.top_left{ width:400px; float:left;}
+.top_right{ width:530px; float:right; text-align:right;}
+.top_right span{ margin:0 10px;}
+
+.logo_box{ width:950px; margin:0 auto; height:58px; padding-top:10px;}
+.logo{ width:165px; float:left;}
+.logo_ad{ width:760px; height:36px; margin-top:4px; float:right;}
+.nav{ width:950px; margin:0 auto; }
+.nav_top{ width:950px; margin:0 auto; height:37px; overflow:hidden;}
+.nav_left{ background:url(images/tuan/nav_left.jpg) no-repeat; height:37px; width:14px; float:left;}
+.nav_right{ background:url(images/tuan/nav_right.jpg) no-repeat; height:37px; width:172px; float:left;}
+.nav_con{ background:url(images/tuan/nav_bg.jpg) repeat-x; height:37px; width:764px; float:left; line-height:37px;}
+.nav_con ul li{ background:url(images/tuan/nav_line.jpg) no-repeat center right; float:left; font-size:14px; font-weight:bold; text-align:center;}
+.nav_con ul li.style{ background:none; }
+.nav_con ul li a{ color:#FFF; padding:0 20px; display:block; height:37px; float:left; text-align:center; margin:0 auto;}
+.nav_con ul li a:hover{ background:url(images/tuan/nav_hover.jpg) no-repeat top center; text-align:center; height:37px; display:block; color:#000;}
+.nav_con ul li.linkOn{ background:url(images/tuan/nav_hover.jpg) no-repeat top center; text-align:center; height:37px; display:block; }
+.nav_con ul li.linkOn a{color:#000;}
+.nav_con ul li.linkOn a:hover{ color:#f90;}
+
+/* searchBox */
+#searchBox { width:950px; height:73px;margin:0 auto; background:url(images/tuan/nav_down.jpg) repeat-x; }
+#searchBox #adTop { float:left; width:135px; height:72px; }
+#searchBox #search { float:left; padding:11px 0 0 10px; }
+#searchBox #search #searchForm { height:30px;}
+#searchBox #search #searchForm ul { float:left; }
+#searchBox #search #searchForm li { float:left; width:83px; height:30px; margin-right:8px; padding-top:7px; padding-left:6px; background:url(images/tuan/searchItemBg.gif) no-repeat left top; display:inline; }
+#searchBox #search #searchForm li.saleBg { float:left; width:93px; height:30px; margin-right:8px; padding-top:7px; padding-left:6px; background:url(images/tuan/searchItemBg.gif) no-repeat 0 -30px; display:inline; }
+#searchBox #search #searchForm li.rentBg { float:left; width:107px; height:30px; margin-right:8px; padding-top:7px; padding-left:6px; background:url(images/tuan/searchItemBg.gif) no-repeat 0 -60px; display:inline; }
+#searchBox #search #searchForm li span { position:absolute; margin:0; }
+#searchBox #search #searchForm li span select {  margin:-1px; }
+#searchBox #search #searchForm #keyWordLeftBg { float:left; width:3px; height:30px; background:url(images/tuan/searchKeyWordBg.gif) repeat-x left top; }
+#searchBox #search #searchForm #keyWordBg { float:left; height:24px; padding-top:6px; background:url(images/tuan/searchKeyWordBg.gif) repeat-x left bottom; }
+#searchBox #search #searchForm #keyWordRightBg { float:left; width:3px; height:30px; background:url(images/tuan/searchKeyWordBg.gif) repeat-x right top; }
+#searchBox #search #searchForm #keyWordBg input { font-size:14px; color:#999; padding:1px 5px; }
+#searchBox #search #searchForm #searchBtn { float:left; }
+#searchBox #search #searchForm #searchBtn input { width:72px; height:30px; margin-left:8px; font-size:14px; color:#000; font-weight:bold; letter-spacing:1px; background:url(images/tuan/searchBtn.gif) no-repeat; }
+
+/* searchHelp */
+#searchBox #search #searchForm #searchHelp { float:left; margin-left:8px; }
+#searchBox #search #searchForm #searchHelp p { margin-bottom:2px; }
+
+/* searchHot */
+#searchBox #search #searchHot { clear:left; float:left; margin-top:10px; }
+#searchBox #search #searchHot ul li { float:left; margin-right:10px; }
+#searchBox #search #searchHot ul li a{text-decoration:none;}
+#searchBox #search #searchHot .searchHotTitle { font-weight:bold; }
+/* commonHeader End */
+
+/* main */
+#main { float:left; width:730px; margin-top:10px; }
+
+/* commonFooter */
+.footer { float:left; *float:none; width:100%; height:60px; line-height:21px; text-align:center; border-top:1px solid #bababa; padding:15px 0 20px; margin:10px auto 0; }
+
+/* commonStyle for sale,rent,community,newHouse */
+
+#box { float:none; width:950px; margin:0 auto; position:relative; }
+
+.box { float:none; width:950px; margin:0 auto; position:relative; }
+
+
+
+/* filter */
+
+.filter { float:left; width:928px; padding:10px; margin-top:5px; border:1px solid #bababa; }
+
+.filter ul { clear:both; float:left; width:100%; margin-bottom:7px; }
+
+.filter ul li { float:left; height:11px; text-align:center; padding:3px; margin-right:8px; display:inline; }
+
+.filter ul li.filterTarget { color:#f60; font-weight:bold; margin-right:0px; }
+
+.filter ul li.linkOn { background:#f60; }
+
+.filter ul li.linkOn a { color:#fff; text-decoration:none; }
+
+
+
+/* footerBox */
+
+.footerBox { float:left; width:928px; padding:8px; margin-top:15px; border:1px solid #bababa;  background:#ffd; }
+
+.footerBox h1 { font-size:14px; }
+
+.footerBox ul.ViewList { width:100%; margin-top:5px;}
+
+.footerBox ul.ViewList li{float:left; width:140px;margin:10px 20px 0 18px;  text-align:center; }
+
+.footerBox ul.ViewList li p { clear:both; float:left; *float:none; margin-top:8px; line-height:140%; }
+
+
+
+/* listCtrl */
+
+#main .listCtrl { float:left; width:100%; height:30px; }
+
+.listCtrl .dataNumShow { float:left; padding-top:4px; margin-left:8px; display:inline; }
+
+.listCtrl .numPerPage { float:left; margin-left:30px; }
+
+.numPerPage span { float:left; padding-top:4px; }
+
+.numPerPage ul { float:left; width:72px; }
+
+.numPerPage ul li { float:left; width:18px; height:15px; padding-top:3px; padding-left:1px; text-align:center;  margin-right:5px; background:url(images/tuan/numPerpageBg.gif) left bottom; }
+
+.numPerPage ul li.linkOn { background-position:left top; }
+
+.numPerPage ul li a:hover { text-decoration:none; }
+
+.numPerPage ul li.linkOn a { color:#f60; cursor:text; }
+
+.listCtrl .order { float:left; margin-left:30px; }
+
+.order span { float:left; padding-top:4px; }
+
+.order span select { float:left; margin-top:-4px; border:1px solid #bababa; }
+
+.listCtrl .pageSplitSmall { float:left; margin-left:50px; }
+
+.pageSplitSmall li { float:left; margin-right:8px; padding-top:4px; }
+
+.pageSplitSmall li.unClickable { width:46px; height:15px; padding-top:4px; text-align:center; border:1px solid #ccc; }
+
+.pageSplitSmall li.unClickable a { color:#ccc; cursor:text; text-decoration:none; }
+
+.pageSplitSmall li.clickable { width:46px; height:15px; padding-top:4px; text-align:center; border:1px solid #ccc; }
+
+.pageSplitSmall li.clickable a { color:#f60; }
+
+
+
+/* dataListBox */
+
+#main .dataListBox { float:left; width:730px; }
+
+.dataListBox table.tHead { float:left; width:100%; height:26px; border:1px solid #fc6; background:#ffd; }
+
+.dataListBox table.tHead td { color:#000; padding-top:3px; text-align:center; }
+
+.dataListBox table.tBody { float:left; width:100%; }
+
+.dataListBox table.tBody tr { background:url(images/tuan/dotBg.gif) repeat-x left bottom; }
+
+.dataListBox table.tBody tr.mouseOver { background:#f3f3f3; }
+
+.dataListBox table.tBody td { height:100px; color:#000; text-align:center; }
+
+.dataListBox table.tBody td .thumbnail { display:block; width:100px; height:75px; padding:1px; border:0px solid #bababa; }
+
+.dataListBox table.tBody td.tdAlignLeft { text-align:left; padding-left:5px; }
+
+.dataListBox table.tBody td a { text-decoration:underline; }
+
+.dataListBox table.tBody td p { padding-top:3px; padding-bottom:2px; }
+
+
+
+/*图片横排列表*/
+
+#main .picListBox { float:left; *float:none; width:728px; border:1px solid #bababa; margin-top:10px;margin-bottom:10px; text-align:center;}
+
+.picListBox .communityMainRecTitleBox { width:100%; height:27px; background:url(images/tuan/barDotBg.gif) repeat-x; }
+
+.picListBox .communityMainRecTitle { float:left; margin-top:6px; margin-left:8px; }
+
+.picListBox .houseRecSale { float:left; width:100%; height:178px; }
+
+.picListBox .houseRecSale ul{ margin-left:5px; }
+
+.picListBox .houseRecSale ul li { float:left; margin:15px 15px auto; display:inline; }
+
+.picListBox .houseRecSale ul li span { float:left; width:112px; height:94px; }
+
+.picListBox .houseRecSale ul li p { clear:both; float:left; *float:none; margin-top:8px; line-height:140%; }
+
+
+
+
+
+/* pageMore */
+
+.pageMore { float:left; *float:none; width:100%; margin-top:10px; }
+
+.pageMore ul { float:right; margin-right:10px; *margin-right:5px; }
+
+.pageMore ul li { float:left; font-family:verdana,arial,"宋体"; color:#999; border:1px solid #ccc;  margin-left:5px; }
+
+.pageMore ul li span { float:left; text-align:center; height:15px; padding:2px 6px; }
+
+.pageMore ul li a { float:left; color:#666;}
+
+.pageMore ul li a span { float:left; cursor:pointer; height:15px; text-align:center; padding:2px 5px;}
+
+.pageMore ul li.linkOn a { color:#f90; text-decoration:none; }
+
+.pageMore ul li a:hover { background:#f90; color:#fff; text-decoration:none; }
+
+
+
+/* rightBox */
+
+#box #rightBox { float:left; width:205px; margin-left:15px; }
+
+#rightBox .ad205_64 { margin-top:6px;margin-left:8px; }
+
+#rightBox .recRight { width:100%; margin-top:10px; }
+
+.recRight .recTitleBox { width:100%; height:20px; padding-top:5px; background:url(images/tuan/rightHouseRecTitleBg.gif) no-repeat; }
+
+.recRight .recTitleBox span.recTitle { float:left; margin-left:10px; color:#333; font-size:14px; font-weight:bold; }
+
+.recRight .recTitleBox span.more { float:right; margin-right:5px; margin-top:2px; display:inline; }
+
+.recRight .recTitleBox span.more a { color:#333; }
+
+.recRight .recListBox { width:203px; border-left:1px solid #fc6; border-bottom:1px solid #fc6;border-right:1px solid #fc6; }
+
+.recListBox ul.houseRecList { width:191px; margin:2px 4px; padding:3px 0 5px 4px; background:url(images/tuan/dotBg.gif) repeat-x left bottom; }
+
+.recListBox ul.ViewList { width:191px; margin-top:16px;margin-left:6px;}
+
+.recListBox ul.ViewList li{float:left; width:90px;padding:0 2px 6px 2px; text-align:center; }
+
+.recListBox ul.mouseOver { background:#f6f6f6; }
+
+.recListBox ul.houseRecList li { padding-top:4px; }
+
+.recListBox ul.newsRecList { padding:10px 8px 1px;  }
+
+.recListBox .newsRecList li { margin-bottom:9px; }
+
+/* commonStyle for sale,rent,community,newHouse End */
+
+
+
+.must { color:#c9620f; font-family:verdana, "宋体", sans-serif; padding-right:5px; }
+
+
+
+/* cutimg */
+
+.cutimg_button{width:72px; height:30px; margin-left:8px; font-size:14px; color:#000; font-weight:bold; letter-spacing:1px; background:url(images/tuan/searchBtn.gif) no-repeat; }
+
+
+
+/* Link */
+
+#link {float:left; width:950px; height:60px; background:#f3f3f3; margin-top:10px;  padding:20px 0 2px 10px; }
+
+#link #linkword { float:left; width:80px; height:60px;}
+
+#link #linkcontent { float:left; width:860px; height:60px; }
+
+#link #linkcontent li { float:left; width:95px; margin-bottom:8px; }
+
+.footertext { float:left; *float:none; margin-top:10px; width:100%;line-height:21px; text-align:center;margin-top:8px auto 0; color:#999; }

@@ -1,0 +1,3 @@
+{loop $tags $i $t}
+
+ <a href="{if $s[linkurl]}{$s[linkurl]}{else}javascript:gocity('areaid={$s[areaid]}');{/if}"{if $cityid == $s[areaid]} class="f_b"{/if}>{set_style($s[name], $s[style])}</a>{/loop}

@@ -1,0 +1,22 @@
+
+<table width="100%" border="0" cellpadding="0" cellspacing="1" class="dataList">
+                    <tbody>
+                        <tr class="bg cDRed">
+                            <td>小区名称</td>
+                            <td>户型</td>
+                            <td>面积</td>
+                            <td>价格</td>
+                        </tr>
+						{loop $tags $k $t}
+                        <tr>
+<td><a href="{$t[linkurl]}" target="_blank" >{dsubstr($t[housename], 8, $suffix = '')}</a></td>
+<td>{$t[room]}室{$t[hall]}厅</td>
+<td>{$t[houseearm]}</td>
+<td>{if $t[price]}{$t[price]}万元{else}面议{/if}</td>
+</tr>
+{/loop}	
+
+                    </tbody>
+                </table>
+	
+

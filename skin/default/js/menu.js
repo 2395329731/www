@@ -1,0 +1,20 @@
+(function(){
+    $('.menu-list').hover(function(event){
+        event.preventDefault();
+        if($('.sub-menu',this).length==0 ){
+            return;
+        }
+        if(!$(this).hasClass('cur')){
+            $(this).addClass('current');
+        }
+        $('.sub-menu',this).show();
+    },function(event){
+        if($('.sub-menu',this).length==0){
+            return;
+        }
+        if(!$(this).hasClass('cur')){
+            $(this).removeClass('current');
+        }
+        $('.sub-menu',this).hide();
+    });
+})();

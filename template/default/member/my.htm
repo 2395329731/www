@@ -1,0 +1,30 @@
+{template 'header', $module}
+<script type="text/javascript">c(1);</script>
+{if $MYMODS}
+{if $_userid}
+<div class="warn">尊敬的<strong>{$MG[groupname]}</strong>，您目前拥有以下栏目的发布权限，请选择发布</div>
+{else}
+<div class="warn">您还没有登录，目前仅拥有以下栏目的发布权限，建议您 <a href="{$AJ[file_login]}" class="f_b t">立即登录</a> 或 <a href="{$AJ[file_register]}" class="f_b t">注册会员</a></div>
+{/if}
+<table cellspacing="1" cellpadding="10" class="tb">
+{loop $MYMODS $v}
+
+<tr>
+<td class="tl"><a href="{$MODULE[$v][linkurl]}" target="_blank">{$MODULE[$v][name]}</a></td>
+<td class="tr">
+{if $_userid}<a href="{$AJ[file_my]}?mid={$v}" class="b">管理</a>&nbsp;&nbsp;{/if}
+<a href="{$AJ[file_my]}?mid={$v}&action=add" class="b">发布</a>
+</td>
+</tr>
+
+{/loop}
+</table>
+{else}
+	{if $_userid}
+	<div class="warn">尊敬的<strong>{$MG[groupname]}</strong>，您的会员组没有在本站发布信息的权限，请返回。&nbsp;&nbsp;<a href="./" class="t f_b">点击返回会员中心首页</a></div>
+	{else}
+	<div class="warn">您还没有登录，目前没有信息发布权限，建议您 <a href="{$AJ[file_login]}" class="f_b t">立即登录</a> 或 <a href="{$AJ[file_register]}" class="f_b t">注册会员</a></div>
+	{/if}
+{/if}
+</div></div>
+{template 'footer'}

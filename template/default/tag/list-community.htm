@@ -1,0 +1,21 @@
+ <ul id="hlist" class="hlist xq_list">
+ {loop $tags $k $t}
+ <li>
+                                <a href="{$t[linkurl]}" class="hl_img" target="_blank" title="{$t[alt]}">
+                                    <img src="{imgurl($t[thumb])}" alt="{$t[alt]}">
+                                </a>
+                                <div>
+                                    <h3><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></h3>
+                                    <p>{area_pos($t[areaid], '')}{$t[address]}</p>
+                                    <p><a href="{$t[linkurl]}" target="_blank">小区概括</a><i>|</i><a href="{$t[linkurl]}price.html" target="_blank">价格走势</a><i>|</i><a href="{$t[linkurl]}sale.html" target="_blank">小区房源</a><i>|</i><a href="{$t[linkurl]}map.html" target="_blank">地图交通</a></p>
+                                    <p class="num_house"><span>二手房：</span><strong>{get_sale($t[itemid])}</strong><span class="first">租房：</span><strong>{get_rent($t[itemid])}</strong></p>
+                                                                            <span class="price_1">售价：{if get_avg_price($t[itemid])}<b>{get_avg_price($t[itemid])}</b>元/㎡{else}<b>待定</b>{/if}</span>
+                                                                                    <span class="price_2">同比上月：                                                <b class="down">{if $t[avg_price]>$t[avg_priceb] and $t[percent_change]<>0}<b class="up">{$t[percent_change]}%</b>{elseif $t[avg_price]< $t[avg_priceb]}<b class="down">{$t[percent_change]}%</b>{else}<b>→</b>{/if}</b>
+                                                                                            </span>
+                                                                            	
+                                                                    </div>
+                            </li>
+
+						{/loop}	
+</ul>	
+{if $showpage && $pages}<div class="pagination">{$pages}</div>{/if}

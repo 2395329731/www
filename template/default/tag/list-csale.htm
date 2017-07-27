@@ -1,0 +1,21 @@
+
+{loop $tags $k $t}
+		<li class="xqlist_item">
+						<a class="photo" href="{$t[linkurl]}" title="{$t[alt]}"  target="_blank">
+							<img src="{imgurl($t[thumb])}" alt="{$t[alt]}"></a>
+						<div class="summary">
+							<h3>
+								<a class="blue" title="{$t[alt]}" href="{$t[linkurl]}" target="_blank">{$t[title]}</a>
+							</h3>
+							<span class="info-time">更新时间：{timetodate($t[edittime],3)} </span>
+						</div>
+						<ul class="attribute">
+							<li class="es_shiting">{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}</li>
+							<li class="es_price"><p><strong class="danjia"></strong>{$t[danjia]}元/㎡</p><p>{$t[houseearm]}㎡</p></li>
+							<li class="es_num"><strong>{if $t[price]}{$t[price]}万{else}面议{/if}</strong></li>
+						</ul>
+					</li>
+
+		{/loop}	
+
+{if $showpage && $pages}<div class="pagination">{$pages}</div>{/if}

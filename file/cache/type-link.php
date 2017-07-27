@@ -1,0 +1,1 @@
+<?php defined('IN_AIJIACMS') or exit('Access Denied'); return array (4 => array ('typeid' => '4','parentid' => '0','typename' => '房产','style' => '',),); ?>

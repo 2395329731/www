@@ -1,0 +1,133 @@
+{template 'header'}
+<script type="text/javascript">
+	$("#fenxiao").attr("class","on");
+</script>	
+<link href="{AJ_SKIN}fenxiao.css" rel="stylesheet" type="text/css" />
+<div id="main" class="i_x_admin_certification i_x_tuijian cf">
+		<div class="bread">
+		您当前的位置：<a href="{$MODULE[1][linkurl]}">{$AJ[sitename]}</a>&gt;<a href="{$MODULE[1][linkurl]}fenxiao">分销平台</a>&gt;
+			<span>填写买房人信息</span>
+		</div>
+        <div class="left fl">
+	<div class="head_img">
+		<div class="img_div" id="img_div">
+			<img src="{useravatar($_username, 'large')}"/>
+			<a id="ghtx_btn" href="{$MODULE[2][linkurl]}avatar.php" target="_blank">更换头像</a>
+		</div>
+		<span>{$_truename}</span>
+	</div>
+	<ul class="i_x_yj_list">	
+		<li class="tj"><a  href="{$MODULE[1][linkurl]}fenxiao/client.php" ><i></i><span>用户中心首页</span></a></li>
+		<li class="jl"><a class="on"  href="{$MODULE[1][linkurl]}fenxiao/tuijian.php"><i></i><span>我要推荐买房</span></a></li>
+		<li class="tj"><a   href="{$MODULE[1][linkurl]}fenxiao/client.php" ><i></i><span>已推荐买房人</span></a></li>
+		<li class="jl"><a  href="{$MODULE[1][linkurl]}fenxiao/amount.php"><i></i><span>已赚取的佣金</span></a></li>
+		<li class="sm"><a  href="{$MODULE[2][linkurl]}validate.php?action=truename"><i></i><span>我的实名认证</span></a></li>
+	</ul>
+	<a href="{$MODULE[2][linkurl]}login.php" class="zjz_quite">退出登陆</a>
+
+</div>		
+<script type="text/javascript">
+	seajs.use('',function() {
+		var $a=$('#ghtx_btn');
+		$('#img_div').on({
+			'mouseover':function() {
+				$a.show();
+			},
+			'mouseout':function() {
+				$a.hide();
+			}
+		});
+	});
+	</script>
+<div class="right fr">
+			<h2><span>填写买房人信息</span></h2>
+            <form action="" class="zjz_sq_form cf" id="zjz_sq_form" autocomplete="off">
+			   <input name="tuijian" type="hidden" value="推荐人" >
+                <ul class="zjz_sq_form_ul">
+                    <li>
+                        <span><b>*</b>朋友姓名：</span>
+                        <input name="truename" type="text" id="truename" placeholder="请输入朋友姓名"></li>
+                    <li>
+                        <span><b>*</b>手机号码：</span>
+                        <input name="mobile" type="text" id="tel" placeholder="请输入手机号码"></li>
+                    <li>
+                        <span><b>*</b>意向区域：</span>
+                        <!--<input class="hid" id="areaidall" name="areaidall" type="checkbox" autocomplete="off" value="1"><label for="areaidall">全部</label>-->
+                        <p id="areaidp">
+							{php $mainareas = get_mainarea($city)}
+						{loop $mainareas $k $v}
+                                                                <input class="hid" id="areaid{$v[areaid]}" autocomplete="off" name="areaids[]" type="checkbox" value="{$v[areaid]}"><label for="areaid1">{$v[areaname]}</label>{/loop}	
+                                                        </p>
+                        </li>
+                    <li>
+                        <span>意向楼盘：</span>
+                        <input name="hname[]" type="text" id="hname" value="{$hname}" placeholder="请输入意向楼盘名称">
+						<input name="hids[]" value="{$hid}" type="hidden"></li>
+                    <li>
+                        <span>说明：</span>
+                        <textarea name="info" id="hinfo" placeholder="请输入说明"></textarea></li>
+                    <li>
+                        <a href="javascript:" class="obtn"><button type="submit"></button>立即推荐</a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+	</div>
+	{template 'footer'}
+<script>
+seajs.use(["autoctag","alert"],function(acg,alertM){
+	acg("#hname","{$MODULE[6][linkurl]}house.php?action=fxlp",4);
+		var $areaidall=$("#areaidall").on("change",function(){
+		if($areaidall.prop("checked"))
+			$areaidp.hide();
+		else
+			$areaidp.show();
+		$("#hname_acTag").css({
+			left:$("#hname").offset().left+2,
+			top:$("#hname").offset().top+2
+		})
+	}),
+	$areaidp=$("#areaidp").on("click","input",function(){
+		if($areaidp.find("input:checked").length>3){
+			alertM("最多选择3个区域",{cName:"cross"})
+			return false;
+		}
+	}),
+	$zf=$("#zjz_sq_form").on("submit",function(){
+		if($btn.html()=="正在提交")
+			return false;
+		if(!$("#truename").val().length){
+			alertM("请输入朋友姓名",{cName:"cross"})
+			$("#truename").trigger("focus")
+		}else if(!/^1[3458]\d{9}$|^(0\d{2,4}-)?[2-9]\d{6,7}(-\d{2,5})?$/.test($("#tel").val())){
+			alertM("请输入正确的手机号码",{cName:"cross"})
+			$("#tel").trigger("focus")
+		}else if(!$areaidall.prop("checked")&&!$areaidp.find("input:checked").length){
+			alertM("请至少选择一个意向区域",{cName:"cross"})
+			$areaidall.trigger("focus")
+		}else if($("#hinfo").val().length>300){
+			alertM("说明限制最多300字",{cName:"cross"})
+			$("#hinfo").trigger("focus")
+		}else{
+			$btn.html("正在提交");
+			$.ajax({
+				url: "{$MODULE[6][linkurl]}house.php?action=tuijian",
+				type:"post",
+				dataType: 'json',
+				data: $zf.serialize()
+			}).done(function(data) {
+			 alertM(data.alert,{time:'y',btnC:false,yf:function(){location.reload()}});
+			}).fail(function() {
+				alertM("连接失败，请检查网络连接是否已断开",{cName:"error"})
+			}).always(function(){
+				$btn.html("立即推荐");
+			});
+		}
+		
+		return false;
+	}),
+	$btn=$zf.find("a.obtn").on("click",function(){
+		$zf.trigger("submit");
+	})
+});
+</script>

@@ -1,0 +1,28 @@
+             <div class="dtl_jjr">
+			 	{if $member}
+                        <a href="{userurl($member[username], '')}" class="dtl_avatar" target="_blank">
+                            <img src="{useravatar($username, 'large')}" alt="{$member[truename]}">
+                            <span><i></i>{$member[truename]}的店铺</span>
+                        </a>
+                        <ul>
+                          <li >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{if $item[username] && $AJ[im_web]}{im_web($item[username].'&mid='.$moduleid.'&itemid='.$itemid)}&nbsp;{/if}</li>
+                            <li>服务区域：{area_pos($areaid, ' ')}</li>
+                            <li>所在公司：<a href="{userurl($member[username], '')}" target="_blank">{$member[company]}</a> </li>
+							  <li>腾讯聊天： <strong>{if $member[qq] && $AJ[im_qq]}{im_qq($member[qq])}&nbsp;{/if}</strong> </li>
+                            <li>联系电话： <strong class="red">{$member[mobile]}</strong></li>                        </ul>
+                        <p class="dtl_rz">
+                          {if $member[vtruename]} <i class="sf"></i>{else} <i class="sf_no"></i>{/if}
+                           {if $member[vcompany]} <i class="zy"></i>{else} <i class="zy_no"></i>{/if}
+                            <!--<i class="cx_no"></i>-->
+                        </p>
+                        <p>
+                           <a href="{$MODULE[2][linkurl]}message.php?action=send&touser={$member[username]}" class="btn_style2" id="leaveMG">给TA留言</a>
+                        </p>
+                 
+
+
+						{else}
+		<div class="ImgPhoto"><img src="{AJ_SKIN}image/sell/nophoto_180x180.gif">
+			<p>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;游客			<br>
+	</div>{/if}
+		</div>

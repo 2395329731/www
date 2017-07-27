@@ -1,0 +1,24 @@
+{template 'header'}
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}/lpfx.css">
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}/lpfxs.css"/>
+
+
+<div id="main">
+<div class="blank10"></div>
+<!--搜房源-->
+<div class="jgcrumbs">
+您所在的位置：&gt; <a href="{$MODULE[1][linkurl]}fenxiao">楼盘分销</a> 
+</div>
+<div class="blank10"></div>
+<!--楼盘分销列表-->
+	{if $tags}{template 'list-fenxiao', 'tag'} {else}
+	
+		{template 'noresult', 'message'}
+	
+		{/if}
+<!-- 分页 -->
+
+</div>
+</div>
+<!--统一底部-->
+{template 'footer'}

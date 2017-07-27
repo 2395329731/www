@@ -1,0 +1,124 @@
+
+{template 'header'}
+<link href="{AJ_SKIN}xfreset.css" rel="stylesheet" type="text/css" />
+	<link href="{AJ_SKIN}xinfang.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	$("#baojia").attr("class","on");
+</script>	
+<body class="baojia_bd">
+	<div id="main">
+		<div class="breadcrumb">您当前的位置：：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a><span>&gt;</span><a href="{$MOD[linkurl]}">{$MOD[name]}</a><span>&gt;</span><strong>楼盘报价</strong></div>
+		<div class="select_wrap">
+			<div class="select">
+			<h2>{$city_name}新盘房价</h2>
+			<div class="dq" id="dq">
+				<ul class="cf">
+					              			{php $mainarea = get_mainarea($cityid)}
+						                  {loop $mainarea $k $v}  
+						<li><a href="#" title="" target="_blank" data-id="{$v[areaid]}">{$v[areaname]}</a><span>|</span></li>{/loop}
+															</ul>
+			</div>
+			<div class="search cf">
+				<div class="search_txt cf fl">
+					<form action="" method="">
+						<input class="txt fl" id="txt" type="text"  placeholder="请输入楼盘名称" value=""/>
+						<input class="sub fr" type="button"/>
+					</form>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="list" id="jg_wrap">
+			<h3>搜索结果：</h3>
+			<ul id="jg" class="cf">
+			</ul>
+		</div>{php $mainarea = get_mainarea($cityid)}
+						                  {loop $mainarea $k $v}
+							<div class="list">
+			<h3>{$v[areaname]}</h3>
+			<ul class="cf"> <!--{php $tags=tag("moduleid=6&condition=status=3 and isnew=1&areaid=".$v[areaid]."&length=12&pagesize=4&order=addtime desc&template=null");}-->
+	{loop $tags $i $t}	
+		 <!--{php $tags=tag("table=newhouse_price&condition=status=3 and pid=".$t[itemid]."&pagesize=1&order=addtime desc&template=null");}-->
+	{loop $tags $i $t}	
+													<li><a href="{$MODULE[6][linkurl]}{$t[pid]}" title="{$t[title]}" target="_blank"><span>{$t[title]}</span></a><b>{if $t[price]}{$t[price]}元{else}待定{/if}</b>
+					<a href="{$MODULE[6][linkurl]}{$t[pid]}" {if $t[trend]==0}class="ping"{elseif $t[trend]==1}class="up"{elseif $t[trend]==2}class="down"{/if} title="{$t[note]}"   target="_blank"></a></li>{/loop}{/loop}
+								
+												</ul>
+		</div>{/loop}
+				
+						</div>
+	<script type="text/javascript">
+	seajs.use(['jquery','toTop'],function($){
+		var time=null,
+			$relist=$('#jg');
+			$li=$('.list').find('li'),
+			$input=$('.txt');
+		$('#txt').on({
+			'focus':function() {
+				$('body,html').animate({'scrollTop':150});
+				$input.css("color","#000");
+			},
+			'blur':function() {
+				$input.css("color","#CCC");	
+			},
+			'keyup':function() {
+				var $jg_wrap=$('#jg_wrap');
+				if(time){
+					clearTimeout(time);
+				}
+				time=setTimeout(function(){
+					if($li.filter(":contains('"+$input.val()+"')").clone().appendTo($relist.empty()).length==0|| $input.val()==''){
+						$relist.html("<li style='width:300px'>没有与您所输入内容有关的楼盘搜索结果</li>");
+					}
+				},400);
+				if ($input.val()==""||$input.val()=="请输入楼盘名称") {
+					$jg_wrap.hide();
+				}else{
+					$jg_wrap.show();
+				}
+			}
+		});
+		var $w=$(window),
+			$s=$('.select'),
+			t=$s.offset().top;
+		if (!-[1,]&&!window.XMLHttpRequest) {
+			$w.scroll(function(){
+				if($w.scrollTop()>t){
+					$s.css({
+						top:$w.scrollTop()-t
+					});
+				}else{
+					$s.removeAttr("style");
+				}
+			});
+		}else{
+			$w.scroll(function(){
+				if($w.scrollTop()>t){
+					$s.css({
+						"position":"fixed",
+						"top":0	
+					});
+				}else{
+					$s.css("position","static");
+				}
+			});
+		}
+		var $a=$('#dq').find('a');
+		$a.click(function() {
+			$('body,html').animate({'scrollTop':$('.list').eq($(this).parent().index()+1).offset().top-200});
+			return false;
+		});
+		var dqId = window.location.href.substr(window.location.href.indexOf("#") + 1);
+		$a.each(function() {
+			var $this=$(this);
+			if ($this.data('id')==dqId) {
+				$this.click();
+			}
+		});
+		$('#txt').parent().submit(function() {
+			return false;
+		});
+	});
+	</script>
+{template 'footer'}
+                                                

@@ -1,0 +1,7 @@
+{loop $tags $k $t}
+	<li>
+	<span class="fl">[{area_poss($t[areaid], ' ')}]<a class="ml4" href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></span>
+	<span class="fr">{if $t[price]}{$t[price]}元/㎡{else}待定{/if}</span>
+	</li>
+ {/loop} 
+								

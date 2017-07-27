@@ -1,0 +1,111 @@
+{template 'header', $template}
+  <link rel="stylesheet" type="text/css" href="{AJ_SKIN}sell/pages.css"/>
+ <div id=content>
+    <!--新房首页-->
+    <div class="banner mt10"><p>{$COM[company]}</p>
+      <div class="menu png_bg">
+        <a href="{$COM[linkurl]}" class="{if $file=='homepage'}select{else}{/if}">首页</a>
+{loop $MENU $k $v}
+<a href="{$v[linkurl]}" class="{if $file==$menu_file[$k]}select{else}{/if}">{$v[name]}</a>
+{/loop}
+      </div>
+    </div>
+    <div class="a_left">
+   <!--搜索-->
+    <div class="br_searchA">
+        <h6>出租房源</h6>
+        <div class="br_select"> 
+     <form action="{$COM[linkurl]}&file=sale" onsubmit="return check_kw();">
+
+<input type="hidden" name="homepage" value="{$username}"/>
+<input type="hidden" name="file" value="rent"/>
+
+            <select name="catid">
+            <option value="0">物业类型</option>
+			 {php $maincat = get_maincat(0,7)}
+			            {loop $maincat $k $v}    
+						   <option value="{$v[catid]}" {if $v[catid]==$catid}selected="selected"{/if}>{$v[catname]}</option>{/loop}
+                        </select>
+            <select name="p">
+            <option value="0">租金范围</option>
+			{php $jiage = array('200元以下', '200-500元', '500-1000元', '1000-1500元', '1500-2000元', '2000-3000元','3000元以上');}
+                          {loop $jiage $k $v}    
+						   <option value="<?php echo $k+1;?>" {if $_GET['p']==($k+1)}selected="selected"{/if}>{$v}</option>{/loop}
+                        </select>
+            <select name="r">
+            <option value="0">户型</option>
+                         <option selected="selected" value="">户型</option>
+           {php $huxing = array('一室', '二室', '三室', '四室', '其它');}
+						    {loop $huxing $k $v}    
+						   <option value="<?php echo $k+1;?>" {if $_GET['r']==($k+1)}selected="selected"{/if}>{$v}</option>{/loop}
+                        </select>
+             <select name="a">
+            <option value="0">面积</option> 
+                       {php $mianji = array('40平米以下', '40-60平米', '60-80平米', '80-100平米', '100-120平米', '120-150平米','150平米以上');}
+						    {loop $mianji $k $v}    
+						   <option value="<?php echo $k+1;?>" {if $_GET['a']==($k+1)}selected="selected"{/if}>{$v}</option>{/loop}
+            </select>
+      
+	  <input type="text" name="kw" value="{if $kw}{$kw}{else}输入关键词{/if}" size="25" id="kw" class="textSty" onfocus="if(this.value=='输入关键词')this.value='';"/>
+          
+            <input type="submit" name="submit" value="" class="butSty">
+            </form>
+            </div>
+     
+    </div>
+    <!--搜索_End-->
+  <div class="houseinfo mt10">
+      <h3><span>租房</span></h3>
+      <ul class="house">
+	 
+	  {loop $lists $i $t}
+	  			 		 <div class="b_elist_lloupan">
+           	  <div class="b_elist_lloupanimg fl"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb])}" width="100" height="75"></div>
+                <div class="b_elist_lloupantxt fl">
+                	<ul>
+                      <li class="title"><a href="{$t[linkurl]}" class="title" target="_blank" title="{$t[alt]}">{dsubstr($t[alt], 42, $suffix = '')}</a></li>
+                      <li><a href="{$MODULE[18][linkurl]}show.php?itemid={$t[houseid]}" target="_blank">{$t[housename]}</a>  {$t[address]}</li>
+                     <li>户型：{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}{if $t[toilet]}{$t[toilet]}卫{/if}，楼层：{$t[floor1]}/{$t[floor2]} 房龄：{$t[houseyear]}年</li>
+                      <li><span>{if $t[username] && $AJ[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
+			{if $t[qq] && $AJ[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
+			{if $t[ali] && $AJ[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
+			{if $t[msn] && $AJ[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
+			{if $t[skype] && $AJ[im_skype]}{im_skype($t[skype])}&nbsp;{/if}</span>&nbsp;
+                      <span>{timetodate($t[edittime], 3)}前发布</span></li>
+                    </ul>
+                </div>
+              <div class="b_elist_lloupantxt2 fl">{if $t[houseearm]}{$t[houseearm]}平米{else}暂无{/if}</div>
+                <div class="b_elist_lloupantxt3 fl">{if $t[price]>0}{$t[price]}元/月{else}面议{/if}</div>
+                <div class="clear"></div>
+            </div>
+			
+		 		{/loop}
+		 		       </ul><div class="clear"></div>
+    </div>
+       <div class="pagination b_mt20"><div class="pagination-inner" style="margin:15px">{$pages}</div></div>
+	
+    </div>
+     <div class="a_right">
+      <div class="a_info">
+         <h3>{$t[company]}</h3> 	 
+         <ul>
+            			<li><span class="a1">所属公司：</span><span class="a1_1"><b><A href="{userurl($t[username], '')}" 
+  target=_blank>{$COM[company]}</A></b></span><div class="clear"></div></li>
+            <li><span class="a1">主营区域：</span><span class="a1_1">{area_pos($t[areaid], '')}</span><div class="clear"></div></li>
+            
+            <li><span class="a1">所在地址：</span><span class="a1_1">{$COM[address]}</span><div class="clear"></div></li>
+            <li><span class="a1">服务热线：</span><span class="a1_1">{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</span><div class="clear"></div></li>{if $COM[fax]}
+	 <li><span class="a1">公司传真：</span><span class="a1_1">{if $domain}{$COM[fax]}{else}{anti_spam($COM[fax])}{/if}</span><div class="clear"></div></li>           {/if}  
+	                             
+         </ul>
+
+       </div>
+	  
+	{if $side_pos==0}
+{template 'side', $template}
+
+{/if}
+    </div>
+    
+  <!--底部-->
+{template 'footer', $template}

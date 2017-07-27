@@ -1,0 +1,105 @@
+<link href="{AJ_SKIN}xfreset.css" rel="stylesheet" type="text/css" />
+	<link href="{AJ_SKIN}xinfang.css" rel="stylesheet" type="text/css" /><!--导航 begin -->
+	<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<div id="main">
+<div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a>&gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&gt;{area_poss($areaid, ' ')}&gt;{$title}&gt;<a class="red" href="{$MODULE[1][linkurl]}">详细信息</a></div>
+<div class="detail_header mt16">
+    <span class="update_time">更新时间：{$editdate}</span>
+		<div class="house_name cf">
+			<h1 class="fl">
+				<a href="{$linkurl}" title="{$title}">{$title}</a>	
+                <i class="selstag{$typeid}"></i>			</h1>
+			{if $level}<i class="house_tj"></i>{/if}			<h3>
+			   <!--{php $lei=explode(",",$catid);}-->
+     {loop $lei $ks $vs}
+        <span><a>{search_cats($vs, '6')}</a></span>
+     {/loop}  
+	 {if $lpts}
+	    <!--{php $ts=explode(",",$lpts);}-->
+     {loop $ts $ks $vs}
+    <span><a>{getbox_diaoval('lpts','checkbox',$vs,'newhouse_6')}</a></span>
+     {/loop}  
+	 {/if}
+                         	</h3>
+			<div class="house_mobile fr">
+				<div><img src="{AJ_PATH}api/qrcode.png.php?auth={urlencode($head_mobile)}" widht="90" height="90"/>手机找房</div>
+				<p>
+					售楼处免费咨询电话：
+					<b class="red">
+					{if $telephone}{$telephone}{else}热线尚未开通{/if}				</b><br>
+                 		<a href="#dianpingmodel" class="red dp">{get_dpnum($itemid)}</a>条点评
+					<a href="{$linkurl}wenfang.html" class="red wd">{get_wfnum($itemid)}</a>条问答
+					已参加团购<a href="javascript:void(0);" class="red tg dt_gb_sa">{get_buynum($title)}</a>人
+					访问<span class="red fw">{$hits}</span>人　
+				</p>
+			</div>
+		</div>
+	<div class="house_nav">
+			<div id="house_nav">
+				<ul class="cf">
+			{php $menu = array('index'=>'楼盘详情','xinxi'=>'详细信息', 'jiage'=>'楼盘价格', 'xiangce'=>'相册','huxing'=>'户型图', 'zixun'=>'最新动态', 'peitao'=>'地图交通',  'dianping'=>'点评', 'wenfang'=>'问房');}
+			
+{loop $menu $k $v} 
+<li><a href="{$linkurl}{$k}.html" {if $at==$k}class='on'{else}{/if} >{$v}</a></li>
+{/loop}
+       {if $bbsurl}<li><a href="{$bbsurl}">论坛</a></li>{/if}
+		
+
+		</ul>
+          <a data-housetype="1" data-touser="{$username}" data-info="{$title}" data-val="{$itemid}"   data-url="{$linkurl}" class="dt_gb_sa" href="javascript:void(0)" id="alm1">团购看房
+		<i></i></a>
+	
+			</div>
+		</div>
+		 <script>
+seajs.use(["lptg"],function(uyy){
+
+			/*我要咨询*/
+		uyy({
+			elm:"#alm1",
+			type:"esf",
+			sendurl:"",
+			url:"{$MODULE[6][linkurl]}house.php?action=groupbuy",
+			fromuser:"{$_username}",
+			truename:"{$_truename}",
+			mobile:"{$_mobile}"
+		})
+			
+			
+				
+		
+	});
+</script>
+	</div>
+<!--scrollTop star-->
+
+<script>
+seajs.use(["alert","superm"], function(alertM,sm) {
+var $menu = $("#house_nav"),
+$w = $(window),
+hBoolean = 1,
+mh = $menu.offset().top;
+if ((!-[1, ] && !window.XMLHttpRequest) || "ontouchend" in document) {
+$w.on("scroll", function() {
+if ($w.scrollTop() > mh) {
+hBoolean = 0;
+$menu[0].style.top = $w.scrollTop() - mh + "px";
+} else if ($w.scrollTop() < mh && !hBoolean) {
+hBoolean = 1;
+$menu[0].style.top = 0;
+}
+})
+} else {
+$w.on("scroll", function() {
+if ($w.scrollTop() > mh && hBoolean) {
+hBoolean = 0;
+$menu[0].style.position = "fixed";
+} else if ($w.scrollTop() < mh && !hBoolean) {
+hBoolean = 1;
+$menu[0].style.position = "static";
+}
+})
+}
+
+})
+</script>

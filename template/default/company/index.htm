@@ -1,0 +1,85 @@
+
+{template 'header'}	
+<div id="main">
+	<div class="bread">您当前的位置：：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a> &gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a> &gt;<span>经纪人</span></div>
+		<div class="hslist" id="hslist">
+			<div class="hs_b">
+				<div class="cf">
+					<span>区域：</span>
+					<p id="hs_area" class="hs_hidep on">
+                     <a {if empty($areaid)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'r')}.html">全部</a>
+						                                 {php $mainarea = get_mainarea($cityid)}
+										        		  	{loop $mainarea $k $v}<a {if $areaid==$v[areaid]}class="c"{/if} href="{$MOD[linkurl]}list-r{$v[areaid]}{deal_str($lst,'r')}.html">{$v[areaname]}</a>{/loop}	
+                            					</p>
+                    				</div>
+									
+			</div>
+		</div>
+		<div class="cf">
+			<div class="hlist_fl">
+				<h2>
+					<span class="hl_page">
+						共为您找到 <b class="red">{$items}</b> 个经纪人
+						{if $page==1}<span class="pre"></span>{else}<a class="pre" href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==1}1{else}{$page-1}{/if}.html"></a>{/if}{$page}					<a class="next" href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==$total}{$total}{else}{$page+1}{/if}.html">下一页</a>					</span>
+					<span class="modTab">
+					  {php $lx = array('经纪人', '中介');}
+					  <a {if empty($source)} class="on"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'u')}.html" >全部</a>
+{loop $lx $k $v}  <a  {if $source==($k+1)}class="on"{/if}  href="{$MOD[linkurl]}list{deal_str($lst,'u')}-u{$k+1}.html">{$v}</a>{/loop}
+					
+					</span>
+				</h2>
+				<div class="hlist_sort">
+					<div class="cf">
+                      
+						<div class="fr_1">
+							<div class="hs_mlist" id="h_s1">默认排序								<ul>
+                                    <li>
+                                        <a href="{$MOD[linkurl]}list.html">默认排序</a>
+                                    </li>
+                               
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+                             <!--{tag("moduleid=$moduleid&condition=groupid>5$dtype&areaid=$cityid&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-company")}-->     
+                    	      
+                                           
+                
+                			</div>
+			<div class="hlist_fr i_x_mt20">
+				<div class="lista">
+					<h4><a href="{$MOD[linkurl]}list-u1.html" target="_blank" class="more">更多&gt;&gt;</a>经纪人排行</h4>
+                     
+                        <ul class="jjrl">	<!--{php $tags=tag("table=member&condition=groupid=6&areaid=$cityid&order=userid desc&pagesize=6&template=null");}-->
+ {loop $tags $i $t}
+                                                            <li>
+                                 <a  class="jAvatar" href="{userurl($t[username], '')}" target="_blank"><img  src="{useravatar($t[username], 'large')}" width="90" height="90"></a>
+                                    <p>
+                                       <a href="{userurl($t[username], '')}" target="_blank">{userinfos($t[username])}</a>
+                                       {if $t[vip]}<img src="{AJ_SKIN}image/vip.gif"/> <img src="{AJ_SKIN}image/vip_{$t[vip]}.gif"/></span>{/if}           <br>
+                                        区域：{area_pos($t[areaid], '')}                                        <br>电话：{$t[mobile]}</p>
+                                </li>
+                                           {/loop}
+                                                    </ul>
+                    				</div>
+                
+			</div>
+		</div>
+	</div>
+<script>
+seajs.use(["cookie"],function(alertM){
+
+	
+	$("#hs_more div").add("#h_s1,#h_s2").on({
+		mouseenter:function(){
+			$(this).find("ul").show()
+		},
+		mouseleave:function(){
+			$(this).find("ul").hide()
+		}
+	})
+});
+</script>
+{template 'footer'}	

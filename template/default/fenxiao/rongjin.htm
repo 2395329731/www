@@ -1,0 +1,165 @@
+{template 'header'}
+<script type="text/javascript">
+	$("#fenxiao").attr("class","on");
+</script>	
+<link href="{AJ_SKIN}fenxiao.css" rel="stylesheet" type="text/css" />
+<div id="main" class="i_x_admin_certification i_x_tuijian cf">
+<div style="background:#f7fbf5">
+	<div id="zjz_show">
+		<ul id="zjz_banner">
+			<li>
+				<div class="a1"></div>
+				<div class="a2"></div>
+				<div class="a3"></div>
+			</li>
+			<li>
+				<div class="b1"></div>
+				<div class="b2"></div>
+				<div class="b3"></div>
+			</li>
+			<li>
+				<div class="c1"></div>
+				<div class="c2"></div>
+				<div class="c3"></div>
+			</li>
+		</ul>
+		<div id="zjz_b_menu">
+			<a href="javascript:"></a>
+			<a href="javascript:"></a>
+			<a href="javascript:"></a>
+		</div>
+		<div id="zjz_l">
+			<div id="zjz_login_bg"></div>
+		
+			
+			<!-- 登录后 -->
+			 {if $_userid}
+						<div id="zjz_login">
+				<p>
+					<a class="zjz_avatar" href="{$MODULE[1][linkurl]}fenxiao/client.php"><img src="{useravatar($_username, 'large')}"></a>
+					欢迎您！<br>
+					<span class="red">{$_truename}</span><br>
+					<a href="{$MODULE[1][linkurl]}fenxiao/client.php">用户中心</a><br>
+				</p>
+				<div class="zjz_l_menu"><a href="{$MODULE[1][linkurl]}fenxiao/client.php">我的推荐</a>|<a href="{$MODULE[1][linkurl]}fenxiao/amount.php">佣金记录</a></div>
+				<div id="zjz_login_btn2"></div>
+				<a href="{$MODULE[1][linkurl]}fenxiao/tuijian.php" id="zjz_a_tj"></a>
+			</div>
+			 {else}
+		
+				<!-- 登录前 -->
+			<div id="zjz_login">
+				<div id="zjz_login_btn">
+				</div>
+				<a href="{$MODULE[2][linkurl]}login.php" id="zjz_a_login"></a>
+				<a href="{$MODULE[2][linkurl]}{$AJ[file_register]}" id="zjz_a_register"></a>
+			</div>
+			{/if}
+					</div>
+	</div>
+<div class="zjz_index" id="main">
+			<h3>平台简介</h3>
+			<p class="zjz_i_d"><span class="red">分销平台</span>是{$AJ[sitename]}为更好服务网站会员而推出的线上应用服务平台。会员向网站推荐购房人，网站将为购房人提供全程的购房跟踪服务，购房人通过网站优惠购房后，会员将获得网站<span class="red">一定的</span>佣金奖励。</p>
+			<h3>推荐流程</h3>
+			<div id="zjz_help2">
+				<p id="p1"><b>注册{$AJ[sitename]}会员</b>
+				30秒完成会员注册，<br>
+				轻松简单。</p>
+				<p id="p2"><b>推荐购房人</b>
+				填写推荐信息，即可全程跟<br>
+				踪被推荐人购房进度。</p>
+				<p id="p3"><b>赚取佣金</b>
+				被推荐人通过网站成功购房，<br>
+				推荐人即可获得佣金。</p>
+			</div>
+			<h3>推荐规则</h3>
+			<p class="zjz_i_d zjz_i_li">
+				<span>1.</span>网站将对会员信息严格保密，未经会员允许不向任何第三方泄露会员信息。<br>
+				<span>2.</span>会员的每个推荐信息有效周期为3个月，有效期内被推荐人未通过网站优惠购房的，推荐信息作废；被推荐人确有购房需求的，会员可再次推荐。<br>
+				<span>3.</span>已在开发商处办理任一有关房产买卖手续（如办理VIP卡、交纳定金或签订认购书等）的推荐信息，为无效推荐信息。<br>
+				<span>4.</span>经网站认定为恶意推荐的，网站将关闭该会员推荐功能。
+			</p>
+			<div class="zjz_buy_info cf">
+				<p class="p1"><b>严格保密</b>
+					未经会员允许，网站不向任何第三方透露会员个人信息。</p>
+				<p class="p2"><b>高效透明</b>
+					会员推荐购买人后，其他工作全部由网站工作人员完成。</p>
+				<p class="p3"><b>轻松赚钱</b>
+					会员完成推荐后，即可通过系统全程查看网站与被推荐人的对接进展。</p>
+				<p class="p4"><b>省时省心</b>
+					只要被推荐人通过网站达成购房，即可赚取佣金。</p>
+			</div>
+			<!---!>
+			<h3>合作品牌</h3>
+<div class="zjz_company cf"></div><!--->
+		</div>
+	</div>
+	</div>
+	<script>
+seajs.use("jquery",function($){
+	var $z=$("#zjz_i_pl").on("mouseenter","li",function(){
+		$z.find("li.on").removeClass("on")
+		$(this).addClass("on")
+	})
+
+	var animate=function(){
+		return false;
+		},$i,i=0,ai=0,
+		$li=$("#zjz_banner li"),
+		$a=$("#zjz_b_menu a").on("mouseenter",function(){
+			if(!$(this).is(".on")){
+				$a.removeClass("on");
+				$i=$li.fadeOut().eq($(this).addClass("on").index()).stop().fadeIn();
+				animate();
+			}
+			clearTimeout(ai);
+			ai=setTimeout(function(){
+				if($i.index()==$li.length-1)
+					$a.eq(0).trigger("mouseenter")
+				else
+					$a.eq($i.index()).next().trigger("mouseenter")
+			},4000)
+		});
+	if(-[1, ] || window.XMLHttpRequest)
+		animate=function(){
+			i++;
+			if(i%2)
+				$i.find("div").eq(1).finish().css({
+					left:"-=48",
+					display:"none"
+				}).animate({
+					left:"+=48",
+					opacity:"show"
+				},999).next().finish().css({
+					left:"+=48",
+					display:"none"
+				}).animate({
+					left:"-=48",
+					opacity:"show"
+				},999)
+			else
+				$i.find("div").eq(1).finish().css({
+					top:"-=24",
+					display:"none"
+				}).animate({
+					top:"+=24",
+					opacity:"show"
+				},999).next().finish().css({
+					top:"+=24",
+					display:"none"
+				}).animate({
+					top:"-=24",
+					opacity:"show"
+				},999)
+		}
+	else{
+		var $r=$("#r_fly"),
+			$w=$(window).bind('scroll', function() {
+				$r.css("margin-top",$w.scrollTop()-95);
+			})
+	}
+	$a.eq(0).trigger("mouseenter");
+	var ai=0;
+});
+</script>
+	{template 'footer'}

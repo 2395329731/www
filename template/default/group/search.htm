@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={AJ_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<meta name="generator" content="www.aijiacms.com"/>
+<link rel="shortcut icon" type="image/x-icon" href="{AJ_PATH}favicon.ico"/>
+<link href="{AJ_SKIN}common.css" rel="stylesheet">
+<link href="{AJ_SKIN}tuan.css" rel="stylesheet">
+<script type="text/javascript" src="{AJ_PATH}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>
+
+</head>
+
+<body>
+<!-- 顶部 --><div class="head_continer">
+    <div class="head">
+	<div class="head_top">
+	<div class="guanli"><a href="{$MODULE[1][linkurl]}" target="_blank" >首页</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[6][linkurl]}" target="_blank" >新楼盘</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[5][linkurl]}" target="_blank">二手房</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[7][linkurl]}" target="_blank" >租房</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[8][linkurl]}" target="_blank" >资讯</a><img src="{AJ_SKIN}images/tuan/jiange.gif"><a href="{$MODULE[18][linkurl]}" target="_blank" >小区</a></div>
+	</div>
+	<div class="logo_bg">
+     <ul>
+	  <li><a href="{$MODULE[1][linkurl]}"><img src="{if $MODULE[$moduleid][logo]}{AJ_SKIN}image/logo_{$moduleid}.gif{elseif $AJ[logo]}{$AJ[logo]}{else}{AJ_SKIN}image/logo.gif{/if}" alt="{$AJ[sitename]}"/></a></li>
+	  <li class="kouhao"><img src="{AJ_SKIN}images/tuan/kouhao.gif"></li>
+	  <li class="tel">{$AJ[telephone]}</li>
+	</ul>
+
+</div>
+<div class="clear"></div>
+</div>
+
+<div class="nav_continer">
+     <div class="nav">
+                
+             
+	   <a href="{$MODULE[15][linkurl]}" class="focus">淘房团</a>
+	  <span><img src="{AJ_SKIN}images/tuan/nav_jg.gif"></span>
+	 {php $maincat = get_maincatmenu(0,15)}
+		  {loop $maincat $k $v}
+  <a href="{$MOD[linkurl]}{$v[linkurl]}" class="{if $v[catid]==$catid}focus{else}f{/if}">{$v[catname]}</a>
+	  <span><img src="{AJ_SKIN}images/tuan/nav_jg.gif"></span>{/loop}
+	 </div>
+</div><!-- 顶部 -->
+ <div class="col">
+    <div class="col_left">
+{if $tags}
+	{template 'list-group', 'tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+	</div>
+    
+	<div class="col_right">
+	<div class="box">
+	 <h3>最新楼盘动态</h3>
+	  <ul class="ad">
+	   <!--{php $tags=tag("moduleid=8&condition=status=3&areaid=$cityid&length=40&pagesize=1&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+	  <li><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb])}" class="leftImg" height="68" width="82"></a></li>
+	  <li class="f"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></li> {/loop}
+	 </ul>
+	<div class="clear"></div>
+	 <ul class="tejia">
+                  <ul class="news_list f12">
+           <!--{php $tags=tag("moduleid=8&condition=status=3&areaid=$cityid&length=32&pagesize=3&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+<LI><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></LI>
+  {/loop}
+        	 </ul>
+	</div>
+
+     <div class="kefu">
+	    <ul>
+		<li class="tel">{$AJ[telephone]}</li>
+		<li class="time">周一至周五：9:00-18:00</li>
+		</ul>
+	
+	</div>
+      <a href="#"><img src="{AJ_SKIN}images/tuan/guanggao_01.gif"></a>
+	</div>
+   <div class="clear"></div>
+
+    <div id="process"><a name="buttom"></a>
+    <div class="clearfix">
+    <dl class="zcdl">
+      <dt>注册登录</dt>
+      <dd class="fgx"></dd>
+      <dd>只要您是{$AJ[sitename]}浏览用户，即可免费参加“淘房团”活动，享有团购资格。</dd></dl><span class="next"></span>
+    <dl class="zxtf">
+      <dt>在线报名</dt>
+      <dd class="fgx"></dd>
+      <dd>登陆团购页面，了解楼盘及活动详情，留下个人真实姓名及联系信息，即报名成功。</dd></dl><span class="next"></span>
+    <dl class="zckf">
+      <dt>专场看房</dt>
+      <dd class="fgx"></dd>
+      <dd>跟随{$AJ[sitename]}看房团前往活动楼盘现场，了解项目详情，明确团房意向。</dd></dl><span class="next"></span>
+    <dl class="xxxf">
+      <dt>自由选房</dt>
+      <dd class="fgx"></dd>
+      <dd>在规定的团购活动时间内，按照团购优惠办法，与开发商签订认购协议或购房合同。</dd></dl><span class="next"></span>
+    <dl class="rgqy">
+      <dt>团购成功</dt>
+      <dd class="fgx"></dd>
+      <dd>成功团购后，根据不同团购规则，您还有可能获得诸如“置业礼包”等其他额外惊喜！</dd></dl></div>
+    </div>
+
+</div>
+<!-- 底部 -->	<!-- 底部链接 -->
+	<div class="footer">
+		<p><a href="{$MODULE[1][linkurl]}">网站首页</a><!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder desc,itemid desc&template=list-webpage")}--></p>
+		<p><div id="copyright">{$AJ[copyright]}</div></p>
+		{if $AJ[icpno]}  <a href="http://www.miibeian.gov.cn" target="_blank">{$AJ[icpno]}</a>{/if}
+	</div>
+	
+
+
+</div></body></html>

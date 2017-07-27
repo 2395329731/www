@@ -1,0 +1,295 @@
+{template 'header', 'mobile'}
+ <link rel="stylesheet" href="static/Jingle.css" />
+<div id="head-bar">
+
+
+{if $action=='add' || $action=='edit'}
+<div id="section_container">
+		<!-- 页面容器 -->
+		<form name="archive_fy" method="post" action="" onsubmit="return sendPost(this);">
+<input type="hidden" name="action" value="{$action}"/>
+	<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="itemid" value="{$itemid}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<input type="hidden" name="post[typeid]" value="{if $_groupid<=5}0{else}1{/if}"  />
+		<section id="index_section" title="发布房源" data-btn="back" data-footer="false" class="active">
+			<div id="fix_js" class="fix_css">
+    <header>
+        <nav class="left">
+            <a id="back" class="dn" href="#" data-target="back"><span class="icon-f053 left fz20"></span></a>
+            <a id="logo" class="dn" href="channel.php">频道</a>
+        </nav>
+        <h1 id="title" class="title">发布{if $mid==5}二手房{else}租房{/if}</h1>
+        <nav class="right">
+            <a id="edit" class="icon dn" href=""><span class="icon-e7cc left fz17"></span></a>
+            <a class="icon" href="my.php"><span class="icon-e756 left fz19"></span></a>
+            <a class="menu icon" href="channel.php"><span class="icon-f0ca left fz22"></span></a>
+        </nav>
+    </header>
+</div>
+
+
+
+
+
+			<article id="step1" class="active" style="overflow-y:scroll">
+				<ul class="list">
+					<li>
+						<div class="input-group">
+							<div class="input-group-divider">基本信息</div>
+							<div class="input-row">
+								<label>小区名称</label>
+								<input type="text" id="fmdata[subject]" name="post[housename]" value="{$housename}" required pattern=".{3,30}" maxlength="30" min="0" max="18" placeholder="小区名称" title="小区名称不能为空">
+							</div>
+							<div class="form-group">
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+				                                        <select name="post[room]" title="室">
+										<option value="100">0室</option>
+<option value="1">1室</option>
+
+<option value="2">2室</option>
+<option value="3">3室</option>
+<option value="4">4室</option>
+									</select>
+								</div>
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="post[hall]" title="厅">
+										<option value="100">0厅</option>
+<option value="1">1厅</option>
+<option value="2">2厅</option>
+<option value="3">3厅</option>
+<option value="4">4厅</option>
+<option value="5">5厅</option>
+									</select>
+								</div>
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="post[toilet]" title="卫">
+										<option value="1">1卫</option>
+<option value="2">2卫</option>
+<option value="3">3卫</option>
+<option value="4">4卫</option>
+<option value="5">5卫</option>
+<option value="100">0卫</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+								{if $areaid}{ajax_area_select('post[areaid]', '请选择', $areaid)}{else}{ajax_area_select('post[areaid]', '请选择', $cityid)}{/if}
+								</div>
+				                                    						
+				                               		</div>
+				                                							<div class="form-group">
+							
+							</div>
+				                          
+				                                							<div class="input-row">
+								<label for="">总价</label>
+								<input type="text" name="price" id="fmdata[zj]" value="{$price}" pattern=".{0,18}" maxlength="18" title="总价" placeholder="总价(万)">
+							</div>
+							<div class="input-row">
+								<label for="">面积</label>
+								<input type="text" name="post[houseearm]" id="fmdata[mj]" value="{$houseearm}" pattern=".{2,18}" maxlength="18" title="面积" placeholder="面积">
+							</div>
+				                                				
+				                                						</div>
+						<div class="input-group">
+							<div class="input-group-divider">详情信息</div>
+							<div class="input-row">
+								<label for="">房源标题</label>
+								<input type="text" name="post[title]" value="{$title}" pattern=".{4,100}" maxlength="100" title="房源标题" required placeholder="房源标题">
+							</div>
+							<div class="input-row">
+								<label for="">地址</label>
+								<input type="text" name="post[address]" value="{$address}" pattern=".{2,18}" maxlength="18" title="地址" placeholder="地址">
+							</div>
+							<div class="form-group">
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="post[catid]" title="房屋类型">
+										<option value="">房屋类型</option>
+                                         {php $maincat = get_maincat(0,$mid)}
+{loop $maincat $k $v}
+										<option value="{$v[catid]}" {if $catid == $v[catid]}selected{/if}>{$v[catname]}</option>{/loop}
+
+									</select>
+								</div>
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="post[fix]" title="装修程度">
+										<option value="">装修程度</option>
+										<option value="1" {if $fix == 1}selected{/if}>毛坯</option>
+<option value="2" {if $fix == 2}selected{/if}>精装</option>
+<option value="3" {if $fix == 3}selected{/if}>简装</option>
+<option value="4" {if $fix == 4}selected{/if}>豪华装修</option>
+
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="post[toward]" title="朝向">
+										<option value="">朝向</option>
+										<option value="1" {if $toward == 1}selected{/if}>南</option>
+<option value="2" {if $toward == 2}selected{/if}>北</option>
+<option value="3" {if $toward == 3}selected{/if}>东</option>
+<option value="4" {if $toward == 4}selected{/if}>西</option>
+<option value="5" {if $toward == 5}selected{/if}>东南</option>
+<option value="6" {if $toward == 6}selected{/if}>东北</option>
+<option value="7" {if $toward == 7}selected{/if}>西南</option>
+<option value="8" {if $toward == 8}selected{/if}>西北</option>
+<option value="9" {if $toward == 9}selected{/if}>南北</option>
+<option value="10" {if $toward == 10}selected{/if}>东西</option>
+									</select>
+								</div>
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="post[houseyear]" title="房龄">
+										<option value="">房龄</option>
+										<option value="-1">不详</option>
+<option value="2015" {if $houseyear == 2015}selected{/if}>2015 年</option>
+<option value="2014" {if $houseyear == 2014}selected{/if}>2014 年</option>
+<option value="2013" {if $houseyear == 2013}selected{/if}>2013 年</option>
+<option value="2012" {if $houseyear == 2012}selected{/if}>2012 年</option>
+<option value="2011" {if $houseyear == 2011}selected{/if}>2011 年</option>
+<option value="2010" {if $houseyear == 2010}selected{/if}>2010 年</option>
+<option value="2009" {if $houseyear == 2009}selected{/if}>2009 年</option>
+<option value="2008" {if $houseyear == 2008}selected{/if}>2008 年</option>
+<option value="2007" {if $houseyear == 2007}selected{/if}>2007 年</option>
+<option value="2006" {if $houseyear == 2006}selected{/if}>2006 年</option>
+<option value="2005" {if $houseyear == 2005}selected{/if}>2005 年</option>
+<option value="2004" {if $houseyear == 2004}selected{/if}>2004 年</option>
+<option value="2003" {if $houseyear == 2003}selected{/if}>2003 年</option>
+<option value="2002" {if $houseyear == 2002}selected{/if}>2002 年</option>
+<option value="2001" {if $houseyear == 2001}selected{/if}>2001 年</option>
+<option value="2000" {if $houseyear == 2000}selected{/if}>2000 年</option>
+<option value="1999" {if $houseyear == 1999}selected{/if}>1999 年</option>
+<option value="1998" {if $houseyear == 1998}selected{/if}>1998 年</option>
+<option value="1997" {if $houseyear == 1997}selected{/if}>1997 年</option>
+<option value="1996" {if $houseyear == 1996}selected{/if}>1996 年</option>
+<option value="1995" {if $houseyear == 1995}selected{/if}>1995 年</option>
+<option value="1994" {if $houseyear == 1994}selected{/if}>1994 年</option>
+<option value="1993" {if $houseyear == 1993}selected{/if}>1993 年</option>
+<option value="1992" {if $houseyear == 1992}selected{/if}>1992 年</option>
+<option value="1991" {if $houseyear == 1991}selected{/if}>1991 年</option>
+<option value="1990" {if $houseyear == 1990}selected{/if}>1990 年</option>
+<option value="1989" {if $houseyear == 1989}selected{/if}>1989 年</option>
+<option value="1988" {if $houseyear == 1988}selected{/if}>1988 年</option>
+<option value="1987" {if $houseyear == 1987}selected{/if}>1987 年</option>
+<option value="1986" {if $houseyear == 1986}selected{/if}>1986 年</option>
+<option value="1985" {if $houseyear == 1985}selected{/if}>1985 年</option>
+<option value="1984" {if $houseyear == 1984}selected{/if}>1984 年</option>
+<option value="1983" {if $houseyear == 1983}selected{/if}>1983 年</option>
+<option value="1982" {if $houseyear == 1982}selected{/if}>1982 年</option>
+<option value="1981" {if $houseyear == 1981}selected{/if}>1981 年</option>
+<option value="1980" {if $houseyear == 1980}selected{/if}>1980 年</option>
+<option value="1979" {if $houseyear == 1979}selected{/if}>1979 年</option>
+<option value="1978" {if $houseyear == 1978}selected{/if}>1978 年</option>
+<option value="1977" {if $houseyear == 1977}selected{/if}>1977 年</option>
+<option value="1976" {if $houseyear == 1976}selected{/if}>1976 年</option>
+<option value="1975" {if $houseyear == 1975}selected{/if}>1975 年</option>
+<option value="1974" {if $houseyear == 1974}selected{/if}>1974 年</option>
+<option value="1973" {if $houseyear == 1973}selected{/if}>1973 年</option>
+<option value="1972" {if $houseyear == 1972}selected{/if}>1972 年</option>
+<option value="1971" {if $houseyear == 1971}selected{/if}>1971 年</option>
+<option value="1970" {if $houseyear == 1970}selected{/if}>1970 年</option>
+<option value="1969" {if $houseyear == 1969}selected{/if}>1969 年</option>
+<option value="1968" {if $houseyear == 1968}selected{/if}>1968 年</option>
+<option value="1967" {if $houseyear == 1967}selected{/if}>1967 年</option>
+<option value="1966" {if $houseyear == 1966}selected{/if}>1966 年</option>
+<option value="1965" {if $houseyear == 1965}selected{/if}>1965 年</option>
+<option value="1964" {if $houseyear == 1964}selected{/if}>1964 年</option>
+<option value="1963" {if $houseyear == 1963}selected{/if}>1963 年</option>
+<option value="1962" {if $houseyear == 1962}selected{/if}>1962 年</option>
+<option value="1961" {if $houseyear == 1961}selected{/if}>1961 年</option>
+<option value="1960" {if $houseyear == 1960}selected{/if}>1960 年</option>
+<option value="1959" {if $houseyear == 1959}selected{/if}>1959 年</option>
+<option value="1958" {if $houseyear == 1958}selected{/if}>1958 年</option>
+<option value="1957" {if $houseyear == 1957}selected{/if}>1957 年</option>
+<option value="1956" {if $houseyear == 1956}selected{/if}>1956 年</option>
+<option value="1955" {if $houseyear == 1955}selected{/if}>1955 年</option>
+<option value="1954" {if $houseyear == 1954}selected{/if}>1954 年</option>
+<option value="1953" {if $houseyear == 1953}selected{/if}>1953 年</option>
+<option value="1952" {if $houseyear == 1952}selected{/if}>1952 年</option>
+<option value="1951" {if $houseyear == 1951}selected{/if}>1951 年</option>
+									</select>
+								</div>
+							</div>
+							<div class="input-row">
+								<label for="">所在楼层</label>
+								<input type="text" name="post[floor1]" value="{$floor1}" pattern=".{1,18}" maxlength="18" title="所在楼层" placeholder="所在楼层">
+							</div>
+							<div class="input-row">
+								<label for="">总楼层</label>
+								<input type="text" name="post[floor2]" value="{$floor2}" pattern=".{1,18}" maxlength="18" title="总楼层" placeholder="总楼层">
+							</div>
+
+                          
+							<textarea name="post[content]" placeholder="房源描述">{$content}</textarea>
+                            						</div>
+						<div class="input-group">
+							<div class="input-group-divider">联系方式</div>
+							<div class="input-row">
+								<label for="">联系电话</label>
+								<input type="text" name="post[telephone]" value="{$telephone}" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$" maxlength="18" title="电话不能为空或格式不对" required placeholder="联系电话">
+							</div>
+							<div class="input-row">
+								<label for="">联系人</label>
+								<input type="text" name="post[truename]" value="{$truename}" pattern=".{2,18}" maxlength="18" title="联系人不能为空" required placeholder="联系人">
+							</div>
+												
+                            						</div> 
+						<button class="block small" type="submit" name="submit" data-icon="icon icon-f076" >提交信息 </button>
+					</li>
+				</ul>
+			</article>
+		</section>
+		</form><!-- /form -->
+	</div>
+{else}
+
+	{if $lists}
+    
+	<style type="text/css">
+	.list-msg {font-size:16px;}
+	.list-msg li {height:68px;padding:0 16px 0 30px;overflow:hidden;border-bottom:#D9D9D9 1px solid;background:#FFFFFF url('static/img/list-set.png') no-repeat right center;background-size:23px 13px;}
+	.list-msg div {width:100%;height:44px;line-height:44px;overflow:hidden;}
+	.list-msg p {width:100%;height:24px;margin:0;overflow:hidden;display:block;color:#6D6D72;font-size:13px;}
+	.list-msg a {display:block;width:100%;height:44px;}
+	.list-msg span {float:right;color:#6D6D72;padding-right:10px;}
+	.list-msg em {position:absolute;z-index:8;display:block;width:8px;height:8px;background:#007AFF;border:1px solid #007AFF;border-radius:50%;margin:17px 0 0 -20px;}	
+	</style>
+	
+    <article id="cz-article"  class="active">
+            <div>
+                <ul class="list f-asbestos">
+             {loop $lists $k $v}
+                <li>
+           <div class="grid">
+             <div class="col-1">{$v[title]}</div>
+               <div class="col-0"><a class="icon-f14b fz22" href="fang.php?mid={$mid}&action=edit&itemid={$v[itemid]}" ></a><a class="icon-e000 fz22" href="{$v[linkurl]}"></a></div>
+              </div>
+           </li>
+           {/loop}
+           
+           
+           </ul>
+            </div>
+        </article>
+	
+	
+	{else}
+	<div class="main">
+		<div class="content">
+		<br/><center>{if $_userid}暂无信息{else}<a href="login.php?forward=message.php" data-transition="slideup">按此登录或注册</a>{/if}</center><br/>
+		</div>
+	</div>
+	{/if}
+{/if}
+{if $pages}<div class="pages">{$pages}</div>{/if}
+{template 'footer', 'mobile'}

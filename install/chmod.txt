@@ -1,0 +1,6 @@
+about/
+announce/
+file/*
+install/index.php
+config.inc.php
+index.html

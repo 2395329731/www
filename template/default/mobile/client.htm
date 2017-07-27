@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>我的客户 - {$AJ[sitename]}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+<meta name="format-detection" content="telephone=no,address=no,email=no" />
+<meta name="mobileOptimized" content="width" />
+<meta name="handheldFriendly" content="true" />
+<meta http-equiv="Cache-Control" content="max-age=0" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="static/mobile_jjr.css?v=3" rel="stylesheet" type="text/css" /><script>
+	var theact = 'zhuan_manage';
+</script></head>
+<body>
+    <section class="main animated fadeInDown">
+        <div class="main-box">
+            <div class="client my-client-title">
+                <ul class="rb-row fn-clear">
+                    <li>姓名</li>
+                    <li>意向楼盘</li>
+                    <li>电话</li>
+                    <li>状态</li>
+                </ul>
+            </div>
+            <div class="client my-client-list">
+            {loop $lists $k $v}
+             <ul class="rb-row fn-clear">
+            
+             <li>{$v[truename]}</li>
+                    <li>{$v[hname]}</li>
+                    <li>{$v[mobile]}</li>
+                    <li>{$_status[$v[status]]}</li>
+                    
+                    </ul>{/loop}
+                            </div>
+                            <div class="pagination">{$pages}
+							</div>          
+            <div class="recommend-tips">
+                <h6>提示</h6>
+                <p>具体判客规则以“活动细则”里的相关说明为准！</p>
+            </div>
+        </div>
+    </section>
+    <footer class="foot">
+    <p>
+      <a href="index.php" class="fr">&copy;{$AJ[sitename]}</a>
+    </p>
+</footer>
+</body>
+</html>

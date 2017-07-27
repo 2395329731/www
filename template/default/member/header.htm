@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="renderer" content="webkit">
+	<link href="{AJ_SKIN}favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="image/style.css"/>
+	<link href="{AJ_SKIN}reset.css?v=3" rel="stylesheet" type="text/css" />
+	<link href="{AJ_SKIN}user_jjr.css?v=3" rel="stylesheet" type="text/css" />
+	{if $AJ_TOUCH}
+<link rel="stylesheet" type="text/css" href="{$EXT[mobile_url]}static/member.css"/>
+<script type="text/javascript">var Dbrowser = '{$AJ_MOB[browser]}';</script>
+{else}
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}ie6.css"/>
+<script type="text/javascript" src="{AJ_STATIC}file/script/ie6png.js"></script>
+<script type="text/javascript">DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<!--[if IE]>
+<style type="text/css">
+.head_user em {margin:-4px 0 0 -4px;}
+#mini_profile {margin:20px 0 0 -140px;}
+</style>
+<![endif]-->
+{/if}
+    
+	<script src="{AJ_SKIN}js/sea.js?v=3" type="text/javascript"></script>	
+	
+<script type="text/javascript" src="{AJ_PATH}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_PATH}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_PATH}file/script/admin.js"></script>
+<script type="text/javascript" src="{AJ_PATH}file/script/member.js"></script>
+	<title>{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}会员中心{$AJ[seo_delimiter]}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{$AJ[seo_delimiter]}</title>
+	<script>var AGENT_URL="{$MODULE[6][linkurl]}";var JS_URL="";var IMG_URL="";</script>
+</head>
+<body>
+<div id="msgbox" style="display:none;"></div>
+{dmsg()}
+{if $AJ_TOUCH}
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-right"><a href="{$EXT[mobile_url]}my.php?action=back"><span>我的</span></a></div>
+<div class="head-bar-back"><a href="javascript:window.history.back();"><img src="{$EXT[mobile_url]}static/img/icon-back.png"/><span>返回</span></a></div>
+<div class="head-bar-title">{if $head_title}{$head_title}{else}会员中心{/if}</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+{else}
+	<div id="header">
+	<div class="warp">
+		<h1>
+			<a href="{$MODULE[2][linkurl]}" title="{$AJ[sitename]}"><img src="{AJ_SKIN}images/user_jjr/logo_myagent.gif" alt="{$AJ[sitename]}">
+			</a><span class="glzx">{$MG[groupname]}管理</span>
+		</h1>
+		<div class="fr cf" id="login">
+			<span class="tel">客服热线：{$AJ[telephone]}</span><br>
+            {if $_userid}
+			<div class="panl">
+				<a href="{$MODULE[2][linkurl]}message.php?action=last" class="r">通知({$_message})<i></i></a>
+				<div style="display: none;">
+					<a href="{$MODULE[2][linkurl]}chat.php">新对话({$_chat})</a>
+					<a href="{$MODULE[2][linkurl]}message.php?action=last">短消息({$_message})</a>
+				</div>
+			</div>
+			<a href="{userurl($_username)}" target="_blank" title="我的店铺">我的店铺</a>
+			            <a style="color:#f80" href="{$MODULE[1][linkurl]}fenxiao/" title="赚取佣金" target="_blank">赚取佣金</a>
+					
+			<a href="{$MODULE[2][linkurl]}">帐号：{$_username}</a>
+			<a href="{$MODULE[2][linkurl]}logout.php">[ 退出 ]</a>
+			{if $admin_user}<a href="index.php?action=logout">注销授权</a>{/if}
+            {/if}
+			<div class="panl" id="topBarPanl">
+				<a class="r" href="{$MODULE[1][linkurl]}" title="{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}">返回首页<i></i></a>
+				<div style="">
+					<a href="{$MODULE[1][linkurl]}" target="_blank">首页</a>
+					<a href="{$MODULE[6][linkurl]}" target="_blank" title="新房">新房</a>
+					<a href="{$MODULE[5][linkurl]}" target="_blank" title="二手房">二手房</a>
+					<a href="{$MODULE[7][linkurl]}" target="_blank" title="租房">租房</a>
+					<a href="{$MODULE[8][linkurl]}" target="_blank" title="资讯">资讯</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/if}
+<script type="text/javascript">
+seajs.use(["topbarlogin",'cookie'],function(){
+	$("#login div.panl").on("mouseenter",function(){
+		$(this).addClass("on").find("div").show();
+	}).on("mouseleave",function(){
+		$(this).removeClass("on").find("div").hide();
+	})
+})
+</script>
+{if !$AJ_TOUCH}
+	<div id="main">
+    	        	<div class="adb">
+   
+</div>
+        		<div  class="cf">
+			<div id="lmenu">
+	<h2>
+		<a href="{$MODULE[2][linkurl]}">管理中心首页</a>
+	</h2>
+	{if $MYMODS || $show_menu}
+	{loop $MENUMODS $k $v}
+	<h3>
+		<s></s><b class="l{$k}">{$MODULE[$v][name]}管理</b>
+	</h3>
+	<ul>
+		<li ><a href="{$MODULE[2][linkurl]}my.php?mid={$v}&action=add">发布{$MODULE[$v][name]}</a></li>
+        <li ><a href="{$MODULE[2][linkurl]}my.php?mid={$v}">管理{$MODULE[$v][name]}</a></li>
+	</ul>
+	  {/loop}
+	    {/if}
+		{if $_userid || $show_menu}
+	
+	<h3>
+		<s></s><b class="l5">工具箱</b>
+	</h3>
+	<ul>
+			{if $MG[inbox_limit]>-1 || $show_menu}
+			<li><a href="{$MODULE[2][linkurl]}message.php"  >站内信息</a></li>
+			{/if}
+	<!--
+			{if $MG[friend_limit]>-1 || $show_menu}
+			<li><a href="{$MODULE[2][linkurl]}friend.php" >我的商友</a></li>
+			{/if}
+-->
+			{if $MG[favorite_limit]>-1 || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}favorite.php" >房源收藏</a></li>
+			{/if}
+
+			{if $MG[alert_limit]>-1 || $show_menu}
+			<li><a href="{$MODULE[2][linkurl]}alert.php" >房源提醒</a></li>
+			{/if}
+
+			{if $MG[sms] || $show_menu}
+			{if $AJ[sms]}<li ><a href="{$MODULE[2][linkurl]}sms.php" >手机短信</a></li>{/if}
+			{/if}
+
+			{if $MG[mail] || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}mail.php" >邮件订阅</a></li>
+			{/if}
+			{if $MG[spread] || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}spread.php" >排名推广</a></li>
+			{/if}
+			{if $MG[ad] || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}ad.php" >广告预定</a></li>
+			{/if}
+			<li ><a href="{$MODULE[2][linkurl]}trade.php" >我的订单</a></li>
+            <li><a href="{$MODULE[2][linkurl]}charge.php?action=record" >充值记录</a></li>
+            <li><a href="{$MODULE[2][linkurl]}credit.php">{$AJ[credit_name]}管理</a></li>
+	</ul>
+	 {/if}
+	 {if $_userid || $show_menu}
+	<h3>
+		<s></s><b class="l6">问题管理</b>
+	</h3>
+	<ul>
+		<li><a href="{$MODULE[2][linkurl]}wenfang.php">问题受理</a></li>
+	   <li><a href="{$MODULE[2][linkurl]}ask.php">客服中心</a></li>
+	</ul>
+	{/if}
+	 {if $MG[homepage] || $show_menu}
+	<h3>
+		<s></s><b class="l7">店铺管理</b>
+	</h3>
+	<ul>
+	 <li ><a href="{$MODULE[2][linkurl]}home.php" >商铺设置</a></li>
+             {if ($MG[addmember_limit]>0 && $MG[homepage]) || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}addmember.php">经纪人管理</a></li>
+			{/if}
+			{if ($MG[link_limit]>-1 && $MG[homepage]) || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}link.php" >友情链接</a></li>
+			{/if}
+	</ul>
+	{/if}
+	{if $_userid || $show_menu}
+	<h3>
+		<s></s><b class="l8">资料管理</b>
+	</h3>
+	<ul>
+	<li ><a href="{$MODULE[2][linkurl]}edit.php" >修改资料</a></li>
+		 <li ><a href="avatar.php" >头像认证</a></li>
+			{if $show_oauth}
+			<li ><a href="{$MODULE[2][linkurl]}oauth.php" >一键登录</a></li>
+			{/if}
+            {if $EXT[weixin]}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="weixin"><span class="f_r"><a href="weixin.php" class="m">绑定</a></span><a href="weixin.php" class="{if $_userid}n{else}f{/if}">微信关注</a></li>
+			{/if}
+	    <li ><a href="validate.php?action=truename">身份证认证</a></li>
+        <li ><a href="validate.php?action=company">执业资格证认证</a></li>
+       <li ><a href="{$MODULE[2][linkurl]}edit.php">修改密码</a></li>
+	</ul>
+	{/if}
+</div>
+<script type="text/javascript">
+seajs.use(["jquery","cookie"],function($){
+	var setCookie=function(){
+		var str="";
+		$h3.each(function(){
+			str+=($(this).attr("class")?"on":"off")+",";
+		})
+		$.cookie("lmenu",str,{path:"/"});
+	}
+	var $menu=$("#lmenu"),
+		$h3=$menu.on("click","h3",function(){
+			if($(this).attr("class")=="on")
+				$(this).removeClass("on").next().hide();
+			else
+				$(this).addClass("on").next().show();
+			setCookie();
+		}).find("h3");
+	var str=$.cookie("lmenu");
+	if(str){
+		str=str.split(",");
+		for(var i=0,l=str.length;i<l;i++){
+			if(str[i]=="on")
+				$h3.eq(i).addClass("on").next().show();
+		}
+	}else{
+		$h3.eq(0).addClass("on").next().show();
+		$h3.eq(1).addClass("on").next().show();
+	}
+
+	$menu.find("li.on").parent().show().prev().addClass("on");
+})
+</script>
+<div class="fr" id="frcon">
+	<div class="bread"><a href="{$MODULE[2][linkurl]}">管理中心</a>{$head_title}</div>
+{/if}	
+<script type="text/javascript" src="{AJ_SKIN}js/jquery-1.7.1.js"></script>  
+<script type="text/javascript">
+$(function(){
+
+$("#address").blur(function(){
+$.get("{$MODULE[6][linkurl]}house.php?action=map&address="+$("#address").val()+"&areaid="+$("#areaid_1").val(),null,function(data)
+{
+$("#map").val(data); 
+});
+}) 
+})
+</script> 

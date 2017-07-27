@@ -1,0 +1,41 @@
+{template 'header', $template}
+ <div id=content>
+    <!--新房首页-->
+    <div class="banner mt10"><p>{$COM[company]}</p>
+      <div class="menu png_bg">
+        <a href="{$COM[linkurl]}" class="{if $file=='homepage'}select{else}{/if}">首页</a>
+{loop $MENU $k $v}
+<a href="{$v[linkurl]}" class="{if $file==$menu_file[$k]}select{else}{/if}">{$v[name]}</a>
+{/loop}
+      </div>
+    </div>
+    <div class="a_left">
+     
+    {loop $HMAIN $HM $MAIN}
+{template 'main_'.$main_file[$HM], $template}
+{/loop}
+     
+	
+    </div>
+     <div class="a_right">
+       <div class="a_info">
+         <h3>{$COM[company]}</h3> 	 
+         <ul>
+            			<li><span class="a1">所属公司：</span><span class="a1_1"><b><A href="{userurl($t[username], '')}" 
+  target=_blank>{$COM[company]}</A></b></span><div class="clear"></div></li>
+            <li><span class="a1">主营区域：</span><span class="a1_1">{area_pos($COM[areaid], '')}</span><div class="clear"></div></li>
+            
+            <li><span class="a1">所在地址：</span><span class="a1_1">{$COM[address]}</span><div class="clear"></div></li>
+            <li><span class="a1">服务热线：</span><span class="a1_1">{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</span><div class="clear"></div></li>{if $COM[fax]}
+	 <li><span class="a1">公司传真：</span><span class="a1_1">{if $domain}{$COM[fax]}{else}{anti_spam($COM[fax])}{/if}</span><div class="clear"></div></li>           {/if}  
+	                             
+         </ul>
+
+       </div>
+	   <br />
+	   {if $side_pos==0}
+{template 'side', $template}
+
+{/if}
+    </div>
+    {template 'footer', $template}

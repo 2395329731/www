@@ -1,0 +1,25 @@
+<div class="union">
+         <h3>{$side_name[$HS]}</h3>
+
+<form action="{$MODULE[4][linkurl]}home.php" onsubmit="return check_kw();">
+<input type="hidden" name="action" value="search"/>
+<input type="hidden" name="homepage" value="{$username}"/>
+<input type="text" name="kw" value="{if $kw}{$kw}{else}输入关键词{/if}" size="15" id="kw" class="inp" onfocus="if(this.value=='输入关键词')this.value='';"/>
+<div style="padding:10px 0 0 0;">
+<select name="file">
+{if $menu_show[0]}<option value="newhouse"{if $file=='newhouse'} selected{/if}>{$menu_name[0]}</option>{/if}
+{if $menu_show[1]}<option value="sale"{if $file=='sale'} selected{/if}>{$menu_name[1]}</option>{/if}
+{if $menu_show[2]}<option value="rent"{if $file=='rent'} selected{/if}>{$menu_name[2]}</option>{/if}
+{if $menu_show[3]}<option value="agency"{if $file=='agency'} selected{/if}>{$menu_name[3]}</option>{/if}
+{if $menu_show[4]}<option value="news"{if $file=='news'} selected{/if}>{$menu_name[4]}</option>{/if}
+
+{if $menu_show[5]}<option value="honor"{if $file=='honor'} selected{/if}>{$menu_name[5]}</option>{/if}
+{if $menu_show[6]}<option value="job"{if $file=='job'} selected{/if}>{$menu_name[6]}</option>{/if}
+{if $menu_show[7]}<option value="contact"{if $file=='contact'} selected{/if}>{$menu_name[7]}</option>{/if}
+{if $menu_show[8]}<option value="photo"{if $file=='photo'} selected{/if}>{$menu_name[8]}</option>{/if}
+{if $menu_show[9]}<option value="video"{if $file=='video'} selected{/if}>{$menu_name[9]}</option>{/if}
+</select>&nbsp;
+<input type="submit" value=" 搜 索 " class="sbm"/>
+</div>
+</form>
+</div>

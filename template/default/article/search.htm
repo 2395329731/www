@@ -1,0 +1,64 @@
+{template 'header'}	
+<link href="{AJ_SKIN}article.css" rel="stylesheet" type="text/css"/>
+<div class="mt5"></div>
+<div id="main" class="cf news_main">
+		<h2 class="breadCrumb cf">
+		<p class="fl"><i></i><a href="{$MODULE[1][linkurl]}">首页</a>
+                            <span>>></span><a href="{$MOD[linkurl]}">{$MOD[name]}</a>
+                            <span>>></span>{cat_pos($CAT, ' &raquo; ')}
+                    </p>
+	
+	</h2>
+	<div id="main_left" class="fl">
+    {if $tags}
+	{template 'list-cat', 'tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+                  
+         
+	</div>
+			<div id="main_right" class="fl">
+         {if $MOD[page_lrecimg]}
+		<div class="right_list">
+    <h2><span>推荐图文</span><a href="{$MODULE[8][linkurl]}" target="_blank">更多..</a></h2>
+    <ul class="zt_list">   <!--{php $tags=tag("moduleid=$moduleid&length=20&condition=status=3 and level=3 and thumb!=''&catid=$catid&pagesize=".$MOD[page_lrecimg]."&order=".$MOD[order]."&width=100&height=60&target=_blank&template=null");}-->
+	{loop $tags $k $t}
+                         <li><a class="cf"  href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">
+					 <img class="fl" src="{imgurl($t[thumb])}" width="100" height="60" alt="{$t[alt]}" >
+                    <div class="fl txt"><p class="fl txt">{$t[title]}</p></div>
+                </a>
+            </li>{/loop}
+            </ul>
+</div> {/if}
+		<div class="right_list">
+    <h2><span>最新资讯</span></h2>
+    <ul class="zx_list">
+   <!--{php $tags=tag("moduleid=$moduleid&condition=status=3&catid=$catid&length=42&&order=addtime desc&pagesize=10&target=_blank&template=null");}-->
+	{loop $tags $k $t}
+		
+        	               <li class="li{$k+1}"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+						   {/loop}
+              
+            </ul>
+</div>
+		<div class="right_list">
+    <h2><span>热点楼盘</span><a href="{$MODULE[6][linkurl]}list.html"  title="热点楼盘" target="_blank">更多..</a></h2>
+    <ul class="zt_list">   <!--{php $tags=tag("moduleid=6&condition=status=3 and isnew=1 &areaid=$cityid&length=12&pagesize=6&order=hits desc&template=null");}-->
+								{loop $tags $k $t}
+                    <li class="cf">
+              <a  href="{$t[linkurl]}" title="{$t[titlle]}" target="_blank"><img  class="fl" src="{imgurl($t[thumb])}" width="100" height="60" alt="{$t[alt]}" ></a>
+                <div class="fl txt_div">
+                   <a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><h4>{$t[title]}</h4></a>
+                    <p>均价：{if $t[price]}{$t[price]}元{else}待定{/if} </p>
+                    <p>{area_pos($t[areaid], ' ')}</p>
+                </div>
+            </li>
+                    {/loop}
+            </ul>
+</div>
+
+        	</div></div>
+
+
+{template 'footer'}	

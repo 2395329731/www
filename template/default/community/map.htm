@@ -1,0 +1,104 @@
+{template 'header'}
+<link href="{AJ_SKIN}xiaoqu.css" rel="stylesheet" type="text/css"/>
+<div id="main">
+<div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a>&gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&nbsp;&gt;{$title}</div>
+<div class="Atitle">
+	<h1>{$title}</h1>
+	<div class="subNav cf">
+		<ul class="cf">
+			<li><a  href="{$linkurl}">小区概况</a></li>
+            <li><a  href="{$linkurl}price.html">价格走势</a></li>
+            <li><a   href="{$linkurl}sale.html">二手房</a></li>
+            <li><a  href="{$linkurl}rent.html">租房</a></li>
+            <li><a class="on"  href="{$linkurl}map.html">周边地图</a></li>
+           
+		</ul>
+	</div>
+</div>		
+		<!--地图-->		
+		<div class="mt20">
+			<p class="address cf">
+				楼盘地址：{$address}			</p>
+						<div class="mapicon cf" id="mapicon">
+				<p class="lp" name="house">楼盘</p>
+				<p class="gj" name="">公交</p>
+				<p class="cy" name="">餐饮</p>
+				<p class="yh" name="">银行</p>
+				<p class="xx" name="">学校</p>
+				<p class="yy" name="">医院</p>
+				<p class="jyz" name="">加油站</p>
+				<a href="#" target="_blank" class="seeB" style="margin-left:199px">在大地图上查看</a>
+				<span class="reset" id="resetSearch">重置地图</span>
+				<span class="print" onclick="window.print();">打印本页</span>
+			</div>
+			<div class="border cf mapindex">
+				<div id="map" class="fl" style="width:950px;height:435px;"></div>
+				<div class="fr maplist" id="map_traffic_search_box">
+	                <dl>
+	                    <dt><a href="{$linkurl}" target="_blank">{$title}</a></dt>
+	                    <dd>{$address}</dd>
+	                </dl>
+	                	                <h4 name="type">楼盘</h4>
+	                <ul name="result_list">
+	                </ul>
+	            </div>
+			</div>
+		</div>
+
+<!--小区概括-->
+		<div class="xqo_jieshao">
+			<h3>生活配套</h3>
+			<div class="xqoj_txt">
+				<dl>
+					<dd>中小学：{$lp_edu}
+医院：{$lp_hospital}
+银行：{$lp_bank}
+其他：停车位：{$lp_car} </dd>
+				</dl>
+			</div>
+		</div>
+		<div class="bottom-link">
+			<dl class="cf">
+				<dt>附近小区</dt>
+				<dd class="cf"><!--{php $tags=tag("moduleid=18&condition=status=3&areaid=$areaid&length=22&pagesize=5&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}	<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a>
+ {/loop}
+														</dd>
+			</dl>
+		</div>	</div>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=A0d7a1091e5b98f5430228d016ee0ac7"></script>
+<script type="text/javascript">
+seajs.use(["jquery","alert","snail-baiduaround"],function($,alertM,snail){
+	snail.setURL("{$MODULE[6][linkurl]}");
+	snail.drawMap(parseFloat("{$x}"),parseFloat("{$y}"),"{$title}","map");
+	snail.setH(true);
+	snail.getMaps();
+	$('#mapicon p').click(function(){
+		snail.setKEY($(this).text());
+		if($(this).attr('name') == 'house'){
+			snail.setH(true);
+		}else{
+			snail.setH(false);
+		}
+		snail.getMaps();
+	})
+	$("#resetSearch").click(function(){
+		snail.setH(true);
+		snail.getMaps();
+	})
+})
+</script>
+<script type="text/javascript">
+seajs.use(["jquery","superm"],function($,sm){
+	sm.start([
+		{
+			name:"share"
+		}
+
+	]);
+	$("#subhouse").click(function(){
+		sm.open("sub",{t:this,type:''})
+	})
+})
+</script>
+{template 'footer'}

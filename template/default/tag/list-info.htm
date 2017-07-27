@@ -1,0 +1,13 @@
+{loop $tags $k $t}
+  <table align="center" border="0" cellpadding="0" cellspacing="0" class="tlb hb">
+        <tbody><tr onMouseOver="this.style.background='#FFFFCC'" onMouseOut="this.style.background='#fff'">
+          <td class="a"><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></td>
+          <td class="b">{area_pos($t[areaid], '', 1)}</td>
+  <td class="c">{search_cats($t[catid], '13')}</td>
+          <td class="g">{timetodate($t[edittime], $datetype)}</td>
+        </tr>
+        
+      </tbody></table>
+
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

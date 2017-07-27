@@ -1,0 +1,572 @@
+.fabu_font {
+	font-size: 18px;
+	font-family: \5FAE\8F6F\96C5\9ED1, \5b8b\4f53, sans-serif;
+	line-height: 34px;
+	color: #333;
+}
+.title {
+	border-bottom: 1px #eee solid;
+}
+h1 {
+	position: relative;
+	width: 720px;
+	height: 72px;
+	line-height: 72px;
+	margin: 0 auto;
+	padding: 20px 0 0 210px;
+	_zoom: 1;
+}
+ h3 {margin-bottom:20px;color:#526b38;font-size:24px;font-family:"Microsoft YaHei";}
+h1 a, h1 img {
+	display: block;
+	width: 190px;
+	height: 47px;
+}
+h1 a {
+	position: absolute;
+	top: 24px;
+	left: 0;
+}
+.banner {
+	position: relative;
+	height: 27px;
+	border-bottom: 1px #daeac8 solid;
+	margin: 36px 0 66px 0;
+	text-align: center;
+}
+.banner img {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 410px;
+	height: 34px;
+	margin: 0 0 0 -210px;
+}
+.banner span {
+	display: block;
+	position: absolute;
+	top: 36px;
+	left: 0;
+	width: 100%;
+	height: 32px;
+	line-height: 32px;
+}
+.show {
+	position: relative;
+	background: #fff url(images/fabu/show.jpg) no-repeat 50% 0;
+	overflow: hidden;
+}
+.shadow_up, .shadow_down {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 6px;
+	overflow: hidden;
+	z-index: 9;
+	background: transparent;
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .16) 0%, rgba(255, 255, 255, 0) 100%);
+	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, .16) 0%, rgba(255, 255, 255, 0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30000000', endColorstr='#00ffffff', GradientType=0 );
+}
+.shadow_down {
+	top: auto;
+	bottom: 0;
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .16) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .16) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#30000000', GradientType=0 );
+}
+.main {
+	position: relative;
+	width: 1000px;
+	height: 448px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#page1, #page2 {
+	position: absolute;
+	top: 40px;
+	left: 0;
+	width: 1000px;
+}
+#page2 {
+	display: block;
+	left: 1000px;
+}
+#hide_form {
+	display: none
+}
+.page_form, .page_form ul {
+	width: 450px;
+	margin: 0 auto;
+}
+.page_form li {
+	position: relative;
+	padding: 0 0 0 140px;
+	margin: 0 0 12px 0;
+	height: 36px;
+	_zoom: 1;
+}
+.page_form .lab {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 132px;
+	text-align: right;
+	line-height: 32px;
+}
+.page_form span.gray9 {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	font-size: 12px;
+	vertical-align: middle;
+}
+.page_form .pad_r_sp {
+	display: none;
+	position: absolute;
+	right: 48px;
+	top: 2px;
+	line-height: 32px;
+	font-size: 14px;
+	color: #999;
+	white-space: nowrap;
+}
+.page_form .pad_r_sp:hover {
+	color: #f80;
+}
+.page_form .ob {
+	font-size: 12px;
+	margin: 0 0 0 24px;
+}
+.page_form input {
+	width: 256px;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	border: 1px #666 solid;
+}
+.page_form input.s {
+	width: 50px;
+}
+.page_form input.n {
+	width: 120px;
+}
+.page_form input.pad_r {
+	width: 194px;
+	padding: 0 68px 0 6px;
+}
+.page_form input.pad_r2 {
+	width: 178px;
+	padding: 0 84px 0 6px;
+}
+.page_form input.radio, .big_form input.radio {
+	width: auto;
+	height: auto;
+	line-height: auto;
+	border: 0;
+}
+.page_form label {
+	margin: 0 24px 0 0;
+}
+.page_form label.lab_btn {
+	display: inline-block;
+	float: left;
+	position: relative;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px #666 solid;
+	background: #fff;
+	margin: 0 12px 0 0;
+	text-align: center;
+	overflow: hidden;
+}
+.page_form label input {
+	position: absolute;
+	top: -9em;
+	left: 0;
+}
+.page_form label.on {
+	border: 1px #f60 solid;
+	background: #fff url(images/fabu/checked.png) no-repeat 100% 100%;
+}
+.page_form select {
+	width: 120px;
+	margin: 0 25px 0 0;
+	border: 1px #666 solid;
+}
+#password_li, #mobile_code_li, #mobile_code_wait,#password_li2 {
+	display: none;
+}
+.buttons {
+	text-align: center;
+	padding: 24px 0;
+	clear: both;
+}
+.buttons a {
+	display: inline-block;
+	position: relative;
+	width: 181px;
+	height: 52px;
+	line-height: 48px;
+	text-align: center;
+	background: url(images/fabu/button.gif);
+	font-size: 24px;
+	color: #fff;
+	margin: 0 9px;
+}
+.buttons a:hover {
+	text-decoration: none;
+}
+.buttons button {
+	position: absolute;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+}
+#uf_map {
+	height: 420px;
+	margin: 0 0 9px 0;
+}
+#add_form input {
+	width: 240px;
+	height: 24px;
+	line-height: 24px;
+	margin: 0 9px 0 0;
+}
+#add_form  .xiaoqu {
+	width: 80px;
+	height: 24px;
+	line-height: 24px;
+	margin: 0 9px 0 0;
+}
+#add_form input.error {
+	border: 1px #f80 solid;
+}
+#add_form input.radio {
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	overflow: hidden;
+	border: 0;
+	margin: 0 4px 0 0;
+}
+#add_form input.s {
+	width: 48px;
+	margin: 0 4px;
+}
+#add_form label {
+	margin: 0 36px 0 0;
+}
+#add_form p {
+	font-size: 12px;
+	margin: 0 0 9px 0;
+}
+#fp1, #fp2, #fp3 {
+	display: none;
+	line-height: 36px;
+	margin: 0 24px 0 0;
+}
+#fp1 {
+	display: inline-block;
+}
+#re_back {
+	display: inline-block;
+	margin: 24px;
+	font-size: 12px;
+	color: #F80;
+}
+#change {
+	display: block;
+	position: absolute;
+	right: 16px;
+	top: 12px;
+	width: 61px;
+	height: 25px;
+	line-height: 25px;
+	background: url(images/fabu/change.gif);
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+}
+.jjr_list {
+	margin: 12px 0 0 0;
+}
+.jjr_list li {
+	float: left;
+	position: relative;
+	width: 150px;
+	height: 135px;
+	padding: 0 0 0 150px;
+	border: 1px #ddd solid;
+	overflow: hidden;
+	background: #fff;
+	line-height: 20px;
+	margin: 6px 8px;
+	cursor: pointer;
+	_zoom: 1;
+	_display: inline;
+}
+.jjr_list li.on {
+	border: 1px #f60 solid;
+	background: #fff url(images/fabu/checked.png) no-repeat 100% 100%;
+}
+.jjr_list .jjr_avatar, .jjr_list .jjr_avatar img {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 135px;
+	height: 135px;
+}
+.jjr_list h5 a {
+	display: inline-block;
+	position: relative;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: bold;
+	height: 36px;
+	overflow: hidden;
+	padding: 0 18px 0 0;
+	margin: 0 4px 0 0;
+}
+.jjr_list h5 img{
+	position: absolute;
+	top: 9px;
+	right: 0;
+}
+.jjr_list p {
+	font-size: 14px;
+}
+.jjr_list img {
+	vertical-align: middle;
+}
+.jjr_list input {
+	position: absolute;
+	top: 400px;
+	left: 0;
+}
+.big_form {
+	display: block;
+	width: 680px;
+	margin: 0 auto;
+}
+.big_form h4 {
+	font-size: 18px;
+	color: #6a863d;
+	border-bottom: 1px #a1ce6f dashed;
+	margin: 20px 0;
+}
+.big_form ul {
+	margin: 0 90px;
+}
+.big_form li {
+	font-size: 14px;
+	min-height: 26px;
+	line-height: 26px;
+	_height: 26px;
+	margin: 16px 0;
+}
+.big_form li.ptr {
+	position: relative;
+	padding: 0 0 0 78px;
+}
+.big_form .lab {
+	position: absolute;
+	width: 72px;
+	top: 0;
+	left: 0;
+}
+.big_form .info span {
+	margin: 0 24px 0 0;
+}
+.big_form span.gray9 {
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	font-size: 12px;
+	vertical-align: middle;
+}
+.big_form p.gray9 {
+	line-height: 24px;
+	margin: 9px 0;
+	font-size: 12px
+}
+sub.dt {
+	height: 20px;
+	width: 34px;
+	display: inline-block;
+	background: url(images/xinfang/tag_icon.gif) no-repeat 0px -237px;
+	margin: 0 4px -4px 4px;
+}
+.big_form input, .big_form select {
+	width: 120px;
+	height: 24px;
+	line-height: 24px;
+	margin: 0 4px;
+	vertical-align: middle;
+}
+.big_form input.s {
+	width: 76px;
+}
+.big_form input.tl {
+	width: 360px;
+}
+.big_form input.radio {
+	margin: 0 2px 0 0;
+	padding: 0;
+}
+.big_form label {
+	display: inline-block;
+	min-width: 48px;
+	_width: 48px;
+	white-space: nowrap;
+	margin: 0 8px 0 0;
+	vertical-align: middle;
+}
+.big_form select {
+	width: 88px;
+	box-sizing: content-box;
+}
+.upbtn {
+	display: inline-block;
+	position: relative;
+	width: 120px;
+	height: 34px;
+	overflow: hidden;
+	background: url(images/user_new/upload.png) no-repeat 0 0;
+	vertical-align: middle;
+}
+.upbtn input {
+	position: absolute;
+	right: -9px;
+	top: 0;
+	z-index: 0;
+	font-size: 99px;
+	height: 99em;
+	width: 99em;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+#uplist {
+	margin: 0 0 12px 0;
+}
+#uplist input {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+	margin: 0 2px;
+	border: 0
+}
+#uplist div {
+	float: left;
+	_display: inline;
+	width: 124px;
+	border: 1px #ddd solid;
+	padding: 2px;
+	margin: 0 6px 12px 0
+}
+#uplist div.on {
+	border: 1px #f00 solid;
+	background: #f99
+}
+#uplist img {
+	display: block;
+	width: 124px;
+	height: 93px
+}
+#uplist span {
+	display: block;
+	margin: 2px 0 0 0;
+	background: #f3f3f3;
+	padding: 0 4px
+}
+#uplist label {
+	padding: 0 9px 0 0;
+	margin: 0;
+	width: auto;
+	min-width: 0
+}
+#uplist a {
+	display: inline-block;
+	margin: 0 2px;
+	width: 11px;
+	height: 12px;
+	vertical-align: middle;
+	background: url(images/user_jjr/icon39.gif) no-repeat;
+	overflow: hidden
+}
+#uplist a.gor {
+	background-position: 0 -44px
+}
+#uplist a.gor:hover {
+	background-position: 0 -66px
+}
+#uplist a.del {
+	background-position: 0 -88px
+}
+#uplist a.del:hover {
+	background-position: 0 -111px
+}
+#uplist a:hover {
+	background-position: 0 -22px
+}
+.big_form .edui-default .edui-editor {
+	width: 400px;
+}
+.on .edui-editor {
+	background: url(images/user_new/editorbg.png) no-repeat 16px 48px;
+}
+#selected_jjr{
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+#selected_jjr span{
+	display: inline-block;
+	position: relative;
+	height: 24px;
+	line-height: 24px;
+	width: 64px;
+	text-align: center;
+	overflow: hidden;
+	padding: 0 26px 0 9px;
+	margin: 0 6px;
+	color: #999;
+	border: 1px #CECECE solid;
+	border-radius: 2px;
+	font-size: 14px;
+	_zoom:1;
+}
+#selected_jjr span a{
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 24px;
+	height: 24px;
+	background: url(images/esf/icons.gif) 4px 6px;
+}
+#password_li2{
+	font-size: 12px;
+	margin: 0;
+	color: #999;
+}
+/* Success */
+.icon, .arrow, .close, .ico-upload {display:inline-block;*display:inline;*zoom:1;width:14px;height:14px;vertical-align:middle;background:url(images/fabu/sprites4.png) 0 -100px no-repeat;}
+.ico-suc {background-position:-20px -100px;}
+.suc-status { height: 290px; padding: 140px 0 0 275px; }
+.suc-status .create-user { margin: 0 25px 0 -150px; padding: 15px 0 20px 55px; border-bottom: 1px dashed #e8e8e8; }
+.suc-status .create-user .icon { margin-right: 10px; }
+.suc-status h3 { margin: 0 0 4px; font-size: 28px; font-family: "STHeiti","Microsoft YaHei",SimSun;;letter-spacing: -1px; }
+.suc-status .ico-suc { display: inline-block;*zoom:1;margin:0 20px 0 0 ;width: 64px; height: 50px; background-position: 0 -50px; }
+.suc-status p { line-height: 32px; font-size: 14px; }
+.suc-status .turn-out { color: #999; font-size: 12px; }
+.suc-status .reword { color: #f00; margin-bottom: 15px; font-size: 14px; }
+.newStatus p{
+	text-indent: 85px;
+}
+.newStatus .balck_h{
+    color: #333;
+}

@@ -1,0 +1,6 @@
+{if in_array($moduleid, explode(',', get_module_setting(3, 'comment_module')))}
+ <div  id="Comment"  style="display:;">
+	
+	<script type="text/javascript">show_commentlp('{$MODULE[3][linkurl]}', {$moduleid}, {$itemid});</script>
+	</div>	
+{/if}

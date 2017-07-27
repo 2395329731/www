@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+<title>租房地图找房-{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{/if}</title>
+	{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+    <link href="{AJ_SKIN}reset.css" rel="stylesheet" type="text/css" />
+    <link href="{AJ_SKIN}map.css" rel="stylesheet" type="text/css" />
+	<script src="{AJ_SKIN}js/sea.js" type="text/javascript"></script>	
+  <script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>
+</head>
+
+<body>
+	<div id="header">
+	
+	<div id="top_bar">
+	<div class="cf wrap">
+		<div class="fl" id="aijiacms_member">	</div>
+		<div class="fr">
+			<ul>
+            	<li class="home"><a class="a" href="{$MODULE[1][linkurl]}" title="首页">首页</a></li>
+			
+				<li class="phone"><a class="a" href="{$EXT[mobile_url]}mobile.php" target="_blank">手机版</a></li>
+                <li class="top_nav" ><a class="a" href="{$MODULE[1][linkurl]}map">地图找房</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+		<h1>
+			<a href="{$MODULE[1][linkurl]}" target="_blank">
+				<img src="{if $MODULE[$moduleid][logo]}{AJ_SKIN}image/logo_{$moduleid}.gif{elseif $AJ[logo]}{$AJ[logo]}{else}{AJ_SKIN}image/logo.gif{/if}" />
+			</a>
+		</h1>
+		<div id="sltype">
+							<b>租房</b>
+						<ul>
+				<li>
+					<a href="{$MODULE[1][linkurl]}map/house.html">新房</a>
+				</li>
+				                    <li>
+                        <a href="{$MODULE[1][linkurl]}map">二手房</a>
+                    </li>
+							</ul>
+		</div>
+		
+		<input id="keyword" value="输入名称或地标" type="hidden"/>
+		
+		<div id="select">
+			快速定位：
+			<ul>
+								  <li id="areaList"><span>区域</span><s></s><em></em>
+				  <div>
+					<a href="javascript:;" pid="0"  zoom="14">不限</a>
+                    
+                   
+						{loop $mainarea $k $v}
+											<a href="javascript:;" pid="{$v[areaid]}"  zoom="14">{$v[areaname]}</a>{/loop}
+											
+									  </div>
+								<li id="blockList"><span>商圈</span><s></s><em></em>
+					<div>
+						<p class="gray9">
+							请先选择区域
+						</p>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+					<a href="{$MODULE[5][linkurl]}list.html" class="switchList">列表视图</a>
+			</div>
+	<div id="content" class="cf">
+		<div id="shadow1"></div>
+		<div id="shadow2"></div>
+		<div id="lmenu">
+			                <ul class="cf" id="price">
+                    <li><b>均价：</b></li>
+                    <li><a href="javascript:;" fid="0">不限</a></li>
+                    {php $range_arr = getbox_name('range','rent_7')}
+					    {loop $range_arr $key $v}
+                                        	<li><a href="javascript:;" fid="{$key}">{$v}</a></li>
+                                        {/loop}
+                                    </ul>
+			                <ul class="cf" id="roomtype">
+                    <li><b>户型：</b></li>
+                    <li><a href="javascript:;" fid="0">不限</a></li>
+                                        	<li><a href="javascript:;" fid="1">一室</a></li>
+                                        	<li><a href="javascript:;" fid="2">二室</a></li>
+                                        	<li><a href="javascript:;" fid="3">三室</a></li>
+                                        	<li><a href="javascript:;" fid="4">四室</a></li>
+                                        	<li><a href="javascript:;" fid="5">其它</a></li>
+                                    </ul>
+						<ul class="cf">
+				<li><b>更多筛选：</b></li>
+			</ul>
+			<ul id="sidebarFilters">
+				<li id="filter_area" class="filterFit">
+					<span>面积</span>
+					<ul class="cf">
+						<li><a href="javascript:;" paramid="0">面积不限</a></li>
+                         {php $mianji = array('40平米以下', '40-60平米', '60-80平米', '80-100平米', '100-120平米', '120-150平米','150平米以上');}
+{loop $mianji $k $v} 
+													<li><a href="javascript:;" paramid="{$k+1}">{$v}</a></li>
+													 {/loop}
+											</ul>
+				</li>
+				<li id="filter_age" class="filterFit">
+					<span>建造年代</span>
+					<ul class="cf">
+						<li><a href="javascript:;" paramid="0">年代不限</a></li>
+													<li><a href="javascript:;" paramid="1">2000年以前</a></li>
+													<li><a href="javascript:;" paramid="2">2000年以后</a></li>
+													<li><a href="javascript:;" paramid="3">2005年以后</a></li>
+													<li><a href="javascript:;" paramid="4">2010年以后</a></li>
+											</ul>
+				</li>
+				<li id="filter_type" class="filterFit">
+					<span>类型</span>
+					<ul class="cf">
+						<li><a href="javascript:;" paramid="0">类型不限</a></li>
+                         {php $maincat = get_maincat(0,5)}
+{loop $maincat $k $v}<li><a href="javascript:;" paramid="{$v[catid]}">{$v[catname]}</a></li>
+             {/loop}
+												
+											</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="cmap">
+			<div id="map"></div>
+			<div id="aPanl">
+				<img src="{AJ_SKIN}images/map/alert-t.png">您目前的地图范围内没有房源，可能是因为您的地图比例尺过大，您可以<a href="javascript:" class="reZoom">缩放地图</a>或<a href="javascript:" class="reCenter">返回中心</a>
+			</div>
+		</div>
+		</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=41ecef6e7501997ca9bc50e982577c82"></script>
+<script type="text/javascript">
+seajs.use(["jquery", "alert", "bmap", "autoc"], function($, alertM, bmap) {
+	var lh = $("#lmenu").outerHeight(),
+		$w = $(window);
+	var $map = $("#map,#shadow2").height($w.height() - 105 > lh ? $w.height() - 105 : lh);
+	$w.on("resize", function() {
+		var h = $w.height() - 105;
+		$map.height(h > lh ? h : lh);
+	})
+	var $keyword = $("#keyword").autoC("{$MODULE[6][linkurl]}house.php?action=house");
+	$keyword.on("focus", function() {
+		if ($keyword.val() == "输入名称或地标") $keyword.val("");
+	}).on("blur", function() {
+		if ($keyword.val() == "") $keyword.val("输入名称或地标");
+	})
+	window.CSS_URL = '';
+	window.IMG_URL = '{AJ_SKIN}images/';
+	window.JS_URL = '';
+	window.ESF_URL = '{$MODULE[5][linkurl]}';
+	window.SITE_URL = '{$MODULE[1][linkurl]}';
+	window.RENT_URL = '{$MODULE[7][linkurl]}';
+	window.COMMUNITY_URL = '{$MODULE[18][linkurl]}';
+	window.searchType="zufang";
+	window.HOUSE_URL = '{$MODULE[6][linkurl]}';
+	window.center = {
+		 "lat":"<?php echo $lat;?>",
+		"lng":"<?php echo $lan;?>",
+		"zoom": 14
+	};
+	window.filter = {
+		'areaid': 0,
+		'circleid': 0,
+		"price": 0,
+		'roomtype': 0,
+		'area': 0,
+		'houseage': 0,
+		"project": 0,
+		'page': 1,
+		'areaorder': '',
+		'priceorder': '',
+		'keyword': ''
+	};
+	window.map = new BMap.Map("map", {
+		minZoom: 12
+	});
+	map.enableScrollWheelZoom();
+	var point = new BMap.Point(center.lng, center.lat);
+	map.centerAndZoom(point, center.zoom);
+	map.addControl(new BMap.NavigationControl());
+
+	map.addEventListener("dragend", function() {
+		bmap.getCurrentHouses('dragend');
+	});
+	map.addEventListener("zoomend", function() {
+		bmap.getCurrentHouses('zoomend');
+	});
+	//参数
+	window.params = document.location.hash.substring(1).toQueryParams();
+	bmap.initBmap(params);//初始化url参数
+	//初始化搜索条件样式
+	bmap.initSearchStyle(params);
+	$("#sellSchedule").on("click","input",function(){
+		var state=$(this).is(':checked');
+		bmap.colorCheck($(this).val()-0,state)
+	})
+	$("#sform").on("submit", function() {
+		if(params.keyword != $keyword.val()){
+			params.keyword = $keyword.val();
+			bmap.initSearchStyle(params);
+		}
+		return false;
+	})
+	$('#price a').click(function(){
+		params.f1 = $(this).attr('fid');
+		bmap.initSearchStyle(params);
+	})
+	$('#roomtype a').click(function(){
+		params.f2 = $(this).attr('fid');
+		bmap.initSearchStyle(params);
+	})
+	$("#select li").on("mouseover",function(){
+		$(this).addClass("on")
+	}).on("mouseout",function(){
+		$(this).removeClass("on")
+	}).find("s").each(function(){
+		$(this).width($(this).parent().outerWidth()-2)
+	})
+	$("#sidebarFilters li").on("mouseover",function(){
+		$(this).addClass("on")
+	}).on("mouseout",function(){
+		$(this).removeClass("on")
+	})
+	$('#filter_area a').click(function(){
+		params.f3 = $(this).attr('paramid');
+		bmap.initSearchStyle(params);
+	})
+	$('#filter_age a').click(function(){
+		params.f4 = $(this).attr('paramid');
+		bmap.initSearchStyle(params);
+	})
+	$('#filter_type a').click(function(){
+		params.f5 = $(this).attr('paramid');
+		bmap.initSearchStyle(params);
+	})
+
+	var $areaList=$('#areaList').on("click","a",function(){
+		var areaurl;
+		if(searchType == 'ershoufang'){
+			areaurl =  "{$MODULE[1][linkurl]}api/circle.php";
+		}else{
+			areaurl =  "{$MODULE[1][linkurl]}api/circle.php";
+		}
+		$areaList.find('span').html($(this).html());
+		$areaList.find('s').width($areaList.outerWidth()-2)
+		//获取板块
+		$.ajax({
+			type:'GET',
+			url: areaurl,
+			data:{'areaid':$(this).attr('pid')},
+			dataType:"html",
+			success:function(response){
+				if(response){
+					$blockList.html(response);
+				}else{
+					$blockList.html('<p class="gray9">请先选择区域</p>');
+				}
+			}
+		})
+		params.a1 = $(this).attr('pid');
+		params.a2 = 0;
+		params.l1 = $(this).attr('lat');
+		params.l2 = $(this).attr('lng');
+		params.l3 = $(this).attr('zoom');
+		params.keyword = '';
+		$keyword.val("输入名称或地标");
+		bmap.initSearchStyle(params);
+	})
+	var $blockList=$('#blockList').on('click',"a", function(){
+		params.a2 = $(this).attr('pid');
+		params.l1 = $(this).attr('lat');
+		params.l2 = $(this).attr('lng');
+		params.l3 = $(this).attr('zoom');
+		bmap.initSearchStyle(params);
+	}).find("div")
+	$('#recentList').on("click","a",function(){
+		params.keyword = $(this).text();
+		$('#keyword').val(params.keyword);
+		bmap.initSearchStyle(params);
+	})
+	$("#sltype").on("mouseover",function(){
+		$(this).addClass("on")
+	}).on("mouseout",function(){
+		$(this).removeClass("on")
+	})
+})
+</script>
+<script type="text/javascript">
+{if $aijiacms_task}
+show_task('{$aijiacms_task}');
+{else}
+{php include AJ_ROOT.'/api/task.inc.php';}
+{/if}
+
+</script>
+</body>
+</html>

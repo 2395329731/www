@@ -1,0 +1,15 @@
+
+	{if $member}		
+		{$member[truename]}({gender($member[gender])})&nbsp;{$member[career]}&nbsp;
+	{if $member[username] && $AJ[im_web]}{im_web($member[username].'&mid='.$moduleid.'&itemid='.$itemid)}&nbsp;{/if}
+	{if $member[qq] && $AJ[im_qq]}{im_qq($member[qq])}&nbsp;{/if}
+	
+	[{if online($member[userid])==1}<font class="f_red">在线</font>{else}<font class="f_gray">离线</font>{/if}] <a href="{$MODULE[2][linkurl]}friend.php?action=add&username={$member[username]}">[加为商友]</a> <a href="{$MODULE[2][linkurl]}message.php?action=send&touser={$member[username]}">[发送信件]</a>
+	{if $member[mail]}<span>邮件</span>{anti_spam($member[mail])}{/if}
+	
+	{if $member[mobile]}<span>手机</span>{anti_spam($member[mobile])}{if $AJ[sms] && $member[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($member[mobile])}" target="_blank"><img src="{AJ_SKIN}image/sendsms.gif" align="absmiddle" title="发送短信" alt=""/></a>{/if}{/if}
+
+
+						{else}
+	对不起,装修招标的联系方式仅限本站会员登录后查看,请 <a href="{$MODULE[2][linkurl]}login.php">登录</a> 或 <a href="{$MODULE[2][linkurl]}register.php">注册</a>{/if}
+		

@@ -1,0 +1,23 @@
+{template 'header'}
+{template 'menu', 'newhouse'}		<div class="bodyb">
+			<h3>
+				<span class="mod_tab fr">
+					<a href="{$linkurl}huxing.html" class="on">全部({$r['num']})</a>
+					{php $maincat = get_maincat(24,12)}
+			  {loop $maincat $k $v}{if get_categorynum($itemid,$v[catid])}<a class="{if $catids==$v[catid]}on{else}{/if}" href="{$linkurl}huxing-c{$v[catid]}.html">{$v[catname]}({get_categorynum($itemid,$v[catid])})</a>{/if}{/loop}
+																	
+															</span>
+				户型图
+			</h3>
+							<ul class="detail_glist cf">
+										<!--{loop $pic_lists $i $value}--> 	<li>
+							<a href="{$value[linkurl]}#id={$i+1}" target="_blank" class="b"><img src="{$value[thumb]}" title="{$value[title]} " alt="{$value[title]} " /></a>
+							{$value[introduce]}<br>	{if $value[mianji]}{$value[mianji]}平方米{/if}									</li>
+											{/loop}
+									</ul>
+									<div class="pagination">{$pages}</div>
+										
+		</div>
+	<div class="detail_shengming">免责声明：本网站所刊载的"新房"所有资料及图表仅供参考使用，不声明或保证其内容之正确性或可靠性。刊载这些文档不视为{$title}已取得商品房预售许可证或达到可以销售的标准，且不构成对任何楼盘的购买的邀约或意图。参阅本网站上所刊的文档的人士，应被视为已确认得悉上述立场。购房者依据本网站提供的信息、资料及图表进行房屋交易做造成的任何后果与本网站无关。本网站有权但无此义务，改善或更正资料及图表任何部分之错误或疏忽。以上信息仅供参考，所有信息以开发商提供为准！
+</div>
+{template 'footer'}

@@ -1,0 +1,78 @@
+{template 'header', $template}
+<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a>{if $itemid} &raquo; {$title}{/if}</div>
+{if $itemid}
+<div class="main_head"><div><strong>{$title}</strong></div></div>
+<div class="main_body">	
+		<table width="100%" align="center">
+		<tr>
+		<td width="270" valign="top">
+			<div class="album">
+				<table width="100%" cellpadding="0" cellspacing="0">
+				<tr align="center">
+				<td width="250" valign="top"><div><span id="abm" title="点击图片查看大图"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/></span></div></td>
+				</tr>
+				<tr>
+				<td>
+				{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}</td>
+				</tr>
+				<tr align="center">
+				<td height="30" onclick="PAlbum(Dd('DIMG'));"><img src="{AJ_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> 点击图片查看大图</td>
+				</tr>
+				</table>
+			</div>
+		</td>
+		<td valign="top">
+			<div id="imgshow" style="display:none;"></div>
+			<table width="100%" cellpadding="4" cellspacing="4">
+			<tr>
+			<td width="80" class="f_dblue">浏览次数：</td>
+			<td><span id="hits">{$hits}</span></td>
+			</tr>
+			<tr>
+			<td class="f_dblue">更新日期：</td>
+			<td>{$editdate}</td>
+			</tr>
+			<tr>
+			<td class="f_dblue">有效期至：</td>
+			<td>{if $todate}{$todate}{else}长期有效{/if}{if $expired} <span class="f_red">[已过期]</span>{/if}</td>
+			</tr>
+			</table>
+		</td>
+		</tr>
+		</table>
+	</div>
+
+
+
+	<div class="main_head"><div><strong>详细信息</strong></div></div>
+	<div class="main_body">
+		{if $CP}{template 'property', 'chip'}{/if}
+		<div class="content" id="content">{$content}</div>
+	</div>
+	{if $could_comment && in_array($moduleid, explode(',', get_module_setting(3, 'comment_module')))}
+	<div id="comment_div" style="display:;">
+		<div class="main_head"><div><span class="f_r px12">共<span id="comment_count">0</span>条&nbsp;&nbsp;</span><strong><span id="message_title">相关评论</span></strong></div></div>
+		<div class="main_body"><iframe src="{$MODULE[3][linkurl]}comment.php?mid={$moduleid}&itemid={$itemid}" id="aijiacms_comment" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+		</div>
+	</div>
+	{/if}
+{else}
+	<table cellpadding="5" cellspacing="1" width="100%" align="center">
+	<tr bgcolor="#F1F1F1">
+	<th width="100">图片</th>
+	<th>标 题</th>
+	<th width="110">更新时间</th>
+	</tr>
+	{loop $lists $k $v}
+	<tr align="center"{if $k%2==1} bgcolor="#FBFBFB"{/if}>
+	<td height="100"><a href="{$v[linkurl]}"><img src="{imgurl($v[thumb], 1)}" width="80" height="80" alt="" style="border:#C0C0C0 1px solid;"/></a></td>
+	<td align="left" class="lh18" valign="top"><a href="{$v[linkurl]}" class="px13">{$v[title]}</a><br/><span class="f_gray">{$v[introduce]}</span>
+	</td>
+	<td>{timetodate($v[edittime], 3)}</td>
+	</tr>
+	{/loop}
+	</table>
+	<div class="pages">{$pages}</div>
+{/if}
+</div>
+{template 'footer', $template}

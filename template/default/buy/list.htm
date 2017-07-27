@@ -1,0 +1,201 @@
+	{template 'header'}
+
+	<div id="main">	
+	<div class="bread">您当前的位置：：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a> &gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a> &gt;求购房源列表
+		</div>
+		<div class="hslist" id="hslist">
+	
+						<div class="hs_b">
+				 <div class="cf">
+                    <span>区域：</span>
+                    <p id="hs_area">
+                        <a href="javascript:" class="hs_hide"><u class="hs_mo">更多</u><u class="hs_le">收起</u></a>
+                       <a {if empty($areaid)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'r')}.html">全部</a>
+                                                       	{loop $mainarea $k $v}<a {if $areaid==$v[areaid]}class="c"{/if} href="{$MOD[linkurl]}list-r{$v[areaid]}{deal_str($lst,'r')}.html">{$v[areaname]}</a>{/loop}	
+                                                </p>
+                                    </div>
+			<div class="cf">
+				
+						<span>面积：</span>
+						<p>
+						    <a {if empty($area)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'c')}.html">全部</a>
+                                                             {php $mianji = array('40平米以下', '40-60平米', '60-80平米', '80-100平米', '100-120平米', '120-150平米','150平米以上');}
+{loop $mianji $k $v} 
+							   	               <a {if $area==($k+1)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'c')}-c{$k+1}.html">{$v}</a>
+											   {/loop}  </p>
+											 
+			  	</div>
+		<div class="cf">
+					<span>户型：</span>
+					<p>
+                      	<a {if empty($hu)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'x')}.html">全部</a>
+				{php $huxing = array('一室', '二室', '三室', '四室', '五室以上');}
+{loop $huxing $k $v} <a {if $hu==($k+1)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'x')}-x{$k+1}.html">{$v}</a>{/loop}
+                            					</p>
+				</div>
+			<div class="cf">
+			<span >类型：</span>
+			<p>
+				<a {if empty($catid)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'t')}.html">不限</a>
+				 {php $maincat = get_maincat(0,16)}
+{loop $maincat $k $v}<a  {if $catid==$v[catid]}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'t')}-t{$v[catid]}.html">{$v[catname]}</a>{/loop}
+			</p>
+		</div>	
+	
+	</div>
+</div>			<div class="cf">
+			<div class="hlist_fl">
+				<h2>
+					<span class="hl_page">
+						共为您找到 <b class="red">{$items}</b> 个信息<a class="pre" href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==1}1{else}{$page-1}{/if}.html"></a>{$page}						<a class="next" href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==$total}{$total}{else}{$page+1}{/if}.html">下一页</a>					</span>
+					<span class="modTab">
+					<a {if empty($source)} class="on"{/if} href="list.html" >全部</a>
+	                 {loop $TYPE $k $v} 
+							<a  {if $source==($k+1)}class="on"{/if}  href="{$MOD[linkurl]}list{deal_str($lst,'u')}-u{$k+1}.html">{$v}</a>{/loop}
+	                	
+					
+					</span>
+				</h2>
+				<div class="hlist_sort">
+					<div class="cf">
+						<div class="fr ">
+							<div class="hs_mlist" style="float:right" id="h_s2">发布时间								<ul>
+								
+                                     <li>  <a href="{$MOD[linkurl]}list{deal_str($lst,'o')}.html"  {if empty($opentime)} class="c" {/if}>不限</a> </li>
+					<li><a href="{$MOD[linkurl]}list{deal_str($lst,'o')}-o3.html" {if $opentime=="3"} class="c" {/if} >3天内发布</a></li>
+					<li><a href="{$MOD[linkurl]}list{deal_str($lst,'o')}-o7.html" {if $opentime=="7"}  class="c" {/if}>7天内发布</a></li>
+					<li><a href="{$MOD[linkurl]}list{deal_str($lst,'o')}-o15.html" {if $opentime=="15"}  class="c" {/if}>15天内发布</a></li>
+					<li><a href="{$MOD[linkurl]}list{deal_str($lst,'o')}-o30.html" {if $opentime=="30"}  class="c" {/if}>30天内发布</a></li>
+                                                                           
+                                        									
+								</ul>
+							</div>
+						</div>
+						<div class="hs_mlist" id="h_s1">默认排序							<ul>
+                             <li>
+								<a href="list{deal_str($lst,'n')}-n2.html" >面积从大到小</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n3.html" >面积从小到大</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n4.html" >价格从高到低</a>
+							</li>
+							<li>
+								<a href="list{deal_str($lst,'n')}-n5.html" >价格从低到高</a>
+							</li>
+							</ul>
+						</div>
+						<a href="{if $ord==2}list{deal_str($lst,'n')}-n3.html{else}list{deal_str($lst,'n')}-n2.html{/if}"  class="A1 {if $ord==2}down{/if}{if $ord==3}up{/if}">面积</a>
+						<a href="{if $ord==4}list{deal_str($lst,'n')}-n5.html{else}list{deal_str($lst,'n')}-n4.html{/if}"  class="A1 {if $ord==4}down{/if}{if $ord==5}up{/if}">价格</a>
+					
+					</div>
+					
+				</div>
+			             {if $page == 1}{load('ad_m'.$moduleid.'_c'.$catid.'.htm')}{/if}
+		{if $tags}{template 'list-'.$module, 'tag'}
+		{else}
+	
+		{template 'noresult', 'message'}
+	
+		{/if}
+									</div>
+											
+											<div class="hlist_fr">
+				<div class="hlist_btn cf">
+					<a href="{$MODULE[2][linkurl]}my.php?mid=7&action=add" class="obtn fl" target="_blank"><i class="edit"></i>发布出售</a>
+					<a href="{$MODULE[2][linkurl]}" class="obtn fr" target="_blank"><i class="bag"></i>管理房源</a>
+				</div>
+				
+				<div class="lista">
+					<h4><a href="{$MODULE[1][linkurl]}broken/" target="_blank" class="more">更多&gt;&gt;</a>经纪人排行</h4>
+                     
+                        <ul class="jjrl">
+						<!--{tag("table=member&condition=groupid=6&areaid=$cityid&order=userid desc&pagesize=10&template=sale-jjr")}-->
+                                           
+                                                    </ul>
+                    				</div>     
+</div>	
+		</div>
+		</div>
+		<script>
+seajs.use(["pk","autofh","autoc","autab","cookie"],function(pk){
+	pk({
+		elm:"#hlist a.hlist_db",
+		hlength:4,
+		url:"{$MOD[linkurl]}pk/",
+		type:"房源"
+	})
+	$("#hname").autoC("{$MODULE[6][linkurl]}house.php?action=xiaoqu");
+	$("#hota").autab("h2 span a","ul")
+	$("#hs_more div").add("#h_s1,#h_s2").on({
+		mouseenter:function(){
+			$(this).find("ul").show()
+		},
+		mouseleave:function(){
+			$(this).find("ul").hide()
+		}
+	})
+	$("#hslist em.autoF").autofh()
+	//$("#hslist").find("form").autofh()
+	$("#hlist").on("mouseenter","li",function(){
+		$(this).addClass('on')
+	}).on("mouseleave","li",function(){
+		$(this).removeClass('on')
+	}).on("click","li",function(){
+		$(this).find("h3 a")[0].click();
+	}).on("click","a",function(e){
+		e.stopPropagation();
+	}).find("li").each(function(i){
+		if(i%3==2)
+			$(this).css("border-right","0")
+	}).last().css("border-right","0")
+	var $hotarea=$("#hotarea")
+	$hotarea.on("mouseover","dt",function(){
+		$hotarea.find("dd").hide().end().find("dt").removeClass("s");
+		$(this).addClass("s").next().show();
+	})
+	var $hs_area=$("#hs_area").on("click",".hs_hide",function(){
+		if($.cookie("hs_hide")){
+			$hs_area.removeClass("on")
+			$.cookie("hs_hide","")
+		}else{
+			$hs_area.addClass("on")
+			$.cookie("hs_hide",1)
+		}
+	})
+	if($hs_area.height()>32){
+		$hs_area.addClass("hs_hidep").find(".hs_hide").css("display","inline-block")
+	}
+	if($.cookie("hs_hide")){
+		$hs_area.addClass("on")
+	}
+	$("#pics_result").on("change",function(){
+		var h=window.location.href;
+		if($(this).prop("checked")&&h.indexOf("v4")<0){
+			h=h.split(".htm")
+			setTimeout(function() {
+			window.location.href = h[0]+"-v4.html";
+			}, 99)
+		}else if(!$(this).prop("checked")&&h.indexOf("v4")>0){
+			h=h.split("-v4")
+			setTimeout(function() {
+			window.location.href = h[0]+h[1];
+			}, 99)
+		}
+	})
+	$("#B1").click(function(){
+		$.cookie("esf_list","3");
+		window.location.reload();
+	})
+	$("#B2").click(function(){
+		$.cookie("esf_list","1");
+		window.location.reload();
+	})
+	$("#B3").click(function(){
+		$.cookie("esf_list","2");
+		window.location.reload();
+	})
+});
+</script>
+{template 'footer'}

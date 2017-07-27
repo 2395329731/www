@@ -1,0 +1,52 @@
+{template 'header', 'member'}
+<script type="text/javascript">c(3);</script>
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="Tab0"><a href="javascript:Tab(0);"><span>常用设置</span></a></td>
+</tr>
+</table>
+</div>
+<form method="post" action="home.php" id="dform">
+
+
+<div id="Tabs1" >
+<table cellspacing="1" cellpadding="6" class="tbs">
+<tr>
+<td class="tl">首页SEO标题</td>
+<td class="tr f_gray"><input type="text" size="60" name="setting[seo_title]" value="{$seo_title}"/>&nbsp; 留空则显示公司名称</td>
+</tr>
+<tr>
+<td class="tl">网站关键词</td>
+<td class="tr"><input type="text" size="80" name="setting[seo_keywords]" value="{$seo_keywords}"/></td>
+</tr>
+<tr>
+<td class="tl">网站描述</td>
+<td class="tr"><input type="text" size="80" name="setting[seo_description]" value="{$seo_description}"/></td>
+</tr>
+
+{if $api_stats && $MG[stats]}
+{php include AJ_ROOT.'/api/stats/'.$api_stats.'/post.inc.php';}
+{/if}
+{if $api_kf && $MG[kf]}
+{php include AJ_ROOT.'/api/kf/'.$api_kf.'/post.inc.php';}
+{/if}
+
+</div>
+
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" 保 存 " class="sBtn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value=" 恢复默认 " class="sBtn" onclick="if(confirm('确定要恢复默认设置吗？商铺所有设置将被清空')){this.form.action='home.php?reset=1';}else{return false;}"/></td>
+</tr>
+</table>
+</form>
+{load('clear.js')}
+<script type="text/javascript">
+s('homepage');
+{if $tab}
+Tab({$tab});
+{else}
+m('Tab0');
+{/if}
+</script>
+{template 'footer', 'member'}

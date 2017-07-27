@@ -1,0 +1,52 @@
+ErrorDocument 404 /404.php
+RewriteEngine On
+RewriteBase /
+RewriteRule ^(.*)\.(asp|aspx|asa|asax|dll|jsp|cgi|fcgi|pl)(.*)$ /404.php
+RewriteRule ^(.*)/file/(.*)\.php(.*)$ /404.php
+RewriteRule ^(.*)-htm-(.*)$ $1.php?$2
+RewriteRule ^(.*)/show-([0-9]+)([\-])?([0-9]+)?\.html$ $1/show.php?itemid=$2&page=$4
+RewriteRule ^(.*)/list-([0-9]+)([\-])?([0-9]+)?\.html$ $1/list.php?catid=$2&page=$4
+RewriteRule ^(.*)/show/([0-9]+)/([0-9]+)?([/])?$ $1/show.php?itemid=$2&page=$3
+RewriteRule ^(.*)/list/([0-9]+)/([0-9]+)?([/])?$ $1/list.php?catid=$2&page=$3
+RewriteRule ^(.*)/([A-za-z0-9_\-]+)-c([0-9]+)-([0-9]+)\.html$ $1/list.php?catid=$3&page=$4
+RewriteRule ^(.*)/([a-z]+)/(.*)\.shtml$ $1/$2/index.php?rewrite=$3
+RewriteRule ^(com)/([a-z0-9_\-]+)/([a-z]+)/(.*)\.html$ index.php?homepage=$2&file=$3&rewrite=$4
+RewriteRule ^(com)/([a-z0-9_\-]+)/([a-z]+)([/])?$ index.php?homepage=$2&file=$3
+RewriteRule ^(com)/([a-z0-9_\-]+)([/])?$ index.php?homepage=$2
+RewriteRule ^(house)/list-(r|b|t|p|f|l|o|h|n|g|j|e)([0-9A-Z_]+).html?$	$1/list.php?&$2=$3 [L]
+RewriteRule ^(house)/list-r([0-9]+)-t([0-9]+)-p([0-9]+)-k(.*).html?$	$1/list.php?&r=$2&t=$3&p=$4&k=$5 [L]
+RewriteRule ^(house)/map.html?$	map/newhouse.php [L]
+RewriteRule ^(house)/([0-9]+)/?$ $1/show.php?&at=$3&itemid=$2 [L]
+RewriteRule ^(house)/([0-9]+)/index.html?$ $1/show.php?&at=$3&itemid=$2 [L]
+RewriteRule ^(house)/([0-9]+)/wenfang-g([0-9]+).html?$ extend/wenfang.php?mid=6&itemid=$1&page=$2 [L]
+RewriteRule ^(house)/([0-9]+)/(xinxi|huxing|jiage|xiangce|wenfang|peitao|zixun|dianping|pic).html?$ $1/show.php?&at=$3&itemid=$2  [L]
+RewriteRule ^(.*)/p([0-9]+)-h([0-9]+).html?$ $1/show.php?itemid=$2&houseid=$3
+RewriteRule ^(house)/([0-9]+)/xiangce-c([0-9]+).html?$ $1/show.php?&at=xiangce&itemid=$2&catids=$3 [L]
+RewriteRule ^(house)/baojia.html?$	 $1/baojia.php [L]
+#经纪人规则
+RewriteRule ^(broker)/index.html$	$1/index.php [L]
+RewriteRule ^(broker)/list-(r|b|t|p|f|l|o|h|n|g|c|y|e|m|u|i)([0-9_]+).html?$	$1/index.php?&$2=$3 [L]	
+RewriteRule ^(broker)/list-(.*).html?$	$1/index.php?&param=$2 
+#二手房规则
+RewriteRule ^(sale)/map.html?$	map/index.php [L]
+RewriteRule ^(rent)/map.html?$	map/rent.php [L]
+RewriteRule ^(map)/rent.html?$	map/rent.php [L]
+RewriteRule ^(map)/sale.html?$	map/index.php [L]
+RewriteRule ^(map)/house.html?$	map/newhouse.php [L]
+
+RewriteRule ^(.*)/list.html$	$1/list.php [L]
+RewriteRule ^(.*)/list-([a-z]+)([0-9A-Z_]+).html?$ 	$1/list.php?&$2=$3
+RewriteRule ^(.*)/list-k(.*).html?$	$1/list.php?&k=$2 [L]
+RewriteRule ^(.*)/list-(.*).html?$	$1/list.php?&param=$2  [L]
+RewriteRule ^(.*)/pk/(.+)?$ $1/compare.php?&itemid=$2 [L]
+#小区规则
+RewriteRule ^(community)/([0-9]+)/?$ $1/show.php?&at=$3&itemid=$2 [L]
+RewriteRule ^(community)/([0-9]+)/index.html?$ $1/show.php?&at=$3&itemid=$2 [L]
+RewriteRule ^(community)/([0-9]+)/(sale|rent|price|map).html?$ $1/show.php?&at=$3&itemid=$2  [L]
+RewriteRule ^(community)/([0-9]+)/(sale|rent)-(p|c|i|u|h|n|e|m|g)([0-9_]+).html?$ $1/show.php?&at=$3&itemid=$2&$4=$5  [L]
+RewriteRule ^(community)/([0-9]+)/(sale|rent)-(.*).html?$	$1/show.php?&at=$3&itemid=$2&param=$4  [L]
+RewriteRule ^(.*)/search.html$ $1/search.php [L]
+RewriteRule ^(.*)/search-k([^/-]+).html$	$1/search.php?&kw=$2 [L]
+RewriteRule ^(.*)/search-([^/-]+)-p([0-9]+).html$	$1/search.php&kw=$2&page=$3[L]
+
+RewriteRule ^(.*)/(.*)\.htm$ $1/404.php

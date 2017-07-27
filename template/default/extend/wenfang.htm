@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={AJ_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{$AJ[sitename]}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+
+<link href="{AJ_SKIN}xinfang.css" rel="stylesheet" type="text/css" />
+<link href="{AJ_SKIN}reset.css" rel="stylesheet" type="text/css">
+<link href="{AJ_SKIN}css.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="{AJ_PATH}favicon.ico"/>
+<link rel="bookmark" href="{AJ_PATH}favicon.ico"/>
+<script type="text/javascript" src="{AJ_PATH}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>
+</head>
+<body oncontextmenu="return false">
+
+<div id="aijiacms_wenfang">
+{if $template == 'close'}
+	<div class="comment_close">[该问房已关闭]</div>
+	<script style="text/javascript">
+	try{ parent.Dd('wenfang_div').style.display = 'none'; }
+	catch(e){}
+	</script>
+{else}
+             <div class="modBC" id="answer">
+           	<ul class="detail_wd_list">
+				{loop $lists $k $v}
+					<li class="cf">
+						<p class="w"><i>问</i>{$v[content]}</p>
+					 {if $v[reply]} <p class="d"><i>答</i>{nl2br($v[reply])}</p>	<span class="yes_awer">已解决</span>{else}<span class="no_awer">未解决</span>{/if}	|&nbsp;&nbsp;&nbsp;&nbsp;{$v[addtime]}		</li>{/loop}  
+                </ul>
+                 <div class="pagination">{$pages}</div>
+				   <iframe src="" name="send" id="send" style="display:none;" scrolling="no" frameborder="0"></iframe>
+				   <form method="post" action="{$MOD[linkurl]}wenfang.php" class="bodyb detail_info detail_wdf cf" target="send" onsubmit="return C();">
+	<input type="hidden" name="mid" value="{$mid}"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<input type="hidden" name="items" value="{$items}"/>
+	<input type="hidden" name="page" value="{$page}"/>
+	<input type="hidden" name="qid" value="0" id="qid"/>
+	<input type="hidden" name="submit" value="1"/>
+                
+					<h4>我要提问</h4>
+					<textarea name="content"  onfocus="F();" onkeyup="S();"  placeholder="提出您的问题，我们尽快为您解答!" id="content"></textarea>
+				<p>
+					<button type="submit"></button>
+					<span>您还可以输入 <b class="red" id="chars">{$MOD[wenfang_max]}</b> 个字</span>
+					<p>					
+				</form>
+	
+	</div>
+			
+{/if}
+</div>
+
+<script style="text/javascript">
+{if $template == 'wenfang'}
+function R(id) {
+	Dd('r_content').value = '问房举报，问房ID:'+id+'\n问房内容:\n'+Dd('c_'+id).innerHTML+'\n--------------------------\n举报理由:\n';
+	Dd('r_form').submit();
+}
+{if $MOD[wenfang_vote]}
+var v_id = 0;
+var v_op = 1;
+var v_nm = 0;
+function V(id, op, nm) {
+	v_id = id;
+	v_op = op;
+	v_nm = nm;
+	if(get_cookie('wenfang_vote_{$mid}_{$itemid}_'+id)) {
+		confirm('您已经对此问房表过态了');
+		return;
+	}
+	makeRequest('action=vote&mid={$mid}&itemid={$itemid}&cid='+id+'&op='+op, '?', '_V');
+}
+function _V() {
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		if(xmlHttp.responseText == -2) {
+			confirm('抱歉，您没有投票权限');
+		} else if (xmlHttp.responseText == -1) {
+			confirm('您已经对此问房表过态了');
+		} else if (xmlHttp.responseText == 0) {
+			alert('参数错误，如有疑问请联系管理员');
+		} else if (xmlHttp.responseText == 1) {
+			if(v_op == 1) {
+				Inner('v_'+v_id+'_1', ++v_nm);
+			} else {
+				Inner('v_'+v_id+'_0', ++v_nm);
+			}
+		}
+	}
+}
+{/if}
+function Q(qid){
+	  Dd('qid').value = qid;
+	  Ds('qbox');
+	  Dd('qbox').innerHTML = '&nbsp;<strong>引用:</strong><div class="title">'+Dd('i_'+qid).innerHTML+'</div><div class="content">'+Dd('c_'+qid).innerHTML+'</div>';
+	  H();
+	  Dd('content').focus();
+}
+function S() {
+	Inner('chars', {$MOD[wenfang_max]}-Dd('content').value.length);
+}
+function C() {
+	var user_status = {$user_status};
+	if(user_status == 1) {
+		alert('您的会员组没有问房权限');
+		return false;
+	}
+	if(user_status == 2) {
+		if(confirm('您还没有登录,是否现在登录?')) {
+			top.location = '{$MODULE[2][linkurl]}{$AJ[file_login]}?forward={urlencode($linkurl)}';
+		}
+		return false;
+	}
+	if(Dd('star_2').checked == false && Dd('star_1').checked == false && Dd('star_0').checked == false) {
+		confirm('请选择您的评价');
+		Dd('star_2').focus();
+		return false;
+	}
+	if(Dd('content').value.length < {$MOD[wenfang_min]}) {
+		confirm('内容最少需要{$MOD[wenfang_min]}字');
+		Dd('content').focus();
+		return false;
+	}
+	if(Dd('content').value.length > {$MOD[wenfang_max]}) {
+		confirm('内容最多{$MOD[wenfang_max]}字');
+		Dd('content').focus();
+		return false;
+	}
+	{if $need_captcha}
+	if(!is_captcha(Dd('captcha').value)) {
+		confirm('请填写验证码');
+		Ds('tr_captcha');
+		H();
+		Dd('captcha').focus();
+		return false;
+	}
+	{/if}
+	return true;
+}
+function F() {
+	{if $need_captcha}
+	Ds('tr_captcha');
+	{/if}
+	H();
+}
+try{parent.Dd('wenfang_count').innerHTML = {$items};}catch(e){}
+{/if}
+function H() {
+	try{parent.Dd('aijiacms_wenfang').style.height = Dd('aijiacms_wenfang').scrollHeight+'px';}
+	catch(e){}
+}
+H();
+</script>
+</body>
+</html>

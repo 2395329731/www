@@ -1,0 +1,1 @@
+<?php defined('IN_AIJIACMS') or exit('Access Denied'); return array ('groupid' => '8','groupname' => '开发商','vip' => '0','listorder' => '8','reg' => NULL,); ?>

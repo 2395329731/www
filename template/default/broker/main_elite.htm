@@ -1,0 +1,9 @@
+ <div class="pic_list">
+      <h3><span style="float:left;">{$main_name[$HM]}</span><div style="width:60px; float:right;"><a href="{userurl($username, 'file=sale', $domain)}">更多>></a></div></h3>
+      <ul class="agent">
+	  <!--{php $tags=tag("moduleid=5&condition=status>2 and username='$username' and elite=1 and thumb<>''&pagesize=".$main_num[$HM]."&order=edittime desc&fields=itemid,title,linkurl,thumb,price,room,hall,toilet,houseearm&length=16&template=null");}-->
+	  {loop $tags $i $t}
+	  			          <li><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb])}" width="90" height="90"></a><p>{$t[title]}<br>{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if} {if $t[price]>0}<em>{$t[price]}</em>万元{else}面议{/if}</p></li>
+				 {/loop}
+         				      </ul><div class="clear"></div>
+    </div></p>

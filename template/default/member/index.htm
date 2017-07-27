@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="renderer" content="webkit">
+	<link href="{AJ_SKIN}favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+	<link href="{AJ_SKIN}reset.css?v=3" rel="stylesheet" type="text/css" />
+	<link href="{AJ_SKIN}user_jjr.css?v=3" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="image/style.css"/>
+	<script src="{AJ_SKIN}js/sea.js?v=3" type="text/javascript"></script>	
+	
+<script type="text/javascript" src="{AJ_PATH}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_PATH}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_PATH}file/script/admin.js"></script>
+<script type="text/javascript" src="{AJ_PATH}file/script/member.js"></script>
+	<title>{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}会员中心{$AJ[seo_delimiter]}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{$AJ[seo_delimiter]}</title>
+	<script>var AGENT_URL="{$MODULE[6][linkurl]}";var JS_URL="";var IMG_URL="";</script>
+</head>
+<body>
+	<div id="header">
+	<div class="warp">
+		<h1>
+			<a href="{$MODULE[2][linkurl]}" title="{$AJ[sitename]}"><img src="{AJ_SKIN}images/user_jjr/logo_myagent.gif" alt="{$AJ[sitename]}">
+			</a><span class="glzx">{$MG[groupname]}管理</span>
+		</h1>
+		<div class="fr cf" id="login">
+			<span class="tel">客服热线：{$AJ[telephone]}</span><br>
+			<div class="panl">
+				<a href="{$MODULE[2][linkurl]}message.php?action=last" class="r">通知({$_message})<i></i></a>
+				<div style="display: none;">
+					<a href="{$MODULE[2][linkurl]}chat.php">新对话({$_chat})</a>
+					<a href="{$MODULE[2][linkurl]}message.php?action=last">短消息({$_message})</a>
+				</div>
+			</div>
+			<a href="{userurl($_username)}" target="_blank" title="我的店铺">我的店铺</a>
+			            <a style="color:#f80" href="{$MODULE[1][linkurl]}fenxiao/" title="赚取佣金" target="_blank">赚取佣金</a>
+					
+			<a href="{$MODULE[2][linkurl]}">帐号：{$_username}</a>
+			<a href="{$MODULE[2][linkurl]}logout.php">[ 退出 ]</a>
+			{if $admin_user}<a href="index.php?action=logout">注销授权</a>{/if}
+			<div class="panl" id="topBarPanl">
+				<a class="r" href="{$MODULE[1][linkurl]}" title="{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}">返回网站首页<i></i></a>
+				<div style="">
+					<a href="{$MODULE[1][linkurl]}" target="_blank">首页</a>
+					<a href="{$MODULE[6][linkurl]}" target="_blank" title="新房">新房</a>
+					<a href="{$MODULE[5][linkurl]}" target="_blank" title="二手房">二手房</a>
+					<a href="{$MODULE[7][linkurl]}" target="_blank" title="租房">租房</a>
+					<a href="{$MODULE[8][linkurl]}" target="_blank" title="资讯">资讯</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+seajs.use(["topbarlogin",'cookie'],function(){
+	$("#login div.panl").on("mouseenter",function(){
+		$(this).addClass("on").find("div").show();
+	}).on("mouseleave",function(){
+		$(this).removeClass("on").find("div").hide();
+	})
+})
+</script>	<div id="main">
+    	        	<div class="adb">
+   
+</div>
+        		<div  class="cf">
+			<div id="lmenu">
+	<h2>
+		<a href="{$MODULE[2][linkurl]}">管理中心首页</a>
+	</h2>
+	{if $MYMODS || $show_menu}
+	{loop $MENUMODS $k $v}
+	<h3>
+		<s></s><b class="l{$k}">{$MODULE[$v][name]}管理</b>
+	</h3>
+	<ul>
+		<li ><a href="{$MODULE[2][linkurl]}my.php?mid={$v}&action=add">发布{$MODULE[$v][name]}</a></li>
+        <li ><a href="{$MODULE[2][linkurl]}my.php?mid={$v}">管理{$MODULE[$v][name]}</a></li>
+	</ul>
+	  {/loop}
+	    {/if}
+		{if $_userid || $show_menu}
+	
+	<h3>
+		<s></s><b class="l5">工具箱</b>
+	</h3>
+	<ul>
+			{if $MG[inbox_limit]>-1 || $show_menu}
+			<li><a href="{$MODULE[2][linkurl]}message.php"  >站内信息</a></li>
+			{/if}
+	<!--
+			{if $MG[friend_limit]>-1 || $show_menu}
+			<li><a href="{$MODULE[2][linkurl]}friend.php" >我的商友</a></li>
+			{/if}
+-->
+			{if $MG[favorite_limit]>-1 || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}favorite.php" >房源收藏</a></li>
+			{/if}
+
+			{if $MG[alert_limit]>-1 || $show_menu}
+			<li><a href="{$MODULE[2][linkurl]}alert.php" >房源提醒</a></li>
+			{/if}
+
+			{if $MG[sms] || $show_menu}
+			{if $AJ[sms]}<li ><a href="{$MODULE[2][linkurl]}sms.php" >手机短信</a></li>{/if}
+			{/if}
+
+			{if $MG[mail] || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}mail.php" >邮件订阅</a></li>
+			{/if}
+			{if $MG[spread] || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}spread.php" >排名推广</a></li>
+			{/if}
+			{if $MG[ad] || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}ad.php" >广告预定</a></li>
+			{/if}
+			<li ><a href="{$MODULE[2][linkurl]}trade.php" >我的订单</a></li>
+            <li><a href="{$MODULE[2][linkurl]}charge.php?action=record" >充值记录</a></li>
+            <li><a href="{$MODULE[2][linkurl]}credit.php">{$AJ[credit_name]}管理</a></li>
+	</ul>
+	 {/if}
+	<h3>
+		<s></s><b class="l6">问题管理</b>
+	</h3>
+	<ul>
+		<li><a href="{$MODULE[2][linkurl]}wenfang.php">问题受理</a></li>
+	   <li><a href="{$MODULE[2][linkurl]}ask.php">客服中心</a></li>
+	</ul>
+	 {if $MG[homepage] || $show_menu}
+	<h3>
+		<s></s><b class="l7">店铺管理</b>
+	</h3>
+	<ul>
+	 <li ><a href="{$MODULE[2][linkurl]}home.php" >商铺设置</a></li>
+             {if ($MG[addmember_limit]>0 && $MG[homepage]) || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}addmember.php">经纪人管理</a></li>
+			{/if}
+			{if ($MG[link_limit]>-1 && $MG[homepage]) || $show_menu}
+			<li ><a href="{$MODULE[2][linkurl]}link.php" >友情链接</a></li>
+			{/if}
+	</ul>
+	{/if}
+	<h3>
+		<s></s><b class="l8">资料管理</b>
+	</h3>
+	<ul>
+	<li ><a href="{$MODULE[2][linkurl]}edit.php" >修改资料</a></li>
+		 <li ><a href="avatar.php" >头像认证</a></li>
+			{if $show_oauth}
+			<li ><a href="{$MODULE[2][linkurl]}oauth.php" >一键登录</a></li>
+			{/if}
+	    <li ><a href="validate.php?action=truename">身份证认证</a></li>
+        <li ><a href="validate.php?action=company">执业资格证认证</a></li>
+       <li ><a href="{$MODULE[2][linkurl]}edit.php">修改密码</a></li>
+	</ul>
+</div>
+<script type="text/javascript">
+seajs.use(["jquery","cookie"],function($){
+	var setCookie=function(){
+		var str="";
+		$h3.each(function(){
+			str+=($(this).attr("class")?"on":"off")+",";
+		})
+		$.cookie("lmenu",str,{path:"/"});
+	}
+	var $menu=$("#lmenu"),
+		$h3=$menu.on("click","h3",function(){
+			if($(this).attr("class")=="on")
+				$(this).removeClass("on").next().hide();
+			else
+				$(this).addClass("on").next().show();
+			setCookie();
+		}).find("h3");
+	var str=$.cookie("lmenu");
+	if(str){
+		str=str.split(",");
+		for(var i=0,l=str.length;i<l;i++){
+			if(str[i]=="on")
+				$h3.eq(i).addClass("on").next().show();
+		}
+	}else{
+		$h3.eq(0).addClass("on").next().show();
+		$h3.eq(1).addClass("on").next().show();
+	}
+
+	$menu.find("li.on").parent().show().prev().addClass("on");
+})
+</script>
+
+<div class="conL">
+	<div class="jjrInfo">
+		<a href="avatar.php">
+			<img class="tx" src="{useravatar($_username, 'large')}&time={$AJ_TIME}" alt="点击更换头像" width="120" height="120"></a>
+		<h3>
+			欢迎您！{$_truename}		<img src="{AJ_SKIN}images/user_jjr/identity_{if $vtruename}yes{else}no{/if}.gif" title="未通过身份证认证">
+						<img src="{AJ_SKIN}images/user_jjr/aptitude_{if $vcompany}yes{else}no{/if}.gif" title="未通过执业资格认证">
+					</h3>
+		<p class="line">
+			会员组：{$MG[groupname]}		<br> 积分:{$_credit}分  <a href="credit.php" class="l">{$AJ[credit_name]}记录</a></p>
+		<p>
+						
+			帐户状态：{if $_groupid == 4}
+	<b style="color:red;">尊敬的会员，您的帐号<span class="f_red f_b">正在审核中..</span>{if $MOD[checkuser]==2}<a href="send.php?action=check" class="l">请点这里验证您的邮箱</a>，系统将自动审核{else}请稍候，等待网站审核{/if}</b>
+{/if}
+{if $_groupid > 5 && !$_edittime}<b style="color:red;">未完善详细资，<a href="edit.php?tab=2" class="t f_b">现在就去完善</a>。</b>
+{/if}
+{if $vip && $havedays < 11}
+	尊敬的{$MG[groupname]}，您的{VIP}服务将在 <strong class="f_red">{$havedays}</strong> 天后到期，请您尽快续费。&nbsp;&nbsp;<a href="renew.php" class="t f_b">点击续费</a>
+{/if}<font style="color:red;">已经开通</font>
+						<br>
+			<a class="blue" href="avatar.php">更换头像</a>
+			&nbsp;
+			<a class="blue" href="edit.php">修改资料</a>
+			&nbsp;
+			<a class="blue" href="credit.php">查看积分明细</a>
+			&nbsp;
+			<a class="blue" target="_black" href="{userurl($_username)}">进入店铺</a>
+		</p>
+	</div>
+		<div class="tipInfo">
+		<h3>特别提醒：</h3>
+		您有未完成的认证信息，请尽快提交信息完成认证。马上认证：
+		  {if $MOD[vmember]} {if !$avatar}&nbsp;&nbsp;&nbsp;&nbsp;<a class="blue" href="avatar.php">头像认证</a>{/if}{/if}
+		  {if $MOD[vtruename]}{if !$vemail}&nbsp;&nbsp;&nbsp;&nbsp;<a class="blue" href="validate.php?action=truename">身份证认证</a>{/if}{/if}
+		  {if $MOD[vemail]}{if !$vtruename}&nbsp;&nbsp;&nbsp;&nbsp;<a class="blue" href="validate.php?action=email">邮箱认证</a>{/if}{/if}
+		  {if $MOD[vcompany] && $groupid > 5}&nbsp;&nbsp;&nbsp;&nbsp;{if !$vcompany}<a class="blue" href="validate.php?action=company">执业资格证认证</a>{/if}{/if}	</div>
+		<div class="con mt10">
+		<div class="tabT">
+			<h3>使用情况</h3>
+		</div>
+		<table width="100%">
+			<tr>
+
+				<th width="10%">类别</th>
+				{if $MYMODS || $show_menu}
+	{loop $MENUMODS $k $v}
+				<th class="red" width="11%">{$MODULE[$v][name]}</th>
+				 {/loop}
+	    {/if}
+				
+				
+			</tr>
+			<tr>
+				<td>信息量</td>
+					{if $MYMODS || $show_menu}
+	{loop $MENUMODS $k $v}
+				<td>{get_mnum(get_table($v),$username)}条</td>
+				 {/loop}
+	    {/if}
+				
+				
+			
+			</tr>
+			
+		</table>
+	</div>
+</div>
+<div class="conR">
+	<div class="con">
+		<div class="tabT">
+			<h3>系统公告</h3>
+		</div>
+		<ul class="pd10">
+					 <li>{if $sys}
+{loop $sys $v}
+<li><span class="f_r px11 f_gray">{timetodate($v[addtime], 2)}</span>&nbsp;<a href="message.php?action=show&itemid={$v[itemid]}" title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+{else}
+<li>&nbsp;暂无消息</li>
+{/if}</li>
+				</ul>
+	</div>
+	<!-- 
+	<div class="con">
+		<div class="tabT">
+			<h3>帮助中心</h3>
+		</div>
+		<p class="pd10">
+			帮助中心帮助中心帮助中心帮助中心帮助中心
+		</p>
+	</div>
+	 -->
+	<div class="con">
+		<div class="tabT">
+			<h3>帮助我们进步</h3>
+		</div>
+		<div class="helpus">
+			用的满意么？有话您直说！
+			<br>
+			<form method="post" action="ask.php" onSubmit="return check();">
+<input type="hidden" name="action" value="add"/>
+				<select id="feedback_type" name="typeid">
+				<option value="0">请选择意见分类</option>
+				{loop $TYPE $k $v}
+								<option value="{$k}">{$v[typename]}</option>
+								{/loop}
+								</select>
+				<br>
+				<textarea style="margin-top:5px;" rows="5" id="info" name="content"></textarea>
+				<br>
+				<input type="submit" style="margin-top:5px;" value="提 交" class="button_1" name="submit">
+				<span style="margin-top:5px;" id="err"></span>
+			</form>
+		</div>
+	</div>
+		<div class="con">
+		<div class="tabT">
+			<h3>会员信息</h3>
+		</div>
+		<ul class="pd10">
+<li>会员名:{$username}</li>
+{if $MOD[passport]}
+<li>通行证:{$passport}</li>
+{/if}
+<li>会员组:{$MG[groupname]}</li>
+<li>会员ID:{$userid}</li>
+<li>登录时间:{timetodate($logintime, 5)}{if $AJ[login_log]==2}&nbsp;&nbsp;<a href="record.php?action=login" class="l">登录记录</a>{/if}</li>
+<li>注册时间:{timetodate($regtime, 5)}</li>
+{if $vip}
+<li>{VIP}级别:<img src="{AJ_SKIN}image/vip.gif"/> <img src="{AJ_SKIN}image/vip_{$vip}.gif"/></li>
+<li>服务期:{timetodate($fromtime, 3)} 至 {timetodate($totime, 3)}</li>
+<li>剩余时间:<strong>{$havedays}</strong> 天&nbsp;&nbsp;<a href="renew.php" class="l">续费</a></li>
+{elseif $groupid>4}
+<li>会员升级:&nbsp;<a href="grade.php"><span class="f_red">立即升级</span></a></li>
+{/if}
+</ul>
+	</div>
+</div>
+<script>
+seajs.use(["alert","tip"],function(alertM){
+	var $feedback_type=$("#feedback_type").on("blur",function(){
+		if($feedback_type.val()==0)
+			$feedback_type.tip(0,"请选择意见分类")
+		else
+			$feedback_type.tip().remove();
+	}),
+		$info=$("#info").on("blur",function(){
+			if(!$info.val().length)
+				$info.tip(0,"请输入您的意见建议")
+			else
+				$info.tip().remove();
+		}),
+		
+		$iform=$("#iform").on("submit",function(){
+			if($feedback_type.val()==0){
+				$feedback_type.tip(0,"请选择意见分类")
+				return false;
+			}
+			if(!$info.val().length){
+				$info.tip(0,"请输入您的意见建议")
+				return false;
+			}
+				
+			$.ajax({
+				type:'POST',
+				url:AGENT_URL + "index/propose",
+				dataType:"json",
+				data:$iform.serialize()
+			}).done(function(data){
+				alertM(data.alert,{cName:data.state})
+			}).fail(function(){
+				alertM("提交修改失败，请检查网络连接是否已断开",{cName:"error"})
+			})
+			return false;
+		}).on("click","a.subBtn",function(){
+			$iform.trigger("submit");
+		})
+})
+</script>		</div>
+	{template 'footer'}

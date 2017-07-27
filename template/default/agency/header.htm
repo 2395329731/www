@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={AJ_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{$COM[company]}{/if}</title>
+{if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}
+{if $head_description}<meta name="description" content="{$head_description}"/>{/if}
+<meta name="generator" content="aijiacms,www.aijiacms.com"/>
+<link rel="shortcut icon" type="image/x-icon" href="{AJ_SKIN}favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="{AJ_SKIN}favicon.ico"/>
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+<link href="{AJ_SKIN}reset.css" rel="stylesheet" type="text/css" />
+
+<link rel=stylesheet type=text/css href="{$HSPATH}/agent_shop.css">
+
+<META name=GENERATOR content="MSHTML 8.00.6001.18702">
+
+<script type="text/javascript" src="{AJ_STATIC}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>
+<SCRIPT type=text/javascript src="{AJ_SKIN}js/jquery-1.4.2.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript src="{AJ_SKIN}js/common.js"></SCRIPT>
+{if !AJ_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}
+
+<script type="text/javascript">
+{if $head_mobile && $EXT[mobile_goto]}
+GoMobile('{$head_mobile}');
+{/if}
+{if $itemid && $AJ[anticopy]}
+document.oncontextmenu=function(e){return false;};
+document.onselectstart=function(e){return false;};
+{/if}
+</script>
+
+
+
+<!--[if lte IE 6]>
+<script type="text/javascript" src="{AJ_SKIN}js/jquery.pngFix.js"></script>
+<script type="text/javascript"> 
+	$(function(){
+		$(document).pngFix();
+	});
+</script> 
+<![endif]--></HEAD>
+<BODY>
+<div id="top_bar">
+	<div class="cf wrap">
+		<div class="fl" id="aijiacms_member">	</div>
+		<div class="fr">
+			<ul>
+            	<li class="home"><a class="a" href="{$MODULE[1][linkurl]}" title="首页">首页</a></li>
+				<li class="favorite" id="favorite"><a class="a" href="{$MODULE[3][linkurl]}shortcut.php" title="保存桌面">保存桌面</a></li>
+				{if $EXT[mobile_enable]}<li class="phone"><a   class="a" href="javascript:Go('{$EXT[mobile_url]}index.php?moduleid=4&username={$username}');">手机版</a></li>{/if}
+                {if $head_mobile}<li class="h_qrcode"><a href="javascript:Dqrcode();">二维码</a>&nbsp;</li>{/if}
+                <li class="top_nav" ><a class="a" href="{$MODULE[1][linkurl]}map">地图找房</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{if $head_mobile}<div id="aijiacms_qrcode" style="display:none;"></div>{/if}
+<DIV id=main>
+
+
+
+  <div class="clear"></div>
+  <!--header-->
+  <div class="head">
+    <p></p>
+    <span></span> </div>

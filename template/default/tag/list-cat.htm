@@ -1,0 +1,11 @@
+	<ul class="news_list">
+{loop $tags $i $t}
+     <li>   <span><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></span>
+              <b>{timetodate($t[addtime], 3)}</b>
+                </li>
+				
+{if $cols && $i && $i%$cols==($cols-1)}<li class="catlist_sp">&nbsp;</li>{/if}
+{/loop}
+</ul>
+{if $showpage && $pages}<div class="page_num">{$pages}</div>{/if}
+

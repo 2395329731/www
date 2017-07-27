@@ -1,0 +1,45 @@
+{template 'header'}
+<link href="{AJ_SKIN}zxother.css" rel="stylesheet" type="text/css">
+<div id="main">
+<div class="bread">您所在的位置：<a href="{$MODULE[1][linkurl]}">首页</a>&nbsp;&gt;&nbsp;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&nbsp;&gt;&nbsp;{cat_pos($CAT, ' &raquo; ')}</div>
+<div class="bde">
+<div class="wl"><table border="0" cellpadding="0" cellspacing="0" class="zbxx">
+  <tbody><tr>
+    <td colspan="3"><h1>{$title}</td>
+    </tr>
+  <tr class="bjc">
+    <td>所在区域：{area_pos($areaid, ' ')}</td>
+    <td>信息类型：{cat_pos($CAT, ' &raquo; ')}</td>
+    <td>发布时间：{$editdate}</td>
+  </tr>
+  <tr class="bjc zyq">
+    <td colspan="3">{$content}</td>
+    </tr>
+		<tr class="bjc zyq">
+    <td colspan="3">{if $thumb}<li  class="on" data-bigurl="{$thumb}"><img src="{$thumb}" width="660" /></li>{else} {/if}
+			{if $thumb1}<li  data-bigurl="{$thumb1}"><img src="{$thumb1}" width="660"/></li>{else} {/if}
+			{if $thumb2}<li   data-bigurl="{$thumb2}"><img src="{$thumb2}" width="660"/></li>{else} {/if}</td>
+    </tr>
+	
+  <tr class="bjc nob lxfs">
+    <td colspan="3"><em>联系方式：</em><DIV style="text-decoration:none; "  id="contact">{template 'contacthm', 'chip'}</DIV>
+
+    </td>
+    </tr>
+</tbody></table>
+ 
+</div>
+<div class="wr">
+    <div class="frrOM">
+      <div class="t"><a href="{$MODULE[2][linkurl]}my.php?mid=13&action=add"></a></div>
+      <div class="c">
+        <ul>
+          <li style="height:auto;">
+            <input class="fbtn" name="" type="submit" value="免费发布" onClick="location.href='{$MODULE[2][linkurl]}my.php?mid=13&action=add'">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{template 'footer'}

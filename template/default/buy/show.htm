@@ -1,0 +1,88 @@
+	{template 'header'}
+	<link href="{AJ_SKIN}/css/buy.css" rel="stylesheet" type="text/css" />
+	
+<body>
+	<div id="main">	
+   <!--位置-->
+  <div class="bread">
+			您当前的位置：<a href="{$MODULE[1][linkurl]}">{$AJ[sitename]}</a>&nbsp;&gt;&nbsp;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&nbsp;&gt;&nbsp;求购房源</div>
+		<div class="cf">
+			<div class="w720 fl">
+				<div class="modC qzInfo">
+					<h5>
+						<span>更新时间：{$editdate}  浏览{$hits}次</span>
+						{$title}			</h5>
+					价格：	<strong class="red">{$price}</strong><br>
+					面积：	{$houseearm}<br>
+											类型：{cat_pos($CAT, ' &raquo; ')}<br>
+										户型：	{$room}室{$hall}厅{$toilet}卫{$balcony}<br>
+					位置：	{area_pos($areaid, '')}<br>
+					<a id="goFav" class="qzIcon sc blue" href="javascript:void(0)">收藏</a>
+					<a id="report" class="qzIcon jb blue" href="javascript:void(0)">举报</a><br>
+					<ul id="share"></ul>
+				</div>
+				<div class="modC">
+					<h4 class="modBT"><sub></sub>
+						详细信息
+					</h4>
+					<div class="qzxx">
+						<p>{$content}</p>					</div>
+				</div>
+				
+								<div class="modC">
+					<h4 class="modBT"><sub></sub>
+						最新求购信息
+					</h4>
+					<table class="qzlist">
+					
+					<!--{php $tags=tag("moduleid=16&condition=status=3&areaid=$cityid&length=22&pagesize=5&order=hits desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}	<tr>
+							<td class="gray">
+								<a href="{$t[linkurl]}" target="_blank">{$t[title]}</a>{area_poss($t[areaid], '')}							</td>
+							<td class="w1">{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}</td>
+							<td class="w2">
+							
+															<strong>{if $t[price]}{$t[price]}万元{else}面议{/if}</strong>
+														</td>
+							<td class="w2">
+															<strong>{$t[houseearm]}平米</strong>
+														</td>
+							<td class="w2 gray">{timetodate($t[edittime], 3)}</td>
+						</tr>{/loop}</table>
+				</div>
+							</div>
+			<div class="w230 fr">
+				<div class="modC pd10">
+					<p class="qzIcon qzLxr">联系人：：{$truename}<span class="green"></span></p>
+					<strong class="qzIcon qzTel red">{$mobile}</strong>
+				</div>
+				<div class="qzfb">
+					<a class="blue" href="{$MODULE[2][linkurl]}{$AJ[file_my]}?mid={$moduleid}&action=add&catid={$catid}">发布一条房屋求购信息&gt;&gt;</a>
+				</div>
+				<div class="modC">
+					<h4 class="modBT"><sub></sub>
+						相关二手房出售房源
+					</h4>
+										<ul class="t3List qzt3list">
+				<!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$cityid&length=22&pagesize=10&order=hits desc&target=_blank&template=null");}-->
+ {loop $tags $i $t} 	<li>
+							<span class="lettsub7"><a href="{$t[linkurl]}" target="_blank">{$t[housename]}</a></span>
+							<span class="w2">{$t[houseearm]}㎡</span>
+							<span class="w3">{if $t[price]}{$t[price]}万元{else}面议{/if}</span>
+						</li>{/loop}
+											</ul>
+									</div>
+			</div>	
+		</div>
+
+	</div>
+
+<script type="text/javascript">
+seajs.use(["jquery","superm"],function($,sm){
+	sm.start([
+		{
+			name:"share"
+		},
+	]);
+})
+</script> {template 'footer'}

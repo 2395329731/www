@@ -1,0 +1,965 @@
+﻿{template 'header'}
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+
+
+        <!--start-->
+        <link rel="stylesheet" rev="stylesheet" href="{AJ_SKIN}ershou_web_home_home.css" type="text/css" />
+        <!--end-->
+ <!--        <script type="text/javascript">
+            var PAGESTART = +new Date();
+            var PHPVERSION = '20170717.54.0';
+        </script> -->
+            <!-- <script type="text/javascript" src="js/126d15a9a199af25ba4ac04f2280c373.js"></script>-->
+            <!-- <script type="text/javascript" src="js/126d15a9a199af25ba4ac04f2280c373.js" crossorigin></script>-->
+      
+        <!-- -->
+            <link href="{AJ_SKIN}index.css" rel="stylesheet" type="text/css" />
+ 
+        <!--     <script type="text/javascript" src="{AJ_SKIN}js/jquery-1.11.1.min.js"></script> -->
+
+            <script type="text/javascript" src="{AJ_SKIN}js/so_select.js"></script>
+            <script defer="defer" type="text/javascript" src="{AJ_SKIN}js/menu.js"></script>
+            <script type="text/javascript" src="{AJ_SKIN}js/jdt.js"></script>
+        <link rel="shortcut icon" href="https://pages.anjukestatic.com/usersite/site/img/global/1/favicon.ico" />
+        <link rel="icon" href="https://pages.anjukestatic.com/usersite/site/img/global/1/favicon.ico" type="image/ico" />
+    </head>
+    <style type="text/css">
+        .chenjianqiang{
+            display: none;
+        }
+    </style>
+      
+
+    <body  onload="chen();">
+
+    <script type="text/javascript">
+
+    function dianji(){
+
+
+            var a=document.getElementById('button_chen');
+
+            // var b=document.getElementById('input_chen');
+            // var c=b.value;
+
+            var b=document.getElementById('chen_input');
+            var c=b.value;
+
+            document.getElementById('input_chen').value=c;
+
+           // alert(c);
+
+            a.click();
+
+         
+          
+    }
+           
+                        function chen(pid){
+                  
+                        var tabs=["content_Rd1","content_Rd2","content_Rd3","content_Rd4"]; 
+                        var a=["a1","a2","a3","a4"];
+                            //document.write('asdadasdsadsasss');
+                            //content_Rd1
+                            // document.getElementById(tabs[1]).style.display="block";
+                            // document.getElementById(a[i]).className='tab h-tab cur-tab';
+                            
+                            if (pid==null) {
+                                document.getElementById(tabs[i]).style.display='block';
+                                document.getElementById(a[i]).className='tab h-tab cur-tab';
+
+                            }
+                            for (var i = 0; i<4; i++) {
+                            
+                             if(tabs[i]==pid){
+                                document.getElementById(tabs[i]).style.display="block";
+                                document.getElementById(a[i]).className='tab h-tab cur-tab';
+                              }else{
+                                document.getElementById(tabs[i]).style.display="none";
+                                 document.getElementById(a[i]).className='tab h-tab';
+                              }
+
+                              }
+                            
+                            }
+
+                        
+
+                    </script>
+        <div id="container">
+
+
+          <div class="nav clear h42 l-h42">
+                <div class="w1200">
+                    <!-- <span class="fl menu-tit f16"><b>购房中心</b></span> -->
+                    <ul class="fl f15">
+                    
+                   <li><a href="{$MODULE[1][linkurl]}" class="fl menu-tit f16" >首页</a></li>{loop $MODULE $m}{if $m[ismenu]}
+                   <li><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if}>{$m[name]}</a></li>{/if}{/loop} 
+                    </ul>
+                   
+                </div>
+            </div>
+
+
+
+       
+            </div>
+
+            <div id="content">
+                <!-- 左侧内容展示 -->
+                <div class="left-cont fl">
+                    <!-- 首屏搜索框 -->
+                    <div class="cont-wrap m-t-box">
+                        <div class="box search-cont p-none clearfix">
+                            <div class="left-tabs">
+                                <a href="javascript:void(0);">
+                                    <span class="tab h-tab cur-tab" id="a1" onmouseover="chen('content_Rd1');">
+                                    买&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房
+                                    </span>
+                                </a>
+
+                                <a href="javascript:void(0);">
+                                   <span class="tab h-tab" id="a2" onmouseover="chen('content_Rd2');">
+                                 卖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房</span>
+                                </a>
+
+                                <a href="javascript:void(0);">
+                                   <span class="tab" id="a3" onmouseover="chen('content_Rd3');">租&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房</span>
+                                </a>
+
+                                <a href="javascript:void(0);">
+                                   <span class="tab" id="a4" onmouseover="chen('content_Rd4');">商铺写字楼</span>
+                                </a>
+                            </div>
+                          
+
+                            <div class="right-conts">
+                       
+                             
+
+                                   
+
+                                  
+<div  class="search search-form"> 
+<div class="fd1 clearfix" id="searchIpt" >
+                                     <input type="text" name="keyword" class="keyword kw"  value="{if $moduleid==6 || $moduleid<3}请输入楼盘名称(中文/拼音/简拼)、地址{elseif $moduleid==5 || $moduleid==7 }请输入小区名称/地址/标题{else}请输入搜索内容{/if}" id="chen_input">
+
+
+                                    <i class="home-icon search-close" data-tracker="delete-kw" id="search-close" style="display: none;"></i>
+                            
+                                        <i class="btn-icon" id="btnIcon"></i>
+                                     
+                                    <!--     <button class="btn btnSubmit"  id="click_chen" onclick="dianji();">搜索</button> -->
+                                        <a  class="btn btnSubmit" onclick="dianji();" style="padding-top: 5px;">搜索</a>
+                                        
+                                       <i class="btn-icon icon-xfzf">
+
+                                        </i>
+                         </div>
+                </div>  
+                              
+                          
+
+
+
+
+                                <!-- 买房 -->
+                                <div class="buy-house tab-contents" id="content_Rd1"  style="display:block;">
+                                    <!-- 买房(二手房、新房都有)style="display: none" -->
+                                    <div class="clearfix">
+                                        <!-- 二手房 -->
+                                        <div class="details float_l">
+                                            <a title="地图找房" alt="地图找房" class="map" href="{$MODULE[1][linkurl]}map"><i class="home-icon"></i>地图找房</a>
+                                            <p>二手房</p>
+                                            <div class="areas">
+                                               {php $mainarea = get_mainarea($cityid)}
+                                                {loop $mainarea $k $v}<a  href="{$MODULE[6][linkurl]}list-r{$v[areaid]}.html">{$v[areaname]}</a>
+                                                {/loop}
+                                                <!-- <a title="南湖" alt="南湖" class="hot-word" href="https://jx.anjuke.com/sale/nanhu/" target="_self" _soj="SearchBar">南湖</a> -->
+                                               
+                                            </div>
+                                            <div class="prices">
+                        {php $range_arr = getbox_name('range','newhouse_6')}
+                        {loop $range_arr $k $v} <a title="不限" alt="不限" href="{$MODULE[6][linkurl]}list-p{$k}.html" target="_self" _soj="SearchBar">{$v}</a>
+                        {/loop}
+<!--                                                 <a title="40万以下" alt="40万以下" href="//jx.anjuke.com/sale/m391/" target="_self" _soj="SearchBar">40万以下</a> -->
+                                                <a title="不限" alt="不限" href="{$MODULE[6][linkurl]}list-p{$k}.html" target="_self" _soj="SearchBar">{$v}</a>
+                                                
+                                            </div>
+                                        </div><i class="solid-line  line-mag float_l"></i>
+                                        <!-- 新房 -->
+                                        <div class="details float_l">
+                                            <a title="地图找房" alt="地图找房" class="map" href="{$MODULE[1][linkurl]}map"><i class="home-icon"></i>地图找房</a>
+                                            <p>新房</p>
+                                            <div class="areas">
+                            {php $mainarea = get_mainarea($cityid)}
+                            {loop $mainarea $k $v}<a  href="{$MODULE[6][linkurl]}list-r{$v[areaid]}.html">{$v[areaname]}</a>
+                            {/loop}
+                                               <!--  <a title="中心城区" alt="中心城区" class="hot-word" href="https://jx.fang.anjuke.com/loupan/zhongxinchengqu/" target="_self" _soj="SearchBar">中心城区</a> -->
+                                              
+ 
+                                            </div>
+                                            <div class="prices">
+
+                                                    {php $range_arr = getbox_name('range','newhouse_6')}
+                        {loop $range_arr $k $v} <a title="不限" alt="不限" href="{$MODULE[6][linkurl]}list-p{$k}.html" target="_self" _soj="SearchBar">{$v}</a>
+                        {/loop}
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- end买房 -->
+                                <!-- 租房 -->
+                                <div style="display: none" class="tab-contents clearfix" id="content_Rd3">
+                                    <a title="地图找房" alt="地图找房" class="map one-map" href="{$MODULE[1][linkurl]}map"><i class="home-icon"></i></a>
+                                    
+                                    <div class="hot-areas">
+                                        <p>热门区域</p>
+                                        <div class="areas list-height">
+                                         {php $mainarea = get_mainarea($cityid)}
+                                        {loop $mainarea $k $v}<a  href="{$MODULE[6][linkurl]}list-r{$v[areaid]}.html">{$v[areaname]}</a>
+                                        {/loop}
+                                           <!--  <a title="海盐" alt="海盐" class="hot-word" href="https://jx.zu.anjuke.com/fangyuan/haiyan/" target="_self" _soj="SearchBar">海盐</a> -->
+                                        
+                                        </div>
+                                    </div><i class="solid-line float_l"></i>
+                                    <div class="hot-plates">
+                                        <p>热门板块</p>
+                                        <div class="areas list-height">
+                                          <!--   <a title="嘉善" alt="嘉善" class="hot-word" href="https://jx.zu.anjuke.com/fangyuan/jiashana/" target="_self" _soj="SearchBar">嘉善</a> -->
+                                           {php $mainarea = get_mainarea($cityid)}
+                            {loop $mainarea $k $v}<a  href="{$MODULE[6][linkurl]}list-r{$v[areaid]}.html">{$v[areaname]}</a>
+                            {/loop}
+                                         
+                                        </div>
+                                    </div><i class="solid-line float_l"></i>
+                                    <div class="house-budget">
+                                        <p>租房预算</p>
+                                        <div class="areas list-height">
+                                            {php $range_arr = getbox_name('range','newhouse_6')}
+                        {loop $range_arr $k $v} <a title="{$v}" alt="{$v}" href="{$MODULE[6][linkurl]}list-p{$k}.html" target="_self" _soj="SearchBar">{$v}</a>
+                        {/loop}
+                                           
+
+                                           
+                                        </div>
+                                    </div>
+                                </div id="content_Rd1">
+                                <!-- end租房 -->
+
+                                <!-- 租写字楼"-->
+                                <div style="display: none" class="tab-contents clearfix" id="content_Rd4">
+                                    <div class="details float_l">
+                                        <p>热门区域</p>
+                                        <div class="areas">
+                                            <!-- <a title="南湖" alt="南湖" class="hot-word" href="https://jx.xzl.anjuke.com/zu/nanhu/" target="_self" _soj="SearchBar">南湖</a> -->
+                                          {php $mainarea = get_mainarea($cityid)}
+                                            {loop $mainarea $k $v}<a  href="{$MODULE[6][linkurl]}list-r{$v[areaid]}.html">{$v[areaname]}</a>
+                                            {/loop}
+                                        </div>
+                                    </div><i class="solid-line line-mag float_l" style="height: 121px"></i>
+                                    <div class="details float_l">
+                                        <p>热门板块</p>
+                                        <div class="areas">
+                                         {php $mainarea = get_mainarea($cityid)}
+                                            {loop $mainarea $k $v}<a  href="{$MODULE[6][linkurl]}list-r{$v[areaid]}.html">{$v[areaname]}</a>
+                                            {/loop}
+                                           <!--  <a title="南湖" alt="南湖" class="hot-word" href="https://jx.xzl.anjuke.com/zu/nanhuc/" target="_self" _soj="SearchBar">南湖</a> -->
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 买写字楼 -->
+                        
+                                <!-- 卖房 -->
+                                <div  style="display: none" class="tab-contents clearfix" id="content_Rd2">
+                                    <div class="publish">
+                                       
+                                        <!-- 卖房对应的搜索框 -->
+
+                                            <a href="{$MODULE[2][linkurl]}publish.php" style="position: relative"><i class="sale-btn-icon"></i><input hidefocus="true" id="salerSubmit" type="submit" class="free-pub" value="免费发布房源" /></a>
+                                     
+                                    </div>
+                                    <div class="steps">
+                                        <ul>
+                                            <li><i>1</i>
+                                                <p>在啊实打实发房</p><em>简单2步即可完成发布，方便<br>快捷免费！</em></li>
+                                           <!--  <li><i>2</i>
+                                                <p>优质经纪人全程服务</p><em>我们挑选优质经纪人为您服<br>务，拒绝骚扰</em></li> -->
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- end卖房 -->
+                            </div>
+                        </div>
+                        <a style="display: block;height: 0px;font-size: 0px;line-height: 0px" ></a>
+                    </div>
+                    <!--end 买房、租房、商业地产对应的搜索框 -->
+                    <!-- 新房优惠 -->
+                    <!-- end新房优惠 -->
+                    <!-- 热门导购 -->
+                    <div class="cont-wrap system-link-track">
+                        <h1 class="home-title"><a title="热门导购"  href="" >热门导购&nbsp;
+></a></h1>
+                        <div class="box popGuide-cont">
+                            <ul id="popGuide-scroll-ul" class="popguide-scroll-ul clearfix">
+                                <li>
+                                    <dl class="clearfix">
+                                    <dt class="big-guide">
+
+<!--{php $tags=tag("moduleid=8&condition=status=3&areaid=$cityid&catid=32,33&length=42&pagesize=1&order=addtime desc&target=_blank&template=null");}-->
+                                    {loop $tags $k $t}     
+                                    <a title="{$t[alt]}"  href="{$t[linkurl]}" >
+                                    <img src='{imgurl($t[thumb])}'>
+                                    </a><a title="{$t[alt]}"  href="{$t[linkurl]}" >
+                                    <p class="font-20">{$t[title]}</p></a>
+                                    {/loop}
+                                    </dt>
+
+
+                                        <dd class="small-guide">
+
+
+
+
+
+
+
+<!--{php $tags=tag("moduleid=8&condition=status=3&areaid=$cityid&catid=32,33&length=42&pagesize=8&order=addtime desc&target=_blank&template=null");}-->
+{loop $tags $k $t}     
+<span {if empty($k)}class="no"{/if} >
+<a title="{$t[alt]}"  href="{$t[linkurl]}">
+<img src='{imgurl($t[thumb])}' alt="{$t[alt]}" >
+</a>
+<a title="{$t[title]}"  href="{$t[linkurl]}" ">
+<p class="font-16">{$t[title]}</p></a></span>
+{/loop}
+
+</dd>
+                                    </dl>
+                                </li>
+                                
+                            </ul>
+                            <ul id="scroller-num" class="scroller-num clearfix">
+                               <!--  <li id="scroller-num0" class="cur-num"></li>
+                                <li id="scroller-num1"></li> -->
+                            </ul>
+                        </div>
+                        <a style="display: block;height: 0px;font-size: 0px;line-height: 0px" data-trace="{Anjuke_home_Property_viewed_popGuide:1}"></a>
+                    </div>
+                    <!-- end热门导购 -->
+                    <!-- 左侧广告1：left -->
+
+                <!--     <div class="cont-wrap">
+                        <div id="IFX_p1000" class="left-1st-ad" style="position:relative;"></div>
+                        <div style="display: none"></div>
+                    </div> -->
+
+
+                    <!-- 楼市行情/实地探盘 -->
+                    <div class="cont-wrap clearfix">
+                        <!-- 楼市行情 -->
+                        <div class="cont-wrap-fl fl">
+                            <h1 class="home-title"><a  href="" title='热点追踪'>热点追踪&nbsp;
+></a></h1>
+                            <div class="box propmarket-cont">
+                                <ul class="propmarket-ul">
+  
+
+<!--本地楼市-->
+
+ <!--{php $tags=tag("moduleid=8&condition=status=3&areaid=$cityid&catid=28,29&length=42&pagesize=1&order=addtime desc&target=_blank&template=null");}-->
+    {loop $tags $k $t} 
+                                    <li class="clearfix  system-link-track">
+                                        <div class="propmarket-img fl">
+                                            <a href="{$t[linkurl]}" title="{$t[alt]}" ><img  src="{imgurl($t[thumb])}"></a>
+                                        </div>
+                                        <div class="propmarket-info fl">
+                                            <h3 class="font-20"><a  href="{$t[linkurl]}" title="{$t[alt]}" _>{$t[title]}</a></h3>
+                                            <p class="font-14">{dsubstr($t[introduce], 96, $suffix = '..')}</p>
+                                        </div>
+                                    </li>
+     {/loop}
+
+
+                             <!--        <li class="clearfix  system-link-track">
+                                        <div class="propmarket-img fl">
+                                            <a  href="" title="政策生变：”" "><img data-src="picture/160x120m.jpg" src=""></a>
+                                        </div>
+                                        <div class="propmarket-info fl">
+                                            <h3 class="font-20"><a  href="" title="政策生变：" _soj="HP_NewMarket">政策生变：部分城市取消“购房补贴”</a></h3>
+                                            <p class="font-14">被为数不少的三四线城市所采用的。</p>
+                                        </div>
+                                    </li>
+
+                                    <li class="clearfix border-none system-link-track">
+                                        <div class="propmarket-img fl">
+                                            <a  href="" title="去" ><img data-src="picture/160x120m.jpg" src=""></a>
+                                        </div>
+                                        <div class="propmarket-info fl">
+                                            <h3 class="font-20"><a  href="" title="去年130家房企利元" >去年130家房企利息支出逼600亿</a></h3>
+                                            <p class="font-14">据Wind资讯统计数据显示</p>
+                                        </div>
+                                    </li> -->
+
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end楼市行情 -->
+                        <!-- 实地探盘 -->
+                        <div class="cont-wrap-fr fr">
+                            <h1 class="home-title"><a title="实地探盘" alt="实地探盘" target="_blank" href="" _soj="HP_NewLive">实地探盘&nbsp;
+></a></h1>
+                            <div class="box field-cont">
+
+
+
+
+
+                                <ul class="field-ul">
+                               <!--{php $tags=tag("moduleid=6&condition=status=3 and isnew=1 and thumb!=''&areaid=$cityid&length=20&order=hits desc&pagesize=2&target=_blank&template=null");}-->
+{loop $tags $k $t}
+                                    <li class="border-none system-link-track"  {if empty($k)}class="no"{/if} >
+
+                                        <a  title="{$t[alt]}" alt="{$t[alt]}" href="{$t[linkurl]}" ><img alt="{$t[alt]}"  src="{imgurl($t[thumb])}" /></a>
+                                        <p class="font-16 mar-top">
+                                            <a  title="{$t[title]}" href='{$t[linkurl]}' >{$t[title]}</a>
+                                        </p>
+                                        </li>
+{/loop}
+                                       
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end实地探盘 -->
+                        <a style="display: block;height: 0px;font-size: 0px;line-height: 0px" data-trace="{Anjuke_View_Property_viewed_propmarket:1}"></a>
+                    </div>
+
+
+                    <!-- end楼市行情/实地探盘 -->
+
+
+
+                    <!-- 左侧广告2：left -->
+                   <!--  <div class="cont-wrap">
+                        <div id="IFX_p930" class="left-2nd-ad" style="position:relative;"></div>
+                        <div style="display: none"></div>
+                    </div> -->
+
+
+
+                    <!-- 二手房推荐小区 -->
+                    <div class="cont-wrap lazy-loading-image">
+                        <h1 class="home-title">
+                        <a  title="嘉兴二手房推荐小区"  href="" >二手房推荐小区&nbsp;
+></a></h1>
+
+                        <div class="box ershouRecomm-cont">
+
+                            <ul class="com-rec clearfix m-b-con-jg border-b ershouRecomm-w-t m-t-f-4">
+                       
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>''&areaid=$cityid&length=22&pagesize=2&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+                                <li class="system-link-track">
+                
+                                    <div class="com-rec-img fl m-r-li">
+                                        <a title="{$t[housename]}" alt="{$t[housename]}" href="{$t[linkurl]}" target="_blank" _soj="proprec"><img  alt="{$t[housename]}" src="{imgurl($t[thumb])}"></a>
+                                    </div>
+                                    <div class="fl com-rimg-t">
+
+                                       <!--  <a title="南湖 - 金穗月亮湾" alt="南湖 - 金穗月亮湾" href="" target="_blank" _soj="proprec">
+                                            <dl class="com-rec-text m-t-img-font com-rec-link"><dt>南湖 - 金穗月亮湾</dt>
+                                                <dd><span>10828</span>元/<em>m²</em></dd>
+                                            </dl>
+                                        </a> -->
+
+                                        <a title="{$t[housename]}" alt="{$t[housename]}" href="{$t[linkurl]}" target="_blank" _soj="proprec">
+                                            <dl class="com-rec-text m-t-con-con2 com-rec-link"><dt>{$t[housename]}</dt>
+                                                <dd>{floor($t['price']*10000/$t['houseearm'])}元/㎡</dd>
+                                            </dl>
+                                        </a>
+                                    </div>
+                                </li>
+                                  {/loop}
+                            </ul>
+
+                            <ul class="com-rec clearfix com-rec-w">
+
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>''&areaid=$cityid&length=22&pagesize=8&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+                                <li class="m-r-li system-link-track" style="margin-top: 30px;">
+                                    
+                                    <a title="{$t[housename]}" alt="{$t[housename]}" href="{$t[linkurl]}" target="_blank" _soj="proprec">
+                                        <dl class="com-rec-text m-t-img-font com-rec-link"><dt>{$t[housename]}</dt>
+                                            <!-- <dd><span>14480</span>元/<em>m²</em></dd> -->
+                                             <dd>{floor($t['price']*10000/$t['houseearm'])}元/㎡</dd>
+                                        </dl>
+                                    </a>
+                                 
+                                </li>
+
+  {/loop}
+
+                            </ul>
+                        </div>
+                        <a style="display: block;height: 0px;font-size: 0px;line-height: 0px" ></a>
+                    </div>
+                    <!-- end二手房推荐小区 -->
+                    <!-- 二手房房源精选 -->
+                    <div class="cont-wrap lazy-loading-image" style="height: 650px;">
+                        <h1 class="home-title"><a target="_blank" title="嘉兴二手房房源精选" alt="嘉兴二手房房源精选" href="" _soj="rentrec">新房&nbsp;
+></a></h1>
+                        <div class="box ershouChoose-cont" style="height: 550px;">
+
+                            <ul class="com-rec clearfix com-rec-w m-t-f-4">
+                                <li class="m-r-li system-link-track">
+                                    <h3 class="com-rec-title font-18 m-b-title-con2 p-l-title"><i class="home-icon ershouChoose-opt1"></i>房型正气</h3>
+                                  
+                                 
+                                </li>
+                                <li class="m-r-li system-link-track">
+                                    <h3 class="com-rec-title font-18 m-b-title-con2 p-l-title"><i class="home-icon ershouChoose-opt2"></i>采光充足</h3>
+                                    
+                                    
+                                </li>
+                                <li class="m-r-li system-link-track">
+                                    <h3 class="com-rec-title font-18 m-b-title-con2 p-l-title"><i class="home-icon ershouChoose-opt3"></i>主卧朝南</h3>
+                                   
+                                   
+                                </li>
+                                <li class="m-r-li system-link-track">
+                                    <h3 class="com-rec-title font-18 m-b-title-con2 p-l-title"><i class="home-icon ershouChoose-opt4"></i>南北通透</h3>
+                                    
+                                    
+                                    
+                                </li>
+
+ <!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>''&areaid=$cityid&length=22&pagesize=8&order=addtime desc&target=_blank&template=null");}-->
+                             {loop $tags $i $t}                               
+                                <li class="m-r-li system-link-track" style="margin-top: 20px;">
+                                    <a title="{$t[title]}" alt="{$t[title]}" href="{$t[linkurl]}" target="_blank" >
+                                        <div class="img-wrap"><img class="com-rec-img"  alt="{$t[title]}" src="{imgurl($t[thumb])}" /></div>
+                                        <dl class="com-rec-text m-t-img-font com-rec-link"><dt>{$t[title]}</dt>
+                                            <dd><span>{$t['price']}</span>万</dd>
+                                            <dd class="grey">{$t[room]}室{$t[hall]}厅 {$t[floor1]}/{$t[floor2]}层 朝向{$t[toward]}</dd>
+                                            <dd>{floor($t['price']*10000/$t['houseearm'])}元/㎡</dd>
+                                        </dl>
+                                    </a>
+                                </li>
+  {/loop}
+
+                                 
+                            </ul>
+                        </div>
+                        <a style="display: block;height: 0px;font-size: 0px;line-height: 0px" ></a>
+                    </div>
+                    <!-- end 二手房房源精选 -->
+                    <!-- 左侧广告3：left -->
+
+
+
+               <!--      <div class="cont-wrap">
+                        <div id="IFX_p929" class="left-3rd-ad" style="position:relative;"></div>
+                        <div style="display: none"> </div>
+                    </div> -->
+
+
+
+                    <!-- 租房房源精选 -->
+                    <div class="cont-wrap lazy-loading-image">
+                        <h1 class="home-title"><a target="_blank" title="嘉兴租房房源精选" alt="嘉兴租房房源精选" href="" >租房&nbsp;
+></a></h1>
+                        <div class="box renthouse-cont">
+                            <ul class="com-rec clearfix com-rec-w m-t-f-4">
+
+                                <li class="m-r-li system-link-track">
+                                    <h3 class="com-rec-title font-18 m-b-title-con2 p-l-title"><i class="home-icon renthouse-opt1"></i>交通便利</h3>
+                                    
+                                </li>
+                               
+
+
+                                <li class="m-r-li system-link-track">
+                                    <h3 class="com-rec-title font-18 m-b-title-con2 p-l-title"><i class="home-icon renthouse-opt2"></i>精装修</h3>
+                                   
+                                </li>
+                                
+
+                                <li class="m-r-li system-link-track">
+                                    <h3 class="com-rec-title font-18 m-b-title-con2 p-l-title"><i class="home-icon renthouse-opt3"></i>拎包入住
+
+</h3>
+                                    
+                                </li>
+                              
+                                <li class="m-r-li system-link-track">
+                                    <h3 class="com-rec-title font-18 m-b-title-con2 p-l-title"><i class="home-icon renthouse-opt4"></i>商业繁华</h3>
+                                    
+                                </li>
+
+          
+
+
+ 
+
+
+   <!--{php $tags=tag("moduleid=7&condition=status=3&areaid=$cityid&length=42&pagesize=8&order=addtime desc&target=_blank&template=null");}-->
+
+ {loop $tags $i $t}
+                                <li class="m-r-li system-link-track">
+                                   
+                                    <a class="a-block-link" title="{$t[title]}" alt="{$t[title]}" href="{$t[linkurl]}" > <img class="com-rec-img" data-src="{imgurl($t[thumb])}" alt="{$t[title]}" src="" />
+                                       
+                                    </a>
+
+                                   
+                                </li>
+ {/loop}
+                             
+
+
+
+  <!--{php $tags=tag("moduleid=7&condition=status=3&areaid=$cityid&length=42&pagesize=8&order=addtime desc&target=_blank&template=null");}-->
+
+ {loop $tags $i $t}
+                            <li class="m-r-li system-link-track" style="margin-top: 10px;">
+                                    
+                                    <a class="a-block-link" title="{$t[title]}" alt="{$t[title]}" href="" > 
+                                        <dl class="com-rec-text m-t-img-font com-rec-link"> <dt>{$t[title]}</dt>
+                                            <dd>{$t[price]}元/月</dd>
+                                            
+                                        </dl>
+                                    </a>
+                     
+                            </li>
+                           {/loop}
+
+
+                            </ul>
+                        </div>
+                        <a style="display: block;height: 0px;font-size: 0px;line-height: 0px" ></a>
+                    </div>
+                    <!--end 租房房源精选 -->
+                    <!-- 左侧广告4：left -->
+               <!--      
+                    <div class="cont-wrap">
+                        <div id="IFX_p1001" class="left-4th-ad" style="position:relative;"></div>
+                        <div style="display: none"> </div>
+                    </div> -->
+
+
+                      
+<!--  {loop $tags $i $t}
+        <li>
+        <div class=""></div>
+        <a href="{$t[linkurl]}" target="_blank" title="{$t[alt]" class="pic_a"><img src="{imgurl($t[thumb])}" alt="{$t[alt]}"><span><i>{$t[houseearm]}㎡</i><u>{$t[housename]}</u></span></a>
+        <div class="detail">
+            <p class="jiage">{if $t[price]}<span class="jg">{$t[price]}</span><span class="pm">万</span> {floor($t['price']*10000/$t['houseearm'])}元/㎡{else}<span class="jg">面议</span>{/if}</p>
+            <p class="miaoshu">{if $t[room]}{$t[room]}室{else}待定{/if}{if $t[hall]}{$t[hall]}厅{/if} {$t[floor1]}/{$t[floor2]}层 朝向{$t[toward]}</p>
+        </div>
+    </li>
+        {/loop} -->
+
+
+                    <!-- 热门商业地产 -->
+                    <div class="cont-wrap lazy-loading-image">
+                        <h1 class="home-title"><a target="_blank" title="嘉兴热门商业地产" alt="嘉兴热门商业地产" href="" _soj="officerec">二手房出售&nbsp;
+></a></h1>
+                        <div class="box hotcommercial-cont">
+                            <ul class="com-rec clearfix com-rec-w m-t-f-4">
+                              <!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>''&areaid=$cityid&length=22&pagesize=4&order=addtime desc&target=_blank&template=null");}-->
+                               {loop $tags $i $t}
+                                <li class="m-r-li system-link-track">
+                                    <a class="a-block-link" title="{$t[housename]}" alt="{$t[housename]}" href="{$t[linkurl]}" > <img class="com-rec-img" data-src="{imgurl($t[thumb])}" alt="{$t[housename]}" src="" />
+                                        <dl class="com-rec-text m-t-img-font"> <dt>{$t[housename]}</dt>
+                                            <dd><span></span>{floor($t['price']*10000/$t['houseearm'])}元/㎡</dd>
+                                            <dd class="grey">{if $t[room]}{$t[room]}室{else}待定{/if}{if $t[hall]}{$t[hall]}厅{/if} {$t[floor1]}/{$t[floor2]}层 朝向{$t[toward]}</dd>
+                                        </dl>
+                                    </a>
+                                </li>
+                          {/loop}
+                              
+                            </ul>
+                        </div>
+                        <a style="display: block;height: 0px;font-size: 0px;line-height: 0px" ></a>
+                    </div>
+                    <!-- end热门商业地产 -->
+
+                </div>
+
+
+
+
+                <!-- 右侧内容展示 -->
+                <div class="right-cont fr">
+                    <!-- 免费发布房源 -->
+                    <div class="Entrusthouse-cont">
+                        <div class="focus"> <i>1</i><i class="comma"></i><i>7</i><i>4</i><i>9</i><i class="comma"></i><i>7</i><i>6</i><i>9</i> </div>
+                        <p class="tips">业主的放心之选</p>
+                        <div class="links">
+                            <a href=''   rel="nofollow">我要估价>></a>
+                        </div>
+                        <div class="btn-links">
+                            <a class="btn publish-btn"  href='{$MODULE[2][linkurl]}publish.php' ><i></i>卖房</a>
+                        </div>
+                    </div>
+                    <!-- end免费发布房源 -->
+                    <!-- 看房团 -->
+                    <!-- end看房团 -->
+                    <!-- 最新开盘 -->
+                    <!-- end热门楼盘 -->
+                    <div class="cont-wrap">
+                        <h1 class="home-title"><a title="特色楼盘" alt="特色楼盘" target="_blank" href="">特色楼盘&nbsp;
+></a></h1>
+                        <div class="box specialprop-cont">
+                            <div class="border-b m-b-s-title">
+                                <div class="specialprop-ul-title">
+                                    <a title="刚需房" alt="刚需房" href="">刚需房</a>
+                                </div>
+                                <ul class="specialprop-ul specialprop-ul-m-b">
+
+<!--{php $tags=tag("moduleid=6&condition=status=3  and isnew=1&areaid=$cityid&length=18&pagesize=8&order=addtime desc&target=_blank&template=null");}-->
+
+
+{loop $tags $k $t}
+                                    <li class="clearfix" {if $k==7}style="border:0;"{/if}>
+                                        <dl class="xf-comm-dl clearfix xf-comm-dl-pad"> <dt><a title="{$t[title]}" alt="{$t[title]}" href="">{$t[title]}</a> </dt>
+                                            <dd><em class="price">{$t[price]}元/</em><em class="square">m²</em></dd>
+                                        </dl>
+                                    </li>
+                                 {/loop} 
+
+                                </ul>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <!-- 右侧广告1：right -->
+
+<!-- 
+                    <div class="cont-wrap">
+                        <div id="IFX_p927" class="right-1st-ad" style="position:relative;"></div>
+                        <div style="display: none"> </div>
+                    </div> -->
+
+
+                    <!-- 新房动态 -->
+                    <!-- 右侧广告2：right -->
+
+               <!--      <div class="cont-wrap">
+                        <div id="IFX_p928" class="right-2nd-ad" style="position:relative;"></div>
+                        <div style="display: none"> </div>
+                    </div> -->
+
+                    <!-- 房价趋势 -->
+<!--                     <div class="cont-wrap">
+                        <h1 class="home-title"><a target="_blank" title="嘉兴房价趋势" alt="嘉兴房价趋势" href="https://jx.anjuke.com/market/" _soj="saleprice">嘉兴房价趋势&nbsp;
+></a></h1>
+                        <div class="box pricetrend-cont">
+                            <dl class="pricetrend-dl clearfix m-t-f-pricetrend"> <dt>7月均价：</dt>
+                                <dd><span>10551</span>元/<em>m²</em></dd>
+                            </dl>
+                            <dl class="pricetrend-dl clearfix"> <dt>环比6月：</dt>
+                                <dd class="color-orange">上升<span>1.83</span>%</dd>
+                            </dl>
+                            <dl class="pricetrend-dl clearfix"> <dt>同比去年同期：</dt>
+                                <dd class="color-orange">上涨<span>47.24</span>%</dd>
+                            </dl>
+                            <a title="嘉兴房价趋势" alt="嘉兴房价趋势" href="https://jx.anjuke.com/market/" class="pricetrend-chat" target="_blank" _soj="saleprice"> <img src="picture/load.gif" data-src="https://jx.anjuke.com/v3/chart/pricetrend/W0QQcodeZ4864QQhZ197QQtZ1QQwZ245" /> </a>
+                            <p class="pricetrend-p">本站”均价”数据统计自物业顾问发布的数据</p>
+                        </div>
+                    </div> -->
+
+
+
+
+
+                    <!-- 房产问答 -->
+                    <div class="cont-wrap">
+                        <h1 class="home-title"><a target="_blank" title="房产问答" alt="房产问答" href="/ask/" _soj="Ask">房产问答&nbsp;
+></a></h1>
+                        <div class="box houseqa-cont  ">
+                            <ul class="con-list border-b m-t-re-font m-b-qa">
+
+                             <!--{php $tags=tag("table=wenfang&condition=status=3&pagesize=10&order=addtime desc&template=null");}-->
+                                {loop $tags $i $t}
+                                <li>
+                                    <a title="{$t[item_title]}" alt="{$t[item_title]}" href="{$t[item_linkurl]}" target="_blank"> {$t[item_title]}</a>
+                                </li>
+                                 {/loop}
+
+              
+                            </ul>
+                                  
+            
+
+                           
+                            <!-- <a title="更多问答" alt="更多问答" href="{$MODULE[6][linkurl]}list.html" target="_blank" class="houseqa-cont-btn font-20" _soj="ask">更多问答</a> -->
+                           
+                        </div>
+                    </div>
+                    <!-- 右侧广告3：right -->
+
+            <!--         <div class="cont-wrap">
+                        <div id="IFX_p935" class="right-3rd-ad" style="position:relative;"></div>
+                        <div style="display: none"> </div>
+                    </div> -->
+
+
+                    <!-- 租房小区排行 -->
+                    <div class="cont-wrap">
+                        <h1 class="home-title">租房&nbsp;
+></h1>
+                        <div class="box rentCommunity-cont">
+                            <ul class="con-list m-t-re-font">
+                             <!--{php $tags=tag("moduleid=7&condition=status=3&areaid=$cityid&length=42&pagesize=8&order=addtime desc&target=_blank&template=null");}-->
+
+
+  {loop $tags $i $t}
+
+                                <li> <span class="col1" style="width: 150px;">
+                                <a title="{$t[title]}" alt="{$t[title]}" href="{$t[linkurl]}" target="_blank" >{$t[title]}&nbsp;</a> </span> 
+                                <span class="col2" style="width: 70px;"><a title="{$t[title]}" alt="{$t[title]}" href="{$t[linkurl]}" target="_blank">{$t[price]}元/月</a></span> </li>
+   {/loop}
+                              
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 右侧广告4：right -->
+
+
+            <!--         <div class="cont-wrap">
+                        <div id="IFX_p1002" class="right-4th-ad" style="position:relative;"></div>
+                        <div style="display: none"> </div>
+                    </div> -->
+
+                    <div class="cont-wrap">
+                        <h1 class="home-title heightk">产品中心</h1>
+                        <div class="box mastermicro-cont">
+                            <div class="cont-wrap">
+                                <div id="IFX_p3006" class="right-4th-ad-wechat" style="position:relative;"></div>
+                                <div style="display: none"> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cont-wrap">
+                        <h1 class="home-title heightk">产品中心</h1>
+                        <div class="box mastermicro-cont">
+                            <div class="cont-wrap">
+                                <div id="IFX_p3006" class="right-4th-ad-wechat" style="position:relative;"></div>
+                                <div style="display: none"> </div>
+                            </div>
+                        </div>
+                    </div>                    <div class="cont-wrap">
+                        <h1 class="home-title heightk">产品中心</h1>
+                        <div class="box mastermicro-cont">
+                            <div class="cont-wrap">
+                                <div id="IFX_p3006" class="right-4th-ad-wechat" style="position:relative;"></div>
+                                <div style="display: none"> </div>
+                            </div>
+                        </div>
+                    </div>                    <div class="cont-wrap">
+                        <h1 class="home-title heightk">产品中心</h1>
+                        <div class="box mastermicro-cont">
+                            <div class="cont-wrap">
+                                <div id="IFX_p3006" class="right-4th-ad-wechat" style="position:relative;"></div>
+                                <div style="display: none"> </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div style="clear: both;"></div>
+                <!-- 广告位的展示1 -->
+                <div class="full-poster">
+                    <div id="IFX_p931" class="" style="position:relative;"></div>
+                    <div style="display: none"> </div>
+                </div>
+                <!-- 广告位的展示2 -->
+                <div class="full-poster">
+                    <div id="IFX_p933" class="" style="position:relative;"></div>
+                    <div style="display: none"> </div>
+                </div>
+                <!-- 58黄页广告位展示 -->
+
+                <!-- 热门城市 -->
+                <div class="htocomm-boxer" id="hotcomm_boxer">
+                
+                <!-- 底部活动banner -->
+              
+
+                
+            </div>
+            <div style="clear:both;"></div>
+<!-- 
+            <div id="footer-mod">
+                <div id="footer" class="footer">
+                    <ul class="links">
+                       
+                    </ul>
+                    <div id="loan_link" class="show-mod loan-link">
+                        <ul>
+                           
+                        </ul>
+                    </div>
+                    <div id="map_link" class="show-mod map-link">
+                        <ul>
+                           
+                        </ul>
+                    </div>
+                    <div id="house_link" class="show-mod house-link">
+                        <ul>
+                           
+                        </ul>
+                    </div>
+                    <div id="other_city" class="show-mod other-city">
+                        <ul>
+                           
+                        </ul>
+                    </div>
+                    <div class="cp-mod">
+                        <a href="https://kfzx.anjuke.com/" target="_blank">客户服务中心</a>&ensp; &ensp; &ensp; 邮箱：
+                        <a href="mailto:service@58ganji.com" target="_blank" rel="nofollow">service@58ganji.com</a>&ensp; &ensp; &ensp; Copyright&nbsp; &copy; &nbsp; 2007-2017&ensp; www.anjuke.com&ensp; All Rights Reserved&ensp; &ensp; &ensp;
+                        <a href="http://www.miibeian.gov.cn/" rel="nofollow">ICP号：沪&ensp; B2-20090008
+                        </a>
+                    </div>
+                    <div class="gov-mod">
+                        <a target="_blank" rel="nofollow" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502002124"> <img width="20" height="20" data-src="picture/beianbgs.png"> 沪公网安备 31011502002124号 </a>
+                    </div>
+                    <div class="license">
+                        <a href='http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20131226093434993' target="_blank" rel="nofollow"> <img src="picture/gongshang_125x60.png"> </a>
+                        <a href='http://www.police.sh.cn/shga/gweb/email/110/' target="_blank" rel="nofollow"> <img src="picture/police_110x60.png"> </a>
+                        <a class="cnnic" href="https://ss.knet.cn/verifyseal.dll?sn=e14031431010847304mj1q000000&ct=df&a=1&pa=0.3711340369191021" target="_blank" rel="nofollow"> <img src="picture/cnnic.png" alt="可信网站"> </a>
+                    </div>
+                </div> -->
+                {template 'footer'}
+            </div>
+        </div>
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-mod sidebar-nav">
+                
+            </div>
+        </div>
+        <div class="sidebar-mod sidebar-top">
+            <a href="javascript:void(0);" class="sid-nav"> <span class="iconfont">&#xE007;
+</span> <em class="nav-arrow"></em>
+                <div class="sidebar-nav-hover">返回顶部</div>
+            </a>
+        </div>
+        <script type="text/javascript" src="{AJ_STATIC}file/script/jquery-underscore.min.js"></script>
+        <script type="text/javascript" crossorigin src="{AJ_STATIC}file/script/bbv6.js"></script>
+        <script type="text/javascript" crossorigin src="{AJ_STATIC}file/script/ershou_web_home_home.js"></script>
+        <!-- START: 性能测试监控 -->
+        <!-- END: 性能测试监控 -->
+
+    </body>
+
+</html>

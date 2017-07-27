@@ -1,0 +1,29 @@
+<link href="script/mobiscroll.custom-2.6.2.min.css" rel="stylesheet" />
+<script src="script/mobiscroll.custom-2.6.2.min.js" charset="gb2312"></script> 
+<input type="text" name="post[totime]" id="posttotime" class="aui-input" placeholder="过期时间" value="{$totime}" size="10" />
+<script type="text/javascript">
+$(function () {
+	var currYear = (new Date()).getFullYear();	
+	var opt={};
+	opt.date = {preset : 'date'};
+	opt.datetime = {preset : 'datetime'};
+	opt.time = {preset : 'time'};
+	opt.default = {
+		theme: 'android-ics light', //皮肤样式
+		display: 'modal', //显示方式 
+		mode: 'scroller', //日期选择模式
+		dateFormat: 'yyyy-mm-dd',
+		lang: 'zh',
+		showNow: true,
+		nowText: "今天",
+		{if $theyear<>''}
+		startYear: {$theyear},
+		{else}
+		startYear: currYear - 50, //开始年份
+		{/if}
+		endYear: currYear + 10 //结束年份
+	};
+	$("#posttotime").mobiscroll($.extend(opt['date'], opt['default']));
+
+});
+</script>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<meta name="generator" content="AIJIACMS  - www.aijiacms.com"/>
+<link rel="shortcut icon" type="image/x-icon" href="{AJ_STATIC}favicon.ico"/>
+<link href="{AJ_SKIN}xfreset.css" rel="stylesheet" type="text/css" />
+<link href="{AJ_SKIN}tool.css" rel="stylesheet" type="text/css" />
+<link href="{AJ_SKIN}xinfang.css" rel="stylesheet" type="text/css" />
+{if !AJ_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}
+<script type="text/javascript" src="{AJ_STATIC}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>
+<script src="{AJ_SKIN}/js/sea.js" type="text/javascript"></script>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{/if}</title>
+</head><body class="gallery">
+	<div class="header">
+		<h1>
+			<a href="{$MODULE[1][linkurl]}"  target="_blank" class="fl"><img alt="{$AJ[sitename]}" src="{if $MODULE[$moduleid][logo]}{AJ_SKIN}image/logo_{$moduleid}.gif{elseif $AJ[logo]}{$AJ[logo]}{else}{AJ_SKIN}image/logo.gif{/if}" width="130" height="32"></a></a>
+			<span class="fr"><a href="{$MODULE[1][linkurl]}" target="_blank">网站首页</a>|<a href="{$MODULE[6][linkurl]}{$houseid}/" target="_blank">楼盘主页</a></span>
+		</h1>
+	</div>
+	<div id="main">
+		<div class="bread">
+		<a href="{$MODULE[1][linkurl]}" target="_blank">{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}</a>&gt;<a href="{$MODULE[6][linkurl]}" target="_blank">{$city_name}新房</a>&gt;<a href="{$MODULE[6][linkurl]}{$houseid}/" target="_blank">{$housename}</a>&gt;<span>相册</span></div>
+		<div class="galbox">
+			<h2>
+				<span class="fr">
+					<a href="javascript:" class="stop" id="gal_play">暂停</a>
+				</span>
+				{$title}（<span id="gal_index">{$page}</span>/{$items}张）
+			</h2>
+			<div id="galbox">
+				<span></span>
+				<i></i>
+				 <!--{php $tags=tag("moduleid=6&condition=status=3 and itemid=$houseid&pagesize=1&order=hits desc&template=null");}-->
+{loop $tags $i $t} 
+				<div id="gali">
+					<a href="javascript:"></a>
+					<strong>价格：均价：<em>：{if $price}{$price}</em>元/平方米{else}待定{/if}</em><br>
+					特点：<em>{$t[tedian]}</em><br>
+					咨询：<em>：{$t[telephone]}</em></strong>
+				</div>
+				{/loop} 
+				<a href="#" target="_blank" id="open_big"></a>
+			
+			<div id="gal_alert">
+					<a class="gc" href="javascript:"></a>
+					<div class="cf">
+						<img class="fl" src="{$thumb}" alt="" width="120" height="90">
+						<p>{$housename}<br>
+							<a class="gf" href="{$linkurl}"></a>
+							<a class="reh" href="{$MODULE[6][linkurl]}{$houseid}"></a>
+						</p>
+					</div>
+					<ul class="cf">	 <!--{php $tags=tag("moduleid=12&&condition=status=3 and houseid!=$houseid and items>0&showcat=1&pagesize=3&order=itemid desc&template=null");}-->
+ {loop $tags $i $t}<li>
+									<a href="{$t[linkurl]}" target="_blank" title="">
+										<img src="{$t[thumb]}" alt="{$t[alt]}" width="120" height="90">{$t[title]}</a>
+								</li>{/loop} 	</ul>
+				</div>
+			</div>
+			<div id="galcon">
+				<a href="javascript:" class="gu"></a>
+				<div id="galconlist">
+					<ul class="cf">
+			 <!--{php $tags=tag("moduleid=12&&condition=status=3 and houseid=$houseid and items>0&showcat=1&pagesize=8&order=itemid asc&template=null");}-->
+ {loop $tags $i $t}
+      <LI><a  {if $_GET['itemid']==$t[itemid]} class="on"{/if} href="{$t[linkurl]}"  title="{$t[alt]}" >{$t[catname]}<span>{$t[items]}张</span></a></LI>{/loop}
+																											
+					</ul>
+				</div>
+				<a href="javascript:" class="gd"></a>
+			</div>
+			<div class="cf">
+				<ul id="share" class="fr"></ul>
+			</div>
+			<div id="galinfo">				
+			</div>
+			<div id="gallist">
+				<a href="javascript:" class="gl">&lt;</a>
+				<a href="javascript:" class="gr">&gt;</a>
+				<div>
+					<ul>
+						{loop $T $k $t}		<li><a href="javascript:"><img src="{$t[thumb]}" data-did="{$k+1}" data-bigsrc="{get_oldpic($t[thumb],2)}" alt=""><b>{$k+1}/{$items}</b></a></li>
+														{/loop}
+																		</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+seajs.use(["share"],function(alertM){
+	$("#share").share();
+	var $gl = $("#gallist"),
+		$pl = $("#gallist ul"),
+		$imgl=$pl.find("img"),
+		$img=$("#galbox"),
+		$imgInfo=$("#galinfo"),
+		$alert=$("#gal_alert").on("click","a.gc",function(){
+			$alert.animate({
+				top:0,
+				opacity:"hide"
+			})
+		}),
+		imgdid=window.location.href.indexOf("="),
+		imgid;
+		if(imgdid>0){
+			imgdid = window.location.href.substr(window.location.href.indexOf("=") + 1);
+			imgid = $imgl.index($imgl.filter("[data-did="+imgdid+"]"));
+		}
+		imgid = imgid>-1?imgid:0;
+	var	 $pa = $pl.find("li"),
+		pl = $pa.length,
+		plindex = Math.floor(imgid / 6),
+		pllength = Math.ceil(pl / 6);
+		
+
+	$pl.animate({
+		left: 0 - plindex * 810
+	});
+	$gl.on("click","a.gl",function(){
+		plindex--;
+		if (plindex < 0)
+			plindex = pllength - 1;
+		$pl.animate({
+			left: 0 - plindex * 810
+		});
+	}).on("click","a.gr",function(){
+		plindex++;
+		if (plindex >= pllength)
+			plindex = 0;
+		$pl.animate({
+			left: 0 - plindex * 810
+		});
+	})
+
+	var $img = $("#galbox").on("mouseenter",function(e){
+			$openImgBlank.animate({
+				right:0,
+				bottom:0,
+				opacity:"show"
+			})
+		}).on("mouseleave",function(){
+			$openImgBlank.animate({
+				right:-43,
+				bottom:-43,
+				opacity:"hide"
+			})
+		}),
+		imgMid=$img.offset().left+$img.width()/2;
+		$imgIndex = $("#gal_index"),
+		$openImgBlank = $("#open_big"),
+		changeImg = function(i) {
+			$pa.filter(".on").removeClass("on");
+			var $t = $pa.eq(i).addClass("on").find("img"),
+				src = $t.attr("data-bigsrc"),
+				alt = $t.attr("alt");
+			$img.find("span").remove();
+			$('html,body').animate({
+				scrollTop: $img.offset().top-80
+			})
+			loadImage(src,function(){
+				$img.append('<span><img src="'+src+'" alt="'+alt+'"></span>').find("img").fadeIn();
+				$openImgBlank.attr("href", src);
+			}),
+			plindex = parseInt(i / 6);
+			$pl.animate({
+				left: 0 - plindex * 810
+			});
+			$imgInfo.html(alt);
+			$imgIndex.html(i - 0 + 1);
+			$gl.css("position","static").css("position","relative");
+			imgid=i;
+			imgdid=$imgl.eq(imgid).data("did");
+			window.location.href = window.location.href.substr(0, window.location.href.indexOf("#")) + "#id=" + imgdid;
+		},
+		pre = function() {
+			if (imgid > 0) {
+				changeImg(--imgid)
+			}else{
+				if(!gci){
+					clearInterval(play);
+					$alert.animate({
+						top:"50%",
+						opacity:"show"
+					})
+				}else{
+					setTimeout(function(){
+						window.location.href=$galconlist.find("a").eq(gci-1).attr("href");
+					},9)
+				}
+			}
+		},
+		next = function() {
+			if (imgid < pl - 1) {
+				changeImg(++imgid)
+			} else{
+				if($galconlist.find("li").length-1==gci){
+					clearInterval(play);
+					$alert.animate({
+						top:"50%",
+						opacity:"show"
+					})
+				}else{
+					setTimeout(function(){
+						window.location.href=$galconlist.find("a").eq(gci+1).attr("href");
+					},9)
+				}
+			}
+		},
+		loadImage = function(url, callback) {
+			var img = new Image();
+			img.src = url;
+			if (img.complete) {
+				callback && callback.call(img);
+			} else {
+				img.onload = function() {
+					callback && callback.call(img);
+					img.onload = null;
+				}
+			}
+		};
+	$pa.on("click", function() {
+		changeImg($(this).index());
+		return false;
+	})
+	$openImgBlank.animate({
+		right:-43,
+		bottom:-43,
+		opacity:"hide"
+	})
+	var $i=$img.find("i").on("mousemove",function(e){
+		if(e.pageX<imgMid)
+			$i.css("cursor",'url("{AJ_SKIN}images/xinfang/mouse_l.ico"),auto')
+		else
+			$i.css("cursor",'url("{AJ_SKIN}images/xinfang/mouse_r.ico"),auto')
+	}).on("click",function(e){
+		if(e.pageX<imgMid)
+			pre();
+		else
+			next();
+		clearInterval(play);
+		play=setInterval(function(){
+			next();
+		},10000)
+	})
+	changeImg(imgid);
+
+	var play=setInterval(function(){
+		next();
+	},10000)
+
+	var $play=$("#gal_play").on("click",function(){
+		if($play.is(".stop")){
+			$play.attr("class","play").html("播放");
+			clearInterval(play);
+		}else{
+			$play.attr("class","stop").html("暂停");
+			next()
+			play=setInterval(function(){
+				next();
+			},10000)
+		}
+	})
+	var $gali=$("#gali").on("click","a",function(){
+		if($gali[0].style.right=="0px"){
+			$gali.animate({
+				right:-$gali.width()
+			})
+		}else{
+			$gali.animate({
+				right:0
+			})
+		}
+	});
+	$gali.animate({
+		right:-$gali.width()
+	})
+	var $galcon=$("#galcon"),
+		$galconlist=$("#galconlist"),
+		$gcu=$galcon.find("a.gu"),
+		$gcd=$galcon.find("a.gd"),
+		gci=$galconlist.find("a.on").parent().index()
+	if($galconlist.find("ul").height()>800){
+		$gcu.add($gcd).attr("style","display:block")
+	}
+	if(gci>8){
+		$galconlist.animate({
+			scrollTop:"+"+Math.floor(gci/8)*690
+		})
+	}
+	$gcu.on("click",function(){
+		$galconlist.animate({
+			scrollTop:"-690"
+		})
+	})
+	$gcd.on("click",function(){
+		$galconlist.animate({
+			scrollTop:"+690"
+		})
+	})
+});
+</script>
+{template 'footer'}

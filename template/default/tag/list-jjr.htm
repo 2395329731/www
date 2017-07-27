@@ -1,0 +1,17 @@
+
+{loop $tags $k $t} 
+      <li>
+                                    <a href="{userurl($t[username], '')}" class="jAvatar" target="_blank">
+                                        <img src="{useravatar($t[username], 'large')}" alt="{$t[username]}">
+                                    </a>
+                                    <p>
+                                        <a href="{userurl($t[username], '')}" target="_blank">{$t[username]}</a>
+											{if $t[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="通过实名认证"/>{/if}
+                                                      <br>
+                                        区域：{area_pos($t[areaid], '')}                                        <br>电话：{$t[mobile]}</p>
+                                </li>
+								
+	
+  {/loop}
+			
+			

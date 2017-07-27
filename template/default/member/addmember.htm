@@ -1,0 +1,507 @@
+{template 'header', 'member'}
+<script type="text/javascript">c(3);</script>
+<div class="tinfo">
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="addmember.php?action=add"><span>添加经纪人</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="s3"><a href="addmember.php"><span>经纪人管理</span></a></td>
+</tr>
+</table>
+</div>
+{if $action=='add'}
+<form method="post" action="addmember.php" id="dform" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="companyid" value="{$_userid}"/>
+<input type="hidden" name="groupid" value="6"/>
+			<table cellpadding="6" cellspacing="1" class="tb">
+			<tr >
+			<td class="tl">会员名 <span class="f_red">*</span></td>
+			<td width="220"><input type="text" class="reg_inp" style="width:200px;" name="post[username]" id="username" onblur="validator('username');"{if $username} value="{$username}" readonly{/if}/>
+			</td>
+			<td>
+			<div class="tips" id="tusername" style="display:none;">
+				<div>{$MOD[minusername]}-{$MOD[maxusername]}个字符，只能使用小写字母(a-z)、数字(0-9)、下划线(_)、中划线(-)，且以字母或数字开头和结尾</div>
+			</div>
+			<span id="dusername" class="f_red"></span>&nbsp;
+			</td>
+			</tr>
+			{if $MOD[passport] && $passport}
+			<tr>
+			<td class="tl">通行证用户名 &nbsp;</td>
+			<td><input type="text" class="reg_inp" style="width:200px;" name="post[passport]" id="passport" onblur="validator('passport');"{if $passport} value="{$passport}" readonly{/if}/></td>
+			<td>
+			<div class="tips" id="tpassport" style="display:none;">
+				<div>支持中文名，可用于论坛等系统用户名<br/>如果不填写，则和会员名一致</div>
+			</div>
+			<span id="dpassport" class="f_red"></span>&nbsp;
+			</td>
+			</tr>
+			{/if}
+			<tr>
+			<td class="tl">登录密码 <span class="f_red">*</span></td>
+			<td><input type="password" class="reg_inp" style="width:200px;" name="post[password]" id="password" onblur="validator('password');"{if $password} value="{$password}" readonly{/if}/></td>
+			<td>
+			<div class="tips" id="tpassword" style="display:none;">
+				<div>{$MOD[minpassword]}-{$MOD[maxpassword]}个字符，区分大小写，推荐使用数字、字母和特殊符号组合</div>
+			</div>
+			<span id="dpassword" class="f_red"></span>&nbsp;
+			</td>
+			</tr>
+			<tr >
+			<td class="tl">重复输入密码 <span class="f_red">*</span></td>
+			<td><input type="password" class="reg_inp" style="width:200px;" size="30" name="post[cpassword]" id="cpassword" onblur="validate('cpassword');"{if $password} value="{$password}" readonly{/if}/></td>
+			<td>
+			<div class="tips" id="tcpassword" style="display:none;">
+				<div>请再输入一遍上面填写的密码</div>
+			</div>
+			<span id="dcpassword" class="f_red"></span>&nbsp;
+			</td>
+			</tr>
+			
+			<tr >
+						<td class="tl">真实姓名 <span class="f_red">*</span></td>
+			<td width="220">
+			<input type="text" class="reg_inp" style="width:100px;" name="post[truename]" id="truename" onblur="validate('truename');"/>
+			<input type="radio" name="post[gender]" value="1" checked id="gender_1"/><label for="gender_1"> 先生</label>
+			<input type="radio" name="post[gender]" value="2" id="gender_2"/><label for="gender_2"> 女士</label>
+			</td>
+			<td>
+			<div class="tips" id="ttruename" style="display:none;">
+				<div>请与有效身份证件上的姓名保持一致</div>
+			</div>
+			<span id="dtruename" class="f_red"></span>&nbsp;
+			</td>
+			</tr>
+			<tr>
+			<td class="tl">所在地区 <span class="f_red">*</span></td>
+			<td>{ajax_area_select('post[areaid]', '请选择', $areaid, '', 2)}</td>
+			<td><span id="dareaid" class="f_red"></span>&nbsp;</td>
+			</tr>
+			<tr >
+						<td class="tl">电子邮箱 <span class="f_red">*</span></td>
+			<td><input type="text" class="reg_inp" style="width:200px;" name="post[email]" id="email" onblur="validator('email');"{if $email} value="{$email}" readonly{/if}/></td>
+			<td>
+			<div class="tips" id="temail" style="display:none;">
+				<div>
+				{if $MOD[checkuser] == 2}
+				<span class="f_red">系统设置了邮件验证注册，请确保当前的邮件地址真实有效<br/></span>
+				{/if}
+				请使用常用常用邮箱(E-mail)地址，地址不会被公开且可用于登录网站			
+				</div>
+			</div>
+			<span id="demail" class="f_red"></span>&nbsp;	
+			</td>
+			</tr>
+			{if $could_emailcode}
+			<tr >
+						<td class="tl">邮件验证码 <span class="f_red">*</span></td>
+			<td><input type="text" class="reg_inp" style="width:80px;" name="post[emailcode]" id="emailcode" onblur="validator('emailcode');"/>
+			<input type="button" value="立即发送" id="send_code" onclick="SendCode();"/>
+			</td>
+			<td>
+			<div class="tips" id="temailcode" style="display:none;">
+				<div>
+				点击“立即发送”按钮，系统将会发送一组6位数字验证码至您填写的电子邮箱，请接收邮件获取验证码后，填写在左侧的输入框内，继续完成注册
+				</div>
+			</div>
+			<span id="demailcode" class="f_red"></span>&nbsp;	
+			</td>
+			</tr>
+			<tr id="sendok" style="display:none;">
+			<td class="tl">&nbsp;</td>
+			<td id="dsendok">&nbsp;</td>
+			<td>&nbsp;</td>
+			</tr>
+			{/if}
+		
+						<td class="tl">手机号码 &nbsp;</td>
+			<td><input type="text" class="reg_inp" style="width:200px;" name="post[mobile]" id="mobile"/></td>
+			<td>
+			<div class="tips" id="tmobile" style="display:none;">
+				<div>推荐填写，以便直接与您取得联系<br/>号码可用于登录网站和接收本站短信</div>
+			</div>
+			<span id="dmobile" class="f_red"></span>&nbsp;	
+			</td>
+			</tr>
+				<!--
+			<tr >
+			<tr>
+			<td class="tl">QQ号码 &nbsp;</td>
+			<td><input type="text" class="reg_inp" style="width:200px;" name="post[qq]" id="qq"/></td>
+			<td>
+			<div class="tips" id="tqq" style="display:none;">
+				<div>推荐填写，以便即时在线与您取得联系</div>
+			</div>
+			<span id="dqq" class="f_red"></span>&nbsp;	
+			</td>
+			</tr>
+			-->
+			<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 确 定 " class="sBtn"/><input type="reset" name="reset" value=" 重 置 " class="sBtn"/></td>
+</tr>
+			</table>
+</form>
+{load('clear.js')}
+<script type="text/javascript">s('address');m('add');</script>
+{elseif $action=='edit'}
+<form method="post" action="addmember.php" id="dform" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="userid" value="{$userid}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<table cellpadding="6" cellspacing="1" class="tb">
+<tbody id="Tabs0" style="display:;">
+<tr>
+<td class="tl">会员名</td>
+<td class="tr f_b">{$username}</td>
+</tr>
+<tr>
+<td class="tl">Email</td>
+<td class="tr"><input type="text" name="post[email]" id="email" value="{$email}"/>{if $vemail}&nbsp;&nbsp;<img src="image/v_email.gif" title="已认证" align="absmiddle"/>{/if}&nbsp;&nbsp;</td>
+</tr>
+{if $vtruename}
+<tr>
+<td class="tl"><span class="f_red">*</span>真实姓名</td>
+<td class="tr"><input type="hidden" name="post[truename]" id="truename" value="{$truename}"/>{$truename}&nbsp;&nbsp;<img src="image/v_truename.gif" title="已认证" align="absmiddle"/></td>
+</tr>
+{else}
+<tr>
+<td class="tl"><span class="f_red">*</span>真实姓名</td>
+<td class="tr"><input type="text" size="10" name="post[truename]" id="truename" value="{$truename}"/>&nbsp;<span id="dtruename" class="f_red"></span></td>
+</tr>
+{/if}
+<tr>
+<td class="tl"><span class="f_red">*</span>性别</td>
+<td class="tr">
+<input type="radio" name="post[gender]" value="1" {if $gender==1}checked="checked"{/if}/> 先生
+<input type="radio" name="post[gender]" value="2" {if $gender==2}checked="checked"{/if}/> 女士
+</td>
+</tr>
+{if $_groupid < 8}
+<tr>
+<td class="tl"><span class="f_red">*</span>所在地区</td>
+<td class="tr">{ajax_area_select('post[areaid]', '请选择', $areaid)}&nbsp;<span id="dareaid" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">新登录密码</td>
+<td class="tr"><input type="password" size="20" name="post[password]" id="password" onblur="validator('password');"/>&nbsp;<span class="f_gray">如不更改密码,请留空</span> <span id="dpassword" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">重复新密码</td>
+<td class="tr"><input type="password" size="20" name="post[cpassword]" id="cpassword"/>&nbsp;<span id="dcpassword" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">现有密码</td>
+<td class="tr f_red"><input type="password" size="20" name="post[oldpassword]" id="oldpassword"/>&nbsp; 如要更改密码，需输入现有密码 <span id="doldpassword" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">手机号码</td>
+<td class="tr"><input type="text" name="post[mobile]" id="mobile" value="{$mobile}"/>&nbsp;<img src="image/v_mobile.gif" title="已认证" align="absmiddle"/>&nbsp;&nbsp;</td>
+</tr>
+
+{/if}
+
+<tr>
+<td class="tl">部门</td>
+<td class="tr"><input type="text" size="20" name="post[department]" id="department" value="{$department}"/></td>
+</tr>
+<tr>
+<td class="tl">职位</td>
+<td class="tr"><input type="text" size="20" name="post[career]" id="career" value="{$career}"/></td>
+</tr>
+{if $AJ[im_qq]}
+<tr>
+<td class="tl">QQ</td>
+<td class="tr"><input type="text" size="20" name="post[qq]" id="qq" value="{$qq}"/></td>
+</tr>
+{/if}
+{if $AJ[im_ali]}
+<tr>
+<td class="tl">阿里旺旺</td>
+<td class="tr"><input type="text" size="20" name="post[ali]" id="ali" value="{$ali}"/></td>
+</tr>
+{/if}
+{if $AJ[im_msn]}
+<tr>
+<td class="tl">MSN</td>
+<td class="tr"><input type="text" size="30" name="post[msn]" id="msn" value="{$msn}"/></td>
+</tr>
+{/if}
+{if $AJ[im_skype]}
+<tr>
+<td class="tl">Skype</td>
+<td class="tr"><input type="text" size="20" name="post[skype]" id="skype" value="{$skype}"/></td>
+</tr>
+{/if}
+<tr>
+<td class="tl">站内信提示音</td>
+<td class="tr">
+<div id="audition"></div>
+<input type="radio" name="post[sound]" value="0" {if $sound==0}checked="checked"{/if} id="sound_0"/><label for="sound_0"> 无</label>&nbsp;&nbsp;
+<input type="radio" name="post[sound]" value="1" {if $sound==1}checked="checked"{/if} id="sound_1"/> <a href="javascript:Inner('audition', sound('message_1'));Dd('sound_1').checked=true;void(0);" title="点击试听">提示音1</a>&nbsp;&nbsp;
+<input type="radio" name="post[sound]" value="2" {if $sound==2}checked="checked"{/if} id="sound_2"/> <a href="javascript:Inner('audition', sound('message_2'));Dd('sound_2').checked=true;void(0);" title="点击试听">提示音2</a>&nbsp;&nbsp;
+<input type="radio" name="post[sound]" value="3" {if $sound==3}checked="checked"{/if} id="sound_3"/> <a href="javascript:Inner('audition', sound('message_3'));Dd('sound_3').checked=true;void(0);" title="点击试听">提示音3</a>&nbsp;&nbsp;
+</td>
+</tr>
+{if $MFD}{fields_html('<td class="tl">', '<td class="tr">', $user, $MFD)}{/if}
+</tbody>
+<tbody id="Tabs1" style="display:none;">
+
+
+<tr>
+<td class="tl">新支付密码</td>
+<td class="tr"><input type="password" size="20" name="post[payword]" id="payword" onblur="validator('payword');"/>&nbsp;<span class="f_gray">如不更改支付密码，请留空</span> <span id="dpayword" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">重复新支付密码</td>
+<td class="tr"><input type="password" size="20" name="post[cpayword]" id="cpayword"/>&nbsp;<span id="dcpayword" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">现有支付密码</td>
+<td class="tr f_red"><input type="password" size="20" name="post[oldpayword]" id="oldpayword"/>&nbsp; 支付密码默认和注册设置密码相同&nbsp;&nbsp;<a href="send.php?action=payword"  class="t">找回支付密码</a><span id="doldpayword" class="f_red"></span></td>
+</tr>
+
+</tbody>
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" 保 存 " class="sBtn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="sBtn" onclick="history.back(-1);"/></td>
+</tr>
+</table>
+</form>
+{load('clear.js')}
+<script type="text/javascript">s('addmember');m('s3');</script>
+{else}
+<div class="con">
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th>ID</th>
+<th >会员名</th>
+<th>真实姓名</th>
+<th>添加时间</th>
+<th>最后登录</th>
+<th>登录次数</th>
+
+<th width="40">删除</th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td width="32" height="30" >{$v[userid]}</td>
+<td>{$v[username]}</td>
+<td>{$v[truename]}</td>
+<td class="px11 f_gray" title="更新时间 {$v[editdate]}">{$v[editdate]}</td>
+<td>{$v[logindate]}</td>
+<td>{$v[logintimes]}</td>
+
+<td><a href="addmember.php?action=delete&userid={$v[userid]}" onclick="if(!confirm('确定要删除吗？此操作将不可撤销')) return false;"><img width="16" height="16" src="image/delete.png" title="删除" alt=""/></a></td>
+</tr>
+{/loop}
+</table>
+</div>
+{if $MG[addmember_limit]}
+<div class="limit">总共可发 <span class="f_b f_red">{$MG[addmember_limit]}</span> 条&nbsp;&nbsp;&nbsp;当前已发 <span class="f_b">{$limit_used}</span> 条&nbsp;&nbsp;&nbsp;还可以发 <span class="f_b f_blue">{$limit_free}</span> 条</div>
+{/if}
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('addmember');m('s3');</script>
+{/if}
+{if $action=='add' || $action=='edit'}
+		<script type="text/javascript">
+		Dd('username').focus();
+		var vid = '';
+		function validator(id) {
+			vid = id;
+			makeRequest('moduleid={$moduleid}&action=member&job='+id+'&value='+Dd(id).value, 'ajax.php', '_validator');
+		}
+		function _validator() {
+			if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+				Dd('d'+vid).innerHTML = xmlHttp.responseText ? '<img src="{AJ_SKIN}image/check_error.gif" align="absmiddle"/> '+xmlHttp.responseText : '<img src="{AJ_SKIN}image/check_right.gif" align="absmiddle"/> ';
+			}
+		}
+		function err_msg(str, id) {
+			Dd('d'+id).innerHTML = '<img src="{AJ_SKIN}image/check_'+(str ? 'error' : 'right')+'.gif" align="absmiddle"/> '+str;
+		}
+		function validate(type) {
+			if(type == 'cpassword') {
+				if(Dd('cpassword').value != Dd('password').value) {
+					err_msg('两次输入的密码不一致', type);
+				} else {
+					err_msg('', type);
+				}
+			}
+			if(type == 'truename') {
+				if(Dd('truename').value.length < 2) {
+					err_msg('请输入真实姓名', type);
+				} else {
+					err_msg('', type);
+				}
+			}
+			if(type == 'telephone') {
+				if(Dd('telephone').value.match(/^[0-9\-\(\)\+\.]{7,}$/)) {
+					err_msg('', type);
+				} else {
+					err_msg('请输入公司电话', type);
+				}
+			}
+		}
+		function reg(type) {
+			if(type) {
+				Ds('company_detail');
+			} else {
+				Dh('company_detail');
+			}
+		}
+		function Df(ID) {
+			Dd(ID).focus();
+		}
+		function check() {
+			var f,p;
+			f = 'username';
+			if(Dd(f).value == '') {
+				err_msg('请填写会员登录名', f);
+				Df(f);
+				return false;
+			}
+			if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
+				Df(f);
+				return false;
+			}
+			f = 'password';
+			if(Dd(f).value.length < 6) {
+				err_msg('请填写会员登录密码', f);
+				Df(f);
+				return false;
+			}
+			if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
+				Df(f);
+				return false;
+			}
+			f = 'cpassword';
+			if(Dd(f).value == '') {
+				err_msg('请重复输入密码', f);
+				Df(f);
+				return false;
+			}
+			if(Dd('password').value != Dd(f).value) {
+				err_msg('两次输入的密码不一致', f);
+				Df(f);
+				return false;
+			}
+			f = 'truename';
+			if(Dd(f).value == '') {
+				err_msg('请填写真实姓名', f);
+				Df(f);
+				return false;
+			}
+			f = 'email';
+			if(Dd(f).value.length < 6) {
+				err_msg('请填写电子邮箱', f);
+				Df(f);
+				return false;
+			}
+			if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
+				Df(f);
+				return false;
+			}
+			if(Dd('areaid_1').value == 0) {
+				Dmsg('请选择所在地', 'areaid');
+				return false;
+			}
+			{if $could_emailcode}
+				f = 'emailcode';
+				if(!Dd(f).value.match(/^[0-9]{6}$/)) {
+					Dmsg('请填写邮件验证码', f);
+					return false;
+				}
+			{/if}
+			if(Dd('g_5').checked == false) {
+				f = 'company';
+				if(Dd(f).value == '') {
+					err_msg('请填写公司名称', f);
+					Df(f);
+					return false;
+				}
+				if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
+					Df(f);
+					return false;
+				}
+				if(Dd('type').value == '') {
+					Dmsg('请选择公司类型', 'type');
+					return false;
+				}
+				f = 'telephone';
+				if(Dd(f).value.length < 7) {
+					err_msg('请填写公司电话', f);
+					Df(f);
+					return false;
+				}
+			}
+			{if $MOD[question_register]}
+			f = 'answer';
+			if(Dd(f).value == '') {
+				Dmsg('请回答验证问题', f);
+				return false;
+			}
+			{/if}
+			{if $MOD[captcha_register]}
+			f = 'captcha';
+			if(!is_captcha(Dd(f).value)) {
+				Dmsg('请填写验证码', f);
+				return false;
+			}
+			{/if}
+			return true;
+		}
+		function SendCode() {
+			if(Dd('demail').innerHTML.indexOf('right') == -1) {
+				Dd('email').focus();
+				return;
+			}
+			makeRequest('action={$action_sendcode}&value='+Dd('email').value, '{$AJ[file_register]}', '_SendCode');
+			Dh('sendok');
+			Dd('send_code').value = '正在发送';
+			Dd('send_code').disabled = true;
+		}
+		function _SendCode() {
+			var f = 'email';
+			if(xmlHttp.readyState==4 && xmlHttp.status==200) {			
+				Dd('send_code').value = xmlHttp.responseText == 1 ? '发送成功' : '立即发送';
+				Dd('send_code').disabled = xmlHttp.responseText == 1 ? true : false;
+				if(xmlHttp.responseText == 1) {
+					setTimeout('StopCode()', 5000);
+					Ds('sendok');
+					Dd('dsendok').innerHTML = '<img src="image/ico_mailok.gif" align="absmiddle"/> <span class="f_green">邮件发送成功，</span> <a href="goto.php?action=emailcode&email='+Dd(f).value+'" target="_blank">立即查收</a>';
+				} else if(xmlHttp.responseText == 2) {
+					err_msg('邮件格式错误，请检查', f);
+					Df(f);
+				} else if(xmlHttp.responseText == 3) {
+					err_msg('邮件地址已存在，请更换', f);
+					Df(f);
+				} else if(xmlHttp.responseText == 4) {
+					err_msg('此邮件域名已经被禁止注册，请更换', f);
+					Df(f);
+				} else {
+					alert('未知错误，请重试');
+				}
+			}
+		}
+		function StopCode() {
+			Dd('send_code').disabled = true;
+			var i = 30;
+			var interval=window.setInterval(
+				function() {
+					if(i == 0) {
+						Dd('send_code').value = '立即发送';
+						Dd('send_code').disabled = false;
+						clearInterval(interval);
+					} else {
+						Dd('send_code').value = '重新发送('+i+')';
+						i--;
+					}
+				},
+			1000);
+		}
+		</script>
+{/if}
+</div></div></div>
+{template 'footer'}

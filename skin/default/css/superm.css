@@ -1,0 +1,46 @@
+#superM{display:none;position:fixed;_position:absolute;right:0;bottom:0;z-index:19}
+#smu{position:absolute;bottom:16px;right:16px;z-index:80}
+#smu a{display:block;position:absolute;right:27px;bottom:0;height:54px;width:0;background-image:url(images/mod/super.png);_background-image:url(images/mod/super-ie6.gif);background-position:0 -594px;background-repeat:repeat-x;cursor: pointer;-webkit-transition:width 0.2s ease-out;-moz-transition:width 0.2s ease-out;-o-transition:width 0.2s ease-out;transition:width 0.2s ease-out}
+#smu a:hover{width:54px;_padding:0 0 0 12px;color:#000;text-decoration:none}
+#smu s,#smu u,#smu i,.smpanl a.closeMod{display:block;position:absolute;right:-27px;top:0;width:27px;height:54px;background-image:url(images/mod/super.png);_background-image:url(images/mod/super-ie6.gif);background-position:-27px 0;background-repeat:no-repeat;z-index:-1}
+#smu u{right:auto;left:-27px;background-position:0 0}
+#smu i{width:54px;z-index:2;opacity:.6;background-position:0 -540px;-webkit-transition:-webkit-transform 0.2s ease-out,opacity .4s ease-out;-moz-transition:-moz-transform 0.2s ease-out,opacity .4s ease-out;-o-transition:-o-transform 0.2s ease-out,opacity .4s ease-out;transition:transform 0.2s ease-out,opacity .4s ease-out}
+#smu a:hover i{opacity:1}
+#smu span{display:block;width:100%;height:54px;line-height:54px;white-space:nowrap;overflow:hidden;margin:0 0 0 -12px}
+#smu #openBoxBtn{bottom:64px}
+#openBoxBtn i{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg);background-position:0 -486px}
+.on #openBoxBtn i{-webkit-transform:rotate(-360deg);-moz-transform:rotate(-360deg);-o-transform:rotate(-360deg);transform:rotate(-360deg);background-position:0 -432px}
+#openBoxBtn span.o,.on #openBoxBtn .c{display:none}
+.on #openBoxBtn span.o,#openBoxBtn .c{display:block}
+#shareBtn i{background-position:0 -378px}
+#subBtn i{background-position:0 -324px}
+#mobileBtn i{background-position:0 -270px}
+#pkBtn i{background-position:0 -216px}
+#talkBtn i{background-position:0 -162px}
+.sendInfo{display:none;position:absolute;width:128px;height:128px;background:url(images/mod/home.png);_background:url(images/mod/home.gif);z-index:29}
+.sendInfo.info{background:url(images/mod/java.png);_background:url(images/mod/java.gif)}
+.smpanl{display:none;position:absolute;bottom:0;right:88px;box-shadow:0 3px 9px #ccc;border:1px #ccc solid;font-size:12px;line-height:2em;background:#fff}
+.smpanl .panlT{margin-bottom:9px}
+.smpanl .lightbtn{margin:9px 18px 9px 0}
+.smpanl input{width:240px;margin:0 9px 0 0;height:30px;line-height:30px}
+.smpanl input.checkbox{width:20px;margin:0 0 0 9px;height:12px;line-height:12px;vertical-align:middle;border:0}
+.smpanl li{padding:4px 0}
+#smshare{width:126px}
+#smshare a{float:left;width:32px;height:32px;margin:0 5px 9px 5px;overflow:hidden;display:block;_display:inline;background-image:url(images/mod/sharebg.png)}
+#smpk{width:240px}
+#smpk ul{padding:0 9px 9px 0;text-align:center}
+#smpk li{padding:9px}
+#smpk .lightbtn{margin:0 9px}
+#smpk em{width:26px;height:26px;float: right;background-image:url(images/mod/super.png);_background-image:url(images/mod/super-ie6.gif);background-position: -14px -122px;cursor:pointer}
+#smpk em:hover{background-position:-14px -68px}
+#smmobile,#smsub,#smtalk{width:320px}
+#smmobile ul,#smsub ul{padding:0 9px}
+#smmobile li.gray9{padding:6px;word-break:break-all}
+#smtalk textarea{width:310px;height:48px;padding:0 4px;border:1px #ccc solid;border-radius:3px;line-height:1.4em}
+#talkContent{height:240px;overflow:auto;border:1px #ccc solid;border-radius:3px;background:#eee;margin:9px 0;padding:0 9px;line-height:1.6em}
+#talkContent li{border-top:1px #fff solid;border-bottom:1px #ccc solid}
+#talkContent h5{color:#66a;line-height:2em}
+#talkContent h5 span{float:right}
+#talkInfo a.fl{width:99px;display:inline-block;color:#66a;text-align:center;margin:0 24px 0 0;line-height:1.4em}
+#talkInfo a.fl img{width:90px;padding:2px;border:1px #ccc solid;border-radius:3px}
+#talkInfo .red{display:block;text-align:center}

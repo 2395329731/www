@@ -1,0 +1,284 @@
+
+{template 'header'}
+<link href="{AJ_SKIN}xfreset.css" rel="stylesheet" type="text/css" />
+	<link href="{AJ_SKIN}xinfang.css" rel="stylesheet" type="text/css" />
+	<div class="main">
+	<div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a>&gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&gt;<span>新房PK</span></div>
+		<div class="pk_b">
+			<h2><a href="javascript:" class="print fr" id="pk_print">打印此页面</a>
+				您最多可以添加<b class="red">3</b>个楼盘</h2>
+			<div class="pk_t" id="navbox">
+				
+				<table id="clear_td">
+					<tr>
+						<th class="pk_l">楼盘信息</th>
+						{loop $tags $k $v}<th width="280"><a href="{$v[linkurl]}" target="_blank" title="{$v[title]}">{$v[title]}</a></th>{/loop}
+						
+					</tr>
+				</table>
+			</div>
+			<table>
+				<tr>
+					<td class="pk_l"></td>
+					{loop $tags $k $v}<td  width="280"><img src="{imgurl($v[thumb])}" width="80" height="80" alt=""/></td>{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">楼盘电话</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[telephone]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">项目价格</td>
+				{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[price]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">特点</td>
+				{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[tedian]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<th class="pk_l" colspan="4">参数对比</th>
+				</tr>
+				<tr>
+					<td class="pk_l">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[lp_number]}户</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">容&nbsp;&nbsp;积&nbsp;&nbsp;率</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[lp_volume]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">绿&nbsp;&nbsp;化&nbsp;&nbsp;率</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[lp_green]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">装修状况</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{getbox_diaoval('fitment','checkbox',$v[fitment],'newhouse_6')}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">项目位置</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[address]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">项目类型</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{search_cats($v[catid], '6')}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">产权年限</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[lp_year]}年</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">建筑类型</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{getbox_diaoval('buildtype','checkbox',$v[buildtype],'newhouse_6')}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">开盘时间</td>
+				{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[selltime]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">
+						入住时间
+					</td>
+				{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[completion]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">开&nbsp;&nbsp;发&nbsp;&nbsp;商</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[kfs]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">物&nbsp;&nbsp;业&nbsp;&nbsp;费</td>
+			{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[lp_costs]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<th class="pk_l" colspan="4">配套交通</th>
+				</tr>
+				<tr>
+					<td class="pk_l">交通配套</td>
+				{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[lp_bus]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<td class="pk_l">周边配套</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{$v[lp_edu]}</td>
+		{/loop}
+				</tr>
+				<tr>
+					<th class="pk_l" colspan="4">其他对比</th>
+				</tr>
+				<tr>
+					<td class="pk_l">建筑特色</td>
+					{loop $tags $k $v}
+		<td id="tag_{$v[itemid]}_{$k}">{getbox_diaoval('lpts','checkbox',$v[lpts],'newhouse_6')}</td>
+		{/loop}
+				</tr>
+				
+			</table>
+		</div>
+
+<script>
+seajs.use(["alert","autoc"],function(alertM){
+	var $menu = $("#navbox"),
+		$w = $(window),
+		hBoolean = 1,
+		mh = $menu.offset().top,
+		hid = window.location.href.split("=");
+		hid=hid.length>1?hid[1].split(","):0;
+	if ((!-[1, ] && !window.XMLHttpRequest)||"ontouchend" in document) {
+		$w.on("scroll", function() {
+			if ($w.scrollTop() > mh) {
+				hBoolean = 0;
+				$menu[0].style.top = $w.scrollTop() - mh + "px";
+			} else if ($w.scrollTop() < mh && !hBoolean) {
+				hBoolean = 1;
+				$menu[0].style.top = 0;
+			}
+		})
+	} else {
+		$w.on("scroll", function() {
+			if ($w.scrollTop() > mh && hBoolean) {
+				hBoolean = 0;
+				$menu[0].style.position = "fixed";
+			} else if ($w.scrollTop() < mh && !hBoolean) {
+				hBoolean = 1;
+				$menu[0].style.position = "static";
+			}
+		})
+	}
+	var $tr=$("tr").on({
+		mouseenter:function(){
+			$(this).addClass("on")
+		},
+		mouseleave:function(){
+			$(this).removeClass("on")
+		}
+	});
+	var $cltd=$("#clear_td").on("click","a",function(){
+		var i=$(this).parent().index();
+		$(this).parent().data("hid",0);
+		setHref();
+		$tr.each(function(){
+			if($(this).find("td").length>1){
+				$(this).find("td").eq(i).empty()
+			}
+			if($(this).find("th").length>1){
+				$(this).find("th").eq(i).empty()
+			}
+		})
+	})
+	$("#pk_print").on("click",function(){
+		setTimeout(function(){
+			window.print();
+		},99)
+	})
+	$w.triggerHandler("scroll");
+	var HOUSE_URL = "{$MOD[linkurl]}";
+	var setHref=function(hidstr){
+			var hidstr=[];
+			$cltd.find("th").each(function(){
+				if($(this).data("hid"))
+					hidstr.push($(this).data("hid"));
+			})
+			hidstr = hidstr.join(",");
+			window.location.href = window.location.href.substr(0, window.location.href.indexOf("#")) + "#id=" + hidstr;
+			$.get(HOUSE_URL + "compare.php?itemid="+hidstr);
+		},
+		setHtml=function(hdata){	
+			$.ajax({
+				url:HOUSE_URL + "pk.php",
+				type:"post",
+				dataType:"json",
+				data:hdata
+			}).done(function(data){
+				if(data.state!="succ"){
+					alertM(data.alert,{cName:data.state})
+					return false;
+				}
+				var i=0;
+				$cltd.find("th").each(function(){
+					if(!$.trim($(this).html()).length){
+						i=$(this).index();
+						return false;
+					}
+				})
+				if(!i||i>3){
+					alertM("每次最多PK3个楼盘",{cName:"error"})
+					return false;
+				}
+				var d=0;
+				$cltd.find("th").eq(i).data("hid",data.hid);
+				$tr.each(function(){
+					if($(this).find("td").length>1){
+						$(this).find("td").eq(i).html(data.html[d]);
+						d++;
+					}
+					if($(this).find("th").length>1){
+						$(this).find("th").eq(i).html(data.html[d]);
+						d++;
+					}
+				})
+				setHref();
+			}).fail(function(){
+				alertM("查询房源信息失败，请检查网络连接是否已断开",{cName:"error"})
+			})
+		},
+		sendPkID=function(){
+			
+		}
+	if(hid){
+		for(var i=0,l=hid.length;i<l&&i<3;i++){
+			setHtml({
+				hid:hid[i]
+			})
+		}
+	}
+	var $hname=$("#hname").autoC("{$MOD[linkurl]}house.php?action=house"),
+		$form=$("#serach_form").on("submit",function(){
+			var kw = $hname.val();
+			if(kw == ""||kw==$hname.attr('placeholder')){
+				$hname.focus();
+				return false;
+			}
+			setHtml({
+				hname:kw
+			})
+			return false;
+		}).on("click","a.obtn",function(){
+			$form.trigger("submit")
+		});
+});
+</script>
+<script type="text/javascript">
+	$("#list").attr("class","on");
+</script>	
+
+{template 'footer'}

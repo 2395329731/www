@@ -1,0 +1,16 @@
+{loop $tags $k $t}
+ <div class="xf_zxwf linkxx">
+                    <ul>
+                        <li class="em1" style="background-color:#e7f8fd;"><span style="color:#006699;">
+                           {date('Y-m-d',$t[addtime])}</span>[<a target=_blank
+                                href="View.aspx?HouseID={$t[houseid]}" style="color:#006699;">{$t[title]}</a>]<a target=_blank
+                                    href="Asklist.aspx" style="color:#006699;">{$t[content]}</a></li>
+                        <li class="em2" style="background-color:#fff2df;">
+                            {$t[reply]}&nbsp;&nbsp;&nbsp;
+
+							{date('Y-m-d',$t[admintime])}
+							</li>
+                    </ul>
+                </div>
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

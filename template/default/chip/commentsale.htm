@@ -1,0 +1,12 @@
+
+{if in_array($moduleid, explode(',', get_module_setting(3, 'comment_module')))}
+ <div class="rsfbk" id="comment_div" style="display:;" >
+                <div class="rsfbt1">
+                    <span class="fr"><a href="{$EXT[comment_url]}{rewrite('index.php?mid='.$moduleid.'&itemid='.$itemid)}">共<span id="comment_count">0</span>条 [查看全部]</a></span>
+                    <div>网友评论</div>
+                </div>
+                <div class="photoList">
+                   <script type="text/javascript">show_comment('{$MODULE[3][linkurl]}', {$moduleid}, {$itemid});</script>
+                    <div class="clear"></div>
+                </div>
+            </div>{/if}

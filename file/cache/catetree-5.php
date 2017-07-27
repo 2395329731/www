@@ -1,0 +1,1 @@
+<option value="8">住宅</option><option value="9">公寓</option><option value="10">商铺</option><option value="11">写字楼</option><option value="12">其它</option></select>
